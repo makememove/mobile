@@ -17,7 +17,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Main2Activity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     private static TextView tv1;
     private static EditText et1;
@@ -28,9 +28,10 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        tv1 = (TextView) findViewById(R.id.textView2);
+       // tv1 = (TextView) findViewById(R.id.textView2);
         et1 = (EditText) findViewById(R.id.editText);
-        button = (Button) findViewById(R.id.button2);
+       // button = (Button) findViewById(R.id.button2);
+                                          /*
 
         button.setOnClickListener(new View.OnClickListener() {
                                       @Override
@@ -40,7 +41,9 @@ public class Main2Activity extends AppCompatActivity {
                                         startActivity(getIntent());
                                       }
                                   });
+                                        */
 
+        /*
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
         API api = retrofit.create(API.class);
@@ -68,5 +71,6 @@ public class Main2Activity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+        */
     }
 }
