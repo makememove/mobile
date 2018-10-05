@@ -29,16 +29,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tv1= (TextView) findViewById(R.id.textView);
+
 
         button = (Button) findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Main2Activity.class));
+             //   startActivity(new Intent(MainActivity.this,Main2Activity.class));
             }
         });
 
+        /*
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         API api = retrofit.create(API.class);
 
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<List<Event>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
     }
 }

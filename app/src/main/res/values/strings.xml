@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Make me Move</string>
+    <string name="button">Button</string>
+    <string name="loginbtn">loginBtn</string>
+    <string name="facebookbtn">facebookbtn</string>
+    <string name="googlebtn">googlebtn</string>
+    <string name="sign_up">Sign Up</string>
 </resources>
