@@ -1,4 +1,4 @@
-package makememove.ml.makememove;
+package makememove.ml.makememove.retrofitexample;
 
 import java.util.List;
 
