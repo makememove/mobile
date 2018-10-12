@@ -39,7 +39,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         nregister.registrate(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString());
                     }
                 }catch (Exception e){
-
+                    e.printStackTrace();
                 }
             }
         });

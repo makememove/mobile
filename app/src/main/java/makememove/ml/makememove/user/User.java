@@ -104,7 +104,7 @@ public class User {
         this.popularity = popularity;
     }
 
-    private static  User INSTANCE = null;
+    private static  User INSTANCE = new User();
 
     User() {}
 
