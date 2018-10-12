@@ -3,12 +3,12 @@ package makememove.ml.makememove.autentication;
 public class GoogleRegister implements Registers {
 
     @Override
-    public boolean registrate(String email, String username, String password) {
-        return false;
+    public void registrate(String email, String username, String password) {
+
     }
 
     @Override
-    public boolean makeAutoLoginConditions(String email, String username, String password) {
-        return false;
+    public void makeAutoLoginConditions(String email, String username, String password) {
+
     }
 }

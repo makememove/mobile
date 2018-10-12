@@ -2,26 +2,75 @@ package makememove.ml.makememove.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.autentication.NormalRegister;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private static TextView tv1;
-    private static EditText et1;
-    private static Button button;
-    private static int ID;
+    private EditText et_username;
+    private EditText et_email;
+    private EditText et_password;
+    private EditText et_confirmpassword;
+    private Button bt_registrate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-       // tv1 = (TextView) findViewById(R.id.textView2);
+        et_username= findViewById(R.id.et_username);
+        et_email= findViewById(R.id.et_email);
+        et_password= findViewById(R.id.et_password);
+        et_confirmpassword= findViewById(R.id.et_confirmpassword);
+        bt_registrate = findViewById(R.id.bt_registrate);
 
-       // button = (Button) findViewById(R.id.button2);
+
+        bt_registrate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    if(et_password.getText().toString().equals(et_confirmpassword.getText().toString())){
+                        NormalRegister nregister = new NormalRegister();
+                        nregister.registrate(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString());
+                        nregister.makeAutoLoginConditions(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString());
+                    }
+                }catch (Exception e){
+
+                }
+            }
+        });
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                           /*
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -63,5 +112,4 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
         */
-    }
-}
+

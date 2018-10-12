@@ -5,9 +5,12 @@
     <string name="facebookbtn">facebookbtn</string>
     <string name="googlebtn">googlebtn</string>
     <string name="sign_up">Sign Up</string>
-    <string name="detail">Detail</string>
     <string name="registration_page">Registration Page</string>
     <string name="facebook_login">facebook login</string>
     <string name="google_login">google login</string>
     <string name="registrate">Registrate</string>
+    <string name="username">Username</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="confirmpassword">Confirm Password</string>
 </resources>
