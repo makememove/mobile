@@ -9,7 +9,7 @@ public class Encryptor {
         return null;
     }
 
-    public String decode(String source){
+    public String encode(String source){
         byte[] bytes = source.getBytes();
         byte[] encodedHash = null;
         try
