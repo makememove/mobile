@@ -4,10 +4,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 public class Encryptor {
-    public String code(String source){
-
-        return null;
-    }
 
     public String encode(String source){
         byte[] bytes = source.getBytes();

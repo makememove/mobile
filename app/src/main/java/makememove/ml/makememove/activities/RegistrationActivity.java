@@ -37,7 +37,6 @@ public class RegistrationActivity extends AppCompatActivity {
                     if(et_password.getText().toString().equals(et_confirmpassword.getText().toString())){
                         NormalRegister nregister = new NormalRegister();
                         nregister.registrate(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString());
-                        nregister.makeAutoLoginConditions(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString());
                     }
                 }catch (Exception e){
 

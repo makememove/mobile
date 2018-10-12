@@ -8,7 +8,7 @@ public class GoogleRegister implements Registers {
     }
 
     @Override
-    public void makeAutoLoginConditions(String email, String username, String password) {
+    public void makeAutoLoginConditions() {
 
     }
 }

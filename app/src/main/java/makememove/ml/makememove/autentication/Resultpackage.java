@@ -4,6 +4,7 @@ public class Resultpackage {
     private String error;
     private String token;
 
+
     public Resultpackage(String error, String token) {
         this.error = error;
         this.token = token;

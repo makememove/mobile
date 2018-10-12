@@ -4,6 +4,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import makememove.ml.makememove.datahandlers.users.AutenticationAPI;
+import makememove.ml.makememove.datahandlers.users.Encryptor;
+import makememove.ml.makememove.user.Normal;
+import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,13 +21,15 @@ public class NormalRegister implements Registers {
         final Logger logger=Logger.getLogger("mylogger");
         Retrofit retrofit = new Retrofit.Builder().baseUrl(AutenticationAPI.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         AutenticationAPI api = retrofit.create(AutenticationAPI.class);
-
-        Call<Resultpackage> call=api.register(new Inputpackage(username,email,password));
+        Encryptor encryptor = new Encryptor();
+        Call<Resultpackage> call=api.register(new Inputpackage(username,email,encryptor.encode(password)));
         call.enqueue(new Callback<Resultpackage>() {
             @Override
             public void onResponse(Call<Resultpackage> call, Response<Resultpackage> response) {
                 logger.log(Level.INFO,response.body().getToken());
-
+                User.getInstance().setInstance(new Normal());
+                User.getInstance().setToken(response.body().getToken());
+                makeAutoLoginConditions();
             }
 
             @Override
@@ -32,10 +37,12 @@ public class NormalRegister implements Registers {
 
             }
         });
+
+        //TODO User adatainak lekérése beállítása
     }
 
     @Override
-    public void makeAutoLoginConditions(String email, String username, String password) {
-
+    public void makeAutoLoginConditions() {
+        //TODO token mentése fájlba
     }
 }

@@ -1,8 +1,5 @@
 package makememove.ml.makememove.datahandlers.users;
 
-
-
-
 import makememove.ml.makememove.autentication.Inputpackage;
 import makememove.ml.makememove.autentication.Resultpackage;
 import retrofit2.Call;
