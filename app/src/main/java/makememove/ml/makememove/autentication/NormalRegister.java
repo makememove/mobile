@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import makememove.ml.makememove.datahandlers.users.AutenticationAPI;
 import makememove.ml.makememove.datahandlers.users.Encryptor;
+import makememove.ml.makememove.datahandlers.users.TokenSaver;
 import makememove.ml.makememove.user.Normal;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
@@ -37,12 +38,12 @@ public class NormalRegister implements Registers {
 
             }
         });
-
-        //TODO User adatainak lekérése beállítása
+        //TODO User adatainak lekérése regisztrálás után
     }
 
     @Override
     public void makeAutoLoginConditions() {
-        //TODO token mentése fájlba
+        TokenSaver ts = new TokenSaver();
+        ts.saveToken();
     }
 }

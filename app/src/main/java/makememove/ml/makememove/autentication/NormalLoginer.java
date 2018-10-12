@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import makememove.ml.makememove.datahandlers.users.AutenticationAPI;
 import makememove.ml.makememove.datahandlers.users.Encryptor;
+import makememove.ml.makememove.datahandlers.users.TokenSaver;
 import makememove.ml.makememove.user.Normal;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
@@ -28,6 +29,9 @@ public class NormalLoginer implements Loginers {
                 logger.log(Level.INFO,response.body().getToken());
                 User.getInstance().setInstance(new Normal());
                 User.getInstance().setToken(response.body().getToken());
+
+                TokenSaver ts = new TokenSaver();
+                ts.saveToken();
             }
 
             @Override
@@ -35,6 +39,6 @@ public class NormalLoginer implements Loginers {
 
             }
         });
-
+        //TODO User adatainak lekérése login után
     }
 }

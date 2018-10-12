@@ -32,7 +32,6 @@ public class TokenSaver {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
         }
     }
     public void loadToken() {
