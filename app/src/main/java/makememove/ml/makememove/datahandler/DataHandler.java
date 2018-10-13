@@ -44,7 +44,7 @@ public class DataHandler {
         call.enqueue(new Callback<AuthTokenpack>() {
             @Override
             public void onResponse(Call<AuthTokenpack> call, Response<AuthTokenpack> response) {
-                setDefaultUser(response);
+                if(response.isSuccessful())setDefaultUser(response);
             }
 
             @Override
@@ -59,7 +59,7 @@ public class DataHandler {
         call.enqueue(new Callback<AuthTokenpack>() {
             @Override
             public void onResponse(Call<AuthTokenpack> call, Response<AuthTokenpack> response) {
-                setDefaultUser(response);
+                if(response.isSuccessful())setDefaultUser(response);
             }
 
             @Override
@@ -69,7 +69,7 @@ public class DataHandler {
         });
     }
         private void setDefaultUser(Response<AuthTokenpack> response){
-            logger.log(Level.INFO,response.body().getToken());
-            User.getInstance().setToken(response.body().getToken());
+                    logger.log(Level.INFO, response.body().getToken());
+                    User.getInstance().setToken(response.body().getToken());
         }
 }

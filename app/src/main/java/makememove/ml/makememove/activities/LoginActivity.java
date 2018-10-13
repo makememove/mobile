@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.autentication.inner.NormalAuth;
+import makememove.ml.makememove.datahandler.TokenHandler;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,9 +38,9 @@ public class LoginActivity extends AppCompatActivity {
                     NormalAuth nAuth = new NormalAuth();
                     nAuth.login(et_email.getText().toString(),et_user.getText().toString(),et_password.getText().toString());
 
-                    Intent intent = new Intent(LoginActivity.this, UserActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+                        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
 
                 }catch (Exception e){
                     e.printStackTrace();
