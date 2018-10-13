@@ -81,13 +81,15 @@
                     android:id="@+id/bt_facebook_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/facebookbtn" />
+                    android:text="@string/facebookbtn"
+                    android:visibility="invisible" />
 
                 <Button
                     android:id="@+id/bt_google_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/googlebtn" />
+                    android:text="@string/googlebtn"
+                    android:visibility="invisible" />
             </LinearLayout>
 
             <LinearLayout

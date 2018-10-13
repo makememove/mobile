@@ -1,4 +1,4 @@
-package makememove.ml.makememove;
+package makememove.ml.makememove.globals;
 
 import android.app.Application;
 import android.content.Context;

@@ -1,8 +1,5 @@
 package makememove.ml.makememove.user;
 
-public class Creator extends User {
+public class Creator implements UserType {
 
-    public Creator(){
-        super();
-    }
 }

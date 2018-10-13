@@ -1,8 +1,6 @@
 package makememove.ml.makememove.user;
 
-public class Admin extends User {
+public class Admin  implements UserType{
 
-    public Admin() {
-        super();
-    }
+
 }

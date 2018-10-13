@@ -1,14 +1,14 @@
 package makememove.ml.makememove.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import makememove.ml.makememove.R;
-import makememove.ml.makememove.autentication.NormalRegister;
+import makememove.ml.makememove.autentication.inner.NormalAuth;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -35,8 +35,13 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     if(et_password.getText().toString().equals(et_confirmpassword.getText().toString())){
-                        NormalRegister nregister = new NormalRegister();
-                        nregister.registrate(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString());
+
+                        NormalAuth nAuth = new NormalAuth();
+                        nAuth.signup(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString());
+
+                        Intent intent = new Intent(RegistrationActivity.this, UserActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
                     }
                 }catch (Exception e){
                     e.printStackTrace();
@@ -45,70 +50,3 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                          /*
-
-        button.setOnClickListener(new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View view) {
-                                        ID = Integer.parseInt(et1.getText().toString());
-                                        finish();
-                                        startActivity(getIntent());
-                                      }
-                                  });
-                                        */
-
-        /*
-                Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-
-        API api = retrofit.create(API.class);
-
-        Call<Description> call = api.getDescription(ID);
-
-        call.enqueue(new Callback<Description>() {
-            @Override
-            public void onResponse(Call<Description> call, Response<Description> response) {
-                Description description = response.body();
-
-                Log.d("id",description.getId());
-                Log.d("title",description.getTitle());
-                Log.d("description",description.getDescription());
-                Log.d("time",description.getTime());
-
-                String selected =  description.getId() +" - " +
-                        description.getTitle() + " - "+description.getDescription()+" - "+description.getTime()+"\n";
-
-                tv1.setText(selected);
-            }
-
-            @Override
-            public void onFailure(Call<Description> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
-

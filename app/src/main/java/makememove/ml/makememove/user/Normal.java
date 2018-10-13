@@ -1,8 +1,6 @@
 package makememove.ml.makememove.user;
 
-public class Normal extends User{
+public class Normal implements UserType{
 
-    public Normal(){
-        super();
-    }
+
 }

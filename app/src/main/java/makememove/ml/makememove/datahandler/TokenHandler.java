@@ -1,4 +1,4 @@
-package makememove.ml.makememove.datahandlers.users;
+package makememove.ml.makememove.datahandler;
 
 import android.content.Context;
 
@@ -7,13 +7,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import makememove.ml.makememove.GlobalClass;
+import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
 
-public class TokenSaver {
+public class TokenHandler {
     String token;
     String fileName;
-    public TokenSaver() {
+    public TokenHandler() {
        token = User.getInstance().getToken();
        fileName = "TokenFile";
     }

@@ -1,4 +1,4 @@
-package makememove.ml.makememove.datahandlers.users;
+package makememove.ml.makememove.datahandler;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

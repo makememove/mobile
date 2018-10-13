@@ -1,11 +1,11 @@
 package makememove.ml.makememove.autentication;
 
-public class Inputpackage {
+public class AuthInputpack {
     private String userName;
     private String email;
     private String password;
 
-    public Inputpackage(String userName, String email, String password) {
+    public AuthInputpack(String userName, String email, String password) {
         this.userName=userName;
         this.email = email;
         this.password = password;
