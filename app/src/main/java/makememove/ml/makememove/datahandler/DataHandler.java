@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 
 import makememove.ml.makememove.autentication.AuthInputpack;
 import makememove.ml.makememove.autentication.AuthTokenpack;
-import makememove.ml.makememove.user.Normal;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,5 +70,13 @@ public class DataHandler {
         private void setDefaultUser(Response<AuthTokenpack> response){
                     logger.log(Level.INFO, response.body().getToken());
                     User.getInstance().setToken(response.body().getToken());
+                    makeAutoLoginConditions();
+
+        }
+
+        private void makeAutoLoginConditions() {
+        TokenHandler ts = new TokenHandler();
+        ts.saveToken();
+        logger.log(Level.INFO,"token:"+ts.availableToken());
         }
 }

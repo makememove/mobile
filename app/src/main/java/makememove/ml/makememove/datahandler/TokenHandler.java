@@ -16,6 +16,7 @@ public class TokenHandler {
     public TokenHandler() {
        token = User.getInstance().getToken();
        fileName = "TokenFile";
+
     }
     public void saveToken() {
         FileOutputStream fos = null;
@@ -50,5 +51,10 @@ public class TokenHandler {
             return false;
         }
         return true;
+    }
+
+    public void clear (){
+        File file = GlobalClass.context.getFileStreamPath(fileName);
+        if(file.exists())file.delete();
     }
 }

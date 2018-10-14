@@ -9,23 +9,19 @@ public class NormalAuth implements AuthwithInner {
 
     @Override
     public void login(String email, String username, String password) {
-
         dh.login(email,username,password);
-        makeAutoLoginConditions();
+
         //TODO User adatainak lekérése login után
+
     }
 
     @Override
     public void signup(String email, String username, String password) {
         dh.signup(email,username,password);
-        makeAutoLoginConditions();
 
         //TODO User adatainak lekérése regisztrálás után
     }
 
 
-    private void makeAutoLoginConditions() {
-        TokenHandler ts = new TokenHandler();
-        ts.saveToken();
-    }
+
 }

@@ -37,6 +37,9 @@ public class UserActivity extends AppCompatActivity {
         bt_logout=findViewById(R.id.bt_logout);
         bt_logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                TokenHandler tokenHandler= new TokenHandler();
+                tokenHandler.clear();
+
                 Intent intent = new Intent(UserActivity.this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);

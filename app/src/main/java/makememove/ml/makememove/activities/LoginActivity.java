@@ -38,9 +38,14 @@ public class LoginActivity extends AppCompatActivity {
                     NormalAuth nAuth = new NormalAuth();
                     nAuth.login(et_email.getText().toString(),et_user.getText().toString(),et_password.getText().toString());
 
+                    TokenHandler tokenHandler=new TokenHandler();
+                    System.out.println("token"+tokenHandler.availableToken());
+
+                    if(tokenHandler.availableToken()) {
                         Intent intent = new Intent(LoginActivity.this, UserActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+                    }
 
                 }catch (Exception e){
                     e.printStackTrace();
@@ -56,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
     }
 }
