@@ -10,7 +10,12 @@ import android.widget.EditText;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.autentication.inner.NormalAuth;
+import makememove.ml.makememove.datahandler.AuthTokenpack;
+import makememove.ml.makememove.datahandler.DataHandler;
 import makememove.ml.makememove.datahandler.TokenHandler;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -35,32 +40,31 @@ public class RegistrationActivity extends AppCompatActivity {
         bt_registrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    if(et_password.getText().toString().equals(et_confirmpassword.getText().toString())){
 
-                        NormalAuth nAuth = new NormalAuth();
-                        nAuth.signup(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString());
+                if (et_password.getText().toString().equals(et_confirmpassword.getText().toString())) {
 
-                        final Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                TokenHandler tokenHandler=new TokenHandler();
-                                System.out.println("token"+tokenHandler.availableToken());
+                    NormalAuth nAuth = new NormalAuth();
+                    nAuth.signup(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString(), new Callback<AuthTokenpack>() {
 
-                                if(tokenHandler.availableToken()) {
-                                    Intent intent = new Intent(RegistrationActivity.this, UserActivity.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
-                                }
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            if(response.isSuccessful())DataHandler.getInstance().setToken(response);
+                            TokenHandler tokenHandler=new TokenHandler();
+
+                            if(tokenHandler.availableToken()) {
+                                Intent intent = new Intent(RegistrationActivity.this, UserActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
                             }
-                        }, 2000);
+                        }
 
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
 
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
+                        }
+                    });
                 }
+
             }
         });
     }

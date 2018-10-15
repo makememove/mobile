@@ -1,4 +1,4 @@
-package makememove.ml.makememove.autentication;
+package makememove.ml.makememove.datahandler;
 
 public class AuthTokenpack {
     private String token;

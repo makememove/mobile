@@ -11,8 +11,8 @@ import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
 
 public class TokenHandler {
-    String token;
-    String fileName;
+    private String token;
+    private String fileName;
     public TokenHandler() {
        token = User.getInstance().getToken();
        fileName = "TokenFile";

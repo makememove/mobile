@@ -1,7 +1,5 @@
 package makememove.ml.makememove.datahandler;
 
-import makememove.ml.makememove.autentication.AuthInputpack;
-import makememove.ml.makememove.autentication.AuthTokenpack;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.http.Body;

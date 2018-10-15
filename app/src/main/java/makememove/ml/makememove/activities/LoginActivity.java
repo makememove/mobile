@@ -8,9 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.autentication.inner.NormalAuth;
+import makememove.ml.makememove.datahandler.AuthTokenpack;
+import makememove.ml.makememove.datahandler.DataHandler;
 import makememove.ml.makememove.datahandler.TokenHandler;
+import makememove.ml.makememove.user.User;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,6 +28,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText et_user;
     private EditText et_email;
     private EditText et_password;
+    private Logger logger=Logger.getLogger("mylogger");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,29 +49,26 @@ public class LoginActivity extends AppCompatActivity {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    NormalAuth nAuth = new NormalAuth();
-                    nAuth.login(et_email.getText().toString(),et_user.getText().toString(),et_password.getText().toString());
+                NormalAuth nAuth = new NormalAuth();
+                nAuth.login(et_email.getText().toString(),et_user.getText().toString(),et_password.getText().toString(), new Callback<AuthTokenpack>() {
 
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            TokenHandler tokenHandler=new TokenHandler();
-                            System.out.println("token"+tokenHandler.availableToken());
+                    @Override
+                    public void onResponse(Call call, Response response) {
+                        if(response.isSuccessful())DataHandler.getInstance().setToken(response);
+                        TokenHandler tokenHandler=new TokenHandler();
 
-                            if(tokenHandler.availableToken()) {
-                                Intent intent = new Intent(LoginActivity.this, UserActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            }
+                        if(tokenHandler.availableToken()) {
+                            Intent intent = new Intent(LoginActivity.this, UserActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                         }
-                    }, 2000);
+                    }
 
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
 
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+                    }
+                });
             }
         });
 
