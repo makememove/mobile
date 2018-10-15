@@ -1,6 +1,7 @@
 package makememove.ml.makememove.activities;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.autentication.inner.NormalAuth;
+import makememove.ml.makememove.datahandler.TokenHandler;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -39,9 +41,22 @@ public class RegistrationActivity extends AppCompatActivity {
                         NormalAuth nAuth = new NormalAuth();
                         nAuth.signup(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString());
 
-                        Intent intent = new Intent(RegistrationActivity.this, UserActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                TokenHandler tokenHandler=new TokenHandler();
+                                System.out.println("token"+tokenHandler.availableToken());
+
+                                if(tokenHandler.availableToken()) {
+                                    Intent intent = new Intent(RegistrationActivity.this, UserActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                }
+                            }
+                        }, 2000);
+
+
                     }
                 }catch (Exception e){
                     e.printStackTrace();
