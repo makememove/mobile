@@ -56,6 +56,7 @@
                     android:theme="@style/inputtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
                     android:hint="Name" />
 
                 <EditText
@@ -64,6 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:singleLine="true"
                     android:hint="Email"
                     />
 
@@ -73,6 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:singleLine="true"
                     android:hint="Password"
                     android:inputType="textPassword" />
 
