@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.LoginActivity"
+    android:layout_weight="6"
+    android:id="@+id/login_coorlayout"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,17 +15,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:orientation="vertical"
             android:padding="35dp"
-            android:weightSum="6">
+            android:weightSum="8">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
                 android:orientation="vertical">
 
                 <ImageView
@@ -31,7 +31,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="115dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/web_hi_res_512" />
+                    android:src="@drawable/ic"
+                    />
 
                 <ImageView
                     android:id="@+id/iv_title"
@@ -39,43 +40,67 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="25dp"
-                    app:srcCompat="@drawable/web_hi_res_512" />
+                    android:src="@drawable/title"
+                     />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
                 android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/et_user_and_email"
+                    android:theme="@style/inputtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Name" />
 
                 <EditText
                     android:id="@+id/et_email"
+                    android:theme="@style/inputtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Email" />
+                    android:hint="Email"
+                    />
 
                 <EditText
                     android:id="@+id/et_password"
+                    android:theme="@style/inputtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Password"
                     android:inputType="textPassword" />
 
-                <Button
-                    android:id="@+id/bt_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:text="@string/loginbtn" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/bt_sign_up"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#212121"
+                        android:text="@string/sign_up"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/bt_login"
+                        android:layout_width="107dp"
+                        android:layout_height="43dp"
+                        android:layout_gravity="right"
+                        android:background="@drawable/greenbuttonshape"
+                        android:text="@string/loginbtn"
+
+                        />
+
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/bt_facebook_login"
@@ -91,24 +116,9 @@
                     android:text="@string/googlebtn"
                     android:visibility="invisible" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/bt_sign_up"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginRight="15dp"
-                    android:text="@string/sign_up" />
-            </LinearLayout>
-
         </LinearLayout>
+
+
     </ScrollView>
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

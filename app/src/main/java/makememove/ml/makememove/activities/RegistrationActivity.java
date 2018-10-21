@@ -2,11 +2,16 @@ package makememove.ml.makememove.activities;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.autentication.inner.NormalAuth;
@@ -40,9 +45,8 @@ public class RegistrationActivity extends AppCompatActivity {
         bt_registrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (et_password.getText().toString().equals(et_confirmpassword.getText().toString())) {
-
+                if (validation(et_username.getText().toString(),et_email.getText().toString(),et_password.getText().toString(),et_confirmpassword.getText().toString())) {
+                    Snackbar.make(findViewById(R.id.regist_coorlayout), "Please wait...", Snackbar.LENGTH_LONG).show();
                     NormalAuth nAuth = new NormalAuth();
                     nAuth.signup(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString(), new Callback<AuthTokenpack>() {
 
@@ -55,11 +59,13 @@ public class RegistrationActivity extends AppCompatActivity {
                                 Intent intent = new Intent(RegistrationActivity.this, UserActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
-                            }
+                            }else Snackbar.make(findViewById(R.id.regist_coorlayout), "Username/Email already exist", Snackbar.LENGTH_LONG).show();
+
                         }
 
                         @Override
                         public void onFailure(Call call, Throwable t) {
+                            Snackbar.make(findViewById(R.id.regist_coorlayout), "Can't connect you to the server", Snackbar.LENGTH_LONG).show();
 
                         }
                     });
@@ -67,5 +73,51 @@ public class RegistrationActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private  boolean validation(String username,String email, String p1,String p2){
+
+        if(5>=username.length() || username.length()>=12){
+            et_username.setError("Username must be between 5 and 12 character");
+            return false;
+        }
+
+        if(!isEmailValid(email)){
+            et_email.setError("Not valid email Address");
+            return false;
+        }
+
+        if(5>=p1.length() || p1.length()>=12){
+            et_password.setError("Password must be between 5 and 12 character");
+            return false;
+        }
+
+        if(!p2.equals(p1)){
+            et_confirmpassword.setError("Password must be the same");
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean isEmailValid(String email)
+    {
+        String regExpn =
+                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                        +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                        +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                        +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
+
+        CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(regExpn,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+
+        if(matcher.matches())
+            return true;
+        else
+            return false;
     }
 }

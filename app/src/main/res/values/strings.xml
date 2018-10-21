@@ -9,8 +9,8 @@
     <string name="facebook_login">facebook login</string>
     <string name="google_login">google login</string>
     <string name="registrate">Registrate</string>
-    <string name="username">Username</string>
-    <string name="email">E-mail</string>
-    <string name="password">Password</string>
-    <string name="confirmpassword">Confirm Password</string>
+    <string name="username">Username:</string>
+    <string name="email">E-mail:</string>
+    <string name="password">Password:</string>
+    <string name="confirmpassword">Confirm Password:</string>
 </resources>
