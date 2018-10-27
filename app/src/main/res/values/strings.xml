@@ -13,6 +13,7 @@
     <string name="email">E-mail:</string>
     <string name="password">Password:</string>
     <string name="confirmpassword">Confirm Password:</string>
+    <string name="sport">Sport</string>
 
     <string-array name="sports_array">
         <item>Shuttle Badminton</item>
