@@ -22,8 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private  Button bt_sign_up;
     private Button bt_login;
-    private EditText et_user;
-    private EditText et_email;
+    private EditText et_user_and_email;
     private EditText et_password;
 
 
@@ -37,8 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         bt_sign_up= findViewById(R.id.bt_sign_up);
-        et_user = findViewById(R.id.et_user_and_email);
-        et_email = findViewById(R.id.et_email);
+        et_user_and_email = findViewById(R.id.et_user_and_email);
         et_password = findViewById(R.id.et_password);
         bt_login = findViewById(R.id.bt_login);
 
@@ -49,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 Snackbar.make(findViewById(R.id.login_coorlayout), "Please wait...", Snackbar.LENGTH_LONG).show();
 
                 NormalAuth nAuth = new NormalAuth();
-                nAuth.login(et_email.getText().toString(),et_user.getText().toString(),et_password.getText().toString(), new Callback<AuthTokenpack>() {
+                nAuth.login(et_user_and_email.getText().toString(),et_user_and_email.getText().toString(),et_password.getText().toString(), new Callback<AuthTokenpack>() {
                     @Override
                     public void onResponse(Call call, Response response) {
                         if(response.isSuccessful())DataHandler.getInstance().setToken(response);

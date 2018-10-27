@@ -24,4 +24,18 @@
         <item name = "android:textColorHint">#e8f5e9</item>
     </style>
 
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+
+        <item name="android:typeface">monospace</item>
+        <item name="android:textColorAlertDialogListItem">@android:color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@color/AlertDialaogbg</item>
+        <!--buttons color-->
+        <item name="colorAccent">@android:color/holo_orange_dark</item>
+        <!--title and message color-->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--dialog background-->
+        <item name="android:windowBackground">@color/AlertDialaogbg</item>
+    </style>
+
     </resources>

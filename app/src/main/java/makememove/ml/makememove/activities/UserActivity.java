@@ -25,7 +25,7 @@ public class UserActivity extends AppCompatActivity {
     private ImageButton bt_menu;
     private ImageButton bt_notification;
     private PopupWindow menu;
-    private FragmentManager fragmentManager;
+    public static FragmentManager fragmentManager;
 
 
 

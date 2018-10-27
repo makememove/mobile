@@ -8,4 +8,5 @@
     <color name="Headerbg">	#282828</color>
     <color name="Normaltextbg">#303030</color>
     <color name="NormaltextColor">#E8E8E8</color>
+    <color name="AlertDialaogbg">#54585e</color>
 </resources>
