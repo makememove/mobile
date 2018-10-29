@@ -1,12 +1,10 @@
 package makememove.ml.makememove.datahandler;
 
 import android.content.Context;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
 

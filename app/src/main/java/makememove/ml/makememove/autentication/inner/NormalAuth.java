@@ -14,7 +14,6 @@ public class NormalAuth implements AuthwithInner {
         dh.login(email,username,password,callback);
 
         //TODO User adatainak lekérése login után
-
     }
 
     @Override

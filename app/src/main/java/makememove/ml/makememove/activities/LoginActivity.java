@@ -50,7 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                 nAuth.login(et_user_and_email.getText().toString(),et_user_and_email.getText().toString(),et_password.getText().toString(), new Callback<AuthTokenpack>() {
                     @Override
                     public void onResponse(Call call, Response response) {
-                        if(response.isSuccessful())DataHandler.getInstance().setToken(response);
+                        if(response.isSuccessful())
+                            DataHandler.getInstance().setToken(response);
                         TokenHandler tokenHandler=new TokenHandler();
 
                         if(tokenHandler.availableToken()) {

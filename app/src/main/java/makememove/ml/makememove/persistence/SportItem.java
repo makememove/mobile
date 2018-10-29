@@ -8,7 +8,7 @@ import android.arch.persistence.room.TypeConverter;
 @Entity(tableName = "sportitem")
 public class SportItem {
     public enum Category {
-        Shuttle_Badminton, Tennis, Football, Basket_ball, Table_tennis, Chess, Hockey;
+        Shuttle_badminton, Tennis, Football, Basketball, Table_tennis, Chess, Hockey;
 
         @TypeConverter
         public static Category getByOrdinal(int ordinal) {
