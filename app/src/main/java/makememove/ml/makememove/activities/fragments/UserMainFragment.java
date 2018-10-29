@@ -1,6 +1,7 @@
 package makememove.ml.makememove.activities.fragments;
 
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.UserActivity;
@@ -28,6 +30,9 @@ import makememove.ml.makememove.globals.GlobalClass;
 public class UserMainFragment extends Fragment {
     private ImageButton bt_addsport;
     private View Layout;
+    private int sportdb=0;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,8 @@ public class UserMainFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        final String[] sports = getResources().getStringArray(R.array.sports_array);
+
         Layout=this.getView();
         if(Layout != null) {
             bt_addsport = this.getView().findViewById(R.id.bt_addsport);
@@ -60,13 +67,12 @@ public class UserMainFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int position) {
 
-                            String[] sports = getResources().getStringArray(R.array.sports_array);
-
                             LayoutInflater inflater = getLayoutInflater();
                             LinearLayout mainLayout = Layout.findViewById(R.id.sportslayout);
                             View myLayout = inflater.inflate(R.layout.sportcsempe, mainLayout, true);
-                            TextView sportText = (TextView) myLayout.findViewById(R.id.sporttitle);
-                            sportText.setText(sports[position]);
+                            TextView t =mainLayout.getChildAt(sportdb++).findViewWithTag("sporttitle");
+                            t.setText(sports[position]);
+
                         }
 
 
@@ -83,6 +89,7 @@ public class UserMainFragment extends Fragment {
                 }
             });
         }
+
 
     }
 }
