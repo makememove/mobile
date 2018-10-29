@@ -11,5 +11,4 @@ import android.arch.persistence.room.TypeConverters;
 @TypeConverters(value = {SportItem.Category.class})
 public abstract class SportListDatabase extends RoomDatabase {
     public abstract SportItemDao sportItemDao();
-    public abstract MyDao myDao();
 }
