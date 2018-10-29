@@ -85,10 +85,6 @@ public class EventDocument extends Document {
         this.presenter = presenter;
     }
 
-    @Override
-    public void sendNotification() {
-
-    }
 
     @Override
     public void getData() {
@@ -98,5 +94,13 @@ public class EventDocument extends Document {
     @Override
     public void service() {
 
+    }
+
+    public void load(String command){
+        presenter.loadDocument(command);
+    }
+
+    public void save(String command){
+        presenter.saveDocument(command);
     }
 }

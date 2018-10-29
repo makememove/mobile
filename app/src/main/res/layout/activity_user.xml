@@ -43,20 +43,13 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <fragment
-            android:id="@+id/userfragmentcontainer"
-            android:name="makememove.ml.makememove.activities.fragments.UserMainFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout="@layout/usermain_fragment" />
 
-
-    </LinearLayout>
+    </FrameLayout>
 
 </android.widget.LinearLayout>

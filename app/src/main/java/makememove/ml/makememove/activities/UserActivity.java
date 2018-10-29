@@ -3,9 +3,9 @@ package makememove.ml.makememove.activities;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +14,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.datahandler.TokenHandler;
-import makememove.ml.makememove.user.Normal;
-import makememove.ml.makememove.user.User;
 
 public class UserActivity extends AppCompatActivity {
     private ImageButton bt_menu;
@@ -27,14 +24,15 @@ public class UserActivity extends AppCompatActivity {
     private PopupWindow menu;
     public static FragmentManager fragmentManager;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        Log.d("Value",""+1);
 
         fragmentManager = getSupportFragmentManager();
+        UserMainFragment userMainFragment = new UserMainFragment();
+        fragmentManager.beginTransaction().replace(R.id.content,userMainFragment,"mainFragment").addToBackStack(null).commit();
 
         //Todo token validitásának ellenörzése
 

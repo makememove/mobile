@@ -23,7 +23,11 @@ public abstract class Document {
         views.remove(view);
     }
 
-    public abstract void sendNotification();
+    public void sendNotification(){
+        for (BaseView view : views) {
+            view.update();
+        }
+    }
 
     public abstract void getData();
 
