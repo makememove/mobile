@@ -11,29 +11,27 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
         android:background="@color/background"
-        >
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/background"
-            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:background="@color/background"
-                android:weightSum="5"
-                >
+                android:orientation="horizontal"
+                android:weightSum="5">
 
                 <android.support.v7.widget.AppCompatImageView
                     android:layout_width="0dp"
-                    android:layout_weight="4"
                     android:layout_height="match_parent"
+                    android:layout_weight="4"
                     android:background="@color/background"
                     android:foregroundGravity="center"
                     android:src="@drawable/title" />
@@ -41,8 +39,8 @@
                 <ImageButton
                     android:id="@+id/bt_notification"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@color/background"
                     android:foregroundGravity="right"
                     android:src="@drawable/ic_stat_notifications_none" />
@@ -53,7 +51,26 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_user" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/content_user" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

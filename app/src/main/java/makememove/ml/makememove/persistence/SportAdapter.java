@@ -80,7 +80,6 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                     SportEventStatusFragment sportEventFragment= new SportEventStatusFragment();
                     fragmentManager.beginTransaction()
                             .replace(R.id.content, sportEventFragment)
-                            .addToBackStack(null)
                             .commit();
                 }
             });
