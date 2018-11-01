@@ -31,7 +31,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="events">Events</string>
     <string name="find_event">Find Event</string>
     <string name="create_event">Create Event</string>
     <string name="friends">Friends</string>
@@ -41,4 +40,6 @@
     <string name="settings">Settings</string>
     <string name="upcoming_events">Upcoming Events</string>
     <string name="username_email">Username/Email</string>
+    <string name="skillpoints">SkillPoints:</string>
+    <string name="events">Events</string>
 </resources>
