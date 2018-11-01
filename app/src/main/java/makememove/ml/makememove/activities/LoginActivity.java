@@ -1,13 +1,14 @@
 package makememove.ml.makememove.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.autentication.inner.NormalAuth;

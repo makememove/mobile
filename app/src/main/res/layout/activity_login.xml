@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.LoginActivity"
     android:layout_weight="6"
+    android:background="@color/background"
     android:id="@+id/login_coorlayout"
     >
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="35dp"
-            android:weightSum="8">
+            android:weightSum="8"
+            android:background="@color/background"
+            >
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/background"
+                >
 
                 <ImageView
                     android:id="@+id/iv_icon"
                     android:layout_width="match_parent"
                     android:layout_height="115dp"
                     android:layout_gravity="center"
+                    android:background="@color/background"
                     android:src="@drawable/ic"
                     />
 
@@ -40,6 +48,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="25dp"
+                    android:background="@color/background"
                     android:src="@drawable/title"
                      />
 
@@ -49,32 +58,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/background"
+                >
 
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background"
+                    >
                 <EditText
                     android:id="@+id/et_user_and_email"
                     android:theme="@style/inputtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/background"
                     android:singleLine="true"
-                    android:hint="Username/Email" />
+                    android:hint="@string/username_email" />
+                </android.support.design.widget.TextInputLayout>
 
-
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background"
+                    >
                 <EditText
                     android:id="@+id/et_password"
                     android:theme="@style/inputtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:background="@color/background"
                     android:singleLine="true"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword" />
+                </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="right"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:background="@color/background"
+                    >
 
                     <Button
                         android:id="@+id/bt_sign_up"
@@ -115,4 +141,4 @@
 
     </ScrollView>
 
-</android.support.design.widget.CoordinatorLayout>
+</android.widget.LinearLayout>
