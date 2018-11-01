@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/Normaltextbg"
+            android:textAlignment="center"
             android:textColor="@color/NormaltextColor" />
 
         <TextView
@@ -37,6 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/Normaltextbg"
+            android:textAlignment="center"
             android:textColor="@color/NormaltextColor" />
 
         <TextView
@@ -44,6 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/Normaltextbg"
+            android:text="@string/no_upcoming_event"
+            android:textAlignment="center"
             android:textColor="@color/NormaltextColor" />
 
         <LinearLayout
@@ -54,24 +58,23 @@
             >
 
             <ScrollView
+                android:id="@+id/scroll1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/background"
-                >
+                android:clipToPadding="false">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:background="@color/background"
-                    >
+                    android:orientation="vertical">
 
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/RecylerView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/RecylerView"
-                        android:background="@color/background"
-                        />
+                        android:background="@color/background" />
 
                     <android.support.v7.widget.AppCompatImageButton
                         android:id="@+id/bt_addsport"

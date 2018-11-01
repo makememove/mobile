@@ -24,6 +24,15 @@
         <item>Chess</item>
         <item>Hockey</item>
     </string-array>
+    <string-array name="category_array">
+        <item>Championship</item>
+        <item>Normal Event</item>
+        <item>Training</item>
+    </string-array>
+    <string-array name="visibility_array">
+        <item>Public</item>
+        <item>Private</item>
+    </string-array>
     <string name="title_activity_user2">Make me Move</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -32,7 +41,6 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="find_event">Find Event</string>
-    <string name="create_event">Create Event</string>
     <string name="friends">Friends</string>
     <string name="ranklist">Ranklist</string>
     <string name="profile_settings">Profile Settings</string>
@@ -42,4 +50,10 @@
     <string name="username_email">Username/Email</string>
     <string name="skillpoints">SkillPoints:</string>
     <string name="events">Events</string>
+    <string name="no_upcoming_event">No upcoming event</string>
+    <string name="create_event">Create Event</string>
+    <string name="sporttype">Sport:</string>
+    <string name="category">Category:</string>
+    <string name="date">Date:</string>
+    <string name="create">Create</string>
 </resources>

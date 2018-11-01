@@ -88,37 +88,31 @@ public class UserActivity extends AppCompatActivity
              UserMainFragment userFragment= new UserMainFragment();
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
-                     .addToBackStack(null)
                      .commit();
         } else if (id == R.id.nav_findevent) {
              FindEventFragment userFragment= new FindEventFragment();
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
-                     .addToBackStack(null)
                      .commit();
         } else if (id == R.id.nav_createevent) {
              CreateEventFragment userFragment= new CreateEventFragment();
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
-                     .addToBackStack(null)
                      .commit();
         } else if (id == R.id.nav_friends) {
              FriendsFragment userFragment= new FriendsFragment();
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
-                     .addToBackStack(null)
                      .commit();
         } else if (id == R.id.nav_ranklist) {
              RanklistFragment userFragment= new RanklistFragment();
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
-                     .addToBackStack(null)
                      .commit();
         }else if (id == R.id.nav_profile) {
              ProfileFragment userFragment= new ProfileFragment();
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
-                     .addToBackStack(null)
                      .commit();
         }else if (id == R.id.nav_logout) {
              TokenHandler tokenHandler= new TokenHandler();
