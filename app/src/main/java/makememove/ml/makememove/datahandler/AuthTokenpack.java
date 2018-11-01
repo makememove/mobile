@@ -5,7 +5,6 @@ public class AuthTokenpack {
 
 
     public AuthTokenpack(String error, String token) {
-
         this.token = token;
     }
 

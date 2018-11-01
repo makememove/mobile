@@ -10,4 +10,9 @@ public class FacebookAuth implements AuthwithOuter {
     public void signup() {
 
     }
+
+    @Override
+    public void setUserData() {
+
+    }
 }

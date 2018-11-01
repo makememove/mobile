@@ -12,17 +12,15 @@ public class NormalAuth implements AuthwithInner {
     @Override
     public void login(String email, String username, String password,retrofit2.Callback callback) {
         dh.login(email,username,password,callback);
-
-        //TODO User adatainak lekérése login után
     }
 
     @Override
     public void signup(String email, String username, String password, retrofit2.Callback callback) {
         dh.signup(email,username,password,callback);
-
-        //TODO User adatainak lekérése regisztrálás után
     }
 
-
-
+    @Override
+    public void setUserData(retrofit2.Callback callback) {
+        dh.setUserData(callback);
+    }
 }

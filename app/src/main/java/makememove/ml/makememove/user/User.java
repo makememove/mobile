@@ -1,5 +1,7 @@
 package makememove.ml.makememove.user;
 
+import android.util.Log;
+
 import java.util.Date;
 
 public class User {
@@ -20,8 +22,11 @@ public class User {
     public String getToken() {
         return token;
     }
-    public void setToken(String token) {
-        this.token = token;
+    public void setToken(String token2) {
+        Log.d("TokenModifier1",token2+"");
+        this.token = token2.substring(0,116);
+        Log.d("TokenModifier2",token+"");
+
     }
     public int getExperience() {
         return experience;
@@ -83,6 +88,7 @@ public class User {
     public void setPopularity(float popularity) { this.popularity = popularity; }
     public UserType getUserType() { return userType; }
     public void setUserType(UserType userType) { this.userType = userType; }
+    public void setData(User user){ }
 
     //////////////////////////////////
 
@@ -94,7 +100,14 @@ public class User {
 
     public static User getInstance() {
 
+        if(INSTANCE == null)
+            INSTANCE = new User();
         return INSTANCE;
+    }
+    public static void setInstance(User user){
+        if(INSTANCE == null)
+            INSTANCE = new User();
+        INSTANCE = user;
     }
 
 

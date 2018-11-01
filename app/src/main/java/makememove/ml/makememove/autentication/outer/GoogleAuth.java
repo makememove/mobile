@@ -10,4 +10,9 @@ public class GoogleAuth implements AuthwithOuter {
     public void signup() {
 
     }
+
+    @Override
+    public void setUserData() {
+
+    }
 }

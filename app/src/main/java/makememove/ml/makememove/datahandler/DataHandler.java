@@ -1,8 +1,12 @@
 package makememove.ml.makememove.datahandler;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import makememove.ml.makememove.user.Sport;
+import makememove.ml.makememove.user.SportList;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,4 +53,13 @@ public class DataHandler {
         call.enqueue(callback);
     }
 
+    public void setUserData(retrofit2.Callback callback){
+        Call<User> call = api.getUserDetails(User.getInstance().getToken());
+        call.enqueue(callback);
+    }
+
+    public void getAllSports(retrofit2.Callback callback){
+        Call<SportList> call = api.getAllSports(User.getInstance().getToken().trim());
+        call.enqueue(callback);
+    }
 }
