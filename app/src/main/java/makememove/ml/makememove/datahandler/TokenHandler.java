@@ -36,7 +36,7 @@ public class TokenHandler {
     public void loadToken() {
         try {
             FileInputStream fis = GlobalClass.context.openFileInput(fileName);
-            byte[] byteToken = new byte[1024];
+            byte[] byteToken = new byte[116];
             fis.read(byteToken);
             User.getInstance().setToken(new String(byteToken));
         } catch (IOException e) {

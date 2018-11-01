@@ -2,6 +2,8 @@ package makememove.ml.makememove.user;
 
 import android.util.Log;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class User {
@@ -22,10 +24,8 @@ public class User {
     public String getToken() {
         return token;
     }
-    public void setToken(String token2) {
-        Log.d("TokenModifier1",token2+"");
-        this.token = token2.substring(0,116);
-        Log.d("TokenModifier2",token+"");
+    public void setToken(String token) {
+        this.token = token;
 
     }
     public int getExperience() {
@@ -105,8 +105,6 @@ public class User {
         return INSTANCE;
     }
     public static void setInstance(User user){
-        if(INSTANCE == null)
-            INSTANCE = new User();
         INSTANCE = user;
     }
 

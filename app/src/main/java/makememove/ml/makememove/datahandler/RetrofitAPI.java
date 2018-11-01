@@ -32,7 +32,7 @@ public interface RetrofitAPI {
 
     @Headers("Content-type: application/json")
     @GET("users/me")
-    Call<User> getUserDetails(@Body String token);
+    Call<UserPack> getUserDetails(@Header("Authorization") String token);
 
     @Headers("Content-type: application/json")
     @GET("sports/all")
@@ -40,13 +40,13 @@ public interface RetrofitAPI {
 
     @Headers("Content-type: application/json")
     @GET("sports")
-    Call<ArrayList<Sport>> getUserPreferredSports(@Body String token);
+    Call<ArrayList<Sport>> getUserPreferredSports(@Header("Authorization") String token);
 
     @Headers("Content-type: application/json")
     @POST("sports/follow/{sportID}")
-    Call<AuthTokenpack> addPreferredUserSport(@Body String token, @Path("sportID") int sportID);
+    Call<AuthTokenpack> addPreferredUserSport(@Header("Authorization") String token, @Path("sportID") int sportID);
 
     @Headers("Content-type: application/json")
     @GET("events?sportID={ID}")
-    Call<List<EventDocument>> getSportEvents(@Body String token, @Path("ID") int sportID);
+    Call<List<EventDocument>> getSportEvents(@Header("Authorization") String token, @Path("ID") int sportID);
 }

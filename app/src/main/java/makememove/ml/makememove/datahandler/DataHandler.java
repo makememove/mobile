@@ -54,7 +54,7 @@ public class DataHandler {
     }
 
     public void setUserData(retrofit2.Callback callback){
-        Call<User> call = api.getUserDetails(User.getInstance().getToken());
+        Call<UserPack> call = api.getUserDetails(User.getInstance().getToken());
         call.enqueue(callback);
     }
 
