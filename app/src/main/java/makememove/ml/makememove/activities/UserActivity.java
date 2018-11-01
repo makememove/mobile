@@ -13,8 +13,15 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.CreateEventFragment;
+import makememove.ml.makememove.activities.fragments.FindEventFragment;
+import makememove.ml.makememove.activities.fragments.FriendsFragment;
+import makememove.ml.makememove.activities.fragments.ProfileFragment;
+import makememove.ml.makememove.activities.fragments.RanklistFragment;
+import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.datahandler.TokenHandler;
+import makememove.ml.makememove.user.User;
 
 public class UserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -57,6 +64,8 @@ public class UserActivity extends AppCompatActivity
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
     @Override
@@ -76,17 +85,41 @@ public class UserActivity extends AppCompatActivity
         int id = item.getItemId();
 
          if (id == R.id.nav_events) {
-
+             UserMainFragment userFragment= new UserMainFragment();
+             fragmentManager.beginTransaction()
+                     .replace(R.id.content, userFragment)
+                     .addToBackStack(null)
+                     .commit();
         } else if (id == R.id.nav_findevent) {
-
+             FindEventFragment userFragment= new FindEventFragment();
+             fragmentManager.beginTransaction()
+                     .replace(R.id.content, userFragment)
+                     .addToBackStack(null)
+                     .commit();
         } else if (id == R.id.nav_createevent) {
-
+             CreateEventFragment userFragment= new CreateEventFragment();
+             fragmentManager.beginTransaction()
+                     .replace(R.id.content, userFragment)
+                     .addToBackStack(null)
+                     .commit();
         } else if (id == R.id.nav_friends) {
-
+             FriendsFragment userFragment= new FriendsFragment();
+             fragmentManager.beginTransaction()
+                     .replace(R.id.content, userFragment)
+                     .addToBackStack(null)
+                     .commit();
         } else if (id == R.id.nav_ranklist) {
-
+             RanklistFragment userFragment= new RanklistFragment();
+             fragmentManager.beginTransaction()
+                     .replace(R.id.content, userFragment)
+                     .addToBackStack(null)
+                     .commit();
         }else if (id == R.id.nav_profile) {
-
+             ProfileFragment userFragment= new ProfileFragment();
+             fragmentManager.beginTransaction()
+                     .replace(R.id.content, userFragment)
+                     .addToBackStack(null)
+                     .commit();
         }else if (id == R.id.nav_logout) {
              TokenHandler tokenHandler= new TokenHandler();
              tokenHandler.clear();
