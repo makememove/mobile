@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.CreateEventFragment;
 import makememove.ml.makememove.activities.fragments.FindEventFragment;
@@ -20,8 +22,15 @@ import makememove.ml.makememove.activities.fragments.ProfileFragment;
 import makememove.ml.makememove.activities.fragments.RanklistFragment;
 import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
+import makememove.ml.makememove.datahandler.DataHandler;
 import makememove.ml.makememove.datahandler.TokenHandler;
+import makememove.ml.makememove.datahandler.UserPack;
+import makememove.ml.makememove.user.Sport;
+import makememove.ml.makememove.user.SportList;
 import makememove.ml.makememove.user.User;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -56,6 +65,7 @@ public class UserActivity extends AppCompatActivity
             TokenHandler ts = new TokenHandler();
             if (ts.availableToken()) {
                 ts.loadToken();
+                setUserData();
             } else {
                 Intent intent = new Intent(UserActivity.this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -66,6 +76,45 @@ public class UserActivity extends AppCompatActivity
         }
 
 
+    }
+
+    public void getSports(){
+        DataHandler dh =  DataHandler.getInstance();
+        dh.getAllSports(new Callback<SportList>() {
+            @Override
+            public void onResponse(Call<SportList> call, Response<SportList> response) {
+                if(response.isSuccessful()){
+                    SportList sportok = response.body();
+                    for (Sport sport: sportok.getSports()
+                         ) {
+                        System.out.printf("Sport neve: "+sport.getName()+"\tSport azonosítója: "+sport.getId());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void setUserData(){
+        DataHandler dh =  DataHandler.getInstance();
+        dh.setUserData(new Callback<UserPack>() {
+            @Override
+            public void onResponse(Call <UserPack> call, Response<UserPack> response) {
+                if(response.isSuccessful()){
+                    UserPack up = response.body();
+                    System.out.println("User adatai:"+up.getUser().getEmail());
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
