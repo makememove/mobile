@@ -48,6 +48,7 @@
                         android:textColor="@color/NormaltextColor"
                         android:textSize="24sp" />
 
+
                     <EditText
                         android:id="@+id/et_titleofevent"
                         style="@style/inputtext"
@@ -55,7 +56,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:hint="titlle"
+                        android:inputType="textPersonName"
+                        android:singleLine="true" />
 
                 </LinearLayout>
 
@@ -136,11 +139,14 @@
 
                     <EditText
                         android:id="@+id/editText4"
+                        style="@style/inputtext"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="date" />
+                        android:hint="date"
+                        android:inputType="date"
+                        android:singleLine="true" />
 
                 </LinearLayout>
 
@@ -197,7 +203,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:hint="location"
+                        android:inputType="textPersonName"
+                        android:singleLine="true" />
 
                 </LinearLayout>
 
@@ -225,7 +233,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:hint="length"
+                        android:inputType="textPersonName"
+                        android:singleLine="true" />
 
                 </LinearLayout>
 
@@ -253,7 +263,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:hint="min Skillpoint"
+                        android:inputType="numberSigned"
+                        android:singleLine="true" />
 
 
                 </LinearLayout>
@@ -282,7 +294,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:hint="max Skillpoint"
+                        android:inputType="numberSigned"
+                        android:singleLine="true" />
 
 
                 </LinearLayout>
@@ -312,6 +326,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:hint="description"
                         android:inputType="textPersonName" />
 
                 </LinearLayout>
