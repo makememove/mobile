@@ -18,6 +18,7 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:editTextColor">@android:color/white</item>
         <item name="android:textColorHint">#818181</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <style name="greenactionbutton" parent="Theme.AppCompat.Light">
