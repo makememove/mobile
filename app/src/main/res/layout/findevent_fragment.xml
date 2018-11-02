@@ -51,11 +51,16 @@
             android:text="@string/add_filter" />
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
     <ListView
         android:id="@+id/lv_eventlist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/background"
         android:paddingTop="10dp" />
+    </ScrollView>
 
 </LinearLayout>

@@ -27,6 +27,7 @@
             android:id="@+id/tv_event1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:background="@color/Normaltextbg"
             android:textAlignment="center"
             android:textColor="@color/NormaltextColor" />
@@ -35,6 +36,7 @@
             android:id="@+id/tv_event2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:background="@color/Normaltextbg"
             android:textAlignment="center"
             android:textColor="@color/NormaltextColor" />
@@ -43,6 +45,7 @@
             android:id="@+id/tv_event3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:background="@color/Normaltextbg"
             android:text="@string/no_upcoming_event"
             android:textAlignment="center"
@@ -53,6 +56,24 @@
             android:layout_height="match_parent"
             android:background="@color/background"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_sportsheader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingTop="0dp"
+                android:text="@string/sports"
+                android:background="@color/Headerbg"
+                android:textAlignment="center"
+                android:textColor="@color/Headertext"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background">
 
 
             <LinearLayout
@@ -65,6 +86,7 @@
                     android:id="@+id/RecylerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
                     android:background="@color/background" />
 
                 <android.support.v7.widget.AppCompatImageButton
@@ -77,6 +99,8 @@
                     android:text="" />
 
             </LinearLayout>
+
+            </ScrollView>
 
         </LinearLayout>
     </LinearLayout>

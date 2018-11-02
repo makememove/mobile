@@ -19,6 +19,11 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -319,4 +324,5 @@
         </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>

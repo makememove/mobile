@@ -66,6 +66,7 @@
     <string name="popularity">Popularity:</string>
     <string name="popularityhint">popularity</string>
     <string name="modify">Modify</string>
+    <string name="sports">Sports</string>
 
 
     <string-array name="sports_array">

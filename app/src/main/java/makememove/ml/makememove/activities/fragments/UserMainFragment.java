@@ -107,7 +107,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 @Override
                 public void onClick(View view) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(view.getContext(), R.style.AlertDialogCustom));
-                    dialog.setTitle("Choose a Sport");
+                    dialog.setTitle("Choose a Sport:");
                     dialog.setItems(R.array.sports_array, new DialogInterface.OnClickListener() {
 
                         @Override

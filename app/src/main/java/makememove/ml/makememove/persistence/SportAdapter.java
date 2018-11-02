@@ -98,8 +98,10 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
             removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    removeItem(item);
-                    listener.onItemRemoved(item);
+                    if(item!=null) {
+                        removeItem(item);
+                        listener.onItemRemoved(item);
+                    }
                 }
             });
 
