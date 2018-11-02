@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
@@ -10,12 +11,23 @@
     <Button
         android:id="@+id/sportButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_weight="1"
+        android:background="@color/Headerbg"
         android:padding="5dp"
         android:text="@string/sport"
+
+        android:textColor="@color/NormaltextColor"
         android:textSize="20sp"
         android:textStyle="bold|italic" />
+
+    <ImageButton
+        android:id="@+id/ib_SportButton"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6"
+        android:background="@color/Headerbg"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <ImageButton
         android:id="@+id/removeButton"

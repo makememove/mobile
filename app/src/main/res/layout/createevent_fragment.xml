@@ -23,336 +23,398 @@
         android:layout_height="match_parent"
         android:background="@color/background">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background"
-        android:orientation="vertical">
-
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/background"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_titleofevent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/title"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-
-                <EditText
-                    android:id="@+id/et_titleofevent"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/titlehint"
-                    android:inputType="textPersonName"
-                    android:singleLine="true" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:background="@color/background"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_category"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:background="@color/background"
-                    android:text="@string/category"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp"
-                    tools:text="Category: " />
+                    android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/s_Category"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:entries="@array/category_array"
-                    android:popupBackground="@color/NormaltextColor" />
+                    <TextView
+                        android:id="@+id/tv_titleofevent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/title"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="24sp" />
 
-            </LinearLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        >
+                        <EditText
+                            android:id="@+id/et_titleofevent"
+                            android:theme="@style/inputtext"
+                            android:background="@color/background"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="@string/titlehint"
+                            android:inputType="textPersonName"
+                            android:singleLine="true" />
+                    </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_sporttype"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:background="@color/background"
-                    android:text="@string/sporttype"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
+                    android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/s_Sport"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:entries="@array/sports_array"
-                    android:popupBackground="@color/NormaltextColor" />
+                    <TextView
+                        android:id="@+id/tv_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/category"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="24sp"
+                        tools:text="Category: " />
 
-            </LinearLayout>
+                    <Spinner
+                        android:id="@+id/s_Category"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:entries="@array/category_array"
+                        android:popupBackground="@color/NormaltextColor" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:gravity="center"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_Date"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:background="@color/background"
-                    android:text="@string/date"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/et_Date"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/datehint"
-                    android:inputType="date"
-                    android:singleLine="true" />
+                    <TextView
+                        android:id="@+id/tv_sporttype"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/sporttype"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="24sp" />
 
-            </LinearLayout>
+                    <Spinner
+                        android:id="@+id/s_Sport"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:entries="@array/sports_array"
+                        android:popupBackground="@color/NormaltextColor" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_visibility"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:background="@color/background"
-                    android:text="@string/visibility"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/s_visibility"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:entries="@array/visibility_array"
-                    android:popupBackground="@color/NormaltextColor" />
+                    <TextView
+                        android:id="@+id/tv_Date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/date"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="24sp" />
 
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        >
 
-            </LinearLayout>
+                        <EditText
+                            android:id="@+id/et_Date"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:background="@color/background"
+                            android:theme="@style/inputtext"
+                            android:hint="@string/datehint"
+                            android:inputType="date"
+                            android:singleLine="true" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
+                    </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tv_location"
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:background="@color/background"
-                    android:text="@string/location"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/et_location"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="location"
-                    android:inputType="textPersonName"
-                    android:singleLine="true" />
+                    <TextView
+                        android:id="@+id/tv_visibility"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/visibility"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="24sp" />
 
-            </LinearLayout>
+                    <Spinner
+                        android:id="@+id/s_visibility"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:entries="@array/visibility_array"
+                        android:popupBackground="@color/NormaltextColor" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_Length"
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:background="@color/background"
-                    android:text="@string/length"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/et_lengrh"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/lengthhint"
-                    android:inputType="textPersonName"
-                    android:singleLine="true" />
+                    <TextView
+                        android:id="@+id/tv_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/location"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="24sp" />
 
-            </LinearLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
+                        <EditText
+                            android:id="@+id/et_location"
+                            android:theme="@style/inputtext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:background="@color/background"
+                            android:hint="location"
+                            android:inputType="textPersonName"
+                            android:singleLine="true" />
+                    </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tv_skillMIN"
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:background="@color/background"
-                    android:text="@string/min_skillpoint"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/et_minskillvalue"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/minskillpointhint"
-                    android:inputType="numberSigned"
-                    android:singleLine="true"
-                    tools:ignore="HardcodedText" />
+                    <TextView
+                        android:id="@+id/tv_Length"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/length"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="24sp" />
 
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        >
 
-            </LinearLayout>
+                        <EditText
+                            android:id="@+id/et_lengrh"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:theme="@style/inputtext"
+                            android:hint="@string/lengthhint"
+                            android:background="@color/background"
+                            android:inputType="textPersonName"
+                            android:singleLine="true" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
+                    </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tv_skillMAX"
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:background="@color/background"
-                    android:text="@string/max_skillpoint"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/et_maxskillvalue"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/max_skillpointhint"
-                    android:inputType="numberSigned"
-                    android:singleLine="true" />
+                    <TextView
+                        android:id="@+id/tv_skillMIN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/min_skillpoint"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="24sp" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_minskillvalue"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:background="@color/background"
+                            android:theme="@style/inputtext"
+                            android:hint="@string/minskillpointhint"
+                            android:inputType="numberSigned"
+                            android:singleLine="true"
+                            tools:ignore="HardcodedText" />
+
+                    </android.support.design.widget.TextInputLayout>
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:id="@+id/tv_description"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:background="@color/background"
-                    android:text="@string/description"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/et_description"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/descriptionhint"
-                    android:inputType="textPersonName" />
+                    <TextView
+                        android:id="@+id/tv_skillMAX"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/max_skillpoint"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="24sp" />
 
-            </LinearLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
+                        <EditText
+                            android:id="@+id/et_maxskillvalue"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:background="@color/background"
+                            android:theme="@style/inputtext"
+                            android:hint="@string/max_skillpointhint"
+                            android:inputType="numberSigned"
+                            android:singleLine="true" />
 
-                <Button
-                    android:id="@+id/button"
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/greenbuttonshape"
-                    android:text="@string/create" />
+                    android:layout_margin="10dp"
+                    android:background="@color/background"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/tv_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/description"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="24sp" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_description"
+                            android:background="@color/background"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:theme="@style/inputtext"
+                            android:hint="@string/descriptionhint"
+                            android:inputType="textMultiLine"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@color/background"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/greenbuttonshape"
+                        android:text="@string/create" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
     </ScrollView>
 
 
