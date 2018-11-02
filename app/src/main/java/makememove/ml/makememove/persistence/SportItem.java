@@ -33,5 +33,5 @@ public class SportItem {
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
-    public Long id;
+    public long id;
 }

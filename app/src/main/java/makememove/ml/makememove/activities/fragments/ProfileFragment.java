@@ -38,10 +38,10 @@ public class ProfileFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         if(this.getView()!=null) {
             View view = this.getView();
-            userName = view.findViewById(R.id.tv_usernameset);
-            firstName = view.findViewById(R.id.et_firstname);
-            lastName = view.findViewById(R.id.et_lastname);
-            birthday = view.findViewById(R.id.et_birthday);
+            userName = (TextView) view.findViewById(R.id.tv_usernameset);
+            firstName = (EditText) view.findViewById(R.id.et_firstname);
+            lastName = (EditText) view.findViewById(R.id.et_lastname);
+            birthday = (EditText) view.findViewById(R.id.et_birthday);
             gender = view.findViewById(R.id.s_gender);
             email = view.findViewById(R.id.tv_emailset);
             permission = view.findViewById(R.id.tv_permissionset);
@@ -50,10 +50,10 @@ public class ProfileFragment extends Fragment {
 
             System.out.printf("Username: "+User.getInstance().getEmail()+"\n");
             userName.setText(user.getUserName());
-            firstName.setHint(user.getFirstName());
-            lastName.setHint(user.getLastName());
+            firstName.setText(user.getFirstName());
+            lastName.setText(user.getLastName());
             if(user.getBirthday()!= null)
-                 birthday.setHint(user.getBirthday().toString());
+                 birthday.setText(user.getBirthday().toString());
             email.setText(user.getEmail());
             popularity.setText(String.valueOf(user.getPopularity()));
         }

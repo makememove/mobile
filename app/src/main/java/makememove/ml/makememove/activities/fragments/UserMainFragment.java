@@ -6,7 +6,9 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -42,18 +44,21 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     private RecyclerView recyclerView;
     private SportAdapter adapter;
     private SportListDatabase database;
-    private List<Sport> sportList;
+    private static List<Sport> sportList;
+    private static List<String> preferredSportList;
+    private String token = User.getInstance().getToken();
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sportList = new ArrayList<Sport>();
+        preferredSportList = new ArrayList<String>();
         database = Room.databaseBuilder(
                 GlobalClass.context,
                 SportListDatabase.class,
                 "sport-list"
         ).build();
-        String token = User.getInstance().getToken();
         getSports(token);
     }
         private void initRecylerView(){
@@ -70,17 +75,37 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
             @Override
             protected List<SportItem> doInBackground(Void... voids) {
-                return database.sportItemDao().getAll();
+                List<SportItem> list = database.sportItemDao().getAll();
+            return list;
             }
 
             @Override
-            protected void onPostExecute(List<SportItem> shoppingItems) {
-                adapter.update(shoppingItems);
+            protected void onPostExecute(List<SportItem> sportItems) {
+                adapter.update(sportItems);
             }
         }.execute();
     }
 
+    @SuppressLint("StaticFieldLeak")
+    public void addPreferredSports(){
+        new AsyncTask<Void, Void, List<SportItem>>() {
+            @Override
+            protected List<SportItem> doInBackground(Void... voids) {
+                return database.sportItemDao().getAll();
+            }
+
+            @Override
+            protected void onPostExecute(List<SportItem> sportItems) {
+                for (SportItem item:sportItems) {
+                    preferredSportList.add(item.category);
+                }
+            }
+        }.execute();
+
+    }
+
     private void initPreferredSports(String token){
+        addPreferredSports();
         if(recyclerView != null) {
             if (recyclerView.getAdapter().getItemCount() == 0) {
                 DataHandler dh = DataHandler.getInstance();
@@ -91,6 +116,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                             SportList sportok = response.body();
                             for (Sport sport : sportok.getSports()) {
                                 onShoppingItemCreated(getSportItem(sport.getId() - 1));
+                                preferredSportList.add(sportList.get(sport.getId() - 1).getName());
                             }
                         }
                     }
@@ -196,8 +222,16 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
                         @Override
                         public void onClick(DialogInterface dialog, int position) {
-                            onShoppingItemCreated(getSportItem(position));
-                            followSport(token,position+1);
+                            if(!preferredSportList.contains(sportList.get(position).getName())) {
+                            /*    for (Sport sport:preferredSportList) {
+                                    System.out.printf("A preferált sport: "+sport.getName()+"\n");
+                                }
+                              */  onShoppingItemCreated(getSportItem(position));
+                                followSport(token, position + 1);
+                                preferredSportList.add(sportList.get(position).getName());
+                            }
+                            else
+                                Snackbar.make(getActivity().findViewById(R.id.content), "The selected sport is already in the preferred list!", Snackbar.LENGTH_LONG).show();
                         }
 
                     });
@@ -223,6 +257,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     public void onShoppingItemCreated(final SportItem newItem) {
         new AsyncTask<Void, Void, SportItem>() {
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             protected SportItem doInBackground(Void... voids) {
                 newItem.id = database.sportItemDao().insert(newItem);
@@ -244,6 +279,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             @Override
             protected Boolean doInBackground(Void... voids) {
                 database.sportItemDao().deleteItem(item);
+                preferredSportList.remove(item.category);
                 return true;
             }
 
@@ -262,6 +298,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             @Override
             protected Boolean doInBackground(Void... voids) {
                 database.sportItemDao().deleteAll();
+                preferredSportList.clear();
                 return true;
             }
 

@@ -15,6 +15,7 @@ import java.util.List;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
+import makememove.ml.makememove.activities.fragments.UserMainFragment;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 

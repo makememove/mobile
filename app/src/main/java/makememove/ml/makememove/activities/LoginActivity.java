@@ -64,8 +64,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else
                             Snackbar.make(findViewById(R.id.login_coorlayout), "Invalid Username/Email or password", Snackbar.LENGTH_LONG).show();
-
-
                     }
 
                     @Override

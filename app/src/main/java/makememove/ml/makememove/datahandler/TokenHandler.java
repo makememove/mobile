@@ -26,9 +26,7 @@ public class TokenHandler {
         FileOutputStream fos = null;
         try {
             fos = GlobalClass.context.openFileOutput(fileName, Context.MODE_PRIVATE);
-           // BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(fos));
             fos.write(token.getBytes());
-            System.out.printf("Az elmentett token: "+token+"\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,16 +42,10 @@ public class TokenHandler {
     public void loadToken() {
         try {
             FileInputStream fis = GlobalClass.context.openFileInput(fileName);
-            InputStreamReader inputStreamReader = new InputStreamReader(fis);
             byte[] tomb = new byte[200];
             fis.read(tomb);
-            String line = new String(tomb);
-            String line2 = line.trim();
-            System.out.printf("A byte token: "+line2+"\n");
-
-          //  BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-          //  String line = bufferedReader.readLine();
-            User.getInstance().setToken(line2);
+            String line = new String(tomb).trim();
+            User.getInstance().setToken(line);
         } catch (IOException e) {
             e.printStackTrace();
         }
