@@ -29,17 +29,20 @@
     </style>
 
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textSize">18sp</item>
 
         <item name="android:typeface">monospace</item>
-        <item name="android:textColorAlertDialogListItem">@android:color/white</item>
-        <item name="android:textSize">24sp</item>
-        <item name="android:background">@color/AlertDialaogbg</item>
-        <!--buttons color-->
-        <item name="colorAccent">@android:color/holo_orange_dark</item>
-        <!--title and message color-->
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <!--dialog background-->
-        <item name="android:windowBackground">@color/AlertDialaogbg</item>
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/Headertext</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <!-- Used for the background -->
+        <item name="android:background">@android:color/white</item>
+        <item name="android:windowTitleStyle">@style/DialogTitle</item>
+    </style>
+
+    <style name="DialogTitle">
+        <item name="android:background">@color/Headerbg</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -22,6 +22,7 @@ import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHolder> {
 
     private final List<SportItem> items;
+
     private SportItemClickListener listener;
 
     public SportAdapter(SportItemClickListener listener){
@@ -73,10 +74,13 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
         void onAllItemsRemoved();
     }
 
+
     class SportViewHolder extends RecyclerView.ViewHolder {
         Button selectButton;
         ImageButton removeButton;
+
         SportItem item;
+
 
         SportViewHolder(View itemView) {
             super(itemView);
@@ -94,14 +98,16 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                     }
                 });
 
-                removeButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+            removeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(item!=null) {
                         removeItem(item);
                         listener.onItemRemoved(item);
                     }
-                });
-            }
+                }
+            });
+
         }
     }
 }
