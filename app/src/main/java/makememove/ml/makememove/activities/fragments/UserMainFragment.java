@@ -150,5 +150,25 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             }
         }.execute();
     }
+
+    @SuppressLint("StaticFieldLeak")
+    public void onItemRemoved(final SportItem item)
+    {
+        new AsyncTask<Void, Void, Boolean>() {
+
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+                database.sportItemDao().deleteItem(item);
+                return true;
+            }
+
+            @Override
+            protected void onPostExecute(Boolean isSuccessful) {
+                Log.d("MainActivity", "ShoppingItem update was successful");
+            }
+        }.execute();
+    }
+
+
 }
 

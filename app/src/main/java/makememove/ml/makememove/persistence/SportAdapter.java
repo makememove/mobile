@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,11 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
         notifyItemInserted(items.size() - 1);
     }
 
+    public void removeItem(SportItem item){
+        items.remove(item);
+        notifyDataSetChanged();
+    }
+
     public void update(List<SportItem> sportItems) {
         items.clear();
         items.addAll(sportItems);
@@ -64,16 +70,21 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
 
     public interface SportItemClickListener{
         void onItemChanged(SportItem item);
+        void onItemRemoved(SportItem item);
     }
 
 
     class SportViewHolder extends RecyclerView.ViewHolder {
         Button selectButton;
+        ImageButton removeButton;
+
         SportItem item;
+
 
         SportViewHolder(View itemView) {
             super(itemView);
             selectButton = itemView.findViewById(R.id.sportButton);
+            removeButton = itemView.findViewById(R.id.removeButton);
             selectButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -81,6 +92,14 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                     fragmentManager.beginTransaction()
                             .replace(R.id.content, sportEventFragment)
                             .commit();
+                }
+            });
+
+            removeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    removeItem(item);
+                    listener.onItemRemoved(item);
                 }
             });
 

@@ -106,7 +106,8 @@ public class UserActivity extends AppCompatActivity
             public void onResponse(Call <UserPack> call, Response<UserPack> response) {
                 if(response.isSuccessful()){
                     UserPack up = response.body();
-                    System.out.println("User adatai:"+up.getUser().getEmail());
+                    User.setInstance(up.getUser());
+                    System.out.println("User adatai:"+User.getInstance().getEmail());
                 }
             }
 
