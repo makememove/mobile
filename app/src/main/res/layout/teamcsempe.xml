@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/Headerbg"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/Headerbg"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/Headerbg"
+            >
+
+            <TextView
+                android:id="@+id/tv_teamnameset"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:background="@color/Headerbg"
+                android:text="Teamname"
+                android:textColor="@color/Headertext"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bt_join"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:background="@drawable/greenbuttonshape"
+                android:text="@string/join" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/Headerbg"
+            >
+
+            <TextView
+                android:id="@+id/tv_membersheader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/Headerbg"
+                android:text="@string/members"
+                android:textColor="@color/Headertext"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <ListView
+                android:id="@+id/lv_teammembers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/Headerbg"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

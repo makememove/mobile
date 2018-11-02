@@ -133,6 +133,12 @@
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test" />
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
@@ -143,7 +149,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/background"
-                    android:dividerHeight="1.5dp" />
+                    android:dividerHeight="1.5dp" >
+
+
+                </ListView>
 
             </ScrollView>
 
