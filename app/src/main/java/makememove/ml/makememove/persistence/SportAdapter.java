@@ -84,7 +84,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
 
         SportViewHolder(View itemView) {
             super(itemView);
-            if(itemView!=null) {
+            if (itemView != null) {
                 selectButton = itemView.findViewById(R.id.sportButton);
                 removeButton = itemView.findViewById(R.id.removeButton);
 
@@ -98,16 +98,17 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                     }
                 });
 
-            removeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(item!=null) {
-                        removeItem(item);
-                        listener.onItemRemoved(item);
+                removeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (item != null) {
+                            removeItem(item);
+                            listener.onItemRemoved(item);
+                        }
                     }
-                }
-            });
+                });
 
+            }
         }
     }
 }
