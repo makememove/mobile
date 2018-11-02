@@ -40,7 +40,7 @@ public interface RetrofitAPI {
 
     @Headers("Content-type: application/json")
     @GET("sports")
-    Call<ArrayList<Sport>> getUserPreferredSports(@Header("Authorization") String token);
+    Call<SportList> getUserPreferredSports(@Header("Authorization") String token);
 
     @Headers("Content-type: application/json")
     @POST("sports/follow/{sportID}")

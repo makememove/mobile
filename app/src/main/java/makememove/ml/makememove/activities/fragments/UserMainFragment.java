@@ -3,6 +3,7 @@ package makememove.ml.makememove.activities.fragments;
 import android.annotation.SuppressLint;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -52,8 +53,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 SportListDatabase.class,
                 "sport-list"
         ).build();
-        getSports(User.getInstance().getToken());
-        System.out.printf("Token: "+User.getInstance().getToken());
+        String token = User.getInstance().getToken();
+        getSports(token);
     }
         private void initRecylerView(){
             recyclerView = this.getView().findViewById(R.id.RecylerView);
@@ -77,6 +78,30 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 adapter.update(shoppingItems);
             }
         }.execute();
+    }
+
+    private void initPreferredSports(String token){
+        if(recyclerView != null) {
+            if (recyclerView.getAdapter().getItemCount() == 0) {
+                DataHandler dh = DataHandler.getInstance();
+                dh.getUserPreferredSports(token, new Callback<SportList>() {
+                    @Override
+                    public void onResponse(Call<SportList> call, Response<SportList> response) {
+                        if (response.isSuccessful()) {
+                            SportList sportok = response.body();
+                            for (Sport sport : sportok.getSports()) {
+                                onShoppingItemCreated(getSportItem(sport.getId() - 1));
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+                        System.out.printf("Failure occured in getSports() method!");
+                    }
+                });
+            }
+        }
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -109,7 +134,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         sportList.addAll(item);
     }
 
-    public void getSports(String token){
+    public void getSports(final String token){
         DataHandler dh =  DataHandler.getInstance();
         dh.getAllSports(token,new Callback<SportList>() {
             @Override
@@ -117,6 +142,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 if(response.isSuccessful()){
                     SportList sportok = response.body();
                     addSports(sportok.getSports());
+                    initPreferredSports(token);
                 }
             }
 
@@ -143,10 +169,10 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         });
     }
 
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         Layout=this.getView();
         if(Layout != null) {
           //      k++;
@@ -245,7 +271,5 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             }
         }.execute();
     }
-
-
 }
 

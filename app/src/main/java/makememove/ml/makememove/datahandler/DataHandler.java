@@ -68,4 +68,9 @@ public class DataHandler {
         Call<AuthInputpack> call = api.addPreferredUserSport(token,pos);
         call.enqueue(callback);
     }
+
+    public void getUserPreferredSports(String token, Callback callback){
+        Call<SportList> call = api.getUserPreferredSports(token);
+        call.enqueue(callback);
+    }
 }

@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class User {
     private String token;
+    private int id;
     private int experience;
     private int level;
     private GENDER gender;
@@ -88,6 +89,8 @@ public class User {
     public UserType getUserType() { return userType; }
     public void setUserType(UserType userType) { this.userType = userType; }
     public void setData(User user){ }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
     //////////////////////////////////
 
@@ -98,12 +101,17 @@ public class User {
     }
 
     public static void setEveryThing(User otherUser){
-        INSTANCE.setToken(otherUser.getToken());
+      //  String token = INSTANCE.getToken();
+      //  INSTANCE = otherUser;
+     //   INSTANCE.setToken(token);
+        INSTANCE.setEmail(otherUser.getEmail());
     }
 
     public static User getInstance() {
         return INSTANCE;
     }
+
+
     /*
     public static void setInstance(User user){
         INSTANCE = user;
