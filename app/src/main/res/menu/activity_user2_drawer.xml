@@ -28,7 +28,7 @@
     </group>
 
     <item android:title="@string/settings">
-        <menu>
+        <group android:checkableBehavior="single">
             <item
                 android:id="@+id/nav_profile"
                 android:icon="@drawable/ic_menu_manage"
@@ -37,7 +37,7 @@
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_menu_slideshow"
                 android:title="@string/logout" />
-        </menu>
+        </group>
     </item>
 
 </menu>

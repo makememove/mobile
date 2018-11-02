@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    >
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/background"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_upcomingevents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/Headerbg"
+            android:text="@string/upcoming_events"
             android:textAlignment="center"
             android:textColor="@color/Headertext"
             android:textSize="30sp"
-            android:text="@string/upcoming_events"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_event1"
@@ -53,33 +51,32 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:background="@color/background"
-            >
+            android:orientation="vertical">
 
 
-                <LinearLayout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/RecylerView"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background" />
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/bt_addsport"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:background="@color/background"
-                    android:orientation="vertical">
+                    android:src="@drawable/ic_add_circle"
+                    android:text="" />
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/RecylerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/background" />
-
-                    <android.support.v7.widget.AppCompatImageButton
-                        android:id="@+id/bt_addsport"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@color/background"
-                        android:src="@drawable/ic_add_circle"
-                        android:text="" />
-
-                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

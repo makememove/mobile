@@ -51,6 +51,21 @@
     <string name="titleofevent">Title of event</string>
     <string name="add_filter">Add Filter</string>
     <string name="events">Events</string>
+    <string name="profile">Profile</string>
+    <string name="usernamehint">username</string>
+    <string name="first_name">First Name: </string>
+    <string name="first_namehint">first name</string>
+    <string name="last_name">Last Name: </string>
+    <string name="last_namehint">last name</string>
+    <string name="birthday">Birthday: </string>
+    <string name="picture">Picture: </string>
+    <string name="gender">Gender:</string>
+    <string name="empty">Null</string>
+    <string name="permission">Permission:</string>
+    <string name="permissionhint">permission</string>
+    <string name="popularity">Popularity:</string>
+    <string name="popularityhint">popularity</string>
+    <string name="modify">Modify</string>
 
 
     <string-array name="sports_array">
@@ -70,5 +85,11 @@
     <string-array name="visibility_array">
         <item>Public</item>
         <item>Private</item>
+    </string-array>
+
+    <string-array name="gender_array">
+        <item>Man</item>
+        <item>Woman</item>
+        <item>Other</item>
     </string-array>
 </resources>
