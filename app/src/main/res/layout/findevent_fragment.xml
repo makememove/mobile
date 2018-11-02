@@ -5,4 +5,57 @@
     android:background="@color/background"
     >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/background"
+        >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/events"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textColor="@color/Headertext"
+            android:background="@color/Headerbg"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/background">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:background="@color/background"
+            android:ems="10"
+            android:hint="@string/titleofevent"
+            android:inputType="textPersonName"
+            android:theme="@style/inputtext" />
+
+        <Button
+            android:id="@+id/bt_addfilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.7"
+            android:background="@drawable/greenbuttonshape"
+            android:text="@string/add_filter" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_eventlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:paddingTop="10dp" />
+
 </LinearLayout>
