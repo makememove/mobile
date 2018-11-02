@@ -185,7 +185,6 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             @Override
             public void onResponse(Call call, Response response) {
                 if(response.isSuccessful()){
-                    System.out.printf("Sikeres volt a followSport!");
                 }
             }
             @Override
@@ -223,10 +222,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                         @Override
                         public void onClick(DialogInterface dialog, int position) {
                             if(!preferredSportList.contains(sportList.get(position).getName())) {
-                            /*    for (Sport sport:preferredSportList) {
-                                    System.out.printf("A preferált sport: "+sport.getName()+"\n");
-                                }
-                              */  onShoppingItemCreated(getSportItem(position));
+                                onShoppingItemCreated(getSportItem(position));
                                 followSport(token, position + 1);
                                 preferredSportList.add(sportList.get(position).getName());
                             }

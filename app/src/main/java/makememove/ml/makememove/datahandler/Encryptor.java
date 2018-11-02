@@ -10,7 +10,6 @@ public class Encryptor {
         byte[] encodedHash = null;
         try
         {
-            System.out.println(new String(bytes));
             try{
                 MessageDigest digestor = MessageDigest.getInstance("SHA-256");
                  encodedHash = digestor.digest(source.getBytes(StandardCharsets.UTF_8));

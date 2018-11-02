@@ -48,7 +48,6 @@ public class ProfileFragment extends Fragment {
             popularity = view.findViewById(R.id.tv_popularityset);
 
 
-            System.out.printf("Username: "+User.getInstance().getEmail()+"\n");
             userName.setText(user.getUserName());
             firstName.setText(user.getFirstName());
             lastName.setText(user.getLastName());

@@ -78,28 +78,7 @@ public class UserActivity extends AppCompatActivity
         listener = userMainFragment;
         fragmentManager.beginTransaction().replace(R.id.content,userMainFragment,"mainFragment").addToBackStack(null).commit();
     }
-/*
-    public void getSports(){
-        DataHandler dh =  DataHandler.getInstance();
-        dh.getAllSports(new Callback<SportList>() {
-            @Override
-            public void onResponse(Call<SportList> call, Response<SportList> response) {
-                if(response.isSuccessful()){
-                    SportList sportok = response.body();
-                    for (Sport sport: sportok.getSports()
-                         ) {
-                        System.out.printf("Sport neve: "+sport.getName()+"\tSport azonosítója: "+sport.getId());
-                    }
-                }
-            }
 
-            @Override
-            public void onFailure(Call call, Throwable t) {
-
-            }
-        });
-    }
-*/
     public void setUserData(){
         DataHandler dh =  DataHandler.getInstance();
         dh.setUserData(new Callback<UserPack>() {

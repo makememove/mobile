@@ -39,7 +39,6 @@ public class DataHandler {
 
     public static void setToken(Response<AuthTokenpack > response){
         User.getInstance().setToken(response.body().getToken());
-        System.out.printf("setToken Token: "+User.getInstance().getToken()+"\n");
         TokenHandler ts = new TokenHandler();
         ts.saveToken();
     }

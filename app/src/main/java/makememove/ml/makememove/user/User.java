@@ -101,9 +101,9 @@ public class User {
     }
 
     public static void setEveryThing(User otherUser){
-      //  String token = INSTANCE.getToken();
-      //  INSTANCE = otherUser;
-     //   INSTANCE.setToken(token);
+        String token = INSTANCE.getToken();
+        INSTANCE = otherUser;
+        INSTANCE.setToken(token);
         INSTANCE.setEmail(otherUser.getEmail());
     }
 
