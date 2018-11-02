@@ -58,8 +58,8 @@ public class DataHandler {
         call.enqueue(callback);
     }
 
-    public void getAllSports(retrofit2.Callback callback){
-        Call<SportList> call = api.getAllSports(User.getInstance().getToken().trim());
+    public void getAllSports(String token, retrofit2.Callback callback){
+        Call<SportList> call = api.getAllSports(token);
         call.enqueue(callback);
     }
 }

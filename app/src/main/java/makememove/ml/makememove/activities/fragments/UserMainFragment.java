@@ -19,12 +19,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.datahandler.DataHandler;
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.persistence.SportAdapter;
 import makememove.ml.makememove.persistence.SportItem;
 import makememove.ml.makememove.persistence.SportListDatabase;
+import makememove.ml.makememove.user.Sport;
+import makememove.ml.makememove.user.SportList;
+import makememove.ml.makememove.user.User;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UserMainFragment extends Fragment implements SportAdapter.SportItemClickListener{
     private ImageButton bt_addsport;
@@ -32,17 +41,18 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     private RecyclerView recyclerView;
     private SportAdapter adapter;
     private SportListDatabase database;
+    private List<Sport> sportList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        sportList = new ArrayList<Sport>();
         database = Room.databaseBuilder(
                 GlobalClass.context,
                 SportListDatabase.class,
                 "sport-list"
         ).build();
-
+        getSports(User.getInstance().getToken());
     }
         private void initRecylerView(){
             recyclerView = this.getView().findViewById(R.id.RecylerView);
@@ -94,21 +104,64 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         return inflater.inflate(R.layout.usermain_fragment, container, false);
     }
 
+    public void addSport(List<Sport> item){
+        sportList.addAll(item);
+        System.out.printf("Az első sport neve: "+item.get(0).getName()+"\n");
+        System.out.printf("A második sport neve: "+item.get(1).getName()+"\n");
+
+    }
+
+    public void getSports(String token){
+        DataHandler dh =  DataHandler.getInstance();
+        dh.getAllSports(token,new Callback<SportList>() {
+            @Override
+            public void onResponse(Call<SportList> call, Response<SportList> response) {
+                if(response.isSuccessful()){
+                    SportList sportok = response.body();
+                    addSport(sportok.getSports());
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                System.out.printf("Failure occured in getSports() method!");
+            }
+        });
+        System.out.printf("Listaelemek száma: "+sportList.size()+"\n");
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         Layout=this.getView();
+        int k = 0;
+        System.out.printf("A token before init: "+User.getInstance().getToken()+"\n");
         if(Layout != null) {
+          //      k++;
             initRecylerView();
+            System.out.printf("A token after init: "+User.getInstance().getToken()+"\n");
+            final String token = User.getInstance().getToken();
             bt_addsport = this.getView().findViewById(R.id.bt_addsport);
+
             bt_addsport.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(view.getContext(), R.style.AlertDialogCustom));
                     dialog.setTitle("Choose a Sport");
-                    dialog.setItems(R.array.sports_array, new DialogInterface.OnClickListener() {
+                    String[] arrayItems = null;
+                 //   if(arrayItems == null)
+
+
+                    arrayItems = new String[sportList.size()];
+                    int i = 0;
+                    System.out.printf("A sportlista elemeinek száma: "+sportList.size()+"\n");
+                    for (Sport item:sportList) {
+                        arrayItems[i]= item.getName();
+                        System.out.printf(arrayItems[i]+"\n");
+                        i++;
+                    }
+                    dialog.setItems(arrayItems, new DialogInterface.OnClickListener() {
 
                         @Override
                         public void onClick(DialogInterface dialog, int position) {
@@ -131,7 +184,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     }
     private SportItem getSportItem(int position) {
         SportItem sportItem = new SportItem();
-        sportItem.category = SportItem.Category.getByOrdinal(position);
+        sportItem.category = sportList.get(position).getName();
         return sportItem;
     }
     @SuppressLint("StaticFieldLeak")
@@ -159,6 +212,24 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             @Override
             protected Boolean doInBackground(Void... voids) {
                 database.sportItemDao().deleteItem(item);
+                return true;
+            }
+
+            @Override
+            protected void onPostExecute(Boolean isSuccessful) {
+                Log.d("MainActivity", "ShoppingItem update was successful");
+            }
+        }.execute();
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    @Override
+    public void onAllItemsRemoved() {
+        new AsyncTask<Void, Void, Boolean>() {
+
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+                database.sportItemDao().deleteAll();
                 return true;
             }
 

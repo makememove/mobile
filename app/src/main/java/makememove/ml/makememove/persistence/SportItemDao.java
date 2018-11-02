@@ -21,4 +21,7 @@ public interface SportItemDao {
 
         @Delete
         void deleteItem(SportItem sportItem);
+
+        @Query("DELETE FROM sportitem")
+        void deleteAll();
 }

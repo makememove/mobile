@@ -26,7 +26,6 @@ public class User {
     }
     public void setToken(String token) {
         this.token = token;
-
     }
     public int getExperience() {
         return experience;
@@ -92,22 +91,24 @@ public class User {
 
     //////////////////////////////////
 
-    private static  User INSTANCE = new User();
+    private static User INSTANCE = new User();
 
     private User() {
 
     }
 
-    public static User getInstance() {
+    public static void setEveryThing(User otherUser){
+        INSTANCE.setToken(otherUser.getToken());
+    }
 
-        if(INSTANCE == null)
-            INSTANCE = new User();
+    public static User getInstance() {
         return INSTANCE;
     }
+    /*
     public static void setInstance(User user){
         INSTANCE = user;
     }
-
+*/
 
 }
 

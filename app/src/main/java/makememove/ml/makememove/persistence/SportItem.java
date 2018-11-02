@@ -7,6 +7,7 @@ import android.arch.persistence.room.TypeConverter;
 
 @Entity(tableName = "sportitem")
 public class SportItem {
+    /*
     public enum Category {
         Shuttle_badminton, Tennis, Football, Basketball, Table_tennis, Chess, Hockey;
 
@@ -21,14 +22,14 @@ public class SportItem {
             }
             return ret;
         }
-
+*//*
         @TypeConverter
         public static int toInt(Category category) {
             return category.ordinal();
         }
-    }
+    }*/
     @ColumnInfo(name = "category")
-    public Category category;
+    public String category;
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)

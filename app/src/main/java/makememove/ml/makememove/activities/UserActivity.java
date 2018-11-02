@@ -25,6 +25,7 @@ import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.datahandler.DataHandler;
 import makememove.ml.makememove.datahandler.TokenHandler;
 import makememove.ml.makememove.datahandler.UserPack;
+import makememove.ml.makememove.persistence.SportAdapter;
 import makememove.ml.makememove.user.Sport;
 import makememove.ml.makememove.user.SportList;
 import makememove.ml.makememove.user.User;
@@ -36,6 +37,7 @@ public class UserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageButton bt_notification;
+    private SportAdapter.SportItemClickListener listener;
     public static FragmentManager fragmentManager;
 
     @Override
@@ -44,10 +46,6 @@ public class UserActivity extends AppCompatActivity
         setContentView(R.layout.activity_user);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        fragmentManager = getSupportFragmentManager();
-        UserMainFragment userMainFragment = new UserMainFragment();
-        fragmentManager.beginTransaction().replace(R.id.content,userMainFragment,"mainFragment").addToBackStack(null).commit();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -65,7 +63,9 @@ public class UserActivity extends AppCompatActivity
             TokenHandler ts = new TokenHandler();
             if (ts.availableToken()) {
                 ts.loadToken();
+                System.out.printf("A token Before: "+User.getInstance().getToken()+"\n");
                 setUserData();
+                System.out.printf("A token After: "+User.getInstance().getToken()+"\n");
             } else {
                 Intent intent = new Intent(UserActivity.this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -75,9 +75,16 @@ public class UserActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
+        System.out.printf("A token Before fragment: "+User.getInstance().getToken()+"\n");
 
+        fragmentManager = getSupportFragmentManager();
+        UserMainFragment userMainFragment = new UserMainFragment();
+        listener = userMainFragment;
+        fragmentManager.beginTransaction().replace(R.id.content,userMainFragment,"mainFragment").addToBackStack(null).commit();
+
+        System.out.printf("A token After fragment: "+User.getInstance().getToken()+"\n");
     }
-
+/*
     public void getSports(){
         DataHandler dh =  DataHandler.getInstance();
         dh.getAllSports(new Callback<SportList>() {
@@ -98,7 +105,7 @@ public class UserActivity extends AppCompatActivity
             }
         });
     }
-
+*/
     public void setUserData(){
         DataHandler dh =  DataHandler.getInstance();
         dh.setUserData(new Callback<UserPack>() {
@@ -106,8 +113,7 @@ public class UserActivity extends AppCompatActivity
             public void onResponse(Call <UserPack> call, Response<UserPack> response) {
                 if(response.isSuccessful()){
                     UserPack up = response.body();
-                    User.setInstance(up.getUser());
-                    System.out.println("User adatai:"+User.getInstance().getEmail());
+                    User.setEveryThing(up.getUser());
                 }
             }
 
@@ -136,6 +142,7 @@ public class UserActivity extends AppCompatActivity
 
          if (id == R.id.nav_events) {
              UserMainFragment userFragment= new UserMainFragment();
+             listener = userFragment;
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
                      .commit();
@@ -167,6 +174,8 @@ public class UserActivity extends AppCompatActivity
         }else if (id == R.id.nav_logout) {
              TokenHandler tokenHandler= new TokenHandler();
              tokenHandler.clear();
+
+             listener.onAllItemsRemoved();
 
              Intent intent = new Intent(UserActivity.this, LoginActivity.class);
              intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

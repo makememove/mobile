@@ -22,7 +22,6 @@ import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHolder> {
 
     private final List<SportItem> items;
-
     private SportItemClickListener listener;
 
     public SportAdapter(SportItemClickListener listener){
@@ -42,7 +41,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
     @Override
     public void onBindViewHolder(@NonNull SportViewHolder holder, int position){
         SportItem item = items.get(position);
-        holder.selectButton.setText(item.category.name());
+        holder.selectButton.setText(item.category);
 
         holder.item = item;
     }
@@ -71,38 +70,38 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
     public interface SportItemClickListener{
         void onItemChanged(SportItem item);
         void onItemRemoved(SportItem item);
+        void onAllItemsRemoved();
     }
-
 
     class SportViewHolder extends RecyclerView.ViewHolder {
         Button selectButton;
         ImageButton removeButton;
-
         SportItem item;
-
 
         SportViewHolder(View itemView) {
             super(itemView);
-            selectButton = itemView.findViewById(R.id.sportButton);
-            removeButton = itemView.findViewById(R.id.removeButton);
-            selectButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    SportEventStatusFragment sportEventFragment= new SportEventStatusFragment();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.content, sportEventFragment)
-                            .commit();
-                }
-            });
+            if(itemView!=null) {
+                selectButton = itemView.findViewById(R.id.sportButton);
+                removeButton = itemView.findViewById(R.id.removeButton);
 
-            removeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    removeItem(item);
-                    listener.onItemRemoved(item);
-                }
-            });
+                selectButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SportEventStatusFragment sportEventFragment = new SportEventStatusFragment();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content, sportEventFragment)
+                                .commit();
+                    }
+                });
 
+                removeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        removeItem(item);
+                        listener.onItemRemoved(item);
+                    }
+                });
+            }
         }
     }
 }
