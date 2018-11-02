@@ -53,6 +53,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 "sport-list"
         ).build();
         getSports(User.getInstance().getToken());
+        System.out.printf("Token: "+User.getInstance().getToken());
     }
         private void initRecylerView(){
             recyclerView = this.getView().findViewById(R.id.RecylerView);
@@ -104,11 +105,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         return inflater.inflate(R.layout.usermain_fragment, container, false);
     }
 
-    public void addSport(List<Sport> item){
+    public void addSports(List<Sport> item){
         sportList.addAll(item);
-        System.out.printf("Az első sport neve: "+item.get(0).getName()+"\n");
-        System.out.printf("A második sport neve: "+item.get(1).getName()+"\n");
-
     }
 
     public void getSports(String token){
@@ -118,7 +116,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             public void onResponse(Call<SportList> call, Response<SportList> response) {
                 if(response.isSuccessful()){
                     SportList sportok = response.body();
-                    addSport(sportok.getSports());
+                    addSports(sportok.getSports());
                 }
             }
 
@@ -127,7 +125,22 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 System.out.printf("Failure occured in getSports() method!");
             }
         });
-        System.out.printf("Listaelemek száma: "+sportList.size()+"\n");
+    }
+
+    public void followSport(String token, int position){
+        DataHandler dh =  DataHandler.getInstance();
+        dh.addPreferredSport(token,position, new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                if(response.isSuccessful()){
+                    System.out.printf("Sikeres volt a followSport!");
+                }
+            }
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                System.out.printf("Failure occured in followSport() method!");
+            }
+        });
     }
 
     @Override
@@ -135,12 +148,9 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         super.onActivityCreated(savedInstanceState);
 
         Layout=this.getView();
-        int k = 0;
-        System.out.printf("A token before init: "+User.getInstance().getToken()+"\n");
         if(Layout != null) {
           //      k++;
             initRecylerView();
-            System.out.printf("A token after init: "+User.getInstance().getToken()+"\n");
             final String token = User.getInstance().getToken();
             bt_addsport = this.getView().findViewById(R.id.bt_addsport);
 
@@ -148,17 +158,12 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 @Override
                 public void onClick(View view) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(view.getContext(), R.style.AlertDialogCustom));
-                    dialog.setTitle("Choose a Sport:");
+                    dialog.setTitle("Choose a Sport: ");
                     String[] arrayItems = null;
-                 //   if(arrayItems == null)
-
-
                     arrayItems = new String[sportList.size()];
                     int i = 0;
-                    System.out.printf("A sportlista elemeinek száma: "+sportList.size()+"\n");
                     for (Sport item:sportList) {
                         arrayItems[i]= item.getName();
-                        System.out.printf(arrayItems[i]+"\n");
                         i++;
                     }
                     dialog.setItems(arrayItems, new DialogInterface.OnClickListener() {
@@ -166,6 +171,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                         @Override
                         public void onClick(DialogInterface dialog, int position) {
                             onShoppingItemCreated(getSportItem(position));
+                            followSport(token,position+1);
                         }
 
                     });

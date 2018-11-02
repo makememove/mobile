@@ -39,6 +39,7 @@ public class DataHandler {
 
     public static void setToken(Response<AuthTokenpack > response){
         User.getInstance().setToken(response.body().getToken());
+        System.out.printf("setToken Token: "+User.getInstance().getToken()+"\n");
         TokenHandler ts = new TokenHandler();
         ts.saveToken();
     }
@@ -60,6 +61,11 @@ public class DataHandler {
 
     public void getAllSports(String token, retrofit2.Callback callback){
         Call<SportList> call = api.getAllSports(token);
+        call.enqueue(callback);
+    }
+
+    public void addPreferredSport(String token, int pos, retrofit2.Callback callback){
+        Call<AuthInputpack> call = api.addPreferredUserSport(token,pos);
         call.enqueue(callback);
     }
 }

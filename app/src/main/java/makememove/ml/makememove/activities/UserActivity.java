@@ -63,9 +63,7 @@ public class UserActivity extends AppCompatActivity
             TokenHandler ts = new TokenHandler();
             if (ts.availableToken()) {
                 ts.loadToken();
-                System.out.printf("A token Before: "+User.getInstance().getToken()+"\n");
                 setUserData();
-                System.out.printf("A token After: "+User.getInstance().getToken()+"\n");
             } else {
                 Intent intent = new Intent(UserActivity.this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -75,14 +73,10 @@ public class UserActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
-        System.out.printf("A token Before fragment: "+User.getInstance().getToken()+"\n");
-
         fragmentManager = getSupportFragmentManager();
         UserMainFragment userMainFragment = new UserMainFragment();
         listener = userMainFragment;
         fragmentManager.beginTransaction().replace(R.id.content,userMainFragment,"mainFragment").addToBackStack(null).commit();
-
-        System.out.printf("A token After fragment: "+User.getInstance().getToken()+"\n");
     }
 /*
     public void getSports(){

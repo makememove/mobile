@@ -1,10 +1,14 @@
 package makememove.ml.makememove.datahandler;
 
 import android.content.Context;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
 
@@ -36,9 +40,10 @@ public class TokenHandler {
     public void loadToken() {
         try {
             FileInputStream fis = GlobalClass.context.openFileInput(fileName);
-            byte[] byteToken = new byte[116];
-            fis.read(byteToken);
-            User.getInstance().setToken(new String(byteToken));
+            InputStreamReader inputStreamReader = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String line = bufferedReader.readLine();
+            User.getInstance().setToken(line);
         } catch (IOException e) {
             e.printStackTrace();
         }
