@@ -6,7 +6,6 @@ import java.security.MessageDigest;
 public class Encryptor {
 
     public String encode(String source){
-        byte[] bytes = source.getBytes();
         byte[] encodedHash = null;
         try
         {

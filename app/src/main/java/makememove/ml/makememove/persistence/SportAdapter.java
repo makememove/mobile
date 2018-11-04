@@ -1,5 +1,6 @@
 package makememove.ml.makememove.persistence;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.UserActivity;
 import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 
@@ -93,6 +95,10 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                     @Override
                     public void onClick(View view) {
                         SportEventStatusFragment sportEventFragment = new SportEventStatusFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("SportID",UserMainFragment.getPosition(item.category));
+                        sportEventFragment.setArguments(bundle);
+                        //TODO argumentumok lekezélese (lekérdezés, megjelenítés) a SportEventStatusFragment-ben
                         fragmentManager.beginTransaction()
                                 .replace(R.id.content, sportEventFragment)
                                 .commit();

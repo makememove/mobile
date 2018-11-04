@@ -57,8 +57,6 @@ public class UserActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //Todo token validitásának ellenörzése
-
         try {
             TokenHandler ts = new TokenHandler();
             if (ts.availableToken()) {
@@ -88,6 +86,12 @@ public class UserActivity extends AppCompatActivity
                     UserPack up = response.body();
                     User.setEveryThing(up.getUser());
                 }
+                else{
+                    Intent intent = new Intent(UserActivity.this, LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+
             }
 
             @Override

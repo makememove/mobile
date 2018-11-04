@@ -61,6 +61,14 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         ).build();
         getSports(token);
     }
+
+    public static int getPosition(String item){
+        for(int i = 0;i<sportList.size();i++){
+            if(sportList.get(i).getName()== item)
+                return i;
+        }
+        return -1;
+    }
         private void initRecylerView(){
             recyclerView = this.getView().findViewById(R.id.RecylerView);
             adapter = new SportAdapter(this);
