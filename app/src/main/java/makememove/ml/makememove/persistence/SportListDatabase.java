@@ -6,7 +6,7 @@ import android.arch.persistence.room.TypeConverters;
 
 @Database(
         entities = {SportItem.class},
-        version = 2
+        version = 3
 )
 
 public abstract class SportListDatabase extends RoomDatabase {

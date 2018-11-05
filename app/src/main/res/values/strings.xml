@@ -71,6 +71,7 @@
     <string name="teams">Teams</string>
     <string name="join">Join</string>
     <string name="members">Members:</string>
+    <string name="details">Details</string>
 
 
     <string-array name="sports_array">

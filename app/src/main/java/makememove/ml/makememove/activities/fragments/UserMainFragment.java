@@ -58,7 +58,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 GlobalClass.context,
                 SportListDatabase.class,
                 "sport-list"
-        ).build();
+        ).fallbackToDestructiveMigration().build();
         getSports(token);
     }
 
