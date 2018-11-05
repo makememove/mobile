@@ -64,10 +64,19 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
     public static int getPosition(String item){
         for(int i = 0;i<sportList.size();i++){
-            if(sportList.get(i).getName()== item)
+            if(sportList.get(i).getName().equals(item))
                 return i;
         }
         return -1;
+    }
+
+    public static int getListSize(){
+        return sportList.size();
+    }
+    public static String getName(int position){
+        if(position != -1)
+            return sportList.get(position).getName();
+        return "SportName";
     }
         private void initRecylerView(){
             recyclerView = this.getView().findViewById(R.id.RecylerView);

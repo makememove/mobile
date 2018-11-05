@@ -94,10 +94,8 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                 selectButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        SportEventStatusFragment sportEventFragment = new SportEventStatusFragment();
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("SportID",UserMainFragment.getPosition(item.category));
-                        sportEventFragment.setArguments(bundle);
+                        SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(
+                                UserMainFragment.getPosition(item.category));
                         //TODO argumentumok lekezélese (lekérdezés, megjelenítés) a SportEventStatusFragment-ben
                         fragmentManager.beginTransaction()
                                 .replace(R.id.content, sportEventFragment)
