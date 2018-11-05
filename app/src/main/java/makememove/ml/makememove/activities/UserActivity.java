@@ -74,7 +74,7 @@ public class UserActivity extends AppCompatActivity
         fragmentManager = getSupportFragmentManager();
         UserMainFragment userMainFragment = new UserMainFragment();
         listener = userMainFragment;
-        fragmentManager.beginTransaction().replace(R.id.content,userMainFragment,"mainFragment").addToBackStack(null).commit();
+        fragmentManager.beginTransaction().replace(R.id.content,userMainFragment,"mainFragment").commit();
     }
 
     public void setUserData(){
