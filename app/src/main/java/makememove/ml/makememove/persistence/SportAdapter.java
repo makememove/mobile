@@ -98,7 +98,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                                 UserMainFragment.getPosition(item.category));
                         //TODO argumentumok lekezélese (lekérdezés, megjelenítés) a SportEventStatusFragment-ben
                         fragmentManager.beginTransaction()
-                                .replace(R.id.content, sportEventFragment)
+                                .replace(R.id.content, sportEventFragment).addToBackStack(null)
                                 .commit();
                     }
                 });
