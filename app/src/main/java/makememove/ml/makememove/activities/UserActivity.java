@@ -86,16 +86,16 @@ public class UserActivity extends AppCompatActivity
                     User.setEveryThing(up.getUser());
 
                     TextView username=drawer.findViewById(R.id.tv_usernamemenu);
-                    username.setText(User.getInstance().getUserName());
+                    username.setText(response.body().getUser().getUserName());
 
                     TextView level=drawer.findViewById(R.id.tv_levelnumbermenu);
-                    level.setText(Integer.toString(User.getInstance().getLevel()));
+                    level.setText(Integer.toString(response.body().getUser().getLevel()));
 
                     TextView xp=drawer.findViewById(R.id.tv_xpmenu);
-                    xp.setText(Integer.toString(User.getInstance().getExperience()));
+                    xp.setText(Integer.toString(response.body().getUser().getExperience()));
 
                     ImageView picture=drawer.findViewById(R.id.iv_profilemenu);
-                    if(User.getInstance().getPicture()!=null) {
+                    if(response.body().getUser().getPicture()!=null) {
                         //TODO profile picture beállítása
                     }
 

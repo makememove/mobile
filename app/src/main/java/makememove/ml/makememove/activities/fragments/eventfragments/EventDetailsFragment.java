@@ -57,7 +57,7 @@ public class EventDetailsFragment extends Fragment {
                 public void onClick(View view) {
                     EventDetailsDetailFragment sportEventFragment = new EventDetailsDetailFragment();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.eventdetailscontent, sportEventFragment).addToBackStack(null)
+                            .replace(R.id.eventdetailscontent, sportEventFragment)
                             .commit();
 
                     bt_changedetail.setBackgroundColor(getResources().getColor(R.color.Headerbg));
@@ -72,7 +72,7 @@ public class EventDetailsFragment extends Fragment {
                 public void onClick(View view) {
                     EventDetailsTeamsFragment sportEventFragment = new EventDetailsTeamsFragment();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.eventdetailscontent, sportEventFragment).addToBackStack(null)
+                            .replace(R.id.eventdetailscontent, sportEventFragment)
                             .commit();
 
                     bt_changedetail.setBackgroundColor(getResources().getColor(R.color.background));
@@ -87,7 +87,7 @@ public class EventDetailsFragment extends Fragment {
                 public void onClick(View view) {
                     EventDetailsResultFragment sportEventFragment = new EventDetailsResultFragment();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.eventdetailscontent, sportEventFragment).addToBackStack(null)
+                            .replace(R.id.eventdetailscontent, sportEventFragment)
                             .commit();
 
                     bt_changedetail.setBackgroundColor(getResources().getColor(R.color.background));
@@ -110,7 +110,7 @@ public class EventDetailsFragment extends Fragment {
         super.onStart();
         EventDetailsDetailFragment sportEventFragment = new EventDetailsDetailFragment();
         fragmentManager.beginTransaction()
-                .replace(R.id.eventdetailscontent, sportEventFragment).addToBackStack(null)
+                .replace(R.id.eventdetailscontent, sportEventFragment)
                 .commit();
 
         bt_changedetail.setBackgroundColor(getResources().getColor(R.color.Headerbg));
