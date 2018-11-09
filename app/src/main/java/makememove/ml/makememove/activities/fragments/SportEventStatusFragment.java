@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import makememove.ml.makememove.R;
-import makememove.ml.makememove.activities.UserActivity;
+import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 

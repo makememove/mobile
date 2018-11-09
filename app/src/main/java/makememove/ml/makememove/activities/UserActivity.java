@@ -1,8 +1,6 @@
 package makememove.ml.makememove.activities;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -16,23 +14,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import makememove.ml.makememove.R;
-import makememove.ml.makememove.activities.fragments.CreateEventFragment;
-import makememove.ml.makememove.activities.fragments.FindEventFragment;
+import makememove.ml.makememove.activities.fragments.eventfragments.CreateEventFragment;
+import makememove.ml.makememove.activities.fragments.eventfragments.FindEventFragment;
 import makememove.ml.makememove.activities.fragments.FriendsFragment;
 import makememove.ml.makememove.activities.fragments.ProfileFragment;
 import makememove.ml.makememove.activities.fragments.RanklistFragment;
-import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
-import makememove.ml.makememove.activities.fragments.UnfinishedEventFragment;
+import makememove.ml.makememove.activities.fragments.eventfragments.UnfinishedEventFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.datahandler.DataHandler;
 import makememove.ml.makememove.datahandler.TokenHandler;
 import makememove.ml.makememove.datahandler.UserPack;
 import makememove.ml.makememove.persistence.SportAdapter;
-import makememove.ml.makememove.user.Sport;
-import makememove.ml.makememove.user.SportList;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.Callback;

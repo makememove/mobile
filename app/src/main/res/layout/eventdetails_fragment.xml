@@ -25,6 +25,41 @@
             android:textColor="@color/Headertext"
             android:textSize="30sp"
             android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@color/background"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bt_detailchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/background"
+                android:text="@string/details"
+                android:textColor="@color/Headertext" />
+
+            <Button
+                android:id="@+id/bt_teamchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/background"
+                android:text="@string/teams"
+                android:textColor="@color/Headertext" />
+
+            <Button
+                android:id="@+id/bt_resultchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/background"
+                android:text="@string/result"
+                android:textColor="@color/Headertext" />
+        </LinearLayout>
     </LinearLayout>
 
     <ScrollView
@@ -35,426 +70,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:background="@color/background"
             android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/tb_teams"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/Headerbg"
-                android:text="@string/teams"
-                android:textAlignment="center"
-                android:textColor="@color/Headertext"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/l_teams"
+            <FrameLayout
+                android:id="@+id/eventdetailscontent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/background"
                 android:orientation="vertical">
 
-            </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/ib_addteam"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                app:srcCompat="@drawable/ic_add_circle" />
-
-            <TextView
-                android:id="@+id/tv_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/Headerbg"
-                android:text="@string/details"
-                android:textAlignment="center"
-                android:textColor="@color/Headertext"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/title"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_titleset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/popularityhint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_sporttype"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/sporttype"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_sporttypeset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/popularityhint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_Date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/date"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-
-
-                <TextView
-                    android:id="@+id/tv_dateset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/datehint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_time"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/time"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-
-
-                <TextView
-                    android:id="@+id/tv_timeset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/timehint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/location"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_locationset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/popularityhint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_creator"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="Creator: "
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_creatorset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/popularityhint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_vsibility"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/visibility"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_visibilityset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/popularityhint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_popularity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/popularity"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_popularityset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/popularityhint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_length"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/length"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_Lengthset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/popularityhint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_minskill"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/min_skillpoint"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_minskillset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/popularityhint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_maxskill"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/max_skillpoint"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_maxskillset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/popularityhint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:background="@color/background"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/background"
-                    android:text="@string/description"
-                    android:textColor="@color/NormaltextColor"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_descriptionset"
-                    style="@style/inputtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/popularityhint"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-
-            </LinearLayout>
+            </FrameLayout>
 
         </LinearLayout>
     </ScrollView>

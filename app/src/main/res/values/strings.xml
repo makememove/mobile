@@ -68,14 +68,15 @@
     <string name="modify">Modify</string>
     <string name="sports">Sports</string>
     <string name="event">Event</string>
-    <string name="teams">Teams</string>
     <string name="join">Join</string>
     <string name="members">Members:</string>
-    <string name="details">Details</string>
     <string name="unfinished_events">Unfinished Events</string>
     <string name="pick_date">Pick Date</string>
     <string name="time">Time:</string>
     <string name="timehint">time</string>
+    <string name="teams">Teams</string>
+    <string name="result">Result</string>
+    <string name="details">Details</string>
 
 
     <string-array name="sports_array">

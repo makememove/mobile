@@ -1,4 +1,4 @@
-package makememove.ml.makememove.activities.fragments;
+package makememove.ml.makememove.activities.fragments.eventfragments;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
