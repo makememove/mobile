@@ -13,13 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        >
 
-        <activity android:name=".activities.RegistrationActivity" />
-        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.RegistrationActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".activities.LoginActivity"  android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.UserActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
