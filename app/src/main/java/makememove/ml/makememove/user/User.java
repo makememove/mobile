@@ -104,9 +104,13 @@ public class User {
         String token = INSTANCE.getToken();
         INSTANCE = otherUser;
         INSTANCE.setToken(token);
-        INSTANCE.setEmail(otherUser.getEmail());
+    //    INSTANCE.setEmail(otherUser.getEmail());
         //TODO A user adatainak beállítása normálisan
         //ideiglenesen:
+        INSTANCE.setFirstName(otherUser.getFirstName());
+        INSTANCE.setLastName(otherUser.getLastName());
+        INSTANCE.setBirthday(otherUser.getBirthday());
+
         INSTANCE.setLevel(0);
         INSTANCE.setExperience(0);
     }

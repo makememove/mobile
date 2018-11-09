@@ -67,7 +67,7 @@ public class DataHandler extends Presenter{
     //authinputpresenter
 
     public void addPreferredSport(String token, int pos, retrofit2.Callback callback){
-        Call call = api.addPreferredUserSport(token,pos);
+        Call<AuthInputDocument> call = api.addPreferredUserSport(token,pos);
         call.enqueue(callback);
     }
 
