@@ -1,11 +1,11 @@
-package makememove.ml.makememove.datahandler;
+package makememove.ml.makememove.dpsystem.documents;
 
 import makememove.ml.makememove.user.User;
 
-public class UserPack {
+public class UserDocument {
     private User user;
 
-    public UserPack(User user) {
+    public UserDocument(User user) {
         this.user = user;
     }
 

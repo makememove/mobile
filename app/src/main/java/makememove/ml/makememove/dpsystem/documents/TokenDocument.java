@@ -1,10 +1,10 @@
-package makememove.ml.makememove.datahandler;
+package makememove.ml.makememove.dpsystem.documents;
 
-public class AuthTokenpack {
+public class TokenDocument {
     private String token;
 
 
-    public AuthTokenpack(String error, String token) {
+    public TokenDocument(String error, String token) {
         this.token = token;
     }
 

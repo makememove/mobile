@@ -1,11 +1,11 @@
-package makememove.ml.makememove.datahandler;
+package makememove.ml.makememove.dpsystem.documents;
 
-public class AuthInputpack {
+public class AuthInputDocument {
     private String userName;
     private String email;
     private String password;
 
-    public AuthInputpack(String userName, String email, String password) {
+    public AuthInputDocument(String userName, String email, String password) {
         this.userName=userName;
         this.email = email;
         this.password = password;

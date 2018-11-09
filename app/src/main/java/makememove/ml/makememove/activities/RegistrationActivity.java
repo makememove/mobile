@@ -13,8 +13,7 @@ import java.util.regex.Pattern;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.autentication.inner.NormalAuth;
-import makememove.ml.makememove.datahandler.AuthTokenpack;
-import makememove.ml.makememove.datahandler.DataHandler;
+import makememove.ml.makememove.dpsystem.documents.TokenDocument;
 import makememove.ml.makememove.datahandler.TokenHandler;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,12 +45,15 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (validation(et_username.getText().toString(),et_email.getText().toString(),et_password.getText().toString(),et_confirmpassword.getText().toString())) {
                     Snackbar.make(findViewById(R.id.regist_coorlayout), "Please wait...", Snackbar.LENGTH_LONG).show();
                     NormalAuth nAuth = new NormalAuth();
-                    nAuth.signup(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString(), new Callback<AuthTokenpack>() {
+                    nAuth.signup(et_email.getText().toString(),et_username.getText().toString(),et_password.getText().toString(), new Callback<TokenDocument>() {
 
                         @Override
-                        public void onResponse(Call call, Response response) {
-                            if(response.isSuccessful())DataHandler.getInstance().setToken(response);
+                        public void onResponse(Call<TokenDocument> call, Response <TokenDocument>response) {
+
                             TokenHandler tokenHandler=new TokenHandler();
+                            if(response.isSuccessful())
+                                tokenHandler.setToken(response.body().getToken());
+                           // TokenHandler tokenHandler=new TokenHandler();
 
                             if(tokenHandler.availableToken()) {
                                 Intent intent = new Intent(RegistrationActivity.this, UserActivity.class);

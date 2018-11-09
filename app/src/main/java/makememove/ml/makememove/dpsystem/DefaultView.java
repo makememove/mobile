@@ -1,4 +1,4 @@
-package makememove.ml.makememove.eventsystem;
+package makememove.ml.makememove.dpsystem;
 
 public interface DefaultView extends BaseView {
     public void sendNotification();

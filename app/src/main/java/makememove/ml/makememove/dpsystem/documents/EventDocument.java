@@ -1,6 +1,8 @@
-package makememove.ml.makememove.eventsystem;
+package makememove.ml.makememove.dpsystem.documents;
 
 import java.util.Date;
+
+import makememove.ml.makememove.dpsystem.presenters.Presenter;
 
 public class EventDocument extends Document {
     private Date date;
@@ -11,7 +13,6 @@ public class EventDocument extends Document {
     private int length;
     private int lowestSkillPoint;
     private int highestSkillPoint;
-    private Presenter presenter;
 
     public Date getDate() {
         return date;
@@ -76,7 +77,7 @@ public class EventDocument extends Document {
     public void setHighestSkillPoint(int highestSkillPoint) {
         this.highestSkillPoint = highestSkillPoint;
     }
-
+/*
     public Presenter getPresenter() {
         return presenter;
     }
@@ -103,4 +104,4 @@ public class EventDocument extends Document {
     public void save(String command){
         presenter.saveDocument(command);
     }
-}
+*/}

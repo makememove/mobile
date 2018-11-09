@@ -1,9 +1,22 @@
-package makememove.ml.makememove.eventsystem;
+package makememove.ml.makememove.dpsystem.documents;
+
+import android.arch.persistence.room.Ignore;
+
+import com.google.gson.annotations.Expose;
 
 import java.util.ArrayList;
 
+import makememove.ml.makememove.dpsystem.BaseView;
+import makememove.ml.makememove.dpsystem.presenters.Presenter;
+
 public abstract class Document {
-    private ArrayList<BaseView> views;
+    transient protected ArrayList<BaseView> views;
+    transient protected Presenter presenter;
+
+  public Presenter getPresenter(){
+    return presenter;
+  }
+  public void setPresenter(Presenter presenter){this.presenter = presenter;}
 
     protected ArrayList<BaseView> getViews() {
         if(views==null)
@@ -29,7 +42,7 @@ public abstract class Document {
         }
     }
 
-    public abstract void getData();
+    public  void getData(){}
 
-    public abstract void service();
+    public  void service(){}
 }

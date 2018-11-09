@@ -12,22 +12,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
-import java.util.ArrayList;
-
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.CreateEventFragment;
 import makememove.ml.makememove.activities.fragments.FindEventFragment;
 import makememove.ml.makememove.activities.fragments.FriendsFragment;
 import makememove.ml.makememove.activities.fragments.ProfileFragment;
 import makememove.ml.makememove.activities.fragments.RanklistFragment;
-import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
-import makememove.ml.makememove.datahandler.DataHandler;
+import makememove.ml.makememove.dpsystem.presenters.DataHandler;
 import makememove.ml.makememove.datahandler.TokenHandler;
-import makememove.ml.makememove.datahandler.UserPack;
+import makememove.ml.makememove.dpsystem.documents.UserDocument;
 import makememove.ml.makememove.persistence.SportAdapter;
-import makememove.ml.makememove.user.Sport;
-import makememove.ml.makememove.user.SportList;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,11 +75,11 @@ public class UserActivity extends AppCompatActivity
 
     public void setUserData(){
         DataHandler dh =  DataHandler.getInstance();
-        dh.setUserData(new Callback<UserPack>() {
+        dh.setUserData(new Callback<UserDocument>() {
             @Override
-            public void onResponse(Call <UserPack> call, Response<UserPack> response) {
+            public void onResponse(Call <UserDocument> call, Response<UserDocument> response) {
                 if(response.isSuccessful()){
-                    UserPack up = response.body();
+                    UserDocument up = response.body();
                     User.setEveryThing(up.getUser());
                 }
                 else{

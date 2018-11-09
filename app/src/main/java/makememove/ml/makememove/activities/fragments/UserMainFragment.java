@@ -2,8 +2,6 @@ package makememove.ml.makememove.activities.fragments;
 
 import android.annotation.SuppressLint;
 import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -11,8 +9,6 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,13 +22,14 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
-import makememove.ml.makememove.datahandler.DataHandler;
+import makememove.ml.makememove.dpsystem.presenters.DataHandler;
+import makememove.ml.makememove.dpsystem.presenters.SportPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.persistence.SportAdapter;
 import makememove.ml.makememove.persistence.SportItem;
 import makememove.ml.makememove.persistence.SportListDatabase;
 import makememove.ml.makememove.user.Sport;
-import makememove.ml.makememove.user.SportList;
+import makememove.ml.makememove.dpsystem.documents.SportListDocument;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -126,11 +123,11 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         if(recyclerView != null) {
             if (recyclerView.getAdapter().getItemCount() == 0) {
                 DataHandler dh = DataHandler.getInstance();
-                dh.getUserPreferredSports(token, new Callback<SportList>() {
+                dh.getUserPreferredSports(token, new Callback<SportListDocument>() {
                     @Override
-                    public void onResponse(Call<SportList> call, Response<SportList> response) {
+                    public void onResponse(Call<SportListDocument> call, Response<SportListDocument> response) {
                         if (response.isSuccessful()) {
-                            SportList sportok = response.body();
+                            SportListDocument sportok = response.body();
                             for (Sport sport : sportok.getSports()) {
                                 onShoppingItemCreated(getSportItem(sport.getId() - 1));
                                 preferredSportList.add(sportList.get(sport.getId() - 1).getName());
@@ -178,12 +175,15 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     }
 
     public void getSports(final String token){
+        //SportPresenter sp = new SportPresenter();
+
+       // sp.getAllSports();
         DataHandler dh =  DataHandler.getInstance();
-        dh.getAllSports(token,new Callback<SportList>() {
+        dh.getAllSports(token,new Callback<SportListDocument>() {
             @Override
-            public void onResponse(Call<SportList> call, Response<SportList> response) {
+            public void onResponse(Call<SportListDocument> call, Response<SportListDocument> response) {
                 if(response.isSuccessful()){
-                    SportList sportok = response.body();
+                    SportListDocument sportok = response.body();
                     addSports(sportok.getSports());
                     initPreferredSports(token);
                 }
