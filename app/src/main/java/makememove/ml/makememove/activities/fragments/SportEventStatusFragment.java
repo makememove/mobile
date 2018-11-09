@@ -61,6 +61,8 @@ public class SportEventStatusFragment extends Fragment {
                             .commit();
                 }
             });
+
+
             
 
             previousButton.setOnClickListener(new View.OnClickListener() {
