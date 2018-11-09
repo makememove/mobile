@@ -75,6 +75,7 @@ public class UserActivity extends AppCompatActivity
         UserMainFragment userMainFragment = new UserMainFragment();
         listener = userMainFragment;
         fragmentManager.beginTransaction().replace(R.id.content,userMainFragment,"mainFragment").commit();
+
     }
 
     public void setUserData(){
