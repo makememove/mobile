@@ -2,14 +2,10 @@ package makememove.ml.makememove.datahandler;
 
 import android.content.Context;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
@@ -39,6 +35,12 @@ public class TokenHandler {
                 }
         }
     }
+    public void setToken(String token){
+        User.getInstance().setToken(token);
+        this.token = token;
+        saveToken();
+    }
+
     public void loadToken() {
         try {
             FileInputStream fis = GlobalClass.context.openFileInput(fileName);

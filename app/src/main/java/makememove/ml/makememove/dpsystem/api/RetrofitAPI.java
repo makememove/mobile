@@ -1,12 +1,12 @@
-package makememove.ml.makememove.datahandler;
+package makememove.ml.makememove.dpsystem.api;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import makememove.ml.makememove.eventsystem.EventDocument;
-import makememove.ml.makememove.user.Sport;
-import makememove.ml.makememove.user.SportList;
-import makememove.ml.makememove.user.User;
+import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
+import makememove.ml.makememove.dpsystem.documents.TokenDocument;
+import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.documents.UserDocument;
+import makememove.ml.makememove.dpsystem.documents.SportListDocument;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -24,27 +24,27 @@ public interface RetrofitAPI {
 
     @Headers("Content-type: application/json")
     @POST("auth/login")
-    Call<AuthTokenpack> login(@Body AuthInputpack body);
+    Call<TokenDocument> login(@Body AuthInputDocument body);
 
     @Headers("Content-type: application/json")
     @POST("auth/register")
-    Call<AuthTokenpack> signup(@Body AuthInputpack body);
+    Call<TokenDocument> signup(@Body AuthInputDocument body);
 
     @Headers("Content-type: application/json")
     @GET("users/me")
-    Call<UserPack> getUserDetails(@Header("Authorization") String token);
+    Call<UserDocument> getUserDetails(@Header("Authorization") String token);
 
     @Headers("Content-type: application/json")
     @GET("sports/all")
-    Call<SportList> getAllSports(@Header("Authorization") String token);
+    Call<SportListDocument> getAllSports(@Header("Authorization") String token);
 
     @Headers("Content-type: application/json")
     @GET("sports")
-    Call<SportList> getUserPreferredSports(@Header("Authorization") String token);
+    Call<SportListDocument> getUserPreferredSports(@Header("Authorization") String token);
 
     @Headers("Content-type: application/json")
     @POST("sports/follow/{sportID}")
-    Call<AuthInputpack> addPreferredUserSport(@Header("Authorization") String token, @Path("sportID") int sportID);
+    Call addPreferredUserSport(@Header("Authorization") String token, @Path("sportID") int sportID);
 
     @Headers("Content-type: application/json")
     @GET("events?sportID={ID}")

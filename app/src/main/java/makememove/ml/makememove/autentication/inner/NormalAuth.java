@@ -1,9 +1,6 @@
 package makememove.ml.makememove.autentication.inner;
 
-import javax.security.auth.callback.Callback;
-
-import makememove.ml.makememove.datahandler.DataHandler;
-import makememove.ml.makememove.datahandler.TokenHandler;
+import makememove.ml.makememove.dpsystem.presenters.DataHandler;
 
 
 public class NormalAuth implements AuthwithInner {
