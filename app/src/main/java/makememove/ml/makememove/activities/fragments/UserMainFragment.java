@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.presenters.DataHandler;
 import makememove.ml.makememove.dpsystem.presenters.SportPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
@@ -35,12 +36,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserMainFragment extends Fragment implements SportAdapter.SportItemClickListener{
+public class UserMainFragment extends Fragment implements SportAdapter.SportItemClickListener, BaseView {
     private ImageButton bt_addsport;
     private View Layout;
     private RecyclerView recyclerView;
     private SportAdapter adapter;
     private SportListDatabase database;
+    private static SportListDocument sports;
+    private static SportListDocument preferredSports;
     private static List<Sport> sportList;
     private static List<String> preferredSportList;
     private String token = User.getInstance().getToken();
@@ -51,6 +54,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         super.onCreate(savedInstanceState);
         sportList = new ArrayList<Sport>();
         preferredSportList = new ArrayList<String>();
+        sports = new SportListDocument();
+        preferredSports = new SportListDocument();
         database = Room.databaseBuilder(
                 GlobalClass.context,
                 SportListDatabase.class,
@@ -120,26 +125,11 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
     private void initPreferredSports(String token){
         addPreferredSports();
+
         if(recyclerView != null) {
             if (recyclerView.getAdapter().getItemCount() == 0) {
-                DataHandler dh = DataHandler.getInstance();
-                dh.getUserPreferredSports(token, new Callback<SportListDocument>() {
-                    @Override
-                    public void onResponse(Call<SportListDocument> call, Response<SportListDocument> response) {
-                        if (response.isSuccessful()) {
-                            SportListDocument sportok = response.body();
-                            for (Sport sport : sportok.getSports()) {
-                                onShoppingItemCreated(getSportItem(sport.getId() - 1));
-                                preferredSportList.add(sportList.get(sport.getId() - 1).getName());
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call call, Throwable t) {
-                        System.out.printf("Failure occured in getSports() method!");
-                    }
-                });
+                SportPresenter sp = new SportPresenter(preferredSports,this);
+                sp.getUserPreferredSports(token);
             }
         }
     }
@@ -175,25 +165,14 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     }
 
     public void getSports(final String token){
-        //SportPresenter sp = new SportPresenter();
+      //  SportListDocument sportok = new SportListDocument();
+        SportPresenter sp = new SportPresenter(sports, this);
+        sp.getAllSports(token);
+    }
 
-       // sp.getAllSports();
-        DataHandler dh =  DataHandler.getInstance();
-        dh.getAllSports(token,new Callback<SportListDocument>() {
-            @Override
-            public void onResponse(Call<SportListDocument> call, Response<SportListDocument> response) {
-                if(response.isSuccessful()){
-                    SportListDocument sportok = response.body();
-                    addSports(sportok.getSports());
-                    initPreferredSports(token);
-                }
-            }
-
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                System.out.printf("Failure occured in getSports() method!");
-            }
-        });
+    public void succesfulGetSports(SportListDocument sportok){
+        addSports(sportok.getSports());
+        initPreferredSports(token);
     }
 
     public void followSport(String token, int position){
@@ -320,6 +299,23 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 Log.d("MainActivity", "ShoppingItem update was successful");
             }
         }.execute();
+    }
+
+    @Override
+    public void update() {
+     //   addSports(sportok.getSports());
+        if(sportList.size()==0 ) {
+            addSports(sports.getSports());
+            initPreferredSports(token);
+        }
+
+        if(preferredSportList.size()==0&&preferredSports.getSports().size()!=0){
+            for (Sport sport : preferredSports.getSports()) {
+                onShoppingItemCreated(getSportItem(sport.getId() - 1));
+                preferredSportList.add(sportList.get(sport.getId() - 1).getName());
+            }
+        }
+
     }
 }
 
