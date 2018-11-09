@@ -120,6 +120,7 @@ public class UserActivity extends AppCompatActivity
          if (id == R.id.nav_events) {
              UserMainFragment userFragment= new UserMainFragment();
              listener = userFragment;
+             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
                      .commit();
