@@ -22,9 +22,9 @@ import makememove.ml.makememove.activities.fragments.ProfileFragment;
 import makememove.ml.makememove.activities.fragments.RanklistFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.UnfinishedEventFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
-import makememove.ml.makememove.datahandler.DataHandler;
 import makememove.ml.makememove.datahandler.TokenHandler;
-import makememove.ml.makememove.datahandler.UserPack;
+import makememove.ml.makememove.dpsystem.documents.UserDocument;
+import makememove.ml.makememove.dpsystem.presenters.DataHandler;
 import makememove.ml.makememove.persistence.SportAdapter;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
@@ -78,11 +78,11 @@ public class UserActivity extends AppCompatActivity
 
     public void setUserData(){
         DataHandler dh =  DataHandler.getInstance();
-        dh.setUserData(new Callback<UserPack>() {
+        dh.setUserData(new Callback<UserDocument>() {
             @Override
-            public void onResponse(Call <UserPack> call, Response<UserPack> response) {
+            public void onResponse(Call <UserDocument> call, Response<UserDocument> response) {
                 if(response.isSuccessful()){
-                    UserPack up = response.body();
+                    UserDocument up = response.body();
                     User.setEveryThing(up.getUser());
 
                     TextView username=drawer.findViewById(R.id.tv_usernamemenu);
