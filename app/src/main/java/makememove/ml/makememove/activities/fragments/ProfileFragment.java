@@ -1,12 +1,18 @@
 package makememove.ml.makememove.activities.fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,7 +24,7 @@ public class ProfileFragment extends Fragment {
     private TextView userName;
     private EditText firstName;
     private EditText lastName;
-    private EditText birthday;
+    private Button birthday;
     private Spinner gender;
     private TextView email;
     private TextView permission;
@@ -37,11 +43,11 @@ public class ProfileFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if(this.getView()!=null) {
-            View view = this.getView();
+            final View view = this.getView();
             userName = (TextView) view.findViewById(R.id.tv_usernameset);
             firstName = (EditText) view.findViewById(R.id.et_firstname);
             lastName = (EditText) view.findViewById(R.id.et_lastname);
-            birthday = (EditText) view.findViewById(R.id.et_birthday);
+            birthday = (Button) view.findViewById(R.id.bt_birthdaypicker);
             gender = view.findViewById(R.id.s_gender);
             email = view.findViewById(R.id.tv_emailset);
             permission = view.findViewById(R.id.tv_permissionset);
@@ -49,12 +55,43 @@ public class ProfileFragment extends Fragment {
 
 
             userName.setText(user.getUserName());
+
             firstName.setText(user.getFirstName());
+
             lastName.setText(user.getLastName());
+
             if(user.getBirthday()!= null)
                  birthday.setText(user.getBirthday().toString());
+
             email.setText(user.getEmail());
+
             popularity.setText(String.valueOf(user.getPopularity()));
+
+            birthday.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LayoutInflater inflater = (LayoutInflater) getLayoutInflater();
+                    View customView = inflater.inflate(R.layout.datapicker, null);
+                    final DatePicker dpStartDate = (DatePicker) customView.findViewById(R.id.simpleDatePicker);
+                    dpStartDate.setSpinnersShown(false);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setView(customView); // Set the view of the dialog to your custom layout
+                    builder.setTitle("Birthday");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            int Year = dpStartDate.getYear();
+                            int Month = dpStartDate.getMonth();
+                            int Day = dpStartDate.getDayOfMonth();
+                            birthday.setText(Integer.toString(Year)+"-"+Integer.toString(Month)+"-"+Integer.toString(Day));
+                            dialog.dismiss();
+                        }});
+
+                    // Create and show the dialog
+                    builder.create().show();
+                }
+            });
         }
     }
 }

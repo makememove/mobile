@@ -23,9 +23,9 @@
         >
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="120dp"
-            android:layout_height="160dp"
+            android:id="@+id/iv_profilemenu"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
             android:backgroundTint="@color/Headertext"
             android:contentDescription="@string/nav_header_desc"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -50,36 +50,39 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/Headertext"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:paddingBottom="25dp"
                     android:text="@string/nav_header_title"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/Headertext"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/Headertext"
-                        android:text="Level "
-                        android:textSize="16sp"
+                        android:text="Level: "
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="match_parent"
+                        android:id="@+id/tv_levelnumbermenu"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/Headertext"
                         android:text="levelnumber"
-                        android:textAlignment="viewStart"
-                        android:textSize="16sp" />
+                        android:textAlignment="textEnd"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -89,13 +92,25 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="127dp"
+                        android:id="@+id/t"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/Headertext"
+                        android:text="XP:"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tv_xpmenu"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/Headertext"
                         android:text="actualXP/levelXP"
-                        android:textAlignment="viewStart"
+                        android:textAlignment="textEnd"
                         android:textColor="@color/NormaltextColor"
                         android:textSize="14sp"
                         android:textStyle="bold" />

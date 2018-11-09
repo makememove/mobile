@@ -1,17 +1,29 @@
 package makememove.ml.makememove.activities.fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TimePicker;
+
+import java.sql.Time;
 
 import makememove.ml.makememove.R;
 
 public class EventDetailsFragment extends Fragment {
 private ImageButton add_team;
+
+private Button bt_datepicker;
+private Button bt_Timepicker;
+
     private View Layout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,5 +53,12 @@ private ImageButton add_team;
             });
         }
 
+
+
+
+
+
     }
+
+
 }

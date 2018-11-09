@@ -1,6 +1,8 @@
 package makememove.ml.makememove.activities;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -21,6 +25,7 @@ import makememove.ml.makememove.activities.fragments.FriendsFragment;
 import makememove.ml.makememove.activities.fragments.ProfileFragment;
 import makememove.ml.makememove.activities.fragments.RanklistFragment;
 import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
+import makememove.ml.makememove.activities.fragments.UnfinishedEventFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.datahandler.DataHandler;
 import makememove.ml.makememove.datahandler.TokenHandler;
@@ -39,6 +44,7 @@ public class UserActivity extends AppCompatActivity
     private ImageButton bt_notification;
     private SportAdapter.SportItemClickListener listener;
     public static FragmentManager fragmentManager;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +54,7 @@ public class UserActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -85,6 +91,23 @@ public class UserActivity extends AppCompatActivity
                 if(response.isSuccessful()){
                     UserPack up = response.body();
                     User.setEveryThing(up.getUser());
+
+                    TextView username=drawer.findViewById(R.id.tv_usernamemenu);
+                    username.setText(User.getInstance().getUserName());
+
+                    TextView level=drawer.findViewById(R.id.tv_levelnumbermenu);
+                    level.setText(Integer.toString(User.getInstance().getLevel()));
+
+                    TextView xp=drawer.findViewById(R.id.tv_xpmenu);
+                    xp.setText(Integer.toString(User.getInstance().getExperience()));
+
+                    ImageView picture=drawer.findViewById(R.id.iv_profilemenu);
+                    if(User.getInstance().getPicture()!=null) {
+                        //TODO profile picture beállítása
+                    }
+
+
+
                 }
                 else{
                     Intent intent = new Intent(UserActivity.this, LoginActivity.class);
@@ -131,6 +154,11 @@ public class UserActivity extends AppCompatActivity
                      .commit();
         } else if (id == R.id.nav_createevent) {
              CreateEventFragment userFragment= new CreateEventFragment();
+             fragmentManager.beginTransaction()
+                     .replace(R.id.content, userFragment)
+                     .commit();
+         } else if (id == R.id.nav_unfinishedevent) {
+             UnfinishedEventFragment userFragment= new UnfinishedEventFragment();
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
                      .commit();

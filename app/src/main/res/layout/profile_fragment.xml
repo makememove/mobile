@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
+    android:id="@+id/prof_frag_layout"
     android:padding="10dp">
 
     <TextView
@@ -164,24 +165,15 @@
                         android:textColor="@color/NormaltextColor"
                         android:textSize="24sp" />
 
-                    <android.support.design.widget.TextInputLayout
+                    <Button
+                        android:id="@+id/bt_birthdaypicker"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
-
-                        <EditText
-                            android:id="@+id/et_birthday"
-                            android:theme="@style/inputtext"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/background"
-                            android:ems="10"
-                            android:hint="@string/datehint"
-                            android:inputType="date"
-                            android:singleLine="true" />
-                    </android.support.design.widget.TextInputLayout>
+                        android:background="@color/Headerbg"
+                        android:text="@string/pick_date"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 

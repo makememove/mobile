@@ -105,6 +105,10 @@ public class User {
         INSTANCE = otherUser;
         INSTANCE.setToken(token);
         INSTANCE.setEmail(otherUser.getEmail());
+        //TODO A user adatainak beállítása normálisan
+        //ideiglenesen:
+        INSTANCE.setLevel(0);
+        INSTANCE.setExperience(0);
     }
 
     public static User getInstance() {
