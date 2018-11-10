@@ -55,6 +55,7 @@ public class UserActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
 
         try {
             TokenHandler ts = new TokenHandler();
@@ -94,7 +95,7 @@ public class UserActivity extends AppCompatActivity
                     TextView xp=drawer.findViewById(R.id.tv_xpmenu);
                     xp.setText(Integer.toString(response.body().getUser().getExperience()));
 
-                    
+
                     ImageView picture=drawer.findViewById(R.id.iv_profilemenu);
                     if(response.body().getUser().getPicture()!=null) {
                         //TODO profile picture beállítása
@@ -143,16 +144,19 @@ public class UserActivity extends AppCompatActivity
                      .commit();
         } else if (id == R.id.nav_findevent) {
              FindEventFragment userFragment= new FindEventFragment();
+             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
                      .commit();
         } else if (id == R.id.nav_createevent) {
              CreateEventFragment userFragment= new CreateEventFragment();
+             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
                      .commit();
          } else if (id == R.id.nav_unfinishedevent) {
              UnfinishedEventFragment userFragment= new UnfinishedEventFragment();
+             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
                      .commit();
@@ -163,11 +167,13 @@ public class UserActivity extends AppCompatActivity
                      .commit();
         } else if (id == R.id.nav_ranklist) {
              RanklistFragment userFragment= new RanklistFragment();
+             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
                      .commit();
         }else if (id == R.id.nav_profile) {
              ProfileFragment userFragment= new ProfileFragment();
+             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)
                      .commit();

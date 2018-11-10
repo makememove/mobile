@@ -57,7 +57,7 @@ public class EventDetailsFragment extends Fragment {
                 public void onClick(View view) {
                     EventDetailsDetailFragment sportEventFragment = new EventDetailsDetailFragment();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.eventdetailscontent, sportEventFragment)
+                            .replace(R.id.eventdetailscontent, new EventDetailsFragment()).addToBackStack(null)
                             .commit();
 
                     bt_changedetail.setBackgroundColor(getResources().getColor(R.color.Headerbg));

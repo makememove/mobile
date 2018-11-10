@@ -57,7 +57,7 @@ public class SportEventStatusFragment extends Fragment {
                 public void onClick(View view) {
                     EventDetailsFragment sportEventFragment = new EventDetailsFragment();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.content, sportEventFragment).addToBackStack(null)
+                            .add(R.id.content, sportEventFragment).addToBackStack(null)
                             .commit();
                 }
             });
