@@ -40,7 +40,7 @@
     <string name="datehint">date</string>
     <string name="visibility">Visibility:</string>
     <string name="location">Location:</string>
-    <string name="length">Length(Hours):</string>
+    <string name="length">Length:</string>
     <string name="lengthhint">length</string>
     <string name="min_skillpoint">Min Skillpoint:</string>
     <string name="minskillpointhint">min Skillpoint</string>
@@ -80,7 +80,9 @@
     <string name="leave">Leave</string>
     <string name="id">ID</string>
     <string name="pick_time">Pick Time</string>
-
+    <string name="creator">TextView</string>
+    <string name="numpeople">TextView</string>
+    <string name="eventtype">TextView</string>
 
     <string-array name="sports_array">
         <item>Shuttle Badminton</item>

@@ -49,9 +49,7 @@ public abstract class Document {
 
     public  void getData(){}
 
-    public void setData(Document document){
-
-    }
+    public abstract void setData(Document document);
 
     public  void service(){}
 }

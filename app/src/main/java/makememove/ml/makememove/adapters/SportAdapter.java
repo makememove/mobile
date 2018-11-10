@@ -1,23 +1,20 @@
-package makememove.ml.makememove.persistence;
+package makememove.ml.makememove.adapters;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import makememove.ml.makememove.R;
-import makememove.ml.makememove.activities.UserActivity;
 import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
+import makememove.ml.makememove.persistence.SportItem;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 
@@ -25,9 +22,7 @@ import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHolder> {
 
     private final List<SportItem> items;
-
     private SportItemClickListener listener;
-
     public SportAdapter(SportItemClickListener listener){
         this.listener = listener;
         items = new ArrayList<>();
@@ -96,7 +91,6 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                     public void onClick(View view) {
                         SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(
                                 UserMainFragment.getPosition(item.category));
-                        //TODO argumentumok lekezélese (lekérdezés, megjelenítés) a SportEventStatusFragment-ben
                         fragmentManager.beginTransaction()
                                 .replace(R.id.content, sportEventFragment).addToBackStack(null)
                                 .commit();

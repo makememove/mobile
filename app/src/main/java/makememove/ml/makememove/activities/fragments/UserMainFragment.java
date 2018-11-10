@@ -23,19 +23,15 @@ import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.dpsystem.BaseView;
-import makememove.ml.makememove.dpsystem.presenters.DataHandler;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.dpsystem.presenters.SportPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
-import makememove.ml.makememove.persistence.SportAdapter;
+import makememove.ml.makememove.adapters.SportAdapter;
 import makememove.ml.makememove.persistence.SportItem;
 import makememove.ml.makememove.persistence.SportListDatabase;
 import makememove.ml.makememove.user.Sport;
 import makememove.ml.makememove.dpsystem.documents.SportListDocument;
 import makememove.ml.makememove.user.User;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class UserMainFragment extends Fragment implements SportAdapter.SportItemClickListener, BaseView {
     private ImageButton bt_addsport;
@@ -73,7 +69,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 SportListDatabase.class,
                 "sport-list"
         ).fallbackToDestructiveMigration().build();
-        getSports(token);
+        initSports(token);
     }
 
     public static int getPosition(String item){
@@ -92,13 +88,14 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             return sportList.get(position).getName();
         return "SportName";
     }
-        private void initRecylerView(){
-            recyclerView = this.getView().findViewById(R.id.RecylerView);
-            adapter = new SportAdapter(this);
-            loadItemsInBackground();
-            recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
-            recyclerView.setAdapter(adapter);
-        }
+
+    private void initRecylerView(){
+        recyclerView = this.getView().findViewById(R.id.RecylerView);
+        adapter = new SportAdapter(this);
+        loadItemsInBackground();
+        recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
+        recyclerView.setAdapter(adapter);
+    }
 
     @SuppressLint("StaticFieldLeak")
     private void loadItemsInBackground() {
@@ -177,17 +174,13 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         sportList.addAll(item);
     }
 
-    public void getSports(final String token){
+    public void initSports(final String token){
       //  SportListDocument sportok = new SportListDocument();
         SportPresenter sp = new SportPresenter(sports);
         sports.attach(this);
         sp.getAllSports(token);
     }
 
-    public void succesfulGetSports(SportListDocument sportok){
-        addSports(sportok.getSports());
-        initPreferredSports(token);
-    }
 
     public void followSport(String token, int position){
         PostPresenter pp = new PostPresenter();

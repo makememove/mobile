@@ -30,7 +30,4 @@ public class SportListDocument extends Document {
     public void setSports(List<Sport> sports) {
         this.sports = sports;
     }
-
-
-
 }

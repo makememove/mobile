@@ -1,5 +1,7 @@
 package makememove.ml.makememove.dpsystem.presenters;
 
+import android.util.Log;
+
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.dpsystem.documents.SportListDocument;
 import retrofit2.Call;
@@ -26,13 +28,14 @@ public class SportPresenter extends Presenter implements Callback<SportListDocum
     @Override
     public void onResponse(Call<SportListDocument> call, Response<SportListDocument> response) {
         if(response.isSuccessful()){
-            SportListDocument sportok = response.body();
-            document.setData(sportok);
+            document.setData(response.body());
+
         }
     }
 
     @Override
     public void onFailure(Call call, Throwable t) {
+        Log.d("onFailure","failure");
         System.out.printf("Failure occured in getSports() method!");
     }
 }
