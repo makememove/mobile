@@ -77,6 +77,8 @@
     <string name="teams">Teams</string>
     <string name="result">Result</string>
     <string name="details">Details</string>
+    <string name="leave">Leave</string>
+    <string name="id">ID</string>
 
 
     <string-array name="sports_array">

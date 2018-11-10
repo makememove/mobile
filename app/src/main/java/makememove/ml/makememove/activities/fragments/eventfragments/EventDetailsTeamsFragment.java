@@ -5,8 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import makememove.ml.makememove.R;
 
@@ -37,8 +39,13 @@ public class EventDetailsTeamsFragment extends Fragment {
                     LayoutInflater inflater = getLayoutInflater();
                     LinearLayout mainLayout = (LinearLayout) Layout.findViewById(R.id.l_teams);
                     View myLayout = inflater.inflate(R.layout.teamcsempe, mainLayout, true);
+                    //TODO teammembercsempe inflatelése csatlakozáskor, szerverről lekkérdezett tagokra,
+                    // TODO barát hozzáadása gomb bekötése, saját magamnál ne legyen barárnak jelölés gomb
+
+
                 }
             });
+
 
 
 
