@@ -12,6 +12,10 @@ import makememove.ml.makememove.R;
 import makememove.ml.makememove.autentication.inner.NormalAuth;
 import makememove.ml.makememove.dpsystem.documents.TokenDocument;
 import makememove.ml.makememove.datahandler.TokenHandler;
+import makememove.ml.makememove.user.Admin;
+import makememove.ml.makememove.user.Creator;
+import makememove.ml.makememove.user.Normal;
+import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,8 +48,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<TokenDocument> call, Response<TokenDocument> response) {
                         TokenHandler tokenHandler = new TokenHandler();
-                        if(response.isSuccessful())
+                        if(response.isSuccessful()) {
                             tokenHandler.setToken(response.body().getToken());
+                            setUserType(response.body().getType());
+                        }
 
                         if(tokenHandler.availableToken()) {
                             Intent intent = new Intent(LoginActivity.this, UserActivity.class);
@@ -72,5 +78,21 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    public void setUserType(int type){
+        switch(type){
+            case 0:
+                User.getInstance().setUserType(new Admin());
+                break;
+            case 1:
+                User.getInstance().setUserType(new Creator());
+                break;
+            case 2:
+                User.getInstance().setUserType(new Normal());
+                break;
+            default:
+                User.getInstance().setUserType(new Normal());
+                break;
+        }
     }
 }
