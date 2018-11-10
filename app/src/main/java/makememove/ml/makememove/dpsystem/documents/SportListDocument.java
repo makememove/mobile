@@ -10,6 +10,7 @@ public class SportListDocument extends Document {
     private List<Sport> sports;
 
     public SportListDocument(){
+        super();
         this.sports = new ArrayList<Sport>();
     }
     public SportListDocument(List<Sport> sports) {
@@ -19,6 +20,7 @@ public class SportListDocument extends Document {
     @Override
     public void setData(Document document){
         sports = ((SportListDocument) document).getSports();
+        sendNotification();
     }
 
     public List<Sport> getSports() {

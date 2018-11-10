@@ -24,6 +24,7 @@ import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.presenters.DataHandler;
+import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.dpsystem.presenters.SportPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.persistence.SportAdapter;
@@ -128,7 +129,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
         if(recyclerView != null) {
             if (recyclerView.getAdapter().getItemCount() == 0) {
-                SportPresenter sp = new SportPresenter(preferredSports,this);
+                SportPresenter sp = new SportPresenter(preferredSports);
+                preferredSports.attach(this);
                 sp.getUserPreferredSports(token);
             }
         }
@@ -166,7 +168,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
     public void getSports(final String token){
       //  SportListDocument sportok = new SportListDocument();
-        SportPresenter sp = new SportPresenter(sports, this);
+        SportPresenter sp = new SportPresenter(sports);
+        sports.attach(this);
         sp.getAllSports(token);
     }
 
@@ -176,18 +179,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     }
 
     public void followSport(String token, int position){
-        DataHandler dh =  DataHandler.getInstance();
-        dh.addPreferredSport(token,position, new Callback() {
-            @Override
-            public void onResponse(Call call, Response response) {
-                if(response.isSuccessful()){
-                }
-            }
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                System.out.printf("Failure occured in followSport() method!");
-            }
-        });
+        PostPresenter pp = new PostPresenter();
+        pp.postPreferredSport(token,position);
     }
 
 

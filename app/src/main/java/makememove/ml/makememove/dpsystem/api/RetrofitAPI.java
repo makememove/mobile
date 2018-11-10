@@ -44,7 +44,7 @@ public interface RetrofitAPI {
 
     @Headers("Content-type: application/json")
     @POST("sports/follow/{sportID}")
-    Call<AuthInputDocument> addPreferredUserSport(@Header("Authorization") String token, @Path("sportID") int sportID);
+    Call<AuthInputDocument> postPreferredUserSport(@Header("Authorization") String token, @Path("sportID") int sportID);
 
     @Headers("Content-type: application/json")
     @GET("events?sportID={ID}")
