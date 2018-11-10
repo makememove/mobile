@@ -26,6 +26,7 @@ public class EventDetailsDetailFragment extends Fragment {
     private TextView lengthset;
     private TextView minskillset;
     private TextView maxskillset;
+    private TextView detailset;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class EventDetailsDetailFragment extends Fragment {
             lengthset = Layout.findViewById(R.id.tv_Lengthset);
             minskillset = Layout.findViewById(R.id.tv_minskillset);
             maxskillset = Layout.findViewById(R.id.tv_maxskillset);
+            detailset = Layout.findViewById(R.id.tv_descriptionset);
 
             titleset.setText(currentEvent.getTitle());
             sporttypeset.setText(Integer.toString(currentEvent.getSportId()));
@@ -68,6 +70,7 @@ public class EventDetailsDetailFragment extends Fragment {
             lengthset.setText(Integer.toString(currentEvent.getLength()));
             minskillset.setText(Integer.toString(currentEvent.getLowestSkillPoint()));
             maxskillset.setText(Integer.toString(currentEvent.getHighestSkillPoint()));
+            detailset.setText(currentEvent.getDescription());
         }
 
 
