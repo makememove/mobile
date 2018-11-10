@@ -55,7 +55,7 @@ public class SportEventStatusFragment extends Fragment {
             testbt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    EventDetailsFragment sportEventFragment = new EventDetailsFragment();
+                    EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
                     fragmentManager.beginTransaction()
                             .replace(R.id.content, eventDetailsFragment).addToBackStack(null)
                             .commit();
