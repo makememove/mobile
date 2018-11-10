@@ -55,4 +55,8 @@ public interface RetrofitAPI {
     @Headers("Content-type: application/json")
     @GET("events")
     Call<EventListDocument> getSportEvents(@Header("Authorization") String token, @Query("sportId") int sportID);
+
+    @Headers("Content-type: application/json")
+    @POST("events/create")
+    Call<AuthInputDocument> createEvent(@Header("Authorization") String token, @Body EventDocument body);
 }
