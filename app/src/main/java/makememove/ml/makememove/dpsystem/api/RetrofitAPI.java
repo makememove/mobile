@@ -49,6 +49,10 @@ public interface RetrofitAPI {
     Call<AuthInputDocument> postPreferredUserSport(@Header("Authorization") String token, @Path("sportID") int sportID);
 
     @Headers("Content-type: application/json")
+    @POST("sports/unfollow/{sportID}")
+    Call<AuthInputDocument> unpostPreferredUserSport(@Header("Authorization") String token, @Path("sportID") int sportID);
+
+    @Headers("Content-type: application/json")
     @GET("events")
     Call<EventListDocument> getSportEvents(@Header("Authorization") String token, @Query("sportId") int sportID);
 }
