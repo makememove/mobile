@@ -37,9 +37,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public void onBindViewHolder(@NonNull EventAdapter.EventViewHolder holder, int position){
         EventDocument item = items.get(position);
         holder.titleButton.setText(item.getTitle());
-        holder.creatorTextView.setText("");
+        holder.creatorTextView.setText(Integer.toString(item.getCreator()));
         holder.numPeopleTextView.setText("LATER TODO");
-        holder.eventTypeTextView.setText("");
+        holder.eventTypeTextView.setText(Integer.toString(item.getCategoryId()));
 
         holder.item = item;
     }
