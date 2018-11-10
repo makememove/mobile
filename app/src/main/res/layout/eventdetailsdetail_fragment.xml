@@ -31,7 +31,7 @@
             android:background="@color/background"
             android:text="@string/title"
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_titleset"
@@ -62,7 +62,7 @@
             android:background="@color/background"
             android:text="@string/sporttype"
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_sporttypeset"
@@ -94,7 +94,7 @@
             android:background="@color/background"
             android:text="@string/date"
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
 
 
@@ -128,7 +128,7 @@
             android:background="@color/background"
             android:text="@string/time"
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
 
 
@@ -161,7 +161,7 @@
             android:background="@color/background"
             android:text="@string/location"
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_locationset"
@@ -192,7 +192,7 @@
             android:background="@color/background"
             android:text="Creator: "
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_creatorset"
@@ -223,7 +223,7 @@
             android:background="@color/background"
             android:text="@string/visibility"
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_visibilityset"
@@ -254,7 +254,7 @@
             android:background="@color/background"
             android:text="@string/popularity"
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_popularityset"
@@ -285,7 +285,7 @@
             android:background="@color/background"
             android:text="@string/length"
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_Lengthset"
@@ -316,7 +316,7 @@
             android:background="@color/background"
             android:text="@string/min_skillpoint"
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_minskillset"
@@ -347,7 +347,7 @@
             android:background="@color/background"
             android:text="@string/max_skillpoint"
             android:textColor="@color/NormaltextColor"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_maxskillset"

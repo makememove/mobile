@@ -288,13 +288,13 @@
                             android:id="@+id/et_length"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:ems="10"
-                            android:theme="@style/inputtext"
-                            android:hint="@string/lengthhint"
-                            android:text=""
                             android:background="@color/background"
-                            android:inputType="textPersonName"
-                            android:singleLine="true" />
+                            android:ems="10"
+                            android:hint="@string/lengthhint"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:text=""
+                            android:theme="@style/inputtext" />
 
                     </android.support.design.widget.TextInputLayout>
 
