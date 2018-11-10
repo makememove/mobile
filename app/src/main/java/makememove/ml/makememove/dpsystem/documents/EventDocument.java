@@ -19,8 +19,8 @@ public class EventDocument extends Document{
     private int lowestSkillPoint;
     private int highestSkillPoint;
     private int sportId;
-    private CreatorMockup creator;
-    private Category category;
+    private int creatorId;
+    private int categoryId;
 
     public Date getDate() {
         return date;
@@ -102,25 +102,25 @@ public class EventDocument extends Document{
         this.sportId = sportId;
     }
 
-    public CreatorMockup getCreator() {
-        return creator;
+    public int getCreator() {
+        return creatorId;
     }
 
-    public void setCreator(CreatorMockup creator) {
-        this.creator = creator;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCreator(int creator) {
+        this.creatorId = creator;
     }
 
     @Override
     public void setData(Document document) {
 
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
 /*
