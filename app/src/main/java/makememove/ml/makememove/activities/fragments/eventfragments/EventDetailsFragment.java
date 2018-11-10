@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.sql.Time;
@@ -26,7 +28,6 @@ public class EventDetailsFragment extends Fragment {
     private Button bt_changeteams;
     private Button bt_changeresult;
     private static EventDocument currentEvent;
-
 
 
     private View Layout;
@@ -44,12 +45,6 @@ public class EventDetailsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Layout=this.getView();
         if(Layout != null) {
-
-
-
-
-
-
             bt_changedetail=Layout.findViewById(R.id.bt_detailchange);
             bt_changedetail.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,12 +112,22 @@ public class EventDetailsFragment extends Fragment {
         bt_changeteams.setBackgroundColor(getResources().getColor(R.color.background));
     }
 
+    public static EventDetailsFragment newInstance(EventDocument document) {
+
+        Bundle args = new Bundle();
+        setCurrentEvent(document);
+
+        EventDetailsFragment fragment = new EventDetailsFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     public static EventDocument getCurrentEvent() {
         return currentEvent;
     }
 
-    public static void setCurrentEvent(EventDocument currentEvent) {
-        currentEvent = currentEvent;
+    public static void setCurrentEvent(EventDocument event) {
+        currentEvent = event;
     }
 }
