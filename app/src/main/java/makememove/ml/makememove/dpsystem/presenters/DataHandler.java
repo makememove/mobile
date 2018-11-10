@@ -9,8 +9,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class DataHandler extends Presenter{
-
-
     private static DataHandler single_instance = null;
 
     private DataHandler()
@@ -49,27 +47,4 @@ public class DataHandler extends Presenter{
     }
 
     //dp end
-
-    //sportpresenter
-
-    public void getAllSports(String token, retrofit2.Callback callback){
-        Call<SportListDocument> call = api.getAllSports(token);
-        call.enqueue(callback);
-    }
-
-    public void getUserPreferredSports(String token, Callback callback){
-        Call<SportListDocument> call = api.getUserPreferredSports(token);
-        call.enqueue(callback);
-    }
-
-    //sp end
-
-    //authinputpresenter
-
-    public void addPreferredSport(String token, int pos, retrofit2.Callback callback){
-        Call call = api.addPreferredUserSport(token,pos);
-        call.enqueue(callback);
-    }
-
-    //aip end
 }

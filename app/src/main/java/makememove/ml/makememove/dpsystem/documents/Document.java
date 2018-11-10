@@ -13,10 +13,15 @@ public abstract class Document {
     transient protected ArrayList<BaseView> views;
     transient protected Presenter presenter;
 
+    public Document(){
+        views = new ArrayList<BaseView>();
+    }
+
   public Presenter getPresenter(){
     return presenter;
   }
   public void setPresenter(Presenter presenter){this.presenter = presenter;}
+
 
     protected ArrayList<BaseView> getViews() {
         if(views==null)

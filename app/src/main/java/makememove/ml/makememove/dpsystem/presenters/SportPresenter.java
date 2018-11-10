@@ -7,11 +7,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SportPresenter extends Presenter implements Callback<SportListDocument> {
-    private UserMainFragment umf;
-    public SportPresenter(SportListDocument document, UserMainFragment umf){
+    public SportPresenter(SportListDocument document){
         super();
         this.document = document;
-        this.umf = umf;
     }
 
 
@@ -30,7 +28,6 @@ public class SportPresenter extends Presenter implements Callback<SportListDocum
         if(response.isSuccessful()){
             SportListDocument sportok = response.body();
             document.setData(sportok);
-            umf.update();
         }
     }
 
