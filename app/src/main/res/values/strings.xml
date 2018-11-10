@@ -80,6 +80,7 @@
     <string name="leave">Leave</string>
     <string name="id">ID</string>
     <string name="pick_time">Pick Time</string>
+    <string name="close_event">Close Event</string>
 
 
     <string-array name="sports_array">
