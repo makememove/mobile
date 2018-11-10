@@ -17,6 +17,7 @@ import android.widget.TimePicker;
 import java.sql.Time;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.dpsystem.documents.EventDocument;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 
@@ -24,6 +25,7 @@ public class EventDetailsFragment extends Fragment {
     private Button bt_changedetail;
     private Button bt_changeteams;
     private Button bt_changeresult;
+    private static EventDocument currentEvent;
 
 
 
@@ -33,12 +35,9 @@ public class EventDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.eventdetails_fragment, container, false);
-
-
-
-
-
     }
+
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -119,5 +118,11 @@ public class EventDetailsFragment extends Fragment {
     }
 
 
+    public static EventDocument getCurrentEvent() {
+        return currentEvent;
+    }
 
+    public static void setCurrentEvent(EventDocument currentEvent) {
+        currentEvent = currentEvent;
+    }
 }

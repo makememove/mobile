@@ -1,11 +1,16 @@
 package makememove.ml.makememove.dpsystem.documents;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
-import makememove.ml.makememove.dpsystem.presenters.Presenter;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.Category;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.CreatorMockup;
 
-public class EventDocument extends Document {
+public class EventDocument extends Document{
+    private int id;
     private Date date;
+    @SerializedName("public")
     private int published;
     private String title;
     private String description;
@@ -13,6 +18,9 @@ public class EventDocument extends Document {
     private int length;
     private int lowestSkillPoint;
     private int highestSkillPoint;
+    private int sportId;
+    private CreatorMockup creator;
+    private Category category;
 
     public Date getDate() {
         return date;
@@ -77,6 +85,44 @@ public class EventDocument extends Document {
     public void setHighestSkillPoint(int highestSkillPoint) {
         this.highestSkillPoint = highestSkillPoint;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getSportId() {
+        return sportId;
+    }
+
+    public void setSportId(int sportId) {
+        this.sportId = sportId;
+    }
+
+    public CreatorMockup getCreator() {
+        return creator;
+    }
+
+    public void setCreator(CreatorMockup creator) {
+        this.creator = creator;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public void setData(Document document) {
+
+    }
+
 /*
     public Presenter getPresenter() {
         return presenter;

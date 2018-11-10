@@ -15,6 +15,9 @@ public class PostPresenter extends Presenter implements Callback {
         this.document = doc;
     }
 
+    public void setDocument(Document doc){
+        this.document = doc;
+    }
 
     public void postPreferredSport(String token, int pos){
         Call call = api.postPreferredUserSport(token,pos);

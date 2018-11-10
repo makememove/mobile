@@ -25,7 +25,7 @@ import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.datahandler.TokenHandler;
 import makememove.ml.makememove.dpsystem.documents.UserDocument;
 import makememove.ml.makememove.dpsystem.presenters.DataHandler;
-import makememove.ml.makememove.persistence.SportAdapter;
+import makememove.ml.makememove.adapters.SportAdapter;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -77,6 +77,9 @@
     <string name="teams">Teams</string>
     <string name="result">Result</string>
     <string name="details">Details</string>
+    <string name="creator">TextView</string>
+    <string name="numpeople">TextView</string>
+    <string name="eventtype">TextView</string>
 
 
     <string-array name="sports_array">

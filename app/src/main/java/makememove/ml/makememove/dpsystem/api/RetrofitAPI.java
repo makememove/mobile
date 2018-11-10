@@ -3,6 +3,7 @@ package makememove.ml.makememove.dpsystem.api;
 import java.util.List;
 
 import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
+import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.documents.TokenDocument;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.UserDocument;
@@ -14,6 +15,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 
 /*
@@ -47,6 +49,6 @@ public interface RetrofitAPI {
     Call<AuthInputDocument> postPreferredUserSport(@Header("Authorization") String token, @Path("sportID") int sportID);
 
     @Headers("Content-type: application/json")
-    @GET("events?sportID={ID}")
-    Call<List<EventDocument>> getSportEvents(@Header("Authorization") String token, @Path("ID") int sportID);
+    @GET("events")
+    Call<EventListDocument> getSportEvents(@Header("Authorization") String token, @Query("sportId") int sportID);
 }
