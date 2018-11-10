@@ -83,6 +83,8 @@
     <string name="creator">TextView</string>
     <string name="numpeople">TextView</string>
     <string name="eventtype">TextView</string>
+    <string name="close_event">Close Event</string>
+
 
     <string-array name="sports_array">
         <item>Shuttle Badminton</item>

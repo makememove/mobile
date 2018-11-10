@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/Headerbg"
+        android:textColor="@color/Headertext"
         android:text="@string/friends"
         android:textAlignment="center"
-        android:textColor="@color/Headertext"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -21,12 +21,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background">
-    <ListView
-        android:id="@+id/lv_friend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background"
-        android:paddingTop="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_friendrequestheader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Friend Request"
+                android:background="@color/Headerbg"
+                android:textColor="@color/Headertext"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_friendrequestlist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/background" />
+
+            <TextView
+                android:id="@+id/tv_myfriendsheader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/Headerbg"
+                android:text="My Friends"
+                android:textAlignment="center"
+                android:textColor="@color/Headertext"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_friendslist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/background">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

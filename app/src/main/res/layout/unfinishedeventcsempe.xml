@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/Headerbg"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/Headerbg"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_unfineventID"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="@color/Headerbg"
+            android:textColor="@color/NormaltextColor"
+            android:gravity="center_vertical"
+            android:text="ID"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tv_unfineventtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:background="@color/Headerbg"
+            android:gravity="center_vertical"
+            android:text="Title"
+            android:textColor="@color/Headertext"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/Headerbg"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_unfincreator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Headerbg"
+                android:text="Creator:"
+                android:textColor="@color/NormaltextColor" />
+
+            <TextView
+                android:id="@+id/tv_unfindate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Headerbg"
+                android:text="Date:"
+                android:textColor="@color/NormaltextColor" />
+
+            <TextView
+                android:id="@+id/tv_unfincategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Headerbg"
+                android:text="Category: "
+                android:textColor="@color/NormaltextColor" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_unfinmodify"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/greenbuttonshape"
+            android:text="Modify"
+
+            android:textSize="10sp" />
+
+    </LinearLayout>
+</android.widget.FrameLayout>
