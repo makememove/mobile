@@ -40,7 +40,7 @@
     <string name="datehint">date</string>
     <string name="visibility">Visibility:</string>
     <string name="location">Location:</string>
-    <string name="length">Length:</string>
+    <string name="length">Length(Hours):</string>
     <string name="lengthhint">length</string>
     <string name="min_skillpoint">Min Skillpoint:</string>
     <string name="minskillpointhint">min Skillpoint</string>
