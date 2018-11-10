@@ -94,6 +94,7 @@ public class UserActivity extends AppCompatActivity
                     TextView xp=drawer.findViewById(R.id.tv_xpmenu);
                     xp.setText(Integer.toString(response.body().getUser().getExperience()));
 
+                    
                     ImageView picture=drawer.findViewById(R.id.iv_profilemenu);
                     if(response.body().getUser().getPicture()!=null) {
                         //TODO profile picture beállítása
