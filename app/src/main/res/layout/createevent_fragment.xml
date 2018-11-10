@@ -51,7 +51,7 @@
                         android:background="@color/background"
                         android:text="@string/title"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -64,6 +64,7 @@
                             android:theme="@style/inputtext"
                             android:background="@color/background"
                             android:layout_width="match_parent"
+                            android:text=""
                             android:layout_height="match_parent"
                             android:ems="10"
                             android:hint="@string/titlehint"
@@ -88,7 +89,7 @@
                         android:background="@color/background"
                         android:text="@string/category"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp"
+                        android:textSize="20sp"
                         tools:text="Category: " />
 
                     <Spinner
@@ -117,7 +118,7 @@
                         android:background="@color/background"
                         android:text="@string/sporttype"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <Spinner
                         android:id="@+id/s_Sport"
@@ -125,7 +126,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
-                        android:entries="@array/sports_array"
                         android:popupBackground="@color/NormaltextColor" />
 
                 </LinearLayout>
@@ -145,7 +145,7 @@
                         android:background="@color/background"
                         android:text="@string/date"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/bt_datepicker"
@@ -175,7 +175,7 @@
                         android:background="@color/background"
                         android:text="@string/time"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/bt_timepicker"
@@ -183,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@color/Headerbg"
-                        android:text="Pick Time"
+                        android:text="@string/pick_time"
                         android:textColor="@color/NormaltextColor"
                         android:textSize="16sp" />
 
@@ -207,7 +207,7 @@
                         android:background="@color/background"
                         android:text="@string/visibility"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <Spinner
                         android:id="@+id/s_visibility"
@@ -236,7 +236,7 @@
                         android:background="@color/background"
                         android:text="@string/location"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -251,6 +251,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:ems="10"
+                            android:text=""
                             android:background="@color/background"
                             android:hint="location"
                             android:inputType="textPersonName"
@@ -274,7 +275,7 @@
                         android:background="@color/background"
                         android:text="@string/length"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -284,12 +285,13 @@
                         >
 
                         <EditText
-                            android:id="@+id/et_lengrh"
+                            android:id="@+id/et_length"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:ems="10"
                             android:theme="@style/inputtext"
                             android:hint="@string/lengthhint"
+                            android:text=""
                             android:background="@color/background"
                             android:inputType="textPersonName"
                             android:singleLine="true" />
@@ -313,7 +315,7 @@
                         android:background="@color/background"
                         android:text="@string/min_skillpoint"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -327,6 +329,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:ems="10"
+                            android:text=""
                             android:background="@color/background"
                             android:theme="@style/inputtext"
                             android:hint="@string/minskillpointhint"
@@ -354,7 +357,7 @@
                         android:background="@color/background"
                         android:text="@string/max_skillpoint"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -369,6 +372,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:ems="10"
+                            android:text=""
                             android:background="@color/background"
                             android:theme="@style/inputtext"
                             android:hint="@string/max_skillpointhint"
@@ -396,7 +400,7 @@
                         android:background="@color/background"
                         android:text="@string/description"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -411,6 +415,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:ems="10"
+                            android:text=""
                             android:theme="@style/inputtext"
                             android:hint="@string/descriptionhint"
                             android:inputType="textMultiLine"/>
@@ -429,7 +434,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/bt_createevent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/greenbuttonshape"

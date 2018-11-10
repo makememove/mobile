@@ -48,6 +48,17 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     private static List<String> preferredSportList;
     private String token = User.getInstance().getToken();
 
+    public static ArrayList<String> getAllSports(){
+        if(sportList!=null){
+            ArrayList<String> sportlistinstrings = new ArrayList<String>();
+            for(int i=0;i<sportList.size();i++){
+                sportlistinstrings.add(sportList.get(i).getName());
+            }
+            return sportlistinstrings;
+        }
+            return null;
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
