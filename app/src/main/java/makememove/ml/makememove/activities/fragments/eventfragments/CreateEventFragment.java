@@ -48,6 +48,7 @@ public class CreateEventFragment extends Fragment {
 
 
 
+    
 
     private Button bt_create;
     private View Layout;
