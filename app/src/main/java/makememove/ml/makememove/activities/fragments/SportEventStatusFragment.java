@@ -27,7 +27,6 @@ import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 public class SportEventStatusFragment extends Fragment implements EventAdapter.EventItemClickListener, BaseView {
 
     private View Layout;
-    private Button testbt;
     private TextView sportName;
     private RecyclerView recyclerView;
     private EventAdapter adapter;
@@ -83,16 +82,7 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
             // sportID = (int) getArguments().get("SportID");
             sportNameString = UserMainFragment.getName(sportID);
             sportName.setText(sportNameString);
-            testbt=Layout.findViewById(R.id.test);
-            testbt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.content, eventDetailsFragment).addToBackStack(null)
-                            .commit();
-                }
-            });
+
 
 
 

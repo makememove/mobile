@@ -96,8 +96,8 @@
         <item>Hockey</item>
     </string-array>
     <string-array name="category_array">
-        <item>Championship</item>
         <item>Normal Event</item>
+        <item>Championship</item>
         <item>Training</item>
     </string-array>
     <string-array name="visibility_array">

@@ -1,63 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.widget.FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:weightSum="100"
-    android:layout_margin="5dp"
-    android:background="@color/Normaltextbg"
-    android:orientation="horizontal"
-    android:padding="6dp">
-
-    <Button
-        android:id="@+id/eventButton"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_weight="60"
-        android:background="@color/Headerbg"
-        android:padding="5dp"
-        android:text="@string/event"
-
-        android:textColor="@color/NormaltextColor"
-        android:textSize="20sp"
-        android:textStyle="bold|italic" />
+    android:background="@color/Headerbg"
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="40"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:background="@color/Headerbg"
-        >
-
-
-        <TextView
-            android:id="@+id/tv_EventCreator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Headerbg"
-            android:text="@string/creator"
-            android:textColor="@color/NormaltextColor"
-            tools:text="Creator" />
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_NumPeople"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/tv_neventID"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
             android:background="@color/Headerbg"
-            android:text="@string/numpeople"
             android:textColor="@color/NormaltextColor"
-            tools:text="Number of people" />
+            android:gravity="center_vertical"
+            android:text="ID"
+            android:textAlignment="center" />
 
-        <TextView
-            android:id="@+id/tv_eventtype"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/eventButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1.4"
             android:background="@color/Headerbg"
-            android:text="@string/eventtype"
-            android:textColor="@color/NormaltextColor"
-            tools:text="Event type" />
+            android:padding="5dp"
+            android:text="@string/titlehint"
+            android:textColor="@color/Headertext"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/Headerbg"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_EventCreator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Headerbg"
+                android:text="Creator:"
+                android:textColor="@color/NormaltextColor" />
+
+            <TextView
+                android:id="@+id/tv_Eventdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Headerbg"
+                android:text="Date:"
+                android:textColor="@color/NormaltextColor" />
+
+            <TextView
+                android:id="@+id/tv_eventtype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Headerbg"
+                android:text="Category: "
+                android:textColor="@color/NormaltextColor" />
+
+        </LinearLayout>
+
+
+
     </LinearLayout>
+</android.widget.FrameLayout>
 
-</android.widget.LinearLayout>
+
+
+
+
+
+
+
+
+
+
+

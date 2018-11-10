@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
@@ -37,9 +40,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public void onBindViewHolder(@NonNull EventAdapter.EventViewHolder holder, int position){
         EventDocument item = items.get(position);
         holder.titleButton.setText(item.getTitle());
-        holder.creatorTextView.setText("Creator ID: "+Integer.toString(item.getCreator()));
-        holder.numPeopleTextView.setText("Date: "+item.getDate());
-        holder.eventTypeTextView.setText("Category ID: "+Integer.toString(item.getCategoryId()));
+        holder.creatorTextView.setText("Creator: "+Integer.toString(item.getCreator()));//TODO név kiírása e helyett
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        holder.dateTextView.setText("Date: "+dt.format(item.getDate()));
+        holder.eventTypeTextView.setText("Category ID: "+Integer.toString(item.getCategoryId()));//TODO kategória nevének kiírása, nem IDt
 
         holder.item = item;
     }
@@ -64,7 +68,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         Button titleButton;
         EventDocument item;
         TextView creatorTextView;
-        TextView numPeopleTextView;
+        TextView dateTextView;
         TextView eventTypeTextView;
 
 
@@ -73,10 +77,21 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             if (itemView != null) {
                 titleButton = itemView.findViewById(R.id.eventButton);
                 creatorTextView = itemView.findViewById(R.id.tv_EventCreator);
-                numPeopleTextView = itemView.findViewById(R.id.tv_NumPeople);
+                dateTextView = itemView.findViewById(R.id.tv_Eventdate);
                 eventTypeTextView = itemView.findViewById(R.id.tv_eventtype);
 
                 titleButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
+                        EventDetailsFragment.setCurrentEvent(item);
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content, eventDetailsFragment).addToBackStack(null)
+                                .commit();
+                    }
+                });
+
+                itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
