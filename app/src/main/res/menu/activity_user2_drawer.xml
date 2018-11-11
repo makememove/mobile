@@ -4,12 +4,12 @@
     tools:showIn="navigation_view"
     >
     <group>
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/nav_status"
+            android:title="@string/eventstatus" />
         <item android:title="@string/nav_eventtitle"><menu>
         <group android:checkableBehavior="single">
-            <item
-                android:id="@+id/nav_events"
-                android:icon="@drawable/nav_status"
-                android:title="@string/eventstatus" />
             <item
                 android:id="@+id/nav_findevent"
                 android:icon="@drawable/nav_find"

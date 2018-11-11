@@ -85,7 +85,7 @@
     <string name="eventtype">TextView</string>
     <string name="close_event">Unfinished Events</string>
     <string name="finished_events">Finished Events</string>
-    <string name="eventstatus">Status</string>
+    <string name="eventstatus">Dashboard</string>
     <string name="nav_finished">Finished</string>
     <string name="nav_unfinished">Unfinished</string>
     <string name="nav_eventtitle">Events</string>
