@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
             android:background="@color/Headerbg"
+            android:src="@drawable/ic_account_box"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
