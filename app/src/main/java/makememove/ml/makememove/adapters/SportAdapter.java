@@ -1,12 +1,15 @@
 package makememove.ml.makememove.adapters;
 
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -42,8 +45,11 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
     public void onBindViewHolder(@NonNull SportViewHolder holder, int position){
         SportItem item = items.get(position);
         holder.tv_title.setText(item.category);
-
         holder.item = item;
+
+        if(item.category.equals("Basketball")) holder.iv_sportpicture.setImageResource(R.drawable.basketball);
+        else if(item.category.equals("Football")) holder.iv_sportpicture.setImageResource(R.drawable.football_1);
+        //TODO több sport esetén kiegészítendő
     }
 
     public void addItem(SportItem item) {
@@ -78,6 +84,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
     class SportViewHolder extends RecyclerView.ViewHolder {
         ImageButton removeButton;
         TextView  tv_title;
+        ImageView iv_sportpicture;
 
         SportItem item;
 
@@ -112,6 +119,9 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                         }
                     }
                 });
+
+                iv_sportpicture=itemView.findViewById(R.id.iv_Sportpicture);
+
 
             }
         }
