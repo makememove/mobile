@@ -36,6 +36,14 @@ public class PostPresenter extends Presenter implements Callback {
         Call call = api.createEvent(token,doc);
         call.enqueue(this);
     }
+    public void denyFriendRequest(String token, int position){
+        Call call = api.denyFriendRequest(token,position);
+        call.enqueue(this);
+    }
+    public void acceptFriendRequest(String token, int position){
+        Call call = api.acceptFriendRequest(token,position);
+        call.enqueue(this);
+    }
 
     @Override
     public void onResponse(Call call, Response response) {

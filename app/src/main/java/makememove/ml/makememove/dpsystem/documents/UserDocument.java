@@ -6,6 +6,7 @@ public class UserDocument {
     private User user;
 
     public UserDocument(User user) {
+        super();
         this.user = user;
     }
 

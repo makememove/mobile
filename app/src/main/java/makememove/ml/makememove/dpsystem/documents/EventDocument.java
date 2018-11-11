@@ -22,6 +22,10 @@ public class EventDocument extends Document{
     private int creatorId;
     private int categoryId;
 
+    public EventDocument(){
+        super();
+    }
+
     public Date getDate() {
         return date;
     }
@@ -122,32 +126,4 @@ public class EventDocument extends Document{
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
-
-/*
-    public Presenter getPresenter() {
-        return presenter;
-    }
-
-    public void setPresenter(Presenter presenter) {
-        this.presenter = presenter;
-    }
-
-
-    @Override
-    public void getData() {
-
-    }
-
-    @Override
-    public void service() {
-
-    }
-
-    public void load(String command){
-        presenter.loadDocument(command);
-    }
-
-    public void save(String command){
-        presenter.saveDocument(command);
-    }
-*/}
+}
