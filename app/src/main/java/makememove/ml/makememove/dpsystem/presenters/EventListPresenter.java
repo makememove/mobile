@@ -21,7 +21,6 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
 
     public void getSportEvents(String token, int sportID){
         Call call = api.getSportEvents(token,sportID);
-        Log.d("A sportid: ",Integer.toString(sportID));
         call.enqueue(this);
     }
 
@@ -29,18 +28,11 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
     public void onResponse(Call<EventListDocument> call, Response<EventListDocument> response) {
         if(response.isSuccessful()){
             document.setData(response.body());
-            for (EventDocument doc:response.body().getEvents()) {
-                Log.d("Az esemény neve: ",doc.getTitle());
-            }
-            //Log.d("onResponse eventlist","successful");
         }
-        else
-            Log.d("onResponse","failure");
     }
 
     @Override
     public void onFailure(Call call, Throwable t) {
-        Log.d("onFailure","failure");
-        System.out.printf("Failure occured in PostPresenter class!");
+
     }
 }

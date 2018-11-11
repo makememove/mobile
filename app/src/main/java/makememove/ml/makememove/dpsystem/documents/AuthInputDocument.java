@@ -6,6 +6,7 @@ public class AuthInputDocument {
     private String password;
 
     public AuthInputDocument(String userName, String email, String password) {
+        super();
         this.userName=userName;
         this.email = email;
         this.password = password;

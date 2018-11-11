@@ -6,6 +6,7 @@ public class TokenDocument {
 
 
     public TokenDocument(String error, String token) {
+        super();
         this.token = token;
     }
 

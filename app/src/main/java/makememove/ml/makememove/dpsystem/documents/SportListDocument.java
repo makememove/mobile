@@ -14,6 +14,7 @@ public class SportListDocument extends Document {
         this.sports = new ArrayList<Sport>();
     }
     public SportListDocument(List<Sport> sports) {
+        super();
         this.sports = sports;
     }
 
