@@ -40,10 +40,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public void onBindViewHolder(@NonNull EventAdapter.EventViewHolder holder, int position){
         EventDocument item = items.get(position);
         holder.title.setText(item.getTitle());
-        holder.creatorTextView.setText("Creator: "+Integer.toString(item.getCreator()));//TODO név kiírása e helyett
+        holder.creatorTextView.setText("Creator: "+item.getCreatorMockup().getUserName());
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         holder.dateTextView.setText("Date: "+dt.format(item.getDate()));
-        holder.eventTypeTextView.setText("Category ID: "+Integer.toString(item.getCategoryId()));//TODO kategória nevének kiírása, nem IDt
+        holder.eventTypeTextView.setText(item.getCategory().getName());
         holder.id.setText(Integer.toString(position+1));
 
         holder.item = item;
