@@ -35,7 +35,7 @@ public class FriendDecisionAdapter extends RecyclerView.Adapter<FriendDecisionAd
     @Override
     public void onBindViewHolder(@NonNull FriendViewHolder holder, int position){
         UserItem item = items.get(position);
-        holder.tv_id.setText(Integer.toString(item.getId()));
+        holder.tv_id.setText(Integer.toString(position+1));
         holder.tv_username.setText(item.getUserName());
 
         holder.item = item;

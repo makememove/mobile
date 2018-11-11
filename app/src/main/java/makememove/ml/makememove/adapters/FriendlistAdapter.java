@@ -37,7 +37,7 @@ public class FriendlistAdapter extends RecyclerView.Adapter<FriendlistAdapter.Fr
     @Override
     public void onBindViewHolder(@NonNull FriendlistAdapter.FriendViewHolder holder, int position){
         UserItem item = items.get(position);
-        holder.tv_id.setText(Integer.toString(item.getId()));
+        holder.tv_id.setText(Integer.toString(position+1));
         holder.tv_username.setText(item.getUserName());
 
         holder.item = item;
