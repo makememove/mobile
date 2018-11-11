@@ -88,6 +88,7 @@
     <string name="eventstatus">Status</string>
     <string name="nav_finished">Locked</string>
     <string name="nav_unfinished">Unlocked</string>
+    <string name="nav_eventtitle">Event</string>
 
 
     <string-array name="sports_array">
