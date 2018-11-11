@@ -80,6 +80,14 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         return -1;
     }
 
+    public static int getPreferredPosition(String item){
+        for(int i = 0;i<preferredSportList.size();i++){
+            if(preferredSportList.get(i).equals(item))
+                return i;
+        }
+        return -1;
+    }
+
     public static int getListSize(){
         return sportList.size();
     }
@@ -188,6 +196,12 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     }
 
 
+    public void unfollowSport(String token, int position){
+        PostPresenter pp = new PostPresenter();
+        pp.unpostPreferredSport(token,position);
+    }
+
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -268,6 +282,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             @Override
             protected Boolean doInBackground(Void... voids) {
                 database.sportItemDao().deleteItem(item);
+
                 preferredSportList.remove(item.category);
                 return true;
             }
@@ -277,6 +292,11 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 Log.d("MainActivity", "ShoppingItem update was successful");
             }
         }.execute();
+    }
+
+    @Override
+    public void onUnfollow(int position) {
+        unfollowSport(token, position);
     }
 
     @SuppressLint("StaticFieldLeak")

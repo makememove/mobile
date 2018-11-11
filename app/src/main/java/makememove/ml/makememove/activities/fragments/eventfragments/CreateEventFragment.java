@@ -29,28 +29,25 @@ import java.util.regex.Pattern;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.UserActivity;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
+import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
+import makememove.ml.makememove.user.User;
 
 public class CreateEventFragment extends Fragment {
 
     private EditText et_title;
-    private Spinner c_category;
+    private Spinner s_category;
     private Spinner s_sports;
     private Button bt_datepicker;
     private Button bt_Timepicker;
-    private Spinner s_visiility;
+    private Spinner s_visibility;
     private EditText et_location;
     private EditText et_length;
     private EditText et_minskillpoint;
     private EditText et_maxskillpoint;
     private EditText et_description;
-
-
-
-
-
-
-
     private Button bt_create;
+
     private View Layout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -126,6 +123,12 @@ public class CreateEventFragment extends Fragment {
             et_location = Layout.findViewById(R.id.et_location);
             et_minskillpoint = Layout.findViewById(R.id.et_minskillvalue);
             et_maxskillpoint = Layout.findViewById(R.id.et_maxskillvalue);
+            s_visibility = Layout.findViewById(R.id.s_visibility);
+            s_sports = Layout.findViewById(R.id.s_Sport);
+            s_category = Layout.findViewById(R.id.s_Category);
+            et_description = Layout.findViewById(R.id.et_description);
+
+
 
             bt_create = Layout.findViewById(R.id.bt_createevent);
             bt_create.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +144,25 @@ public class CreateEventFragment extends Fragment {
                                 et_length.getText().toString(),
                                 et_minskillpoint.getText().toString(),
                                 et_maxskillpoint.getText().toString())){
-                            //TODO create event Retrofit Api bekötése
+                            EventDocument event = new EventDocument();
+                            event.setTitle(et_title.getText().toString());
+
+                            SimpleDateFormat dateformat3 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                            String date =  bt_datepicker.getText().toString();
+                            String time =  bt_Timepicker.getText().toString();
+                            Date date1 = dateformat3.parse(date+" "+time);
+                            event.setDate(date1);
+
+                            event.setDescription(et_description.getText().toString());
+                            event.setCategoryId(s_category.getSelectedItemPosition()+1);
+                            event.setSportId(s_sports.getSelectedItemPosition()+1);
+                            event.setPublished(s_visibility.getSelectedItemPosition()+1);
+                            event.setLocation( et_location.getText().toString());
+                            event.setLength( Integer.parseInt(et_length.getText().toString()));
+                            event.setLowestSkillPoint(Integer.parseInt( et_minskillpoint.getText().toString()));
+                            event.setHighestSkillPoint(Integer.parseInt(  et_maxskillpoint.getText().toString()));
+
+                            createEvent(event);
                             Snackbar.make(getActivity().findViewById(R.id.content), "You created an event!", Snackbar.LENGTH_LONG).show();
                         }
                     } catch (ParseException e) {
@@ -155,6 +176,11 @@ public class CreateEventFragment extends Fragment {
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item , list);
             s_sports.setAdapter(dataAdapter);
         }
+    }
+
+    public void createEvent(EventDocument doc){
+        PostPresenter pp = new PostPresenter(doc);
+        pp.postEvent(User.getInstance().getToken(),doc);
     }
 
     private  boolean validation(String title,String date, String time, String location,String Length,String minSkillPoint,String maxSkillPoint) throws ParseException {

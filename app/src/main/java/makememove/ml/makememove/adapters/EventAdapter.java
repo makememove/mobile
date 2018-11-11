@@ -83,8 +83,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 titleButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
-                        EventDetailsFragment.setCurrentEvent(item);
+                        EventDetailsFragment eventDetailsFragment = EventDetailsFragment.newInstance(item);
                         fragmentManager.beginTransaction()
                                 .replace(R.id.content, eventDetailsFragment).addToBackStack(null)
                                 .commit();

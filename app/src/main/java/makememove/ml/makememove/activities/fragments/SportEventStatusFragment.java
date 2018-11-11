@@ -99,6 +99,10 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
                         sportNameString = UserMainFragment.getName(sportID);
                         sportName.setText(sportNameString);
                     }
+                    SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(sportID);
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content, sportEventFragment).addToBackStack(null)
+                            .commit();
                 }
             });
             nextButton.setOnClickListener(new View.OnClickListener() {
@@ -108,20 +112,16 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
                         sportID =0;
                         sportNameString = UserMainFragment.getName(sportID);
                         sportName.setText(sportNameString);
-                        SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(sportID);
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.content, sportEventFragment).addToBackStack(null)
-                                .commit();
                     }
                     else{
                         sportID++;
                         sportNameString = UserMainFragment.getName(sportID);
                         sportName.setText(sportNameString);
-                        SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(sportID);
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.content, sportEventFragment).addToBackStack(null)
-                                .commit();
                     }
+                    SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(sportID);
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content, sportEventFragment).addToBackStack(null)
+                            .commit();
                 }
             });
         }

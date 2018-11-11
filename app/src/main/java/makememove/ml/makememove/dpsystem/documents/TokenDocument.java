@@ -2,6 +2,7 @@ package makememove.ml.makememove.dpsystem.documents;
 
 public class TokenDocument {
     private String token;
+    private int type;
 
 
     public TokenDocument(String error, String token) {
@@ -14,5 +15,13 @@ public class TokenDocument {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }
