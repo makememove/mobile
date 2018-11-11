@@ -211,7 +211,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             initRecylerView();
             final String token = User.getInstance().getToken();
             bt_addsport = this.getView().findViewById(R.id.bt_addsport);
-
+            if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+            else bt_addsport.setVisibility(View.VISIBLE);
             bt_addsport.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -270,6 +271,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             @Override
             protected void onPostExecute(SportItem sportItem) {
                 adapter.addItem(sportItem);
+                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+                else bt_addsport.setVisibility(View.VISIBLE);
             }
         }.execute();
     }
@@ -289,6 +292,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
             @Override
             protected void onPostExecute(Boolean isSuccessful) {
+                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+                else bt_addsport.setVisibility(View.VISIBLE);
                 Log.d("MainActivity", "ShoppingItem update was successful");
             }
         }.execute();
@@ -313,6 +318,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
             @Override
             protected void onPostExecute(Boolean isSuccessful) {
+                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+                else bt_addsport.setVisibility(View.VISIBLE);
                 Log.d("MainActivity", "ShoppingItem update was successful");
             }
         }.execute();
@@ -332,6 +339,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 preferredSportList.add(sportList.get(sport.getId() - 1).getName());
             }
         }
+
 
     }
 }
