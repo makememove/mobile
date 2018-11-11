@@ -97,7 +97,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
+                        android:background="@color/NormaltextColor"
                         android:entries="@array/category_array"
                         android:popupBackground="@color/NormaltextColor" />
 
@@ -125,7 +125,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
+                        android:background="@color/NormaltextColor"
                         android:popupBackground="@color/NormaltextColor" />
 
                 </LinearLayout>
@@ -214,7 +214,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
+                        android:background="@color/NormaltextColor"
                         android:entries="@array/visibility_array"
                         android:popupBackground="@color/NormaltextColor" />
 
