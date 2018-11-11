@@ -118,6 +118,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             @Override
             protected void onPostExecute(List<SportItem> sportItems) {
                 adapter.update(sportItems);
+                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+                else bt_addsport.setVisibility(View.VISIBLE);
             }
         }.execute();
     }
@@ -135,6 +137,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 for (SportItem item:sportItems) {
                     preferredSportList.add(item.category);
                 }
+                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+                else bt_addsport.setVisibility(View.VISIBLE);
             }
         }.execute();
 
@@ -165,6 +169,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
             @Override
             protected void onPostExecute(Boolean isSuccessful) {
+                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+                else bt_addsport.setVisibility(View.VISIBLE);
                 Log.d("UserMainFragment", "SportItem update was successful");
             }
         }.execute();
@@ -339,6 +345,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 preferredSportList.add(sportList.get(sport.getId() - 1).getName());
             }
         }
+
 
 
     }
