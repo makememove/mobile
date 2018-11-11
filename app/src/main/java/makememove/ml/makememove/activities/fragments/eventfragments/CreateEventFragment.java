@@ -43,6 +43,8 @@ public class CreateEventFragment extends Fragment {
     private Spinner s_visibility;
     private EditText et_location;
     private EditText et_length;
+    private EditText et_teamcapacity;
+    private EditText et_membercapacity;
     private EditText et_minskillpoint;
     private EditText et_maxskillpoint;
     private EditText et_description;
@@ -120,6 +122,8 @@ public class CreateEventFragment extends Fragment {
 
             et_title = Layout.findViewById(R.id.et_titleofevent);
             et_length = Layout.findViewById(R.id.et_length);
+            et_teamcapacity = Layout.findViewById(R.id.et_teamcapacity);
+            et_membercapacity = Layout.findViewById(R.id.et_membercapacity);
             et_location = Layout.findViewById(R.id.et_location);
             et_minskillpoint = Layout.findViewById(R.id.et_minskillvalue);
             et_maxskillpoint = Layout.findViewById(R.id.et_maxskillvalue);
@@ -143,7 +147,10 @@ public class CreateEventFragment extends Fragment {
                                 et_location.getText().toString(),
                                 et_length.getText().toString(),
                                 et_minskillpoint.getText().toString(),
-                                et_maxskillpoint.getText().toString())){
+                                et_maxskillpoint.getText().toString(),
+                                et_teamcapacity.getText().toString(),
+                                 et_membercapacity.getText().toString())
+                                ){
                             EventDocument event = new EventDocument();
                             event.setTitle(et_title.getText().toString());
 
@@ -183,7 +190,7 @@ public class CreateEventFragment extends Fragment {
         pp.postEvent(User.getInstance().getToken(),doc);
     }
 
-    private  boolean validation(String title,String date, String time, String location,String Length,String minSkillPoint,String maxSkillPoint) throws ParseException {
+    private  boolean validation(String title,String date, String time, String location,String Length,String minSkillPoint,String maxSkillPoint,String teamcap,String membercap) throws ParseException {
 
         //ki van e töltve a title fül
         if(4>=title.length()){
@@ -240,6 +247,18 @@ public class CreateEventFragment extends Fragment {
         //minskillpoint kisebb mint max skillpoint
         if(Integer.parseInt(minSkillPoint)>=Integer.parseInt(maxSkillPoint)){
             Snackbar.make(getActivity().findViewById(R.id.content), "Error: MaxSkillPoint must be higher then MinSkillPoint!", Snackbar.LENGTH_LONG).show();
+            return false;
+        }
+
+        //ki van e töltve a minskillpoint fül
+        if(1>=teamcap.length()){
+            et_teamcapacity.setError("Team Capacity must be fulfilled at least 1 character!");
+            return false;
+        }
+
+        //ki van e töltve a minskillpoint fül
+        if(1>=membercap.length()){
+            et_membercapacity.setError("Member Capacity must be fulfilled at least 1 character!");
             return false;
         }
 
