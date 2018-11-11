@@ -3,6 +3,7 @@ package makememove.ml.makememove.activities.fragments.eventfragments;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.text.Layout;
 import android.util.Log;
@@ -28,6 +29,7 @@ public class EventDetailsFragment extends Fragment {
     private Button bt_changeteams;
     private Button bt_changeresult;
     private static EventDocument currentEvent;
+    private FragmentManager fragmentchildManager;
 
 
     private View Layout;
@@ -43,6 +45,7 @@ public class EventDetailsFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        fragmentchildManager= getChildFragmentManager();
         Layout=this.getView();
         if(Layout != null) {
             bt_changedetail=Layout.findViewById(R.id.bt_detailchange);
@@ -50,7 +53,7 @@ public class EventDetailsFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     EventDetailsDetailFragment sportEventFragment = new EventDetailsDetailFragment();
-                    fragmentManager.beginTransaction()
+                    fragmentchildManager.beginTransaction()
                             .replace(R.id.eventdetailscontent, new EventDetailsFragment()).addToBackStack(null)
                             .commit();
 
@@ -65,7 +68,7 @@ public class EventDetailsFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     EventDetailsTeamsFragment sportEventFragment = new EventDetailsTeamsFragment();
-                    fragmentManager.beginTransaction()
+                    fragmentchildManager.beginTransaction()
                             .replace(R.id.eventdetailscontent, sportEventFragment)
                             .commit();
 
@@ -80,7 +83,7 @@ public class EventDetailsFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     EventDetailsResultFragment sportEventFragment = new EventDetailsResultFragment();
-                    fragmentManager.beginTransaction()
+                    fragmentchildManager.beginTransaction()
                             .replace(R.id.eventdetailscontent, sportEventFragment)
                             .commit();
 
