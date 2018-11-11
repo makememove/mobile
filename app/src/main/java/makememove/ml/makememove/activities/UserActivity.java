@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,6 +28,9 @@ import makememove.ml.makememove.datahandler.TokenHandler;
 import makememove.ml.makememove.dpsystem.documents.UserDocument;
 import makememove.ml.makememove.dpsystem.presenters.DataHandler;
 import makememove.ml.makememove.adapters.SportAdapter;
+import makememove.ml.makememove.user.Admin;
+import makememove.ml.makememove.user.Creator;
+import makememove.ml.makememove.user.Normal;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -85,6 +89,7 @@ public class UserActivity extends AppCompatActivity
             public void onResponse(Call <UserDocument> call, Response<UserDocument> response) {
                 if(response.isSuccessful()){
                     UserDocument up = response.body();
+                    setUserType(response.body().getUser().getType());
                     User.setEveryThing(up.getUser());
 
                     TextView username=drawer.findViewById(R.id.tv_usernamemenu);
@@ -118,6 +123,27 @@ public class UserActivity extends AppCompatActivity
 
             }
         });
+    }
+
+    public void setUserType(int type){
+        switch(type){
+            case 0:
+                User.getInstance().setUserType(new Admin());
+                User.getInstance().setUserString("Admin");
+                break;
+            case 1:
+                User.getInstance().setUserType(new Creator());
+                User.getInstance().setUserString("Creator");
+                break;
+            case 2:
+                User.getInstance().setUserType(new Normal());
+                User.getInstance().setUserString("Normal");
+                break;
+            default:
+                User.getInstance().setUserType(new Normal());
+                User.getInstance().setUserString("Normal");
+                break;
+        }
     }
 
     @Override

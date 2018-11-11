@@ -21,6 +21,7 @@ public class User {
     private float popularity;
     private UserType userType;
     private String userString;
+    private int type;
 
 /////Getter/Setters////////
     public String getToken() {
@@ -103,8 +104,10 @@ public class User {
 
     public static void setEveryThing(User otherUser){
         String token = INSTANCE.getToken();
+        String string = INSTANCE.getUserString();
         UserType userType = INSTANCE.getUserType();
         INSTANCE = otherUser;
+        INSTANCE.setUserString(string);
         INSTANCE.setToken(token);
         INSTANCE.setUserType(userType);
 
@@ -122,6 +125,14 @@ public class User {
 
     public void setUserString(String userString) {
         this.userString = userString;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
 
