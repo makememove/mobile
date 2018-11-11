@@ -29,6 +29,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@color/background"
         android:orientation="horizontal">
 
@@ -36,9 +37,20 @@
             android:id="@+id/bt_addfilter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/greenbuttonshape"
-            android:text="@string/add_filter" />
+            android:background="@color/Headerbg"
+            android:text="@string/add_filter"
+            android:textColor="@color/Headertext" />
+
+        <Button
+            android:id="@+id/bt_findeventpickdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/Headerbg"
+            android:text="@string/pick_date"
+            android:textColor="@color/Headertext" />
 
     </LinearLayout>
 
