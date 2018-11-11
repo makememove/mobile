@@ -39,7 +39,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     @Override
     public void onBindViewHolder(@NonNull EventAdapter.EventViewHolder holder, int position){
         EventDocument item = items.get(position);
-        holder.titleButton.setText(item.getTitle());
+        holder.title.setText(item.getTitle());
         holder.creatorTextView.setText("Creator: "+Integer.toString(item.getCreator()));//TODO név kiírása e helyett
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         holder.dateTextView.setText("Date: "+dt.format(item.getDate()));
@@ -66,7 +66,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
 
     class EventViewHolder extends RecyclerView.ViewHolder {
-        Button titleButton;
+        TextView title;
         EventDocument item;
         TextView creatorTextView;
         TextView dateTextView;
@@ -77,22 +77,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         EventViewHolder(View itemView) {
             super(itemView);
             if (itemView != null) {
-                titleButton = itemView.findViewById(R.id.eventButton);
+                title= itemView.findViewById(R.id.tv_title);
                 creatorTextView = itemView.findViewById(R.id.tv_EventCreator);
                 dateTextView = itemView.findViewById(R.id.tv_Eventdate);
                 eventTypeTextView = itemView.findViewById(R.id.tv_eventtype);
                 id=itemView.findViewById(R.id.tv_eventID);
 
 
-                titleButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        EventDetailsFragment eventDetailsFragment = EventDetailsFragment.newInstance(item);
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.content, eventDetailsFragment).addToBackStack(null)
-                                .commit();
-                    }
-                });
 
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
