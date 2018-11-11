@@ -107,8 +107,6 @@ public class UserActivity extends AppCompatActivity
                         //TODO profile picture beállítása
                     }
 
-
-
                 }
                 else{
                     Intent intent = new Intent(UserActivity.this, LoginActivity.class);
@@ -120,7 +118,9 @@ public class UserActivity extends AppCompatActivity
 
             @Override
             public void onFailure(Call call, Throwable t) {
-
+                Intent intent = new Intent(UserActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
     }
