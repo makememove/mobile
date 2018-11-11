@@ -37,7 +37,7 @@ public class FriendRemoveAdapter extends RecyclerView.Adapter<FriendRemoveAdapte
     @Override
     public void onBindViewHolder(@NonNull FriendRemoveAdapter.FriendViewHolder holder, int position){
         UserItem item = items.get(position);
-        holder.tv_id.setText(Integer.toString(item.getId()));
+        holder.tv_id.setText(Integer.toString(position+1));
         holder.tv_username.setText(item.getUserName());
 
         holder.item = item;
