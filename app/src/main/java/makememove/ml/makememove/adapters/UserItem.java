@@ -6,6 +6,11 @@ public class UserItem {
     private String lastName;
     private String userName;
 
+    public UserItem(int id, String userName){
+        this.id = id;
+        this.userName = userName;
+    }
+
     public int getId() {
         return id;
     }

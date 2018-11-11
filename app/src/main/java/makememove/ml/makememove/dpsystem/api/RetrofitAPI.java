@@ -70,11 +70,14 @@ public interface RetrofitAPI {
     Call<AuthInputDocument> acceptFriendRequest(@Header("Authorization") String token, @Path("userId") int id);
 
     @Headers("Content-type: application/json")
-    @POST("users/friends/requests/")
+    @GET("users/friends/requests")
     Call<FriendDocument> getRecievedFriendRequests(@Header("Authorization") String token);
 
     @Headers("Content-type: application/json")
-    @POST("users/friends/requests/sent")
+    @GET("users/friends/requests/sent")
     Call<FriendDocument> getSentFriendsRequests(@Header("Authorization") String token);
 
+    @Headers("Content-type: application/json")
+    @POST("users/friends/delete/{userId}")
+    Call<AuthInputDocument> deleteFriend(@Header("Authorization") String token, @Path("userId") int id);
 }

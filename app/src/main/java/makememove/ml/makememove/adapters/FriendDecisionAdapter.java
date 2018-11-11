@@ -86,7 +86,7 @@ public class FriendDecisionAdapter extends RecyclerView.Adapter<FriendDecisionAd
                 iv_picture = itemView.findViewById(R.id.iv_receivefriendprofile);
                 tv_username = itemView.findViewById(R.id.tv_receivefriendusername);
                 ib_remove = itemView.findViewById(R.id.ib_receiveremoveFriend);
-                ib_accept = itemView.findViewById(R.id.ib_acceptfriendrequest);
+                ib_accept = itemView.findViewById(R.id.ib_receiveacceptfriendrequest);
 
                 ib_remove.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -44,6 +44,10 @@ public class PostPresenter extends Presenter implements Callback {
         Call call = api.acceptFriendRequest(token,position);
         call.enqueue(this);
     }
+    public void deleteFriend(String token, int position){
+        Call call = api.deleteFriend(token, position);
+        call.enqueue(this);
+    }
 
     @Override
     public void onResponse(Call call, Response response) {

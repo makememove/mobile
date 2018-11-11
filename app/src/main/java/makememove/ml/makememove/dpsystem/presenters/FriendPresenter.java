@@ -2,6 +2,8 @@ package makememove.ml.makememove.dpsystem.presenters;
 
 import android.util.Log;
 
+import java.io.IOException;
+
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.documents.FriendDocument;
@@ -16,6 +18,10 @@ public class FriendPresenter extends Presenter implements Callback<FriendDocumen
 
     public FriendPresenter(FriendDocument doc){
         super();
+        this.document = doc;
+    }
+
+    public void setDocument(FriendDocument doc){
         this.document = doc;
     }
 
@@ -34,10 +40,17 @@ public class FriendPresenter extends Presenter implements Callback<FriendDocumen
         if(response.isSuccessful()){
             document.setData(response.body());
         }
+        else {
+            try {
+                Log.d("failure","failure"+response.errorBody().string());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
     public void onFailure(Call call, Throwable t) {
-
+        Log.d("onFailure","onFailure");
     }
 }

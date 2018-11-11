@@ -5,6 +5,10 @@ import android.util.Log;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.List;
+
+import makememove.ml.makememove.dpsystem.documents.FriendDocument;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.Friend;
 
 public class User {
     private String token;
@@ -22,6 +26,7 @@ public class User {
     private UserType userType;
     private String userString;
     private int type;
+    private List<Friend> friends;
 
 /////Getter/Setters////////
     public String getToken() {
@@ -136,12 +141,13 @@ public class User {
     }
 
 
-    /*
-    public static void setInstance(User user){
-        INSTANCE = user;
+    public List<Friend> getFriends() {
+        return friends;
     }
-*/
 
+    public void setFriends(List<Friend> friends) {
+        this.friends = friends;
+    }
 }
 
 

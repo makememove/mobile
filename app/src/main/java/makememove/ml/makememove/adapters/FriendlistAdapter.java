@@ -16,26 +16,26 @@ import makememove.ml.makememove.R;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.user.User;
 
-public class FriendRemoveAdapter extends RecyclerView.Adapter<FriendRemoveAdapter.FriendViewHolder>{
+public class FriendlistAdapter extends RecyclerView.Adapter<FriendlistAdapter.FriendViewHolder>{
 
     private final List<UserItem> items;
     private FriendDecisionAdapter.FriendItemClickListener listener;
-    public FriendRemoveAdapter(FriendDecisionAdapter.FriendItemClickListener listener){
+    public FriendlistAdapter(FriendDecisionAdapter.FriendItemClickListener listener){
         this.listener = listener;
         items = new ArrayList<>();
     }
 
     @NonNull
     @Override
-    public FriendRemoveAdapter.FriendViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+    public FriendlistAdapter.FriendViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         View itemView = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.myfriendcsempe,parent,false);
-        return new FriendRemoveAdapter.FriendViewHolder(itemView);
+        return new FriendlistAdapter.FriendViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FriendRemoveAdapter.FriendViewHolder holder, int position){
+    public void onBindViewHolder(@NonNull FriendlistAdapter.FriendViewHolder holder, int position){
         UserItem item = items.get(position);
         holder.tv_id.setText(Integer.toString(item.getId()));
         holder.tv_username.setText(item.getUserName());
@@ -92,7 +92,7 @@ public class FriendRemoveAdapter extends RecyclerView.Adapter<FriendRemoveAdapte
                     @Override
                     public void onClick(View view) {
                         PostPresenter pp = new PostPresenter();
-                        pp.denyFriendRequest(User.getInstance().getToken(),item.getId());
+                        pp.deleteFriend(User.getInstance().getToken(),item.getId());
                     }
                 });
 
@@ -100,4 +100,3 @@ public class FriendRemoveAdapter extends RecyclerView.Adapter<FriendRemoveAdapte
         }
     }
 }
-
