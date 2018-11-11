@@ -67,6 +67,8 @@ public class ProfileFragment extends Fragment {
 
             popularity.setText(String.valueOf(user.getPopularity()));
 
+            permission.setText(user.getUserString());
+
             birthday.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

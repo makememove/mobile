@@ -20,6 +20,7 @@ public class User {
     private Date birthday;
     private float popularity;
     private UserType userType;
+    private String userString;
 
 /////Getter/Setters////////
     public String getToken() {
@@ -113,6 +114,14 @@ public class User {
 
     public static User getInstance() {
         return INSTANCE;
+    }
+
+    public String getUserString() {
+        return userString;
+    }
+
+    public void setUserString(String userString) {
+        this.userString = userString;
     }
 
 

@@ -83,15 +83,19 @@ public class LoginActivity extends AppCompatActivity {
         switch(type){
             case 0:
                 User.getInstance().setUserType(new Admin());
+                User.getInstance().setUserString("Admin");
                 break;
             case 1:
                 User.getInstance().setUserType(new Creator());
+                User.getInstance().setUserString("Creator");
                 break;
             case 2:
                 User.getInstance().setUserType(new Normal());
+                User.getInstance().setUserString("Normal");
                 break;
             default:
                 User.getInstance().setUserType(new Normal());
+                User.getInstance().setUserString("Normal");
                 break;
         }
     }
