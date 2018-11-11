@@ -92,6 +92,10 @@
     <string name="my_events">My Events</string>
     <string name="joined_events">Joined Events</string>
     <string name="find_event_header">Find Event</string>
+    <string name="team_capacity">Team Capacity:</string>
+    <string name="member_capacity">Member Capacity:</string>
+    <string name="teamcapacityhint">team capacity</string>
+    <string name="member_capacityhint">member capacity</string>
 
 
     <string-array name="sports_array">

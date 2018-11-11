@@ -308,6 +308,90 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_teamCapacity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/team_capacity"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="20sp" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_teamcapacity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:text=""
+                            android:background="@color/background"
+                            android:theme="@style/inputtext"
+                            android:hint="@string/teamcapacityhint"
+                            android:inputType="numberSigned"
+                            android:singleLine="true"
+                            tools:ignore="HardcodedText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@color/background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_membercapacityheader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        android:text="@string/member_capacity"
+                        android:textColor="@color/NormaltextColor"
+                        android:textSize="20sp" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/background"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_membercapacity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:text=""
+                            android:background="@color/background"
+                            android:theme="@style/inputtext"
+                            android:hint="@string/member_capacityhint"
+                            android:inputType="numberSigned"
+                            android:singleLine="true"
+                            tools:ignore="HardcodedText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@color/background"
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:id="@+id/tv_skillMIN"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
