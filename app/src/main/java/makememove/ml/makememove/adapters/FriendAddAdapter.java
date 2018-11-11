@@ -93,6 +93,7 @@ public class FriendAddAdapter extends RecyclerView.Adapter<FriendAddAdapter.Frie
                     public void onClick(View view) {
                         PostPresenter pp = new PostPresenter();
                         pp.acceptFriendRequest(User.getInstance().getToken(),item.getId());
+                        removeItem(item);
                     }
                 });
 

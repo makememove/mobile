@@ -91,6 +91,7 @@ public class FriendlistAdapter extends RecyclerView.Adapter<FriendlistAdapter.Fr
                 ib_remove.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        removeItem(item);
                         PostPresenter pp = new PostPresenter();
                         pp.deleteFriend(User.getInstance().getToken(),item.getId());
                     }

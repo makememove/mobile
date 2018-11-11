@@ -91,6 +91,7 @@ public class FriendRemoveAdapter extends RecyclerView.Adapter<FriendRemoveAdapte
                 ib_remove.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        removeItem(item);
                         PostPresenter pp = new PostPresenter();
                         pp.denyFriendRequest(User.getInstance().getToken(),item.getId());
                     }

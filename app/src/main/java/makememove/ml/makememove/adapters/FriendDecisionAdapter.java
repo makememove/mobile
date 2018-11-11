@@ -93,6 +93,7 @@ public class FriendDecisionAdapter extends RecyclerView.Adapter<FriendDecisionAd
                     public void onClick(View view) {
                         PostPresenter pp = new PostPresenter();
                         pp.denyFriendRequest(User.getInstance().getToken(),item.getId());
+                        removeItem(item);
                     }
                 });
 
@@ -101,6 +102,7 @@ public class FriendDecisionAdapter extends RecyclerView.Adapter<FriendDecisionAd
                     public void onClick(View view) {
                         PostPresenter pp = new PostPresenter();
                         pp.acceptFriendRequest(User.getInstance().getToken(),item.getId());
+                        removeItem(item);
                     }
                 });
 
