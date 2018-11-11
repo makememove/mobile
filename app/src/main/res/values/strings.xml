@@ -70,7 +70,7 @@
     <string name="event">Event</string>
     <string name="join">Join</string>
     <string name="members">Members:</string>
-    <string name="unfinished_events">Unlocked Events</string>
+    <string name="unfinished_events">Unfinished Events</string>
     <string name="pick_date">Pick Date</string>
     <string name="time">Time:</string>
     <string name="timehint">time</string>
