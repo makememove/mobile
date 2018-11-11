@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.adapters.EventAdapter;
 import makememove.ml.makememove.adapters.FriendAddAdapter;
@@ -22,11 +24,15 @@ import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.documents.FriendDocument;
+import makememove.ml.makememove.dpsystem.documents.UserDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Friend;
 import makememove.ml.makememove.dpsystem.presenters.DataHandler;
 import makememove.ml.makememove.dpsystem.presenters.FriendPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FriendsFragment extends Fragment
         implements FriendRemoveAdapter.FriendItemClickListener,
@@ -46,7 +52,7 @@ public class FriendsFragment extends Fragment
     private FriendlistAdapter friendAdapter;
 
     private static FriendDocument document;
-    private static FriendDocument friendDocument;
+    private static List<Friend> friendDocument;
 
     private void initRecylerViewSent(){
         sentRecyclerView = this.getView().findViewById(R.id.rv_friendsentrequestlist);
@@ -105,8 +111,8 @@ public class FriendsFragment extends Fragment
             }
         }
 
-        if(friendRecyclerView.getAdapter().getItemCount()==0&&User.getInstance().getFriends().size()!=0){
-            for (Friend doc: User.getInstance().getFriends()) {
+        if(friendRecyclerView.getAdapter().getItemCount()==0&&friendDocument.size()!=0){
+            for (Friend doc:friendDocument) {
                 friendAdapter.addItem(new UserItem(doc.getId(),doc.getUserName()));
             }
         }
@@ -119,9 +125,6 @@ public class FriendsFragment extends Fragment
         document = new FriendDocument();
         document.attach(this);
 
-        friendDocument = new FriendDocument();
-        friendDocument.attach(this);
-
         Layout = this.getView();
         if (Layout != null) {
             initRecylerViewSent();
@@ -131,7 +134,25 @@ public class FriendsFragment extends Fragment
             FriendPresenter fp = new FriendPresenter(document);
             fp.getSentFriendsRequests(User.getInstance().getToken());
             fp.getRecievedFriendRequests(User.getInstance().getToken());
+         //   final FriendsFragment fg = this;
 
+            DataHandler dh = DataHandler.getInstance();
+            dh.setUserData(new Callback<UserDocument>() {
+                @Override
+                public void onResponse(Call<UserDocument> call, Response<UserDocument> response) {
+                    if(response.isSuccessful()){
+                        UserDocument ud = response.body();
+                       // ud.attach(fg);
+                        friendDocument = ud.getUser().getFriends();
+                        //ud.sendNotification();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+
+                }
+            });
         }
     }
 }

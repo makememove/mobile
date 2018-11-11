@@ -2,9 +2,10 @@ package makememove.ml.makememove.dpsystem.documents;
 
 import makememove.ml.makememove.user.User;
 
-public class UserDocument {
+public class UserDocument extends Document {
     private User user;
 
+    public UserDocument(){ super();}
     public UserDocument(User user) {
         super();
         this.user = user;
@@ -16,5 +17,11 @@ public class UserDocument {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public void setData(Document document) {
+        this.user = ((UserDocument) document).getUser();
+        sendNotification();
     }
 }
