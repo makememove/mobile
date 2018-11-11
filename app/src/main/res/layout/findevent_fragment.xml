@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/Headerbg"
-            android:text="@string/events"
+            android:text="@string/find_event_header"
             android:textAlignment="center"
             android:textColor="@color/Headertext"
             android:textSize="30sp"

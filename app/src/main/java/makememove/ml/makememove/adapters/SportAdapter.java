@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
     @Override
     public void onBindViewHolder(@NonNull SportViewHolder holder, int position){
         SportItem item = items.get(position);
-        holder.selectButton.setText(item.category);
+        holder.tv_title.setText(item.category);
 
         holder.item = item;
     }
@@ -75,19 +76,20 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
 
 
     class SportViewHolder extends RecyclerView.ViewHolder {
-        Button selectButton;
         ImageButton removeButton;
+        TextView  tv_title;
 
         SportItem item;
 
 
         SportViewHolder(View itemView) {
             super(itemView);
-            if (itemView != null) {
-                selectButton = itemView.findViewById(R.id.sportButton);
-                removeButton = itemView.findViewById(R.id.removeButton);
 
-                selectButton.setOnClickListener(new View.OnClickListener() {
+            if (itemView != null) {
+
+                tv_title=itemView.findViewById(R.id.tv_sporttitle);
+
+                itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(
@@ -98,6 +100,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                     }
                 });
 
+                removeButton = itemView.findViewById(R.id.removeButton);
                 removeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
