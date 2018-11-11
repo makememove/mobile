@@ -18,6 +18,7 @@ import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
+import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.persistence.SportItem;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
@@ -46,10 +47,8 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
         SportItem item = items.get(position);
         holder.tv_title.setText(item.category);
         holder.item = item;
+        GlobalClass.setSportPicture(item.category,holder.iv_sportpicture);
 
-        if(item.category.equals("Basketball")) holder.iv_sportpicture.setImageResource(R.drawable.basketball);
-        else if(item.category.equals("Football")) holder.iv_sportpicture.setImageResource(R.drawable.football_1);
-        //TODO több sport esetén kiegészítendő
     }
 
     public void addItem(SportItem item) {

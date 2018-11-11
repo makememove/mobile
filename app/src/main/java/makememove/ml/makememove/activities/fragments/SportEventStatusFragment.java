@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
@@ -30,6 +31,7 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
     private TextView sportName;
     private RecyclerView recyclerView;
     private EventAdapter adapter;
+    private ImageView iv_sportpicture;
     private ImageButton previousButton;
     private ImageButton nextButton;
     private static String sportNameString;
@@ -83,6 +85,8 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
             sportNameString = UserMainFragment.getName(sportID);
             sportName.setText(sportNameString);
 
+            iv_sportpicture=Layout.findViewById(R.id.iv_statusSportPicture);
+            GlobalClass.setSportPicture(sportNameString,iv_sportpicture);
 
 
 
@@ -101,7 +105,7 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
                     }
                     SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(sportID);
                     fragmentManager.beginTransaction()
-                            .replace(R.id.content, sportEventFragment).addToBackStack(null)
+                            .replace(R.id.content, sportEventFragment)
                             .commit();
                 }
             });
@@ -120,7 +124,7 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
                     }
                     SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(sportID);
                     fragmentManager.beginTransaction()
-                            .replace(R.id.content, sportEventFragment).addToBackStack(null)
+                            .replace(R.id.content, sportEventFragment)
                             .commit();
                 }
             });

@@ -83,12 +83,12 @@
     <string name="creator">TextView</string>
     <string name="numpeople">TextView</string>
     <string name="eventtype">TextView</string>
-    <string name="close_event">Unlocked Event</string>
-    <string name="finished_events">Locked Events</string>
+    <string name="close_event">Unfinished Events</string>
+    <string name="finished_events">Finished Events</string>
     <string name="eventstatus">Status</string>
-    <string name="nav_finished">Locked</string>
-    <string name="nav_unfinished">Unlocked</string>
-    <string name="nav_eventtitle">Event</string>
+    <string name="nav_finished">Finished</string>
+    <string name="nav_unfinished">Unfinished</string>
+    <string name="nav_eventtitle">Events</string>
     <string name="my_events">My Events</string>
     <string name="joined_events">Joined Events</string>
     <string name="find_event_header">Find Event</string>
