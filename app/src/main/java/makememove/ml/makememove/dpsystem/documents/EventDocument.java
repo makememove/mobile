@@ -21,6 +21,9 @@ public class EventDocument extends Document{
     private int sportId;
     private int creatorId;
     private int categoryId;
+    private Category category;
+    @SerializedName("creator")
+    private CreatorMockup creatorMockup;
 
     public EventDocument(){
         super();
@@ -125,5 +128,22 @@ public class EventDocument extends Document{
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+
+    public CreatorMockup getCreatorMockup() {
+        return creatorMockup;
+    }
+
+    public void setCreatorMockup(CreatorMockup creatorMockup) {
+        this.creatorMockup = creatorMockup;
     }
 }
