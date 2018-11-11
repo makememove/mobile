@@ -20,6 +20,7 @@ import makememove.ml.makememove.activities.fragments.eventfragments.FindEventFra
 import makememove.ml.makememove.activities.fragments.FriendsFragment;
 import makememove.ml.makememove.activities.fragments.ProfileFragment;
 import makememove.ml.makememove.activities.fragments.RanklistFragment;
+import makememove.ml.makememove.activities.fragments.eventfragments.FinishedEventsFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.UnfinishedEventFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.datahandler.TokenHandler;
@@ -156,6 +157,12 @@ public class UserActivity extends AppCompatActivity
                      .commit();
          } else if (id == R.id.nav_unfinishedevent) {
              UnfinishedEventFragment userFragment= new UnfinishedEventFragment();
+             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+             fragmentManager.beginTransaction()
+                     .replace(R.id.content, userFragment)
+                     .commit();
+         } else if (id == R.id.nav_finishedevent) {
+             FinishedEventsFragment userFragment= new FinishedEventsFragment();
              fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
              fragmentManager.beginTransaction()
                      .replace(R.id.content, userFragment)

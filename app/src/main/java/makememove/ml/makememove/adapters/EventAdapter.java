@@ -44,6 +44,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         holder.dateTextView.setText("Date: "+dt.format(item.getDate()));
         holder.eventTypeTextView.setText("Category ID: "+Integer.toString(item.getCategoryId()));//TODO kategória nevének kiírása, nem IDt
+        holder.id.setText(Integer.toString(position+1));
 
         holder.item = item;
     }
@@ -70,6 +71,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         TextView creatorTextView;
         TextView dateTextView;
         TextView eventTypeTextView;
+        TextView id;
 
 
         EventViewHolder(View itemView) {
@@ -79,6 +81,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 creatorTextView = itemView.findViewById(R.id.tv_EventCreator);
                 dateTextView = itemView.findViewById(R.id.tv_Eventdate);
                 eventTypeTextView = itemView.findViewById(R.id.tv_eventtype);
+                id=itemView.findViewById(R.id.tv_eventID);
+
 
                 titleButton.setOnClickListener(new View.OnClickListener() {
                     @Override

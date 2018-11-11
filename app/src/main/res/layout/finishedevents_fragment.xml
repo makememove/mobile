@@ -6,12 +6,12 @@
     >
 
     <TextView
-        android:id="@+id/tv_unfineventsheader"
+        android:id="@+id/tv_fineventsheader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/Headerbg"
         android:paddingBottom="10dp"
-        android:text="@string/unfinished_events"
+        android:text="@string/finished_events"
         android:textAlignment="center"
         android:textColor="@color/Headertext"
         android:textSize="30sp"
@@ -29,7 +29,7 @@
             android:orientation="vertical" >
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_unfinishedevents"
+                android:id="@+id/rv_finishedevents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/background" />

@@ -2,8 +2,9 @@
 <android.widget.FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/Headerbg"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:background="@color/Headerbg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,31 +13,36 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_neventID"
+            android:id="@+id/tv_eventID"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:background="@color/Headerbg"
-            android:textColor="@color/NormaltextColor"
             android:gravity="center_vertical"
             android:text="ID"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/NormaltextColor" />
 
         <Button
             android:id="@+id/eventButton"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1.4"
             android:background="@color/Headerbg"
-            android:padding="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:text="@string/titlehint"
             android:textColor="@color/Headertext"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold|italic" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:background="@color/Headerbg"
             android:orientation="vertical">
@@ -47,7 +53,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/Headerbg"
                 android:text="Creator:"
-                android:textColor="@color/NormaltextColor" />
+                android:textColor="@color/NormaltextColor"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_Eventdate"
@@ -55,7 +62,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/Headerbg"
                 android:text="Date:"
-                android:textColor="@color/NormaltextColor" />
+                android:textColor="@color/NormaltextColor"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_eventtype"
@@ -63,10 +71,10 @@
                 android:layout_height="wrap_content"
                 android:background="@color/Headerbg"
                 android:text="Category: "
-                android:textColor="@color/NormaltextColor" />
+                android:textColor="@color/NormaltextColor"
+                android:textSize="12sp" />
 
         </LinearLayout>
-
 
 
     </LinearLayout>
