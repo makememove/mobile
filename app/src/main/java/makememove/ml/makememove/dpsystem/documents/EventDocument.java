@@ -24,6 +24,7 @@ public class EventDocument extends Document{
     private Category category;
     @SerializedName("creator")
     private CreatorMockup creatorMockup;
+    private int maxAttending;
 
     public EventDocument(){
         super();
@@ -145,5 +146,13 @@ public class EventDocument extends Document{
 
     public void setCreatorMockup(CreatorMockup creatorMockup) {
         this.creatorMockup = creatorMockup;
+    }
+
+    public int getMaxAttending() {
+        return maxAttending;
+    }
+
+    public void setMaxAttending(int maxAttandances) {
+        this.maxAttending = maxAttandances;
     }
 }

@@ -1,13 +1,12 @@
 package makememove.ml.makememove.activities.fragments.eventfragments;
 
 import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,19 +16,16 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import makememove.ml.makememove.R;
-import makememove.ml.makememove.activities.UserActivity;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.Category;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.user.User;
 
@@ -49,6 +45,7 @@ public class CreateEventFragment extends Fragment {
     private EditText et_maxskillpoint;
     private EditText et_description;
     private Button bt_create;
+    private EditText et_attandances;
 
     private View Layout;
     @Override
@@ -131,6 +128,7 @@ public class CreateEventFragment extends Fragment {
             s_sports = Layout.findViewById(R.id.s_Sport);
             s_category = Layout.findViewById(R.id.s_Category);
             et_description = Layout.findViewById(R.id.et_description);
+            et_attandances = Layout.findViewById(R.id.et_teamcapacity);
 
 
 
@@ -166,6 +164,7 @@ public class CreateEventFragment extends Fragment {
                             event.setPublished(s_visibility.getSelectedItemPosition()+1);
                             event.setLocation( et_location.getText().toString());
                             event.setLength( Integer.parseInt(et_length.getText().toString()));
+                            event.setMaxAttending(Integer.parseInt(et_attandances.getText().toString()));
                             event.setLowestSkillPoint(Integer.parseInt( et_minskillpoint.getText().toString()));
                             event.setHighestSkillPoint(Integer.parseInt(  et_maxskillpoint.getText().toString()));
 
@@ -214,17 +213,17 @@ public class CreateEventFragment extends Fragment {
             return false;
         }
         //ki van e töltve a length fül
-        if(1>=Length.length()){
+        if(1>Length.length()){
             et_length.setError("Length must be fulfilled at least 1 character!");
             return false;
         }
         //ki van e töltve a minskillpoint fül
-        if(1>=minSkillPoint.length()){
+        if(1>minSkillPoint.length()){
             et_minskillpoint.setError("MinSkillPoint must be fulfilled at least 1 character!");
             return false;
         }
         //ki van e töltve a maxskillpoint fül
-        if(1>=maxSkillPoint.length()){
+        if(1>maxSkillPoint.length()){
             et_maxskillpoint.setError("MaxSkillPoint must be fulfilled at least 1 character!");
             return false;
         }
@@ -251,13 +250,13 @@ public class CreateEventFragment extends Fragment {
         }
 
         //ki van e töltve a minskillpoint fül
-        if(1>=teamcap.length()){
+        if(1>teamcap.length()){
             et_teamcapacity.setError("Team Capacity must be fulfilled at least 1 character!");
             return false;
         }
 
         //ki van e töltve a minskillpoint fül
-        if(1>=membercap.length()){
+        if(1>membercap.length()){
             et_membercapacity.setError("Member Capacity must be fulfilled at least 1 character!");
             return false;
         }
