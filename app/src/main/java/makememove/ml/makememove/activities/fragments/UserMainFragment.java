@@ -224,21 +224,33 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 public void onClick(View view) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(view.getContext(), R.style.AlertDialogCustom));
                     dialog.setTitle("Choose a Sport: ");
-                    String[] arrayItems = null;
-                    arrayItems = new String[sportList.size()];
+
+
+
+                    List<String> list = new ArrayList<>();
+                    for(int j=0;j<sportList.size();j++){
+                        list.add(sportList.get(j).getName());
+                    }
+                    list.removeAll(preferredSportList)   ;
+
                     int i = 0;
-                    for (Sport item:sportList) {
-                        arrayItems[i]= item.getName();
+                    final String [] arrayItems = new String[list.size()];
+                    for (String item:list) {
+                        arrayItems[i]= item;
                         i++;
                     }
+
                     dialog.setItems(arrayItems, new DialogInterface.OnClickListener() {
 
                         @Override
                         public void onClick(DialogInterface dialog, int position) {
-                            if(!preferredSportList.contains(sportList.get(position).getName())) {
-                                onShoppingItemCreated(getSportItem(position));
+                            Log.d("tester",Integer.toString(preferredSportList.size()));
+                            Log.d("tester",Integer.toString(sportList.size()));
+
+                            if(!preferredSportList.contains(arrayItems[position])) {
+                                onShoppingItemCreated(getSportItembycategory(arrayItems[position]));
                                 followSport(token, position + 1);
-                                preferredSportList.add(sportList.get(position).getName());
+                                preferredSportList.add(arrayItems[position]);
                             }
                             else
                                 Snackbar.make(getActivity().findViewById(R.id.content), "The selected sport is already in the preferred list!", Snackbar.LENGTH_LONG).show();
@@ -263,6 +275,15 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         sportItem.category = sportList.get(position).getName();
         return sportItem;
     }
+
+    private SportItem getSportItembycategory(String name){
+        SportItem sportItem = new SportItem();
+        for(int i=0;i<sportList.size();i++){
+            if(name.equals(sportList.get(i).getName()))sportItem.category=name;
+        }
+        return sportItem;
+    }
+
     @SuppressLint("StaticFieldLeak")
     public void onShoppingItemCreated(final SportItem newItem) {
         new AsyncTask<Void, Void, SportItem>() {
