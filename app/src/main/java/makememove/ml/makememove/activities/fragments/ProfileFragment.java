@@ -63,6 +63,8 @@ public class ProfileFragment extends Fragment {
             if(user.getBirthday()!= null)
                  birthday.setText(user.getBirthday().toString());
 
+            //TODO Gender bekötése
+
             email.setText(user.getEmail());
 
             popularity.setText(String.valueOf(user.getPopularity()));

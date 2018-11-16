@@ -31,4 +31,8 @@ public class EventModifyFragment extends Fragment {
             //TODO bekötni mindent
         }
     }
+
+
+
+    //TODO validáció idemásolása createevent ből
 }

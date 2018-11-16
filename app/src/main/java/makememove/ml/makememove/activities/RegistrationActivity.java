@@ -103,23 +103,39 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private  boolean validation(String username,String email, String p1,String p2){
 
-        if(5>=username.length() || username.length()>=12){
-            et_username.setError("Username must be between 5 and 12 character");
+        if(username.length()<5){
+            et_username.setError("Username must be at least 5 character!");
+            et_username.requestFocus();
+            return false;
+        }
+
+        if(username.length()>20){
+            et_username.setError("Username must be at most 20 character!");
+            et_username.requestFocus();
             return false;
         }
 
         if(!isEmailValid(email)){
-            et_email.setError("Not valid email Address");
+            et_email.setError("Not valid email Address!");
+            et_email.requestFocus();
             return false;
         }
 
-        if(5>=p1.length() || p1.length()>=12){
-            et_password.setError("Password must be between 5 and 12 character");
+        if(5>p1.length()){
+            et_password.setError("Password must be at least 5 character!");
+            et_password.requestFocus();
+            return false;
+        }
+
+        if(p1.length()>30){
+            et_password.setError("Password must be at most 30 character!");
+            et_password.requestFocus();
             return false;
         }
 
         if(!p2.equals(p1)){
-            et_confirmpassword.setError("Password must be the same");
+            et_confirmpassword.setError("Confirm password must be the same!");
+            et_confirmpassword.requestFocus();
             return false;
         }
 

@@ -191,43 +191,104 @@ public class CreateEventFragment extends Fragment {
 
     private  boolean validation(String title,String date, String time, String location,String Length,String minSkillPoint,String maxSkillPoint,String teamcap,String membercap) throws ParseException {
 
-        //ki van e töltve a title fül
-        if(4>=title.length()){
-            et_title.setError("Title must be fulfilled at least 4 character!");
+
+        if(title.length()<4){
+            et_title.setError("Title must be  at least 4 character!");
+            et_title.requestFocus();
             return false;
         }
 
-        //ki van e töltve a date fül
+        if(title.length()>20){
+            et_title.setError("Title must be  at most 20 character!");
+            et_title.requestFocus();
+            return false;
+        }
+
+
         if(date.equals(getString(R.string.pick_date))){
             Snackbar.make(getActivity().findViewById(R.id.content), "Error: Pick a Date!", Snackbar.LENGTH_LONG).show();
             return false;
         }
-        //ki van e töltve a time fül
+
+
         if(time.equals(getString(R.string.pick_time))){
             Snackbar.make(getActivity().findViewById(R.id.content), "Error: Pick a Time!", Snackbar.LENGTH_LONG).show();
             return false;
         }
-        //ki van e töltve a location fül
-        if(4>=location.length()){
-            et_location.setError("Location must be fulfilled at least 4 character!");
+
+        if(location.length()<1){
+            et_location.setError("Location must be filled!");
+            et_location.requestFocus();
             return false;
         }
-        //ki van e töltve a length fül
-        if(1>Length.length()){
-            et_length.setError("Length must be fulfilled at least 1 character!");
+
+        if(location.length()>40){
+            et_location.setError("Location must be at most 40 character!");
+            et_location.requestFocus();
             return false;
         }
-        //ki van e töltve a minskillpoint fül
-        if(1>minSkillPoint.length()){
-            et_minskillpoint.setError("MinSkillPoint must be fulfilled at least 1 character!");
+
+        if(Length.length()<1){
+            et_length.setError("Length must be filled!");
+            et_length.requestFocus();
             return false;
         }
-        //ki van e töltve a maxskillpoint fül
-        if(1>maxSkillPoint.length()){
-            et_maxskillpoint.setError("MaxSkillPoint must be fulfilled at least 1 character!");
+
+        if(Length.length()>2){
+            et_length.setError("Length must be at most 2 character!");
+            et_length.requestFocus();
             return false;
         }
-        //date és time nagyobb mint actual time
+
+        if(teamcap.length()<1){
+            et_teamcapacity.setError("Team Capacity must be filled!");
+            et_teamcapacity.requestFocus();
+            return false;
+        }
+
+        if(teamcap.length()>2){
+            et_teamcapacity.setError("Team Capacity must be at most 2 character!");
+            et_teamcapacity.requestFocus();
+            return false;
+        }
+
+
+        if(membercap.length()<1){
+            et_membercapacity.setError("Member Capacity must be filled!");
+            et_membercapacity.requestFocus();
+            return false;
+        }
+
+        if(membercap.length()>2){
+            et_membercapacity.setError("Member Capacity must be at most 2 character!");
+            et_membercapacity.requestFocus();
+            return false;
+        }
+
+        if(minSkillPoint.length()<1){
+            et_minskillpoint.setError("MinSkillPoint must be filled!");
+            et_minskillpoint.requestFocus();
+            return false;
+        }
+
+        if(minSkillPoint.length()>4){
+            et_minskillpoint.setError("MinSkillPoint must be at most 4 character!");
+            et_minskillpoint.requestFocus();
+            return false;
+        }
+
+        if(maxSkillPoint.length()<1){
+            et_maxskillpoint.setError("MaxSkillPoint must be filled!");
+            et_maxskillpoint.requestFocus();
+            return false;
+        }
+
+        if(maxSkillPoint.length()>4){
+            et_maxskillpoint.setError("MaxSkillPoint must be at most 4 character!");
+            et_maxskillpoint.requestFocus();
+            return false;
+        }
+
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat dateformat3 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         try {
@@ -243,23 +304,15 @@ public class CreateEventFragment extends Fragment {
             e.printStackTrace();
         }
 
-        //minskillpoint kisebb mint max skillpoint
+
         if(Integer.parseInt(minSkillPoint)>=Integer.parseInt(maxSkillPoint)){
             Snackbar.make(getActivity().findViewById(R.id.content), "Error: MaxSkillPoint must be higher then MinSkillPoint!", Snackbar.LENGTH_LONG).show();
+            et_maxskillpoint.requestFocus();
             return false;
         }
 
-        //ki van e töltve a minskillpoint fül
-        if(1>teamcap.length()){
-            et_teamcapacity.setError("Team Capacity must be fulfilled at least 1 character!");
-            return false;
-        }
 
-        //ki van e töltve a minskillpoint fül
-        if(1>membercap.length()){
-            et_membercapacity.setError("Member Capacity must be fulfilled at least 1 character!");
-            return false;
-        }
+
 
 
         return true;
