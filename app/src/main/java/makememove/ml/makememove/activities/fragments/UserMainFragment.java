@@ -89,11 +89,11 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     }
 
     public static int getListSize(){
-        return sportList.size();
+        return preferredSportList.size();
     }
     public static String getName(int position){
         if(position != -1)
-            return sportList.get(position).getName();
+            return preferredSportList.get(position);
         return "SportName";
     }
 
