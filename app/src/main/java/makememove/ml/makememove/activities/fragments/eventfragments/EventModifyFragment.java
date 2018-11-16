@@ -28,7 +28,7 @@ public class EventModifyFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Layout = this.getView();
         if (Layout != null) {
-            //TODO bekötni mindent
+            //TODO bekötni mindent, érdemes másolni createeventFragment ből, kicsit átalakítva
         }
     }
 

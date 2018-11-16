@@ -100,7 +100,8 @@ public class FindEventFragment extends Fragment {
                     final DatePicker dpStartDate = (DatePicker) customView.findViewById(R.id.simpleDatePicker);
                     Date today= new Date();
                     dpStartDate.setMinDate(today.getTime());
-                    dpStartDate.setSpinnersShown(false);
+                    dpStartDate.setCalendarViewShown(false);
+                    dpStartDate.setSpinnersShown(true);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                     builder.setView(customView); // Set the view of the dialog to your custom layout

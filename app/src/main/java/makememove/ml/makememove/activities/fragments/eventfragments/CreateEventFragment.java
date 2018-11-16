@@ -69,7 +69,8 @@ public class CreateEventFragment extends Fragment {
                     final DatePicker dpStartDate = (DatePicker) customView.findViewById(R.id.simpleDatePicker);
                     Date today= new Date();
                     dpStartDate.setMinDate(today.getTime());
-                    dpStartDate.setSpinnersShown(false);
+                    dpStartDate.setCalendarViewShown(false);
+                    dpStartDate.setSpinnersShown(true);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                     builder.setView(customView); // Set the view of the dialog to your custom layout
@@ -78,9 +79,9 @@ public class CreateEventFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             int Year = dpStartDate.getYear();
-                            int Month = dpStartDate.getMonth();
+                            int Month = dpStartDate.getMonth()+1;
                             int Day = dpStartDate.getDayOfMonth();
-                            bt_datepicker.setText(Integer.toString(Year)+"-"+Integer.toString(Month)+"-"+Integer.toString(Day));
+                            bt_datepicker.setText(String.format("%04d",Year)+"-"+ String.format("%02d",Month) + "-"+String.format("%02d",Day));
                             dialog.dismiss();
                         }});
 
@@ -108,7 +109,7 @@ public class CreateEventFragment extends Fragment {
                             int hour = timePicker.getHour();
                             int min = timePicker.getMinute();
                             int sec = 0;
-                            bt_Timepicker.setText(Integer.toString(hour)+":"+Integer.toString(min)+":"+Integer.toString(sec));
+                            bt_Timepicker.setText(String.format("%02d",hour)+":"+ String.format("%02d",min) + ":"+String.format("%02d",sec));
                             dialog.dismiss();
                         }});
 
@@ -138,6 +139,7 @@ public class CreateEventFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     try {
+
                         if(validation(
                                 et_title.getText().toString(),
                                 bt_datepicker.getText().toString(),

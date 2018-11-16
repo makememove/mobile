@@ -16,6 +16,8 @@ import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Date;
+
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.user.User;
 
@@ -77,7 +79,9 @@ public class ProfileFragment extends Fragment {
                     LayoutInflater inflater = (LayoutInflater) getLayoutInflater();
                     View customView = inflater.inflate(R.layout.datapicker, null);
                     final DatePicker dpStartDate = (DatePicker) customView.findViewById(R.id.simpleDatePicker);
-                    dpStartDate.setSpinnersShown(false);
+                    dpStartDate.setCalendarViewShown(false);
+                    dpStartDate.setSpinnersShown(true);
+                    dpStartDate.setMaxDate(new Date().getTime());
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                     builder.setView(customView); // Set the view of the dialog to your custom layout
@@ -86,9 +90,9 @@ public class ProfileFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             int Year = dpStartDate.getYear();
-                            int Month = dpStartDate.getMonth();
+                            int Month = dpStartDate.getMonth()+1;
                             int Day = dpStartDate.getDayOfMonth();
-                            birthday.setText(Integer.toString(Year)+"-"+Integer.toString(Month)+"-"+Integer.toString(Day));
+                            birthday.setText(String.format("%04d",Year)+"-"+ String.format("%02d",Month) + "-"+String.format("%02d",Day));
                             dialog.dismiss();
                         }});
 
