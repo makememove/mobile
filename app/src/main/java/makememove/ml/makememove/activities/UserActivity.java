@@ -43,24 +43,12 @@ public class UserActivity extends AppCompatActivity
     private SportAdapter.SportItemClickListener listener;
     public static FragmentManager fragmentManager;
     private DrawerLayout drawer;
+    ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(0).setChecked(true);
 
         try {
             TokenHandler ts = new TokenHandler();
@@ -76,10 +64,44 @@ public class UserActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+        toggle.syncState();
+
+
         fragmentManager = getSupportFragmentManager();
         UserMainFragment userMainFragment = new UserMainFragment();
         listener = userMainFragment;
         fragmentManager.beginTransaction().replace(R.id.content,userMainFragment,"mainFragment").commit();
+    }
+
+    private void initDrawer(Response<UserDocument> response){
+        drawer.addDrawerListener(toggle);
+
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+
+        TextView username=drawer.findViewById(R.id.tv_usernamemenu);
+        username.setText(response.body().getUser().getUserName());
+
+        TextView level=drawer.findViewById(R.id.tv_levelnumbermenu);
+        level.setText(Integer.toString(response.body().getUser().getLevel()));
+
+        TextView xp=drawer.findViewById(R.id.tv_xpmenu);
+        xp.setText(Integer.toString(response.body().getUser().getExperience()));
+
+
+        ImageView picture=drawer.findViewById(R.id.iv_profilemenu);
+        if(response.body().getUser().getPicture()!=null) {
+            //TODO profile picture beállítása
+        }
     }
 
     public void setUserData(){
@@ -91,22 +113,7 @@ public class UserActivity extends AppCompatActivity
                     UserDocument up = response.body();
                     setUserType(response.body().getUser().getType());
                     User.setEveryThing(up.getUser());
-
-                    TextView username=drawer.findViewById(R.id.tv_usernamemenu);
-                    username.setText(response.body().getUser().getUserName());
-
-                    TextView level=drawer.findViewById(R.id.tv_levelnumbermenu);
-                    level.setText(Integer.toString(response.body().getUser().getLevel()));
-
-                    TextView xp=drawer.findViewById(R.id.tv_xpmenu);
-                    xp.setText(Integer.toString(response.body().getUser().getExperience()));
-
-
-                    ImageView picture=drawer.findViewById(R.id.iv_profilemenu);
-                    if(response.body().getUser().getPicture()!=null) {
-                        //TODO profile picture beállítása
-                    }
-
+                    initDrawer(response);
                 }
                 else{
                     Intent intent = new Intent(UserActivity.this, LoginActivity.class);
