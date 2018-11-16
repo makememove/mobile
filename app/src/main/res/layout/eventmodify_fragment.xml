@@ -38,7 +38,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -49,34 +49,37 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/title"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
+                        android:gravity="center_vertical"
+                        android:background="@color/background">
+
                         <EditText
                             android:id="@+id/et_titleofevent"
-                            android:theme="@style/inputtext"
-                            android:background="@color/background"
                             android:layout_width="match_parent"
-                            android:text=""
                             android:layout_height="match_parent"
+                            android:background="@color/background"
                             android:ems="10"
+                            android:gravity="center_vertical"
                             android:hint="@string/titlehint"
                             android:inputType="textPersonName"
-                            android:singleLine="true" />
+                            android:singleLine="true"
+                            android:text=""
+                            android:theme="@style/inputtext" />
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -84,12 +87,13 @@
                     <TextView
                         android:id="@+id/tv_category"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/category"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         tools:text="Category: " />
 
                     <Spinner
@@ -97,6 +101,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:entries="@array/category_array"
                         android:popupBackground="@color/NormaltextColor" />
@@ -105,7 +110,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -113,18 +118,20 @@
                     <TextView
                         android:id="@+id/tv_sporttype"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/sporttype"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/s_Sport"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:popupBackground="@color/NormaltextColor" />
 
@@ -132,7 +139,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -140,20 +147,23 @@
                     <TextView
                         android:id="@+id/tv_date"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/date"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/bt_datepicker"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/Headerbg"
+                        android:gravity="center_vertical"
                         android:text="@string/pick_date"
+                        android:textAlignment="center"
                         android:textColor="@color/NormaltextColor"
                         android:textSize="16sp" />
 
@@ -162,7 +172,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -170,20 +180,23 @@
                     <TextView
                         android:id="@+id/tv_time"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/time"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/bt_timepicker"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/Headerbg"
+                        android:gravity="center_vertical"
                         android:text="@string/pick_time"
+                        android:textAlignment="center"
                         android:textColor="@color/NormaltextColor"
                         android:textSize="16sp" />
 
@@ -191,10 +204,9 @@
                 </LinearLayout>
 
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -202,18 +214,20 @@
                     <TextView
                         android:id="@+id/tv_visibility"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/visibility"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/s_visibility"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:entries="@array/visibility_array"
                         android:popupBackground="@color/NormaltextColor" />
@@ -223,7 +237,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -231,38 +245,40 @@
                     <TextView
                         android:id="@+id/tv_location"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/location"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
+                        android:gravity="center_vertical"
+                        android:background="@color/background">
 
                         <EditText
                             android:id="@+id/et_location"
-                            android:theme="@style/inputtext"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:ems="10"
-                            android:text=""
                             android:background="@color/background"
+                            android:ems="10"
+                            android:gravity="center_vertical"
                             android:hint="location"
                             android:inputType="textPersonName"
-                            android:singleLine="true" />
+                            android:singleLine="true"
+                            android:text=""
+                            android:theme="@style/inputtext" />
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -270,19 +286,20 @@
                     <TextView
                         android:id="@+id/tv_Length"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/length"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
+                        android:gravity="center_vertical"
+                        android:background="@color/background">
 
                         <EditText
                             android:id="@+id/et_length"
@@ -290,6 +307,7 @@
                             android:layout_height="match_parent"
                             android:background="@color/background"
                             android:ems="10"
+                            android:gravity="center_vertical"
                             android:hint="@string/lengthhint"
                             android:inputType="number"
                             android:singleLine="true"
@@ -302,7 +320,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -310,31 +328,33 @@
                     <TextView
                         android:id="@+id/tv_modifyteamCapacity"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/team_capacity"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
+                        android:gravity="center_vertical"
+                        android:background="@color/background">
 
                         <EditText
                             android:id="@+id/et_modifyteamcapacity"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:ems="10"
-                            android:text=""
                             android:background="@color/background"
-                            android:theme="@style/inputtext"
+                            android:ems="10"
+                            android:gravity="center_vertical"
                             android:hint="@string/teamcapacityhint"
                             android:inputType="numberSigned"
                             android:singleLine="true"
+                            android:text=""
+                            android:theme="@style/inputtext"
                             tools:ignore="HardcodedText" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -344,7 +364,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -352,31 +372,33 @@
                     <TextView
                         android:id="@+id/tv_modifymembercapacityheader"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/member_capacity"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
+                        android:gravity="center_vertical"
+                        android:background="@color/background">
 
                         <EditText
                             android:id="@+id/et_modifymembercapacity"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:ems="10"
-                            android:text=""
                             android:background="@color/background"
-                            android:theme="@style/inputtext"
+                            android:ems="10"
+                            android:gravity="center_vertical"
                             android:hint="@string/member_capacityhint"
                             android:inputType="numberSigned"
                             android:singleLine="true"
+                            android:text=""
+                            android:theme="@style/inputtext"
                             tools:ignore="HardcodedText" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -386,7 +408,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -394,31 +416,33 @@
                     <TextView
                         android:id="@+id/tv_skillMIN"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/min_skillpoint"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
+                        android:gravity="center_vertical"
+                        android:background="@color/background">
 
                         <EditText
                             android:id="@+id/et_minskillvalue"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:ems="10"
-                            android:text=""
                             android:background="@color/background"
-                            android:theme="@style/inputtext"
+                            android:ems="10"
+                            android:gravity="center_vertical"
                             android:hint="@string/minskillpointhint"
                             android:inputType="numberSigned"
                             android:singleLine="true"
+                            android:text=""
+                            android:theme="@style/inputtext"
                             tools:ignore="HardcodedText" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -428,7 +452,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -436,32 +460,34 @@
                     <TextView
                         android:id="@+id/tv_skillMAX"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/max_skillpoint"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
+                        android:gravity="center_vertical"
+                        android:background="@color/background">
 
                         <EditText
                             android:id="@+id/et_maxskillvalue"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:ems="10"
-                            android:text=""
+                            android:gravity="center_vertical"
                             android:background="@color/background"
-                            android:theme="@style/inputtext"
+                            android:ems="10"
                             android:hint="@string/max_skillpointhint"
                             android:inputType="numberSigned"
-                            android:singleLine="true" />
+                            android:singleLine="true"
+                            android:text=""
+                            android:theme="@style/inputtext" />
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -470,7 +496,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -479,40 +505,41 @@
                     <TextView
                         android:id="@+id/tv_description"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
+                        android:gravity="center_vertical"
                         android:text="@string/description"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
+                        android:gravity="center_vertical"
+                        android:background="@color/background">
 
                         <EditText
                             android:id="@+id/et_description"
-                            android:background="@color/background"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:background="@color/background"
                             android:ems="10"
-                            android:text=""
-                            android:theme="@style/inputtext"
+                            android:gravity="center_vertical"
                             android:hint="@string/descriptionhint"
-                            android:inputType="textMultiLine"/>
+                            android:inputType="textMultiLine"
+                            android:text=""
+                            android:theme="@style/inputtext" />
 
                     </android.support.design.widget.TextInputLayout>
-
 
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -554,7 +581,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/greenbuttonshape"
-                    android:text="@string/close_event" />
+                    android:text="@string/close_event_button" />
 
             </LinearLayout>
         </LinearLayout>

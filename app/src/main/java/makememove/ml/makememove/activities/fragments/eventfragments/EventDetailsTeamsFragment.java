@@ -2,6 +2,7 @@ package makememove.ml.makememove.activities.fragments.eventfragments;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
@@ -60,12 +61,17 @@ public class EventDetailsTeamsFragment extends Fragment {
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            m_Text = input.getText().toString();
-                            LayoutInflater inflater = getLayoutInflater();
-                            LinearLayout mainLayout = (LinearLayout) Layout.findViewById(R.id.l_teams);
-                            View myLayout = inflater.inflate(R.layout.teamcsempe, mainLayout, true);
-                            TextView teamname=myLayout.findViewById(R.id.tv_teamnameset);
-                            teamname.setText(m_Text);
+                            if(input.getText().toString().length()>3) {
+                                m_Text = input.getText().toString();
+                                LayoutInflater inflater = getLayoutInflater();
+                                LinearLayout mainLayout = (LinearLayout) Layout.findViewById(R.id.l_teams);
+                                View myLayout = inflater.inflate(R.layout.teamcsempe, mainLayout, true);
+                                TextView teamname = myLayout.findViewById(R.id.tv_teamnameset);
+                                teamname.setText(m_Text);
+
+                            }else{
+                                Snackbar.make(getActivity().findViewById(R.id.content), "Error: Teamname must be at least 4 character!", Snackbar.LENGTH_LONG).show();
+                            }
                         }
                     });
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

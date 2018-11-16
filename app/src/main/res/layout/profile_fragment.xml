@@ -40,7 +40,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -50,10 +50,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:text="@string/username"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
 
                     <TextView
@@ -63,16 +64,18 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:gravity="center_vertical"
                         android:hint="@string/usernamehint"
                         android:inputType="none"
                         android:singleLine="true"
+                        android:textAlignment="center"
                         android:textSize="18sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -80,37 +83,40 @@
                     <TextView
                         android:id="@+id/tv_firstname"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:text="@string/first_name"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
+                        android:gravity="center_vertical"
+                        android:background="@color/background">
 
                         <EditText
                             android:id="@+id/et_firstname"
-                            android:theme="@style/inputtext"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:ems="10"
                             android:background="@color/background"
+                            android:ems="10"
+                            android:gravity="center_vertical"
                             android:hint="@string/first_namehint"
                             android:inputType="textPersonName"
-                            android:singleLine="true" />
+                            android:singleLine="true"
+                            android:textSize="18sp"
+                            android:theme="@style/inputtext" />
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -118,30 +124,33 @@
                     <TextView
                         android:id="@+id/tv_lastname"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:text="@string/last_name"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
-                        >
+                        android:gravity="center_vertical"
+                        android:background="@color/background">
 
                         <EditText
                             android:id="@+id/et_lastname"
-                            android:theme="@style/inputtext"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/background"
                             android:ems="10"
+                            android:gravity="center_vertical"
                             android:hint="@string/last_namehint"
                             android:inputType="textPersonName"
-                            android:singleLine="true" />
+                            android:singleLine="true"
+                            android:textSize="18sp"
+                            android:theme="@style/inputtext" />
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -149,21 +158,21 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
-                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tv_birthday"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:text="@string/birthday"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/bt_birthdaypicker"
@@ -171,7 +180,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@color/Headerbg"
+                        android:gravity="center_vertical"
                         android:text="@string/pick_date"
+                        android:textAlignment="center"
                         android:textColor="@color/NormaltextColor"
                         android:textSize="16sp" />
 
@@ -179,7 +190,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -187,12 +198,13 @@
                     <TextView
                         android:id="@+id/tv_picture"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:text="@string/picture"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <ImageButton
                         android:id="@+id/ib_picture"
@@ -200,15 +212,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@color/background"
-                        android:src="@drawable/ic_account_box"
-                        />
+                        android:src="@drawable/ic_account_box" />
 
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -216,27 +227,29 @@
                     <TextView
                         android:id="@+id/tv_gender"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:text="@string/gender"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/s_gender"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/background"
+                        android:gravity="center_vertical"
+                        android:background="@android:color/background_light"
                         android:entries="@array/gender_array"
-                        android:popupBackground="@color/NormaltextColor" />
+                        android:popupBackground="@android:color/background_light" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -244,29 +257,32 @@
                     <TextView
                         android:id="@+id/tv_email"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:text="@string/email"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tv_emailset"
                         style="@style/inputtext"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/background"
                         android:hint="@string/empty"
+                        android:gravity="center_vertical"
                         android:inputType="none"
+                        android:textAlignment="center"
                         android:textSize="18sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -276,10 +292,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:text="@string/permission"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tv_permissionset"
@@ -288,16 +305,19 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:gravity="center_vertical"
                         android:hint="@string/permissionhint"
                         android:inputType="none"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">
@@ -307,10 +327,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:background="@color/background"
                         android:text="@string/popularity"
                         android:textColor="@color/NormaltextColor"
-                        android:textSize="24sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tv_popularityset"
@@ -319,16 +340,19 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:gravity="center_vertical"
                         android:hint="@string/popularityhint"
                         android:inputType="none"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/background"
                     android:orientation="horizontal">

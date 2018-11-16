@@ -77,6 +77,8 @@ public class FindEventFragment extends Fragment {
                             else filter_lowskillpoint=null;
                             if(c_maxskill.isChecked())filter_highskillpoint=et_maxskill.getText().toString();
                             else filter_highskillpoint=null;
+
+                            //TODO filter visibility bekötése
                             searchwithfilters();
                         }
                     });
@@ -113,6 +115,7 @@ public class FindEventFragment extends Fragment {
                             int Month = dpStartDate.getMonth();
                             int Day = dpStartDate.getDayOfMonth();
                             filter_date=(Integer.toString(Year)+"-"+Integer.toString(Month)+"-"+Integer.toString(Day));
+                            searchwithfilters();
                             dialog.dismiss();
                         }});
 

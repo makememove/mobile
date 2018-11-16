@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:background="@color/Headerbg"
             android:orientation="horizontal">
 
@@ -32,6 +32,7 @@
                 android:id="@+id/bt_join"
                 android:layout_width="140dp"
                 android:layout_height="40dp"
+                android:layout_margin="5dp"
                 android:layout_weight="0.6"
                 android:background="@drawable/greenbuttonshape"
                 android:text="@string/join"
@@ -41,6 +42,7 @@
                 android:id="@+id/bt_leave"
                 android:layout_width="140dp"
                 android:layout_height="40dp"
+                android:layout_margin="5dp"
                 android:layout_weight="0.6"
                 android:background="@android:color/holo_red_dark"
                 android:text="@string/leave"

@@ -10,7 +10,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:orientation="horizontal">
 
             <CheckBox
@@ -30,7 +30,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:orientation="horizontal">
 
             <CheckBox
@@ -54,6 +54,28 @@
             android:orientation="horizontal">
 
             <CheckBox
+                android:id="@+id/check_visibility"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:text="@string/visibility" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spinner_visibility"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:entries="@array/visibility_array">
+
+            </android.support.v7.widget.AppCompatSpinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal">
+
+            <CheckBox
                 android:id="@+id/check_min_skillpoint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -71,7 +93,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:orientation="horizontal">
 
             <CheckBox
@@ -89,6 +111,8 @@
                 android:inputType="numberSigned"
                 android:text="@string/max_skillpointhint" />
         </LinearLayout>
+
+
 
 
     </LinearLayout>

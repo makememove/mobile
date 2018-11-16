@@ -74,6 +74,9 @@ public class UserActivity extends AppCompatActivity
         toggle.syncState();
 
 
+    }
+
+    private void initfragmentmanager(){
         fragmentManager = getSupportFragmentManager();
         UserMainFragment userMainFragment = new UserMainFragment();
         listener = userMainFragment;
@@ -114,6 +117,7 @@ public class UserActivity extends AppCompatActivity
                     setUserType(response.body().getUser().getType());
                     User.setEveryThing(up.getUser());
                     initDrawer(response);
+                    initfragmentmanager();
                 }
                 else{
                     Intent intent = new Intent(UserActivity.this, LoginActivity.class);

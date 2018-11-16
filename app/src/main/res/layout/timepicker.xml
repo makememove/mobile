@@ -4,11 +4,10 @@
     android:id="@+id/timepickerlayout">
 
     <TimePicker
+        android:id="@+id/simpletimepicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/simpletimepicker"
-        android:theme="@style/timepickerTheme"
-        >
+        android:theme="@style/timepickerTheme">
 
     </TimePicker>
 

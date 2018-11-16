@@ -97,6 +97,7 @@
     <string name="teamcapacityhint">team capacity</string>
     <string name="member_capacityhint">member capacity</string>
     <string name="locationhint">location</string>
+    <string name="close_event_button">Close Event</string>
 
 
     <string-array name="sports_array">
