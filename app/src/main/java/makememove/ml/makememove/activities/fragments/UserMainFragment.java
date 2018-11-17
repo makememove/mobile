@@ -153,11 +153,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         if(Layout != null) {
           //      k++;
             initRecylerView();
-
             initSports(token);
-            SportPresenter sp = new SportPresenter(preferredSports);
-            preferredSports.attach(this);
-            sp.getUserPreferredSports(token);
             final String token = User.getInstance().getToken();
             bt_addsport = this.getView().findViewById(R.id.bt_addsport);
             if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
