@@ -39,7 +39,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     private View Layout;
     private RecyclerView recyclerView;
     private SportAdapter adapter;
-    private SportListDatabase database;
+
     private static SportListDocument sports;
     private static SportListDocument preferredSports;
     private static List<Sport> sportList;
@@ -65,13 +65,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         preferredSportList = new ArrayList<String>();
         sports = new SportListDocument();
         preferredSports = new SportListDocument();
-        database = Room.databaseBuilder(
-                GlobalClass.context,
-                SportListDatabase.class,
-                "sport-list"
-        ).fallbackToDestructiveMigration().build();
         update();
-
     }
 
     public static int getPosition(String item){
@@ -107,47 +101,6 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         recyclerView.setAdapter(adapter);
     }
 
-    @SuppressLint("StaticFieldLeak")
-    private void loadItemsInBackground() {
-        new AsyncTask<Void, Void, List<SportItem>>() {
-
-            @Override
-            protected List<SportItem> doInBackground(Void... voids) {
-                List<SportItem> list = database.sportItemDao().getAll();
-            return list;
-            }
-
-            @Override
-            protected void onPostExecute(List<SportItem> sportItems) {
-                adapter.update(sportItems);
-                if(preferredSportList.size()==sportList.size()&&sportList.size()!=0) {
-                    bt_addsport.setVisibility(View.GONE);
-                    Log.d("Addsport","Addsport");
-                }
-                else bt_addsport.setVisibility(View.VISIBLE);
-            }
-        }.execute();
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    public void addPreferredSports(){
-        new AsyncTask<Void, Void, List<SportItem>>() {
-            @Override
-            protected List<SportItem> doInBackground(Void... voids) {
-                return database.sportItemDao().getAll();
-            }
-
-            @Override
-            protected void onPostExecute(List<SportItem> sportItems) {
-                for (SportItem item:sportItems) {
-                    preferredSportList.add(item.category);
-                }
-                if(preferredSportList.size()==sportList.size()&&sportList.size()!=0)bt_addsport.setVisibility(View.GONE);
-                else bt_addsport.setVisibility(View.VISIBLE);
-            }
-        }.execute();
-
-    }
 
     private void initPreferredSports(String token){
        // addPreferredSports();
@@ -159,26 +112,6 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 sp.getUserPreferredSports(token);
             }
         }
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    @Override
-    public void onItemChanged(final SportItem item) {
-        new AsyncTask<Void, Void, Boolean>() {
-
-            @Override
-            protected Boolean doInBackground(Void... voids) {
-                database.sportItemDao().update(item);
-                return true;
-            }
-
-            @Override
-            protected void onPostExecute(Boolean isSuccessful) {
-                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
-                else bt_addsport.setVisibility(View.VISIBLE);
-                Log.d("UserMainFragment", "SportItem update was successful");
-            }
-        }.execute();
     }
 
 
@@ -258,7 +191,9 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                             Log.d("tester",Integer.toString(sportList.size()));
 
                             if(!preferredSportList.contains(arrayItems[position])) {
-                                onShoppingItemCreated(getSportItembycategory(arrayItems[position]));
+                                adapter.addItem(getSportItembycategory(arrayItems[position]));
+                                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+                                else bt_addsport.setVisibility(View.VISIBLE);
                                 followSport(token, position + 1);
                                 preferredSportList.add(arrayItems[position]);
                             }
@@ -278,7 +213,6 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                     alert.show();
                 }
             });
-            update();
             if(preferredSportList.size()==sportList.size()) {
                 Log.d("Addsport","Addsport"+preferredSportList.size()+" "+sportList.size());
             }
@@ -298,46 +232,11 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         return sportItem;
     }
 
-    @SuppressLint("StaticFieldLeak")
-    public void onShoppingItemCreated(final SportItem newItem) {
-        new AsyncTask<Void, Void, SportItem>() {
-
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            protected SportItem doInBackground(Void... voids) {
-                newItem.id = database.sportItemDao().insert(newItem);
-                return newItem;
-            }
-
-            @Override
-            protected void onPostExecute(SportItem sportItem) {
-                adapter.addItem(sportItem);
-                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
-                else bt_addsport.setVisibility(View.VISIBLE);
-            }
-        }.execute();
-    }
-
-    @SuppressLint("StaticFieldLeak")
     public void onItemRemoved(final SportItem item)
     {
-        new AsyncTask<Void, Void, Boolean>() {
-
-            @Override
-            protected Boolean doInBackground(Void... voids) {
-                database.sportItemDao().deleteItem(item);
-
-                preferredSportList.remove(item.category);
-                return true;
-            }
-
-            @Override
-            protected void onPostExecute(Boolean isSuccessful) {
-                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
-                else bt_addsport.setVisibility(View.VISIBLE);
-                Log.d("MainActivity", "ShoppingItem update was successful");
-            }
-        }.execute();
+        preferredSportList.remove(item.category);
+        if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+        else bt_addsport.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -345,25 +244,9 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         unfollowSport(token, position);
     }
 
-    @SuppressLint("StaticFieldLeak")
     @Override
     public void onAllItemsRemoved() {
-        new AsyncTask<Void, Void, Boolean>() {
-
-            @Override
-            protected Boolean doInBackground(Void... voids) {
-                database.sportItemDao().deleteAll();
-                preferredSportList.clear();
-                return true;
-            }
-
-            @Override
-            protected void onPostExecute(Boolean isSuccessful) {
-                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
-                else bt_addsport.setVisibility(View.VISIBLE);
-                Log.d("MainActivity", "ShoppingItem update was successful");
-            }
-        }.execute();
+        preferredSportList.clear();
     }
 
     @Override
@@ -377,15 +260,13 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
        // if(preferredSportList.size()==0&&preferredSports.getSports().size()!=0){
        else if(preferredSportList.size()==0) {
             for (Sport sport : preferredSports.getSports()) {
-                Log.d("Sport", "Sport" + sport.getId());
-                //   adapter.addItem(getSportItem(sport.getId()-1));
-                onShoppingItemCreated(getSportItem(sport.getId() - 1));
+                adapter.addItem(getSportItem(sport.getId() - 1));
                 preferredSportList.add(sportList.get(sport.getId() - 1).getName());
             }
+            if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+            else bt_addsport.setVisibility(View.VISIBLE);
             // }
         }
-        Log.d("Meret","Meret "+preferredSportList.size());
-
     }
 }
 

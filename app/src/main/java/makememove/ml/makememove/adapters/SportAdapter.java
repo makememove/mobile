@@ -73,10 +73,9 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
     }
 
     public interface SportItemClickListener{
-        void onItemChanged(SportItem item);
-        void onItemRemoved(SportItem item);
         void onUnfollow(int position);
         void onAllItemsRemoved();
+        void onItemRemoved(SportItem item);
     }
 
 
