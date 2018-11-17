@@ -127,7 +127,6 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     }
 
     public void initSports(final String token){
-      //  SportListDocument sportok = new SportListDocument();
         SportPresenter sp = new SportPresenter(sports);
         sports.attach(this);
         sp.getAllSports(token);
@@ -148,6 +147,16 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     public static List<Sport> getPreferredSports(){
         return preferredSports.getSports();
     }
+
+    public static void sportRemoveByCategory(List<Sport> sportList, String category){
+
+        for(int i = 0;i<sportList.size();i++){
+            if(sportList.get(i).getName().equals(category)){
+                sportList.remove(sportList.get(i));
+            }
+        }
+    }
+
 
 
     @Override
@@ -194,6 +203,10 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                                 adapter.addItem(getSportItembycategory(arrayItems[position]));
 
                                 followSport(token, getPosition(list.get(position))+1);
+                                int id = getPosition(list.get(position))+1;
+                                preferredSports.getSports().add(new Sport(id,sportList.get(id-1).getName()));
+
+                               // initSports(token);
                                 preferredSportList.add(arrayItems[position]);
                                 if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
                                 else bt_addsport.setVisibility(View.VISIBLE);
@@ -236,6 +249,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     public void onItemRemoved(final SportItem item)
     {
         preferredSportList.remove(item.category);
+        sportRemoveByCategory(preferredSports.getSports(),item.category);
         if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
         else bt_addsport.setVisibility(View.VISIBLE);
     }
