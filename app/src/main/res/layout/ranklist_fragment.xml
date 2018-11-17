@@ -22,11 +22,16 @@
         android:layout_height="match_parent"
         android:background="@color/background">
 
-    <ListView
-        android:id="@+id/lv_ranklist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background"
-        android:paddingTop="10dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_ranklistrecyler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

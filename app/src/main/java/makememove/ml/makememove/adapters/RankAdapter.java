@@ -13,15 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.UserRank;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.user.User;
 
 public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder>{
 
-    private final List<UserItem> items;
+    private final List<UserRank> items;
     private RankAdapter.RankItemClickListener listener;
-    public RankAdapter(RankAdapter.RankItemClickListener listener){
-        this.listener = listener;
+    public RankAdapter(){
         items = new ArrayList<>();
     }
 
@@ -36,14 +36,14 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull RankAdapter.RankViewHolder holder, int position){
-        UserItem item = items.get(position);
+        UserRank item = items.get(position);
         holder.rank.setText(Integer.toString(position+1));
         holder.username.setText(item.getUserName());
 
         holder.item = item;
     }
 
-    public void addItem(UserItem item) {
+    public void addItem(UserRank item) {
         items.add(item);
         notifyItemInserted(items.size() - 1);
     }
@@ -53,7 +53,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder
         notifyDataSetChanged();
     }
 
-    public void update(List<UserItem> sportItems) {
+    public void update(List<UserRank> sportItems) {
         items.clear();
         items.addAll(sportItems);
         notifyDataSetChanged();
@@ -75,7 +75,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder
         ImageView profile;
         TextView username;
 
-        UserItem item;
+        UserRank item;
 
         RankViewHolder(View itemView) {
             super(itemView);

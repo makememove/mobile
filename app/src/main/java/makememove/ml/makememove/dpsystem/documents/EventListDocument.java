@@ -13,6 +13,7 @@ public class EventListDocument extends Document {
         this.events = new ArrayList<EventDocument>();
     }
     public EventListDocument(List<EventDocument> events) {
+        super();
         this.events = events;
     }
 

@@ -5,6 +5,7 @@ import java.util.List;
 import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
 import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.documents.FriendDocument;
+import makememove.ml.makememove.dpsystem.documents.RankDocument;
 import makememove.ml.makememove.dpsystem.documents.TokenDocument;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.UserDocument;
@@ -80,4 +81,8 @@ public interface RetrofitAPI {
     @Headers("Content-type: application/json")
     @POST("users/friends/delete/{userId}")
     Call<AuthInputDocument> deleteFriend(@Header("Authorization") String token, @Path("userId") int id);
+
+    @Headers("Content-type: application/json")
+    @GET("sports/ranklist/{sportId}")
+    Call<RankDocument> getRankList(@Header("Authorization") String token, @Path("sportId") int sportID, @Query("limit") int limit);
 }
