@@ -99,7 +99,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
                     @Override
                     public void onClick(View view) {
                         SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(
-                                UserMainFragment.getPosition(item.category));
+                                UserMainFragment.getPreferredPosition(item.category));
                         fragmentManager.beginTransaction()
                                 .replace(R.id.content, sportEventFragment).addToBackStack(null)
                                 .commit();

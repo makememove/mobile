@@ -322,17 +322,17 @@
 
 
         <TextView
-            android:id="@+id/et_teamcapacity"
+            android:id="@+id/tv_teamcapacity"
             style="@style/inputtext"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/background"
             android:ems="10"
             android:hint="@string/teamcapacityhint"
-            android:background="@color/background"
-            android:textColor="@color/NormaltextColor"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textColor="@color/NormaltextColor" />
 
 
     </LinearLayout>
@@ -356,17 +356,17 @@
 
 
         <TextView
-            android:id="@+id/et_membercapacity"
+            android:id="@+id/tv_membercapacity"
             style="@style/inputtext"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/background"
             android:ems="10"
             android:hint="@string/member_capacityhint"
-            android:background="@color/background"
-            android:textColor="@color/NormaltextColor"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textColor="@color/NormaltextColor" />
 
 
     </LinearLayout>

@@ -167,6 +167,9 @@ public class CreateEventFragment extends Fragment {
                             event.setLocation( et_location.getText().toString());
                             event.setLength( Integer.parseInt(et_length.getText().toString()));
                             event.setMaxAttending(Integer.parseInt(et_attandances.getText().toString()));
+
+                            Log.d("Attending","Attending: "+event.getMaxAttending());
+
                             event.setLowestSkillPoint(Integer.parseInt( et_minskillpoint.getText().toString()));
                             event.setHighestSkillPoint(Integer.parseInt(  et_maxskillpoint.getText().toString()));
 

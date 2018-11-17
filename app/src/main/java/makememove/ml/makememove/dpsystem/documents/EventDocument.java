@@ -1,5 +1,7 @@
 package makememove.ml.makememove.dpsystem.documents;
 
+import android.util.Log;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
@@ -149,10 +151,12 @@ public class EventDocument extends Document{
     }
 
     public int getMaxAttending() {
+        Log.d("Attending","Attending: "+maxAttending);
         return maxAttending;
     }
 
-    public void setMaxAttending(int maxAttandances) {
-        this.maxAttending = maxAttandances;
+    public void setMaxAttending(int maxAttending) {
+        this.maxAttending = maxAttending;
+        Log.d("Attending","Attending: "+maxAttending);
     }
 }

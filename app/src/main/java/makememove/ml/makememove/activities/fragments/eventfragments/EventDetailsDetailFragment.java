@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -27,6 +28,8 @@ public class EventDetailsDetailFragment extends Fragment {
     private TextView minskillset;
     private TextView maxskillset;
     private TextView detailset;
+    private TextView teamset;
+    private TextView memberset;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +55,8 @@ public class EventDetailsDetailFragment extends Fragment {
             minskillset = Layout.findViewById(R.id.tv_minskillset);
             maxskillset = Layout.findViewById(R.id.tv_maxskillset);
             detailset = Layout.findViewById(R.id.tv_descriptionset);
+            teamset = Layout.findViewById(R.id.tv_teamcapacity);
+            memberset = Layout.findViewById(R.id.tv_membercapacity);
 
             titleset.setText(currentEvent.getTitle());
             sporttypeset.setText(Integer.toString(currentEvent.getSportId()));
@@ -71,6 +76,9 @@ public class EventDetailsDetailFragment extends Fragment {
             minskillset.setText(Integer.toString(currentEvent.getLowestSkillPoint()));
             maxskillset.setText(Integer.toString(currentEvent.getHighestSkillPoint()));
             detailset.setText(currentEvent.getDescription());
+            teamset.setText(Integer.toString(currentEvent.getMaxAttending()));
+
+            //TODO ezt megcsinálni, ha lesz membercapacity memberset.setText(Integer.toString(currentEvent.getMemberCapacity()));
         }
 
 
