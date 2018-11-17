@@ -188,10 +188,11 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
                             if(!preferredSportList.contains(arrayItems[position])) {
                                 adapter.addItem(getSportItembycategory(arrayItems[position]));
-                                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
-                                else bt_addsport.setVisibility(View.VISIBLE);
+
                                 followSport(token, position + 1);
                                 preferredSportList.add(arrayItems[position]);
+                                if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
+                                else bt_addsport.setVisibility(View.VISIBLE);
                             }
                             else
                                 Snackbar.make(getActivity().findViewById(R.id.content), "The selected sport is already in the preferred list!", Snackbar.LENGTH_LONG).show();
