@@ -44,8 +44,8 @@ public abstract class Document {
 
     public void sendNotification(){
     synchronized (object) {
-        for (BaseView view : views) {
-            view.update();
+        for (int i = 0;i<views.size();i++) {
+            views.get(i).update();
         }
     }
     }
