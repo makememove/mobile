@@ -7,10 +7,12 @@ import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.documents.FriendDocument;
 import makememove.ml.makememove.dpsystem.documents.RankDocument;
 import makememove.ml.makememove.dpsystem.documents.NotificationDocument;
+import makememove.ml.makememove.dpsystem.documents.TeamDocument;
 import makememove.ml.makememove.dpsystem.documents.TokenDocument;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.UserDocument;
 import makememove.ml.makememove.dpsystem.documents.SportListDocument;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -98,6 +100,14 @@ public interface RetrofitAPI {
     @Headers("Content-type: application/json")
     @GET("users/notifications")
     Call<EventDocument> getEvent(@Header("Authorization") String token,@Query("eventIdId") int eventIdId);
+
+    @Headers("Content-type: application/json")
+    @GET("events/{eventId}")
+    Call<TeamDocument> getTeams(@Header("Authorization") String token, @Path("eventId") int eventId);
+
+    @Headers("Content-type: application/json")
+    @POST("teams/create")
+    Call<AuthInputDocument> createTeam(@Header("Authorization") String token, @Body Team team);
 
 
 }

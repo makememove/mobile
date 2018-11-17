@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import makememove.ml.makememove.dpsystem.documents.Document;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,6 +52,10 @@ public class PostPresenter extends Presenter implements Callback {
 
     public void deleteNotification(String token,int notid){
         Call call = api.deleteNotification(token,notid);
+        call.enqueue(this);
+    }
+    public void createTeam(String token, Team team){
+        Call call = api.createTeam(token,team);
         call.enqueue(this);
     }
 

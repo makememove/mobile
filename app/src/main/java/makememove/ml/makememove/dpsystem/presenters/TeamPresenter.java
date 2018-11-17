@@ -4,26 +4,25 @@ import android.util.Log;
 
 import java.io.IOException;
 
-import makememove.ml.makememove.dpsystem.documents.Document;
-import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.documents.RankDocument;
+import makememove.ml.makememove.dpsystem.documents.TeamDocument;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RankPresenter extends Presenter implements Callback<RankDocument> {
-    public RankPresenter(){super();}
-    public RankPresenter(RankDocument document){
+public class TeamPresenter extends Presenter implements Callback<TeamDocument> {
+    public TeamPresenter(){super();}
+    public TeamPresenter(TeamDocument document){
         super();
         this.document = document;
     }
 
-    public void getRankList(String token, int sportID,int limit){
-        Call call = api.getRankList(token,sportID, limit);
+    public void getTeams(String token, int sportID){
+        Call call = api.getTeams(token,sportID);
         call.enqueue(this);
     }
     @Override
-    public void onResponse(Call<RankDocument> call, Response<RankDocument> response) {
+    public void onResponse(Call<TeamDocument> call, Response<TeamDocument> response) {
         if(response.isSuccessful()){
             document.setData(response.body());
         }

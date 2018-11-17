@@ -19,7 +19,7 @@ import makememove.ml.makememove.user.User;
 
 public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder>{
 
-    private final List<UserRank> items;
+    private List<UserRank> items;
     private RankAdapter.RankItemClickListener listener;
     public RankAdapter(){
         items = new ArrayList<>();
