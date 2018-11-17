@@ -20,6 +20,7 @@ import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.presenters.EventListPresenter;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
 
@@ -128,6 +129,7 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
                             .commit();
                 }
             });
+
         }
     }
 

@@ -14,6 +14,7 @@ import makememove.ml.makememove.adapters.RankAdapter;
 import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.RankDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.UserRank;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.dpsystem.presenters.RankPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
@@ -72,5 +73,8 @@ public class RanklistFragment extends Fragment implements BaseView {
             RankPresenter rankPresenter = new RankPresenter(rankDocument);
             rankPresenter.getRankList(User.getInstance().getToken(),2, 100);
         }
+
+        NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
+        np.getNotifications(User.getInstance().getToken());
     }
 }

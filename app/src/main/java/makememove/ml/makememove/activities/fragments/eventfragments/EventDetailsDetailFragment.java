@@ -12,7 +12,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.NotificationFragment;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
+import makememove.ml.makememove.user.User;
 
 public class EventDetailsDetailFragment extends Fragment {
     private View Layout;
@@ -42,6 +45,9 @@ public class EventDetailsDetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Layout=this.getView();
         if(Layout != null) {
+
+
+
             EventDocument currentEvent = EventDetailsFragment.getCurrentEvent();
             titleset = Layout.findViewById(R.id.tv_titleset);
             sporttypeset = Layout.findViewById(R.id.tv_sporttypeset);

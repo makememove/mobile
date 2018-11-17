@@ -9,9 +9,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,9 +28,11 @@ import makememove.ml.makememove.activities.fragments.eventfragments.FinishedEven
 import makememove.ml.makememove.activities.fragments.eventfragments.UnfinishedEventFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.datahandler.TokenHandler;
+import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.UserDocument;
 import makememove.ml.makememove.dpsystem.presenters.DataHandler;
 import makememove.ml.makememove.adapters.SportAdapter;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.user.Admin;
 import makememove.ml.makememove.user.Creator;
 import makememove.ml.makememove.user.Normal;
@@ -39,11 +42,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, BaseView {
 
     private SportAdapter.SportItemClickListener listener;
     public static FragmentManager fragmentManager;
     ActionBarDrawerToggle toggle;
+    private ImageButton ib_notification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,17 +111,22 @@ public class UserActivity extends AppCompatActivity
     }
 
     private void initNotification(){
-        ImageButton ib_notification=findViewById(R.id.ib_notification);
-        ib_notification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fragmentManager.beginTransaction()
-                        .replace(R.id.content, new NotificationFragment(),"not").addToBackStack("null")
-                        .commit();
-            }
-        });
-    }
+        ib_notification=findViewById(R.id.ib_notification);
 
+        NotificationFragment.document.attach(this);
+        NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
+        np.getNotifications(User.getInstance().getToken());
+
+            ib_notification.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content, new NotificationFragment(), "not")
+                            .commit();
+                }
+            });
+
+    }
 
 
     public void setUserData(){
@@ -250,5 +259,15 @@ public class UserActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void update() {
+        final Animation animShake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        if(NotificationFragment.document.getNotifications().size()!=0) {
+            ib_notification.startAnimation(animShake);
+        }
+        else ib_notification.clearAnimation();
+
     }
 }

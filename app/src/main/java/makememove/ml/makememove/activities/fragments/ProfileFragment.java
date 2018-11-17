@@ -19,6 +19,7 @@ import android.widget.TextView;
 import java.util.Date;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.user.User;
 
 public class ProfileFragment extends Fragment {
@@ -100,6 +101,9 @@ public class ProfileFragment extends Fragment {
                     builder.create().show();
                 }
             });
+
+            NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
+            np.getNotifications(User.getInstance().getToken());
         }
     }
 }
