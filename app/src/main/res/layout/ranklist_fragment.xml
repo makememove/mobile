@@ -11,6 +11,7 @@
         android:id="@+id/tv_ranklist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@color/Headerbg"
         android:text="@string/ranklist"
         android:textAlignment="center"
@@ -28,6 +29,7 @@
             android:id="@+id/footer_bar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@color/Headerbg"
             android:orientation="vertical"
@@ -81,7 +83,8 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_ranklistrecyler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/background" />
         </LinearLayout>
     </ScrollView>
 
