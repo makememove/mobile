@@ -49,8 +49,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(@NonNull NotificationAdapter.NotificationViewHolder holder, int position){
         final Notify item = items.get(position);
         final EventPresenter ep = new EventPresenter();
-        final EventDocument document = new EventDocument();
-        final EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
 
         switch (item.getType()){
             case 0:
@@ -79,20 +77,10 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
                 switch (item.getType()){
                     case 0:
-                        ep.setDocument(document);
                         ep.getEvent(User.getInstance().getToken(),item.getEvent_id());
-                        EventDetailsFragment.setCurrentEvent(document);
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.content, eventDetailsFragment)
-                                .commit();
                         break;
                     case 1:
-                        ep.setDocument(document);
                         ep.getEvent(User.getInstance().getToken(),item.getEvent_id());
-                        EventDetailsFragment.setCurrentEvent(document);
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.content, eventDetailsFragment)
-                                .commit();
                         break;
                     case 2:
                         FriendsFragment friendsFragment= new FriendsFragment();

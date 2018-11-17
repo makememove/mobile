@@ -59,15 +59,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     }
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        sportList = new ArrayList<Sport>();
-        preferredSportList = new ArrayList<String>();
-        sports = new SportListDocument();
-        preferredSports = new SportListDocument();
-        update();
-    }
+
 
     public static int getPosition(String item){
         for(int i = 0;i<sportList.size();i++){
@@ -115,6 +107,11 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         }
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -123,49 +120,17 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         return inflater.inflate(R.layout.usermain_fragment, container, false);
     }
 
-    public void addSports(List<Sport> item){
-        sportList.addAll(item);
-    }
-
-    public void initSports(final String token){
-        SportPresenter sp = new SportPresenter(sports);
-        sports.attach(this);
-        sp.getAllSports(token);
-    }
-
-
-    public void followSport(String token, int position){
-        PostPresenter pp = new PostPresenter();
-        pp.postPreferredSport(token,position);
-    }
-
-
-    public void unfollowSport(String token, int position){
-        PostPresenter pp = new PostPresenter();
-        pp.unpostPreferredSport(token,position);
-    }
-
-    public static List<Sport> getPreferredSports(){
-        return preferredSports.getSports();
-    }
-
-    public static void sportRemoveByCategory(List<Sport> sportList, String category){
-
-        for(int i = 0;i<sportList.size();i++){
-            if(sportList.get(i).getName().equals(category)){
-                sportList.remove(sportList.get(i));
-            }
-        }
-    }
-
-
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        sportList = new ArrayList<Sport>();
+        preferredSportList = new ArrayList<String>();
+        sports = new SportListDocument();
+        preferredSports = new SportListDocument();
+        update();
+        
         Layout=this.getView();
         if(Layout != null) {
-          //      k++;
             initRecylerView();
             initSports(token);
             final String token = User.getInstance().getToken();
@@ -207,7 +172,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                                 int id = getPosition(list.get(position))+1;
                                 preferredSports.getSports().add(new Sport(id,sportList.get(id-1).getName()));
 
-                               // initSports(token);
+                                // initSports(token);
                                 preferredSportList.add(arrayItems[position]);
                                 if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
                                 else bt_addsport.setVisibility(View.VISIBLE);
@@ -235,6 +200,44 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
         np.getNotifications(User.getInstance().getToken());
     }
+
+    public void addSports(List<Sport> item){
+        sportList.addAll(item);
+    }
+
+    public void initSports(final String token){
+        SportPresenter sp = new SportPresenter(sports);
+        sports.attach(this);
+        sp.getAllSports(token);
+    }
+
+
+    public void followSport(String token, int position){
+        PostPresenter pp = new PostPresenter();
+        pp.postPreferredSport(token,position);
+    }
+
+
+    public void unfollowSport(String token, int position){
+        PostPresenter pp = new PostPresenter();
+        pp.unpostPreferredSport(token,position);
+    }
+
+    public static List<Sport> getPreferredSports(){
+        return preferredSports.getSports();
+    }
+
+    public static void sportRemoveByCategory(List<Sport> sportList, String category){
+
+        for(int i = 0;i<sportList.size();i++){
+            if(sportList.get(i).getName().equals(category)){
+                sportList.remove(sportList.get(i));
+            }
+        }
+    }
+
+
+
     private SportItem getSportItem(int position) {
         SportItem sportItem = new SportItem();
         sportItem.category = sportList.get(position).getName();
