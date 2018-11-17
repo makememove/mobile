@@ -6,6 +6,7 @@ import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
 import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.documents.FriendDocument;
 import makememove.ml.makememove.dpsystem.documents.RankDocument;
+import makememove.ml.makememove.dpsystem.documents.NotificationDocument;
 import makememove.ml.makememove.dpsystem.documents.TokenDocument;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.UserDocument;
@@ -85,4 +86,18 @@ public interface RetrofitAPI {
     @Headers("Content-type: application/json")
     @GET("sports/ranklist/{sportId}")
     Call<RankDocument> getRankList(@Header("Authorization") String token, @Path("sportId") int sportID, @Query("limit") int limit);
+
+    @Headers("Content-type: application/json")
+    @GET("users/notifications")
+    Call<NotificationDocument> getNotifications(@Header("Authorization") String token);
+
+    @Headers("Content-type: application/json")
+    @POST("users/notifications/delete/{notificationId}")
+    Call<EventListDocument> deleteNotification(@Header("Authorization") String token, @Query("notificationId") int notificationId);
+
+    @Headers("Content-type: application/json")
+    @GET("users/notifications")
+    Call<EventDocument> getEvent(@Header("Authorization") String token,@Query("eventIdId") int eventIdId);
+
+
 }

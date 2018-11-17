@@ -11,11 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.NotificationFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.CreateEventFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.FindEventFragment;
 import makememove.ml.makememove.activities.fragments.FriendsFragment;
@@ -39,10 +41,8 @@ import retrofit2.Response;
 public class UserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ImageButton bt_notification;
     private SportAdapter.SportItemClickListener listener;
     public static FragmentManager fragmentManager;
-    private DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
 
     @Override
@@ -64,14 +64,7 @@ public class UserActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-
-        toggle.syncState();
 
 
     }
@@ -84,8 +77,14 @@ public class UserActivity extends AppCompatActivity
     }
 
     private void initDrawer(Response<UserDocument> response){
-        drawer.addDrawerListener(toggle);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -107,6 +106,20 @@ public class UserActivity extends AppCompatActivity
         }
     }
 
+    private void initNotification(){
+        ImageButton ib_notification=findViewById(R.id.ib_notification);
+        ib_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content, new NotificationFragment(),"not").addToBackStack("null")
+                        .commit();
+            }
+        });
+    }
+
+
+
     public void setUserData(){
         DataHandler dh =  DataHandler.getInstance();
         dh.setUserData(new Callback<UserDocument>() {
@@ -118,6 +131,7 @@ public class UserActivity extends AppCompatActivity
                     User.setEveryThing(up.getUser());
                     initDrawer(response);
                     initfragmentmanager();
+                    initNotification();
                 }
                 else{
                     Intent intent = new Intent(UserActivity.this, LoginActivity.class);
