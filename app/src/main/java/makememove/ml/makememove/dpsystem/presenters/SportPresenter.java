@@ -4,6 +4,7 @@ import android.util.Log;
 
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.dpsystem.documents.SportListDocument;
+import makememove.ml.makememove.user.Sport;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,9 +29,8 @@ public class SportPresenter extends Presenter implements Callback<SportListDocum
     @Override
     public void onResponse(Call<SportListDocument> call, Response<SportListDocument> response) {
         if(response.isSuccessful()){
-            synchronized(document) {
+            synchronized(response) {
                 document.setData(response.body());
-                Log.d("Successful", "Successful");
             }
         }
         else

@@ -99,7 +99,7 @@
     <string name="locationhint">location</string>
     <string name="close_event_button">Close Event</string>
     <string name="notifications_header">Notifications</string>
-
+    <string name="sportname">SportName</string>
 
     <string-array name="sports_array">
         <item>Shuttle Badminton</item>
