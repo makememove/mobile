@@ -93,7 +93,7 @@ public interface RetrofitAPI {
 
     @Headers("Content-type: application/json")
     @POST("users/notifications/delete/{notificationId}")
-    Call<EventListDocument> deleteNotification(@Header("Authorization") String token, @Query("notificationId") int notificationId);
+    Call<EventListDocument> deleteNotification(@Header("Authorization") String token, @Path("notificationId") int notificationId);
 
     @Headers("Content-type: application/json")
     @GET("users/notifications")
