@@ -86,7 +86,7 @@ public class FriendAddAdapter extends RecyclerView.Adapter<FriendAddAdapter.Frie
                 tv_id=itemView.findViewById(R.id.tv_receivefriendiD);
                 iv_picture = itemView.findViewById(R.id.iv_receivefriendprofile);
                 tv_username = itemView.findViewById(R.id.tv_receivefriendusername);
-                ib_accept = itemView.findViewById(R.id.ib_acceptfriendrequest);
+                ib_accept = itemView.findViewById(R.id.ib_memberrequest);
 
                 ib_accept.setOnClickListener(new View.OnClickListener() {
                     @Override
