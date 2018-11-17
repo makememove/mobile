@@ -4,10 +4,14 @@ import android.util.Log;
 
 import java.io.IOException;
 
+import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 
 public class EventPresenter extends Presenter implements Callback<EventDocument> {
     public EventPresenter(){
@@ -33,6 +37,11 @@ public class EventPresenter extends Presenter implements Callback<EventDocument>
     public void onResponse(Call<EventDocument> call, Response<EventDocument> response) {
         if(response.isSuccessful()){
             document.setData(response.body());
+            EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
+            EventDetailsFragment.setCurrentEvent(response.body());
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content, eventDetailsFragment)
+                    .commit();
         }
         else {
             try {
