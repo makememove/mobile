@@ -18,7 +18,7 @@ public class FriendDecisionAdapter extends RecyclerView.Adapter<FriendDecisionAd
 
     private final List<UserItem> items;
     private FriendDecisionAdapter.FriendItemClickListener listener;
-    public FriendDecisionAdapter(FriendDecisionAdapter.FriendItemClickListener listener){
+    public FriendDecisionAdapter(){
         this.listener = listener;
         items = new ArrayList<>();
     }

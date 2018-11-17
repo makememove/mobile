@@ -20,8 +20,7 @@ public class FriendlistAdapter extends RecyclerView.Adapter<FriendlistAdapter.Fr
 
     private final List<UserItem> items;
     private FriendDecisionAdapter.FriendItemClickListener listener;
-    public FriendlistAdapter(FriendDecisionAdapter.FriendItemClickListener listener){
-        this.listener = listener;
+    public FriendlistAdapter(){
         items = new ArrayList<>();
     }
 

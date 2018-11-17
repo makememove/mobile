@@ -35,11 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FriendsFragment extends Fragment
-        implements FriendRemoveAdapter.FriendItemClickListener,
-        FriendDecisionAdapter.FriendItemClickListener,
-        FriendlistAdapter.FriendItemClickListener,
-        BaseView {
+public class FriendsFragment extends Fragment implements BaseView {
 
     private View Layout;
 
@@ -57,19 +53,19 @@ public class FriendsFragment extends Fragment
 
     private void initRecylerViewSent(){
         sentRecyclerView = this.getView().findViewById(R.id.rv_friendsentrequestlist);
-        sentAdapter = new FriendRemoveAdapter(this);
+        sentAdapter = new FriendRemoveAdapter();
         sentRecyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
         sentRecyclerView.setAdapter(sentAdapter);
     }
     private void initRecylerViewRecieved(){
         recievedRecyclerView = this.getView().findViewById(R.id.rv_friendreceivedlist);
-        recievedAdapter = new FriendDecisionAdapter(this);
+        recievedAdapter = new FriendDecisionAdapter();
         recievedRecyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
         recievedRecyclerView.setAdapter(recievedAdapter);
     }
     private void initRecylerViewFriend(){
         friendRecyclerView = this.getView().findViewById(R.id.rv_friendslist);
-        friendAdapter = new FriendlistAdapter(this);
+        friendAdapter = new FriendlistAdapter();
         friendRecyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
         friendRecyclerView.setAdapter(friendAdapter);
     }
@@ -81,20 +77,6 @@ public class FriendsFragment extends Fragment
         return inflater.inflate(R.layout.friends_fragment, container, false);
     }
 
-    @Override
-    public void onItemChanged(UserItem item) {
-
-    }
-
-    @Override
-    public void onItemRemoved(UserItem item) {
-
-    }
-
-    @Override
-    public void onAllItemsRemoved() {
-
-    }
 
     @Override
     public void update() {

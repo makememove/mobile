@@ -28,9 +28,13 @@ public class SportPresenter extends Presenter implements Callback<SportListDocum
     @Override
     public void onResponse(Call<SportListDocument> call, Response<SportListDocument> response) {
         if(response.isSuccessful()){
-            document.setData(response.body());
-
+            synchronized(document) {
+                document.setData(response.body());
+                Log.d("Successful", "Successful");
+            }
         }
+        else
+            Log.d("onNotSuccessful","NotSuccessful");
     }
 
     @Override

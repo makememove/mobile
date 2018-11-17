@@ -20,8 +20,7 @@ public class FriendRemoveAdapter extends RecyclerView.Adapter<FriendRemoveAdapte
 
     private final List<UserItem> items;
     private FriendDecisionAdapter.FriendItemClickListener listener;
-    public FriendRemoveAdapter(FriendDecisionAdapter.FriendItemClickListener listener){
-        this.listener = listener;
+    public FriendRemoveAdapter(){
         items = new ArrayList<>();
     }
 

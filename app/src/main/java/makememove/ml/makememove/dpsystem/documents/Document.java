@@ -42,6 +42,7 @@ public abstract class Document {
     }
 
     public void sendNotification(){
+
         for (BaseView view : views) {
             view.update();
         }

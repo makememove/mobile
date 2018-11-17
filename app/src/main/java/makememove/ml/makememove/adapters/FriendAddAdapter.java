@@ -19,8 +19,8 @@ import makememove.ml.makememove.user.User;
 public class FriendAddAdapter extends RecyclerView.Adapter<FriendAddAdapter.FriendViewHolder>{
 
     private final List<UserItem> items;
-    private FriendDecisionAdapter.FriendItemClickListener listener;
-    public FriendAddAdapter(FriendDecisionAdapter.FriendItemClickListener listener){
+    private FriendAddAdapter.FriendItemClickListener listener;
+    public FriendAddAdapter(FriendAddAdapter.FriendItemClickListener listener){
         this.listener = listener;
         items = new ArrayList<>();
     }

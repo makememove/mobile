@@ -69,7 +69,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 SportListDatabase.class,
                 "sport-list"
         ).fallbackToDestructiveMigration().build();
-        initSports(token);
+        update();
+
     }
 
     public static int getPosition(String item){
@@ -100,7 +101,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     private void initRecylerView(){
         recyclerView = this.getView().findViewById(R.id.RecylerView);
         adapter = new SportAdapter(this);
-        loadItemsInBackground();
+        //loadItemsInBackground();
         recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
         recyclerView.setAdapter(adapter);
     }
@@ -145,7 +146,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     }
 
     private void initPreferredSports(String token){
-        addPreferredSports();
+       // addPreferredSports();
 
         if(recyclerView != null) {
             if (recyclerView.getAdapter().getItemCount() == 0) {
@@ -215,6 +216,11 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         if(Layout != null) {
           //      k++;
             initRecylerView();
+
+            initSports(token);
+            SportPresenter sp = new SportPresenter(preferredSports);
+            preferredSports.attach(this);
+            sp.getUserPreferredSports(token);
             final String token = User.getInstance().getToken();
             bt_addsport = this.getView().findViewById(R.id.bt_addsport);
             if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
@@ -360,14 +366,17 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             initPreferredSports(token);
         }
 
-        if(preferredSportList.size()==0&&preferredSports.getSports().size()!=0){
+       // if(preferredSportList.size()==0&&preferredSports.getSports().size()!=0){
+       else if(preferredSportList.size()==0) {
             for (Sport sport : preferredSports.getSports()) {
+                Log.d("Sport", "Sport" + sport.getId());
+                //   adapter.addItem(getSportItem(sport.getId()-1));
                 onShoppingItemCreated(getSportItem(sport.getId() - 1));
                 preferredSportList.add(sportList.get(sport.getId() - 1).getName());
             }
+            // }
         }
-
-
+        Log.d("Meret","Meret "+preferredSportList.size());
 
     }
 }
