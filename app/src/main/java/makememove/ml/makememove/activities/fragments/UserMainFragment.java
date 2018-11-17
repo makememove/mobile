@@ -166,11 +166,11 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
 
 
-                    List<String> list = new ArrayList<>();
+                    final List<String> list = new ArrayList<>();
                     for(int j=0;j<sportList.size();j++){
                         list.add(sportList.get(j).getName());
                     }
-                    list.removeAll(preferredSportList)   ;
+                    list.removeAll(preferredSportList);
 
                     int i = 0;
                     final String [] arrayItems = new String[list.size()];
@@ -189,7 +189,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                             if(!preferredSportList.contains(arrayItems[position])) {
                                 adapter.addItem(getSportItembycategory(arrayItems[position]));
 
-                                followSport(token, position + 1);
+                                followSport(token, getPosition(list.get(position))+1);
                                 preferredSportList.add(arrayItems[position]);
                                 if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
                                 else bt_addsport.setVisibility(View.VISIBLE);
