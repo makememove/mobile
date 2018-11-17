@@ -8,6 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import java.util.List;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.adapters.RankAdapter;
@@ -16,7 +20,10 @@ import makememove.ml.makememove.dpsystem.documents.RankDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.UserRank;
 import makememove.ml.makememove.dpsystem.presenters.RankPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
+import makememove.ml.makememove.user.Sport;
 import makememove.ml.makememove.user.User;
+
+import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 
 public class RanklistFragment extends Fragment implements BaseView {
     private View Layout;
@@ -24,7 +31,27 @@ public class RanklistFragment extends Fragment implements BaseView {
     private RankDocument rankDocument;
     private RecyclerView recyclerView;
     private RankAdapter adapter;
-    private static int sportID;
+    private static int index = 0;
+    private static List<Sport>preferedSports;
+    private TextView sportName;
+    private ImageButton previous;
+    private ImageButton next;
+
+    public void initPreferedSports(){
+        List<Sport> sports = UserMainFragment.getPreferredSports();
+        preferedSports = sports;
+    }
+
+    public static RanklistFragment newInstance(int ind) {
+
+        Bundle args = new Bundle();
+        index = ind;
+
+        RanklistFragment fragment = new RanklistFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     private void initRecylerView(){
         recyclerView = this.getView().findViewById(R.id.rv_ranklistrecyler);
@@ -33,15 +60,6 @@ public class RanklistFragment extends Fragment implements BaseView {
         recyclerView.setAdapter(adapter);
     }
 
-    public static RanklistFragment newInstance(int sportID) {
-
-        Bundle args = new Bundle();
-
-
-        RanklistFragment fragment = new RanklistFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void update() {
@@ -65,12 +83,57 @@ public class RanklistFragment extends Fragment implements BaseView {
 
         rankDocument = new RankDocument();
         rankDocument.attach(this);
+        initPreferedSports();
 
         Layout = this.getView();
         if (Layout != null) {
             initRecylerView();
             RankPresenter rankPresenter = new RankPresenter(rankDocument);
-            rankPresenter.getRankList(User.getInstance().getToken(),2, 100);
+            rankPresenter.getRankList(User.getInstance().getToken(),preferedSports.get(index).getId(), 100);
+
+
+            sportName = Layout.findViewById(R.id.tv_actualsport);
+            previous = Layout.findViewById(R.id.ib_prev);
+            next = Layout.findViewById(R.id.ib_next);
+
+            sportName.setText(preferedSports.get(index).getName());
+            previous.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(index == 0){
+                        index = preferedSports.size()-1;
+                        sportName.setText(preferedSports.get(index).getName());
+                    }
+                    else{
+                        index--;
+                        sportName.setText(preferedSports.get(index).getName());
+                    }
+                    RanklistFragment sportEventFragment = RanklistFragment.newInstance(index);
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content, sportEventFragment)
+                            .commit();
+                }
+            });
+
+            next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(index == preferedSports.size()-1){
+                        index = 0;
+                        sportName.setText(preferedSports.get(index).getName());
+                    }
+                    else{
+                        index++;
+                        sportName.setText(preferedSports.get(index).getName());
+                    }
+                    RanklistFragment sportEventFragment = RanklistFragment.newInstance(index);
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content, sportEventFragment)
+                            .commit();
+                }
+            });
+
+
         }
     }
 }

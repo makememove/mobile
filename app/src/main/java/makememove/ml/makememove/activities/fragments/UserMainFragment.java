@@ -145,6 +145,10 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         pp.unpostPreferredSport(token,position);
     }
 
+    public static List<Sport> getPreferredSports(){
+        return preferredSports.getSports();
+    }
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
