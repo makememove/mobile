@@ -21,6 +21,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
@@ -299,6 +300,9 @@ public class CreateEventFragment extends Fragment {
         try {
             Date date1 = dateformat3.parse(date+" "+time);
             Date date2 = new Date();
+            date2.setHours(date2.getHours()+1);
+
+
 
             if (date1.after(date2)) {
             }else if (date1.before(date2)||date1.equals(date2)) {
