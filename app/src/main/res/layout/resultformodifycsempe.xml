@@ -35,7 +35,7 @@
             <TextView
                 android:id="@+id/tv_resultmodifyteamname"
                 android:layout_width="match_parent"
-                android:layout_height="22dp"
+                android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:background="@color/Headerbg"
                 android:gravity="center_vertical"
@@ -45,17 +45,6 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_resultmodifyskillpoint"
-                android:layout_width="match_parent"
-                android:layout_height="17dp"
-                android:layout_margin="2dp"
-                android:background="@color/Headerbg"
-                android:gravity="center_vertical"
-                android:text="team skillpoint"
-                android:textAlignment="center"
-                android:textColor="@color/NormaltextColor"
-                android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout

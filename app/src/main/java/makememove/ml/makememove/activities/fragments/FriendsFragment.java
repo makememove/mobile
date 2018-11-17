@@ -9,21 +9,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import makememove.ml.makememove.R;
-import makememove.ml.makememove.adapters.EventAdapter;
-import makememove.ml.makememove.adapters.FriendAddAdapter;
 import makememove.ml.makememove.adapters.FriendDecisionAdapter;
 import makememove.ml.makememove.adapters.FriendRemoveAdapter;
 import makememove.ml.makememove.adapters.FriendlistAdapter;
 import makememove.ml.makememove.adapters.UserItem;
 import makememove.ml.makememove.dpsystem.BaseView;
-import makememove.ml.makememove.dpsystem.documents.EventDocument;
-import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.documents.FriendDocument;
 import makememove.ml.makememove.dpsystem.documents.UserDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Friend;
