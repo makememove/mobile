@@ -12,6 +12,7 @@ import makememove.ml.makememove.dpsystem.presenters.Presenter;
 public abstract class Document {
     transient protected ArrayList<BaseView> views;
     transient protected Presenter presenter;
+    private static Object object = new Object();
 
     public Document(){
         views = new ArrayList<BaseView>();
@@ -42,10 +43,11 @@ public abstract class Document {
     }
 
     public void sendNotification(){
-
+    synchronized (object) {
         for (BaseView view : views) {
             view.update();
         }
+    }
     }
 
     public  void getData(){}
