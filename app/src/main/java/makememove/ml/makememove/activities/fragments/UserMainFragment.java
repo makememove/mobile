@@ -35,6 +35,7 @@ import makememove.ml.makememove.user.User;
 
 public class UserMainFragment extends Fragment implements SportAdapter.SportItemClickListener, BaseView {
     private ImageButton bt_addsport;
+
     private View Layout;
     private RecyclerView recyclerView;
     private SportAdapter adapter;
@@ -268,6 +269,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                     alert.show();
                 }
             });
+
         }
     }
     private SportItem getSportItem(int position) {

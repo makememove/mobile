@@ -98,6 +98,7 @@
     <string name="member_capacityhint">member capacity</string>
     <string name="locationhint">location</string>
     <string name="close_event_button">Close Event</string>
+    <string name="notifications_header">Notifications</string>
 
 
     <string-array name="sports_array">
