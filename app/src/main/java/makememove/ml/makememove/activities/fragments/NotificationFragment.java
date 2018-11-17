@@ -28,7 +28,8 @@ public class NotificationFragment extends Fragment implements NotificationAdapte
     private RecyclerView rv_notifications;
     private NotificationAdapter notificationAdapter;
 
-    private static NotificationDocument document;
+    public static NotificationDocument document = new NotificationDocument();
+
 
     private void initRecylerViewnotifications(){
         rv_notifications = this.getView().findViewById(R.id.rv_notificationlist);
@@ -48,7 +49,6 @@ public class NotificationFragment extends Fragment implements NotificationAdapte
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        document = new NotificationDocument();
         document.attach(this);
 
         Layout=this.getView();

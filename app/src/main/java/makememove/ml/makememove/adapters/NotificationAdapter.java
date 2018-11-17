@@ -14,11 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.FriendsFragment;
+import makememove.ml.makememove.activities.fragments.NotificationFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.FinishedEventsFragment;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Notify;
 import makememove.ml.makememove.dpsystem.presenters.EventPresenter;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.user.User;
 
@@ -49,6 +51,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         final EventPresenter ep = new EventPresenter();
         final EventDocument document = new EventDocument();
         final EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
+
         switch (item.getType()){
             case 0:
                 holder.iv_icon.setImageResource(R.drawable.nav_create);

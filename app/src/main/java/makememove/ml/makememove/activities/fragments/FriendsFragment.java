@@ -29,6 +29,7 @@ import makememove.ml.makememove.dpsystem.documents.UserDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Friend;
 import makememove.ml.makememove.dpsystem.presenters.DataHandler;
 import makememove.ml.makememove.dpsystem.presenters.FriendPresenter;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
@@ -119,6 +120,9 @@ public class FriendsFragment extends Fragment implements BaseView {
             fp.getSentFriendsRequests(User.getInstance().getToken());
             fp.getRecievedFriendRequests(User.getInstance().getToken());
          //   final FriendsFragment fg = this;
+
+            NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
+            np.getNotifications(User.getInstance().getToken());
 
             DataHandler dh = DataHandler.getInstance();
             dh.setUserData(new Callback<UserDocument>() {

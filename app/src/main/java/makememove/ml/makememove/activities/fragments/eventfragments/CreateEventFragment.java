@@ -24,9 +24,11 @@ import java.util.List;
 import java.util.Locale;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.NotificationFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Category;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.user.User;
 
@@ -60,6 +62,8 @@ public class CreateEventFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Layout=this.getView();
         if(Layout != null) {
+            NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
+            np.getNotifications(User.getInstance().getToken());
 
             bt_datepicker= Layout.findViewById(R.id.bt_datepicker);
             bt_datepicker.setOnClickListener(new View.OnClickListener() {

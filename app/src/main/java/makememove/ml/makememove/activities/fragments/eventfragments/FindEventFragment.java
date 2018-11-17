@@ -18,6 +18,9 @@ import android.widget.TextView;
 import java.util.Date;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.NotificationFragment;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
+import makememove.ml.makememove.user.User;
 
 public class FindEventFragment extends Fragment {
 
@@ -42,7 +45,9 @@ public class FindEventFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Layout = this.getView();
-        if (Layout != null) {
+        if (Layout != null ) {
+            NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
+            np.getNotifications(User.getInstance().getToken());
 
 
             bt_addfilter=Layout.findViewById(R.id.bt_addfilter);

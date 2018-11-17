@@ -20,7 +20,10 @@ import android.widget.TimePicker;
 import java.sql.Time;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.NotificationFragment;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
+import makememove.ml.makememove.user.User;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 
@@ -45,6 +48,8 @@ public class EventDetailsFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
+        np.getNotifications(User.getInstance().getToken());
         fragmentchildManager= getChildFragmentManager();
         Layout=this.getView();
         if(Layout != null) {

@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.dpsystem.BaseView;
+import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.dpsystem.presenters.SportPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
@@ -231,6 +232,8 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 Log.d("Addsport","Addsport"+preferredSportList.size()+" "+sportList.size());
             }
         }
+        NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
+        np.getNotifications(User.getInstance().getToken());
     }
     private SportItem getSportItem(int position) {
         SportItem sportItem = new SportItem();
@@ -282,6 +285,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             else bt_addsport.setVisibility(View.VISIBLE);
             // }
         }
+
     }
 }
 
