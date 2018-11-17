@@ -110,6 +110,8 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
                                     //TODO csapat felvétele
                                     pp.createTeam(User.getInstance().getToken(), createdTeam);
                                 }
+                                else
+                                    Snackbar.make(getActivity().findViewById(R.id.content), "The event is already in its full team capacity!", Snackbar.LENGTH_LONG).show();
 
                             }else{
                                 Snackbar.make(getActivity().findViewById(R.id.content), "Error: Teamname must be at least 4 character!", Snackbar.LENGTH_LONG).show();
