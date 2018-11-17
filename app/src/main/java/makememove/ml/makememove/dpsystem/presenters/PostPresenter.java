@@ -49,8 +49,8 @@ public class PostPresenter extends Presenter implements Callback {
         call.enqueue(this);
     }
 
-    public void deleteNotification(String token,int id){
-        Call call = api.deleteNotification(token,id);
+    public void deleteNotification(String token,int notid){
+        Call call = api.deleteNotification(token,notid);
         call.enqueue(this);
     }
 

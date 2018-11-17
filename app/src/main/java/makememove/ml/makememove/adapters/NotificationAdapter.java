@@ -2,6 +2,7 @@ package makememove.ml.makememove.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.FriendsFragment;
+import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
+import makememove.ml.makememove.activities.fragments.eventfragments.FinishedEventsFragment;
+import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Notify;
+import makememove.ml.makememove.dpsystem.presenters.EventPresenter;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.user.User;
+
+import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>{
@@ -38,6 +46,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(@NonNull NotificationAdapter.NotificationViewHolder holder, int position){
         final Notify item = items.get(position);
+        final EventPresenter ep = new EventPresenter();
+        final EventDocument document = new EventDocument();
+        final EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
         switch (item.getType()){
             case 0:
                 holder.iv_icon.setImageResource(R.drawable.nav_create);
@@ -54,7 +65,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             default:
                 break;
         }
-
         holder.tv_message.setText(item.getMessage());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +72,41 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             public void onClick(View view) {
                 PostPresenter pp = new PostPresenter();
                 pp.deleteNotification(User.getInstance().getToken(),item.getId());
+
+
+                switch (item.getType()){
+                    case 0:
+                        ep.setDocument(document);
+                        ep.getEvent(User.getInstance().getToken(),item.getEvent_id());
+                        EventDetailsFragment.setCurrentEvent(document);
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content, eventDetailsFragment)
+                                .commit();
+                        break;
+                    case 1:
+                        ep.setDocument(document);
+                        ep.getEvent(User.getInstance().getToken(),item.getEvent_id());
+                        EventDetailsFragment.setCurrentEvent(document);
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content, eventDetailsFragment)
+                                .commit();
+                        break;
+                    case 2:
+                        FriendsFragment friendsFragment= new FriendsFragment();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content, friendsFragment)
+                                .commit();
+                        break;
+                    case 3:
+                        FinishedEventsFragment finFragment= new FinishedEventsFragment();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content, finFragment)
+                                .commit();
+                        break;
+                    default:
+                        break;
+                }
+
             }
         });
 

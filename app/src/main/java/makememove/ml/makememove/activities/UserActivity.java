@@ -111,7 +111,6 @@ public class UserActivity extends AppCompatActivity
         ib_notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("token",User.getInstance().getToken());
                 fragmentManager.beginTransaction()
                         .replace(R.id.content, new NotificationFragment(),"not").addToBackStack("null")
                         .commit();

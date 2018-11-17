@@ -13,15 +13,10 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import makememove.ml.makememove.R;
-import makememove.ml.makememove.adapters.FriendDecisionAdapter;
-import makememove.ml.makememove.adapters.FriendRemoveAdapter;
-import makememove.ml.makememove.adapters.FriendlistAdapter;
 import makememove.ml.makememove.adapters.NotificationAdapter;
 import makememove.ml.makememove.adapters.UserItem;
 import makememove.ml.makememove.dpsystem.BaseView;
-import makememove.ml.makememove.dpsystem.documents.FriendDocument;
 import makememove.ml.makememove.dpsystem.documents.NotificationDocument;
-import makememove.ml.makememove.dpsystem.documents.subdocuments.Friend;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Notify;
 import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
