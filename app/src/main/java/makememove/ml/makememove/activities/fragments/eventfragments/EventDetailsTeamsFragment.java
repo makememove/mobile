@@ -95,7 +95,7 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if(input.getText().toString().length()>3) {
-                                if(EventDetailsFragment.getCurrentEvent().getMaxAttending()>=adapter.getItemCount()) {
+                                if(EventDetailsFragment.getCurrentEvent().getMaxAttending()>adapter.getItemCount()) {
                                     Log.d("Capacity","Capacity "+EventDetailsFragment.getCurrentEvent().getMaxAttending()+" "+adapter.getItemCount());
                                     m_Text = input.getText().toString();
 
