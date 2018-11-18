@@ -1,7 +1,6 @@
 package makememove.ml.makememove.adapters;
 
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,13 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.dpsystem.BaseView;
+import makememove.ml.makememove.dpsystem.documents.MemberDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
+import makememove.ml.makememove.dpsystem.presenters.MemberPresenter;
+import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder> implements MemberAdapter.MemberClickListener, BaseView {
 
     private List<Team> items;
+    private MemberAdapter rvAdapter;
+    private MemberDocument memberDocument;
     private TeamAdapter.TeamClickListener listener;
     public TeamAdapter(TeamAdapter.TeamClickListener listener){
         items = new ArrayList<Team>();
@@ -40,6 +44,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
     public void onBindViewHolder(@NonNull TeamAdapter.TeamViewHolder holder, int position){
         Team item = items.get(position);
         holder.teamName.setText(item.getName());
+        holder.adapter.setTeamId(item.getId());
 
         initRecylerView(holder.recyclerView,holder.adapter,holder.itemView);
 
@@ -48,6 +53,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
     public void addItem(Team item) {
         items.add(item);
+
         notifyItemInserted(items.size() - 1);
     }
 
@@ -70,17 +76,27 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
     @Override
     public void onFriendRequestSent(UserItem item) {
-
+        PostPresenter pp = new PostPresenter();
+        pp.sendFriendRequest(User.getInstance().getToken(),item.getId());
     }
 
     @Override
-    public void onAllItemsRemoved() {
-
+    public void onAllItemsRemoved(int teamId) {
+        for(int i = 0;i<items.size();i++){
+            if(items.get(i).getId()==teamId)
+                removeItem(items.get(i));
+        }
+        notifyDataSetChanged();
     }
 
     @Override
     public void update() {
 
+        if(rvAdapter.getItemCount()==0&&memberDocument.getTeam().getUsers().size()!=0){
+            for (UserItem current: memberDocument.getTeam().getUsers()) {
+                rvAdapter.addItem(current);
+            }
+        }
     }
 
     public interface TeamClickListener{
@@ -93,11 +109,10 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
     private void initRecylerView(RecyclerView recyclerView, MemberAdapter adapter, View view){
         recyclerView = view.findViewWithTag("teammemberrv");
-       // adapter = new MemberAdapter(this);
+        rvAdapter = adapter;
         recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
         recyclerView.setAdapter(adapter);
     }
-
 
 
     class TeamViewHolder extends RecyclerView.ViewHolder {
@@ -142,7 +157,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                    @Override
                    public void onClick(View view) {
                        listener.onItemLeft(item);
-                       //adapter.removeItem(item.getId());
+                       adapter.removeItem(User.getInstance().getId());
                        join.setVisibility(View.VISIBLE);
                        leave.setVisibility(View.GONE);
                    }

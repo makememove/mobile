@@ -54,8 +54,24 @@ public class PostPresenter extends Presenter implements Callback {
         Call call = api.deleteNotification(token,notid);
         call.enqueue(this);
     }
+
     public void createTeam(String token, Team team){
         Call call = api.createTeam(token,team);
+        call.enqueue(this);
+    }
+
+    public void sendFriendRequest(String token, int userId){
+        Call call = api.sendFriendRequest(token,userId);
+        call.enqueue(this);
+    }
+
+    public void joinTeam(String token, int teamId){
+        Call call = api.joinTeam(token,teamId);
+        call.enqueue(this);
+    }
+
+    public void leaveTeam(String token, int teamId){
+        Call call = api.leaveTeam(token,teamId);
         call.enqueue(this);
     }
 

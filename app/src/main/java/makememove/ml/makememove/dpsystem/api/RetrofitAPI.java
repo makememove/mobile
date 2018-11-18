@@ -5,6 +5,7 @@ import java.util.List;
 import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
 import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.documents.FriendDocument;
+import makememove.ml.makememove.dpsystem.documents.MemberDocument;
 import makememove.ml.makememove.dpsystem.documents.RankDocument;
 import makememove.ml.makememove.dpsystem.documents.NotificationDocument;
 import makememove.ml.makememove.dpsystem.documents.TeamDocument;
@@ -109,5 +110,20 @@ public interface RetrofitAPI {
     @POST("teams/create")
     Call<AuthInputDocument> createTeam(@Header("Authorization") String token, @Body Team team);
 
+    @Headers("Content-type: application/json")
+    @POST("users/friends/request/{userId}")
+    Call<AuthInputDocument> sendFriendRequest(@Header("Authorization") String token, @Path("userId") int userId);
+
+    @Headers("Content-type: application/json")
+    @GET("teams/{teamId}")
+    Call<MemberDocument> getTeamMembers(@Header("Authorization") String token, @Path("teamId") int teamId);
+
+    @Headers("Content-type: application/json")
+    @POST("teams/join/{teamID}")
+    Call<AuthInputDocument> joinTeam(@Header("Authorization") String token, @Path("teamID") int userId);
+
+    @Headers("Content-type: application/json")
+    @POST("teams/leave/{teamID}")
+    Call<AuthInputDocument> leaveTeam(@Header("Authorization") String token, @Path("teamID") int userId);
 
 }

@@ -32,6 +32,15 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     private RecyclerView recyclerView;
     private TeamAdapter adapter;
     private TeamDocument teams;
+    private static int joinedTeam = -1;
+
+    public static int getJoinedTeam() {
+        return joinedTeam;
+    }
+
+    public static void setJoinedTeam(int joinedTeam) {
+        EventDetailsTeamsFragment.joinedTeam = joinedTeam;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,8 +107,8 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
                                     // TODO ha lesz createdTeam.setCapacity(EventDetailsFragment.getCurrentEvent().getCapacity());
                                     adapter.addItem(createdTeam);
                                     PostPresenter pp = new PostPresenter();
-                                    //TODO csapat felvétele
                                     pp.createTeam(User.getInstance().getToken(), createdTeam);
+                                    pp.joinTeam(User.getInstance().getToken(),User.getInstance().getId());
                                 }
                                 else
                                     Snackbar.make(getActivity().findViewById(R.id.content), "The event is already in its full team capacity!", Snackbar.LENGTH_LONG).show();
@@ -136,12 +145,17 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
 
     @Override
     public void onItemJoined(Team item) {
-
+        PostPresenter pp = new PostPresenter();
+        pp.leaveTeam(User.getInstance().getToken(),joinedTeam);
+        setJoinedTeam(item.getId());
+        pp.joinTeam(User.getInstance().getToken(),item.getId());
     }
 
     @Override
     public void onItemLeft(Team item) {
-
+        setJoinedTeam(-1);
+        PostPresenter pp = new PostPresenter();
+        pp.leaveTeam(User.getInstance().getToken(),item.getId());
     }
 
     @Override
