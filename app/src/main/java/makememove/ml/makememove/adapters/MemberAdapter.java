@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
+import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsTeamsFragment;
 import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.MemberDocument;
 import makememove.ml.makememove.dpsystem.presenters.MemberPresenter;
@@ -68,20 +70,25 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
         holder.item = item;
     }
 
+
+
     public void addItem(UserItem item) {
         items.add(item);
         notifyItemInserted(items.size() - 1);
     }
 
     public void removeItem(int id){
-        for(int i = 0;i<items.size();i++){
-            if(items.get(i).getId()==id) {
-                items.remove(items.get(i));
-                notifyDataSetChanged();
+        Log.d("Meret","Meret "+items.size());
+        if(items.size()!=0) {
+            for (int i = 0; i < items.size(); i++) {
+                if (items.get(i).getId() == id) {
+                    items.remove(items.get(i));
+                    notifyDataSetChanged();
+                }
             }
+            if (items.size() == 0)
+                listener.onAllItemsRemoved(teamId);
         }
-        if(items.size()==0)
-            listener.onAllItemsRemoved(teamId);
     }
 
 
@@ -95,6 +102,8 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
         if(this.getItemCount()==0&&memberDocument.getTeam().getUsers().size()!=0){
             for (UserItem current: memberDocument.getTeam().getUsers()) {
                 addItem(current);
+                if(current.getId()==User.getInstance().getId())
+                    EventDetailsTeamsFragment.setJoinedTeam(teamId);
             }
         }
     }
@@ -111,6 +120,9 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
         void onItemChanged(UserItem item);
         void onFriendRequestSent(UserItem item);
         void onAllItemsRemoved(int teamId);
+    }
+    public void removeById(int userId){
+
     }
 
     class MemberViewHolder extends RecyclerView.ViewHolder {

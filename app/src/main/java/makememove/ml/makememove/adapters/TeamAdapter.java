@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsTeamsFragment;
 import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.MemberDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
@@ -31,6 +32,12 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         this.listener = listener;
     }
 
+    public void leaveTeamButton(int teamId){
+        if(teamId == teamId){
+
+        }
+    }
+
     @NonNull
     @Override
     public TeamAdapter.TeamViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
@@ -47,6 +54,11 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         holder.adapter.setTeamId(item.getId());
 
         initRecylerView(holder.recyclerView,holder.adapter,holder.itemView);
+
+        if(item.getId()==EventDetailsTeamsFragment.getJoinedTeam()) {
+            holder.join.setVisibility(View.GONE);
+            holder.leave.setVisibility(View.VISIBLE);
+        }
 
         holder.item = item;
     }
@@ -133,6 +145,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                adapter = new MemberAdapter(TeamAdapter.this);
 
 
+
                join.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View view) {
@@ -144,6 +157,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                                UserItem user = new UserItem();
                                user.setUserName(User.getInstance().getUserName());
                                user.setId(User.getInstance().getId());
+                               adapter.removeItem(User.getInstance().getId());
                                adapter.addItem(user);
 
                                join.setVisibility(View.GONE);

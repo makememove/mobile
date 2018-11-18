@@ -30,7 +30,7 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     private String m_Text = "";
     private View Layout;
     private RecyclerView recyclerView;
-    private TeamAdapter adapter;
+    private static TeamAdapter adapter;
     private TeamDocument teams;
     private static int joinedTeam = -1;
 
@@ -39,6 +39,7 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     }
 
     public static void setJoinedTeam(int joinedTeam) {
+        adapter.leaveTeamButton(joinedTeam);
         EventDetailsTeamsFragment.joinedTeam = joinedTeam;
     }
 
@@ -106,9 +107,7 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
 
                                     // TODO ha lesz createdTeam.setCapacity(EventDetailsFragment.getCurrentEvent().getCapacity());
                                     adapter.addItem(createdTeam);
-                                    PostPresenter pp = new PostPresenter();
-                                    pp.createTeam(User.getInstance().getToken(), createdTeam);
-                                    pp.joinTeam(User.getInstance().getToken(),User.getInstance().getId());
+                                    createTeam(createdTeam);
                                 }
                                 else
                                     Snackbar.make(getActivity().findViewById(R.id.content), "The event is already in its full team capacity!", Snackbar.LENGTH_LONG).show();
@@ -132,6 +131,12 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
 
     }
 
+    public void createTeam(Team createdTeam){
+        PostPresenter pp = new PostPresenter();
+        pp.leaveTeam(User.getInstance().getToken(),joinedTeam);
+        pp.createTeam(User.getInstance().getToken(), createdTeam);
+        //pp.joinTeam(User.getInstance().getToken(),User.getInstance().getId());
+    }
 
     @Override
     public void onItemChanged(Team item) {
