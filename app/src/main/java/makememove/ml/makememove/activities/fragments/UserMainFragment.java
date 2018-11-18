@@ -162,8 +162,6 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
                         @Override
                         public void onClick(DialogInterface dialog, int position) {
-                            Log.d("tester",Integer.toString(preferredSportList.size()));
-                            Log.d("tester",Integer.toString(sportList.size()));
 
                             if(!preferredSportList.contains(arrayItems[position])) {
                                 adapter.addItem(getSportItembycategory(arrayItems[position]));

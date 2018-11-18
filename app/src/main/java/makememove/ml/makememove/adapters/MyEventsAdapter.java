@@ -1,4 +1,4 @@
-package makememove.ml.makememove.adapters.bence;
+package makememove.ml.makememove.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +15,6 @@ import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.EventModifyFragment;
-import makememove.ml.makememove.adapters.EventAdapter;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
@@ -80,11 +79,11 @@ public class MyEventsAdapter extends RecyclerView.Adapter<MyEventsAdapter.EventV
         EventViewHolder(View itemView) {
             super(itemView);
             if (itemView != null) {
-                title= itemView.findViewById(R.id.tv_title);
-                creatorTextView = itemView.findViewById(R.id.tv_EventCreator);
-                dateTextView = itemView.findViewById(R.id.tv_Eventdate);
-                eventTypeTextView = itemView.findViewById(R.id.tv_eventtype);
-                id=itemView.findViewById(R.id.tv_eventID);
+                title= itemView.findViewById(R.id.tv_unfineventtitle);
+                creatorTextView = itemView.findViewById(R.id.tv_unfincreator);
+                dateTextView = itemView.findViewById(R.id.tv_unfindate);
+                eventTypeTextView = itemView.findViewById(R.id.tv_unfincategory);
+                id=itemView.findViewById(R.id.tv_unfineventID);
                 bt_modify=itemView.findViewById(R.id.bt_unfinmodify);
 
 

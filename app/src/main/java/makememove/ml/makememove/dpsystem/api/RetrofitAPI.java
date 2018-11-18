@@ -128,4 +128,8 @@ public interface RetrofitAPI {
     @POST("teams/leave/{teamID}")
     Call<AuthInputDocument> leaveTeam(@Header("Authorization") String token, @Path("teamID") int userId);
 
+    @Headers("Content-type: application/json")
+    @GET("events")
+    Call<EventListDocument> getmyevents(@Header("Authorization") String token, @Query("creatorId") int userId);
+
 }
