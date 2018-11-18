@@ -12,24 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import makememove.ml.makememove.R;
-import makememove.ml.makememove.adapters.RankAdapter;
-import makememove.ml.makememove.adapters.SportAdapter;
 import makememove.ml.makememove.adapters.TeamAdapter;
 import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.TeamDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
-import makememove.ml.makememove.dpsystem.documents.subdocuments.UserRank;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.dpsystem.presenters.TeamPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
@@ -54,6 +44,7 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
         recyclerView = this.getView().findViewById(R.id.rv_teamrecyler);
         adapter = new TeamAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
+
         recyclerView.setAdapter(adapter);
     }
 

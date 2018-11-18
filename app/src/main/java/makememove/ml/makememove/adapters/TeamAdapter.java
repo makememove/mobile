@@ -41,6 +41,8 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         Team item = items.get(position);
         holder.teamName.setText(item.getName());
 
+        initRecylerView(holder.recyclerView,holder.adapter,holder.itemView);
+
         holder.item = item;
     }
 
@@ -90,11 +92,13 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
     }
 
     private void initRecylerView(RecyclerView recyclerView, MemberAdapter adapter, View view){
-        recyclerView = view.findViewById(R.id.rv_teammemberrecyler);
-        adapter = new MemberAdapter(this);
+        recyclerView = view.findViewWithTag("teammemberrv");
+       // adapter = new MemberAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
         recyclerView.setAdapter(adapter);
     }
+
+
 
     class TeamViewHolder extends RecyclerView.ViewHolder {
         TextView teamName;
@@ -111,27 +115,27 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                teamName = itemView.findViewById(R.id.tv_teamnameset);
                join = itemView.findViewById(R.id.bt_join);
                leave = itemView.findViewById(R.id.bt_leave);
+               adapter = new MemberAdapter(TeamAdapter.this);
 
-               initRecylerView(recyclerView,adapter,itemView);
 
                join.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View view) {
                        //if(adapter!=null) {
-//                           if (item.getCapacity() > adapter.getItemCount()) {
+                           if (item.getCapacity() > adapter.getItemCount()) {
 
                                listener.onItemJoined(item);
 
                                UserItem user = new UserItem();
                                user.setUserName(User.getInstance().getUserName());
                                user.setId(User.getInstance().getId());
-                               //adapter.addItem(user);
+                               adapter.addItem(user);
 
                                join.setVisibility(View.GONE);
                                leave.setVisibility(View.VISIBLE);
                       //     } else
                        //        Snackbar.make(itemView, "The team is already in its full capacity!", Snackbar.LENGTH_LONG).show();
-                    //   }
+                               }
                    }
                });
                leave.setOnClickListener(new View.OnClickListener() {

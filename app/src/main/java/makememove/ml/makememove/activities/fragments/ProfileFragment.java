@@ -9,6 +9,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import java.util.Date;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
+import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
 
 public class ProfileFragment extends Fragment {
@@ -40,6 +42,16 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.profile_fragment, container, false);
+    }
+
+    //private method of your class
+    private int getIndex(Spinner spinner, String myString){
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                return i;
+            }
+        }
+        return 0;
     }
 
     @Override
@@ -66,7 +78,8 @@ public class ProfileFragment extends Fragment {
             if(user.getBirthday()!= null)
                  birthday.setText(user.getBirthday().toString());
 
-            //TODO Gender bekötése
+            if(user.getGender()!=null)
+                gender.setSelection(getIndex(gender, user.getGender().name()));
 
             email.setText(user.getEmail());
 

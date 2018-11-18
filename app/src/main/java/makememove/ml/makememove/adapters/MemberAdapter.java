@@ -33,7 +33,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
     public MemberAdapter.MemberViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         View itemView = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.rankcsempe,parent,false);
+                .inflate(R.layout.teammembercsempe,parent,false);
         return new MemberAdapter.MemberViewHolder(itemView);
     }
 
@@ -41,7 +41,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
     public void onBindViewHolder(@NonNull MemberAdapter.MemberViewHolder holder, int position){
         UserItem item = items.get(position);
 
-        holder.tv_id.setText(position+1);
+        holder.tv_id.setText(Integer.toString(position+1));
         holder.tv_userName.setText(item.getUserName());
 
         holder.item = item;
@@ -89,13 +89,13 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
                 tv_id = itemView.findViewById(R.id.tv_memberid);
                 iv_profile = itemView.findViewById(R.id.iv_memberprofile);
                 tv_userName = itemView.findViewById(R.id.tv_memberusername);
-                ib_request = itemView.findViewById(R.id.ib_memberrequest);
+                ib_request = itemView.findViewById(R.id.ib_memberrequestbutton);
 
                 ib_request.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         listener.onFriendRequestSent(item);
-                        ib_request.setVisibility(View.GONE);
+                        ib_request.setEnabled(false);
                         Snackbar.make(itemView, "The request has been sent!", Snackbar.LENGTH_LONG).show();
                     }
                 });
