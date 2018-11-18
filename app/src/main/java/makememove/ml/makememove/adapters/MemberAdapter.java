@@ -47,6 +47,8 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
         memberDocument.attach(this);
         MemberPresenter mp = new MemberPresenter(memberDocument);
         mp.getTeamMembers(User.getInstance().getToken(),teamId);
+
+
     }
 
     @NonNull

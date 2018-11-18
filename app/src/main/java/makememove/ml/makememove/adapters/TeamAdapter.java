@@ -14,6 +14,7 @@ import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsTeamsFragment;
 import makememove.ml.makememove.dpsystem.BaseView;
+import makememove.ml.makememove.dpsystem.documents.Document;
 import makememove.ml.makememove.dpsystem.documents.MemberDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
 import makememove.ml.makememove.dpsystem.presenters.MemberPresenter;
@@ -23,7 +24,7 @@ import makememove.ml.makememove.user.User;
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder> implements MemberAdapter.MemberClickListener, BaseView {
 
-    private List<Team> items;
+    private static List<Team> items;
     private MemberAdapter rvAdapter;
     private MemberDocument memberDocument;
     private TeamAdapter.TeamClickListener listener;
@@ -32,10 +33,12 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         this.listener = listener;
     }
 
-    public void leaveTeamButton(int teamId){
-        if(teamId == teamId){
+    public void leaveAndJoin(int position){
 
-        }
+    }
+
+    public void leaveTeamButton(int teamId){
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -59,7 +62,10 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
             holder.join.setVisibility(View.GONE);
             holder.leave.setVisibility(View.VISIBLE);
         }
-
+        else {
+            holder.join.setVisibility(View.VISIBLE);
+            holder.leave.setVisibility(View.GONE);
+        }
         holder.item = item;
     }
 
@@ -111,6 +117,10 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         }
     }
 
+    public static void clearEverything(){
+        items.clear();
+    }
+
     public interface TeamClickListener{
         void onItemChanged(Team item);
         void onItemRemoved(Team item);
@@ -144,14 +154,18 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                leave = itemView.findViewById(R.id.bt_leave);
                adapter = new MemberAdapter(TeamAdapter.this);
 
-
+               if(item!=null) {
+                   if (EventDetailsTeamsFragment.getJoinedTeam() != item.getId()) {
+                       join.setVisibility(View.VISIBLE);
+                       leave.setVisibility(View.GONE);
+                   }
+               }
 
                join.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View view) {
                        //if(adapter!=null) {
                            if (item.getCapacity() > adapter.getItemCount()) {
-
                                listener.onItemJoined(item);
 
                                UserItem user = new UserItem();
@@ -162,7 +176,9 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
                                join.setVisibility(View.GONE);
                                leave.setVisibility(View.VISIBLE);
-                      //     } else
+                               EventDetailsTeamsFragment.refreshRecyclerView();
+
+                               //     } else
                        //        Snackbar.make(itemView, "The team is already in its full capacity!", Snackbar.LENGTH_LONG).show();
                                }
                    }

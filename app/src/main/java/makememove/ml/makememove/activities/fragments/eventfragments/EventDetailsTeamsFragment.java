@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.adapters.TeamAdapter;
 import makememove.ml.makememove.dpsystem.BaseView;
+import makememove.ml.makememove.dpsystem.documents.Document;
 import makememove.ml.makememove.dpsystem.documents.TeamDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
@@ -31,8 +32,9 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     private View Layout;
     private RecyclerView recyclerView;
     private static TeamAdapter adapter;
-    private TeamDocument teams;
+    private static TeamDocument teams;
     private static int joinedTeam = -1;
+    private RecyclerView.LayoutManager lm = new LinearLayoutManager(GlobalClass.context);
 
     public static int getJoinedTeam() {
         return joinedTeam;
@@ -53,9 +55,14 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     private void initRecylerView(){
         recyclerView = this.getView().findViewById(R.id.rv_teamrecyler);
         adapter = new TeamAdapter(this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
+        recyclerView.setLayoutManager(lm);
 
         recyclerView.setAdapter(adapter);
+    }
+    public static void refreshRecyclerView(){
+        TeamAdapter.clearEverything();
+        TeamPresenter tp = new TeamPresenter(teams);
+        tp.getTeams(User.getInstance().getToken(),EventDetailsFragment.getCurrentEvent().getId());
     }
 
     @Override
@@ -152,6 +159,7 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     public void onItemJoined(Team item) {
         PostPresenter pp = new PostPresenter();
         pp.leaveTeam(User.getInstance().getToken(),joinedTeam);
+        Log.d("Csapat","Elhagyott csapat: "+joinedTeam+" csatlakozott csapat: "+item.getId());
         setJoinedTeam(item.getId());
         pp.joinTeam(User.getInstance().getToken(),item.getId());
     }
@@ -170,9 +178,12 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
 
     @Override
     public void update() {
-        if(recyclerView.getAdapter().getItemCount()==0&&teams.getEvent().getTeams().size()!=0){
-            for (Team current: teams.getEvent().getTeams()) {
-                adapter.addItem(current);
+        if(this.getView()!= null) {
+            initRecylerView();
+            if(recyclerView.getAdapter().getItemCount()==0&&teams.getEvent().getTeams().size()!=0){
+                for (Team current: teams.getEvent().getTeams()) {
+                    adapter.addItem(current);
+                }
             }
         }
     }

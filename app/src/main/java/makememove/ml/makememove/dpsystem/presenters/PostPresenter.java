@@ -78,6 +78,7 @@ public class PostPresenter extends Presenter implements Callback {
     @Override
     public void onResponse(Call call, Response response) {
         if(response.isSuccessful()){
+
             Log.d("Successful","Successful");
         }
         else {
