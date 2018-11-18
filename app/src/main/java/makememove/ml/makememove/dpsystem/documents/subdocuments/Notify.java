@@ -2,7 +2,7 @@ package makememove.ml.makememove.dpsystem.documents.subdocuments;
 
 public class Notify {
     int id;
-    int event_id;
+    int eventId;
     int user_id;
     int type;
     String message;
@@ -16,11 +16,11 @@ public class Notify {
     }
 
     public int getEvent_id() {
-        return event_id;
+        return eventId;
     }
 
     public void setEvent_id(int event_id) {
-        this.event_id = event_id;
+        this.eventId = event_id;
     }
 
     public int getUser_id() {

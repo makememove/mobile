@@ -7,23 +7,24 @@ import java.io.IOException;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.documents.EventDocumentContainer;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 
-public class EventPresenter extends Presenter implements Callback<EventDocument> {
+public class EventPresenter extends Presenter implements Callback<EventDocumentContainer> {
     public EventPresenter(){
         super();
     }
 
-    public EventPresenter(EventDocument doc){
+    public EventPresenter(EventDocumentContainer doc){
         super();
         this.document = doc;
     }
 
-    public void setDocument(EventDocument doc){
+    public void setDocument(EventDocumentContainer doc){
         this.document = doc;
     }
 
@@ -34,11 +35,17 @@ public class EventPresenter extends Presenter implements Callback<EventDocument>
 
 
     @Override
-    public void onResponse(Call<EventDocument> call, Response<EventDocument> response) {
+    public void onResponse(Call<EventDocumentContainer> call, Response<EventDocumentContainer> response) {
         if(response.isSuccessful()){
+
             document.setData(response.body());
+
             EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
-            EventDetailsFragment.setCurrentEvent(response.body());
+            EventDetailsFragment.setCurrentEvent(response.body().getEvent());
+
+            Log.d("debugresponse",response.body().getEvent().getTitle());
+            Log.d("debugresponse",EventDetailsFragment.getCurrentEvent().getTitle());
+
             fragmentManager.beginTransaction()
                     .replace(R.id.content, eventDetailsFragment)
                     .commit();

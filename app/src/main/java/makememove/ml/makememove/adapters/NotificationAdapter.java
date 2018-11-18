@@ -18,6 +18,7 @@ import makememove.ml.makememove.activities.fragments.NotificationFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.FinishedEventsFragment;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.documents.EventDocumentContainer;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Notify;
 import makememove.ml.makememove.dpsystem.presenters.EventPresenter;
 import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
@@ -48,7 +49,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(@NonNull NotificationAdapter.NotificationViewHolder holder, int position){
         final Notify item = items.get(position);
-        final EventPresenter ep = new EventPresenter();
+        EventDocumentContainer ed= new EventDocumentContainer();
+        final EventPresenter ep = new EventPresenter(ed);
+
 
         switch (item.getType()){
             case 0:
@@ -73,7 +76,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             public void onClick(View view) {
                 PostPresenter pp = new PostPresenter();
                 pp.deleteNotification(User.getInstance().getToken(),item.getId());
-
 
                 switch (item.getType()){
                     case 0:
