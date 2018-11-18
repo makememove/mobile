@@ -3,6 +3,7 @@ package makememove.ml.makememove.dpsystem.api;
 import java.util.List;
 
 import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
+import makememove.ml.makememove.dpsystem.documents.EventDocumentContainer;
 import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.documents.FriendDocument;
 import makememove.ml.makememove.dpsystem.documents.MemberDocument;
@@ -99,8 +100,9 @@ public interface RetrofitAPI {
     Call<EventListDocument> deleteNotification(@Header("Authorization") String token, @Path("notificationId") int notificationId);
 
     @Headers("Content-type: application/json")
-    @GET("users/notifications")
-    Call<EventDocument> getEvent(@Header("Authorization") String token,@Query("eventIdId") int eventIdId);
+    @GET("events/{eventId}")
+    Call<EventDocumentContainer> getEvent(@Header("Authorization") String token, @Path("eventId") int eventId);
+
 
     @Headers("Content-type: application/json")
     @GET("events/{eventId}")

@@ -9,6 +9,8 @@ import java.util.Date;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Category;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.CreatorMockup;
 
+
+
 public class EventDocument extends Document{
     private int id;
     private Date date;
