@@ -13,8 +13,11 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import makememove.ml.makememove.R;
@@ -24,12 +27,13 @@ import makememove.ml.makememove.user.User;
 
 public class FindEventFragment extends Fragment {
 
-    private String filter_date = null;
+    private Date filter_date = null;
     private Button bt_datepicker;
     private String filter_location=null;
     private String filter_title=null;
     private String filter_lowskillpoint=null;
     private String filter_highskillpoint=null;
+    private int filter_visibility=1;
     private Button bt_addfilter;
 
     private View Layout;
@@ -63,11 +67,13 @@ public class FindEventFragment extends Fragment {
 
                     final CheckBox c_title = dialogView.findViewById(R.id.check_title);
                     final CheckBox c_location = dialogView.findViewById(R.id.check_location);
+                    final CheckBox c_visibility = dialogView.findViewById(R.id.check_visibility);
                     final CheckBox c_minskill = dialogView.findViewById(R.id.check_min_skillpoint);
                     final CheckBox c_maxskill = dialogView.findViewById(R.id.check_max_skillpoint);
 
                     final EditText et_title = dialogView.findViewById(R.id.et_filtertitle);
                     final EditText et_location  = dialogView.findViewById(R.id.et_filterlocation);
+                    final Spinner s_visibility  = dialogView.findViewById(R.id.spinner_visibility);
                     final EditText et_minskill = dialogView.findViewById(R.id.et_filter_min_skillpoint);
                     final EditText et_maxskill = dialogView.findViewById(R.id.et_filter_max_skillpoint);
 
@@ -82,8 +88,8 @@ public class FindEventFragment extends Fragment {
                             else filter_lowskillpoint=null;
                             if(c_maxskill.isChecked())filter_highskillpoint=et_maxskill.getText().toString();
                             else filter_highskillpoint=null;
-
-                            //TODO filter visibility bekötése
+                            if(c_visibility.isChecked())filter_visibility=s_visibility.getSelectedItemPosition();
+                            else filter_visibility=1;
                             searchwithfilters();
                         }
                     });
@@ -117,9 +123,16 @@ public class FindEventFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             int Year = dpStartDate.getYear();
-                            int Month = dpStartDate.getMonth();
+                            int Month = dpStartDate.getMonth()+1;
                             int Day = dpStartDate.getDayOfMonth();
-                            filter_date=(Integer.toString(Year)+"-"+Integer.toString(Month)+"-"+Integer.toString(Day));
+                            SimpleDateFormat SDF= new SimpleDateFormat("yyyy-MM-dd");
+                            try {
+                                filter_date=SDF.parse(Year+"-"+Month+"-"+Day);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+
+                            bt_datepicker.setText(SDF.format(filter_date));
                             searchwithfilters();
                             dialog.dismiss();
                         }});
