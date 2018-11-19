@@ -15,6 +15,7 @@ import makememove.ml.makememove.dpsystem.documents.TokenDocument;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.UserDocument;
 import makememove.ml.makememove.dpsystem.documents.SportListDocument;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.FinishedRank;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -144,5 +145,13 @@ public interface RetrofitAPI {
     @Headers("Content-type: application/json")
     @POST("users/edit")
     Call<AuthInputDocument> modifyProfile(@Header("Authorization") String token, @Query("firstName") String firstName, @Query("lastName") String lastName, @Query("gender") String gender, @Query("birthday") String birthday);
+
+    @Headers("Content-type: application/json")
+    @POST("events/edit/{eventId}")
+    Call<AuthInputDocument> modifyEvent(@Header("Authorization") String token,@Path("eventId") int eventId, @Body EventDocument doc);
+
+    @Headers("Content-type: application/json")
+    @POST("events/close/{eventId}")
+    Call<AuthInputDocument> closeEvent(@Header("Authorization") String token, @Path("eventId") int eventId, @Body FinishedRank ranks);
 
 }

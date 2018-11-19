@@ -48,7 +48,6 @@ public class CreateEventFragment extends Fragment {
     private EditText et_maxskillpoint;
     private EditText et_description;
     private Button bt_create;
-    private EditText et_attandances;
 
     private View Layout;
     @Override
@@ -134,7 +133,6 @@ public class CreateEventFragment extends Fragment {
             s_sports = Layout.findViewById(R.id.s_Sport);
             s_category = Layout.findViewById(R.id.s_Category);
             et_description = Layout.findViewById(R.id.et_description);
-            et_attandances = Layout.findViewById(R.id.et_teamcapacity);
 
 
 
@@ -171,7 +169,8 @@ public class CreateEventFragment extends Fragment {
                             event.setPublished(s_visibility.getSelectedItemPosition()+1);
                             event.setLocation( et_location.getText().toString());
                             event.setLength( Integer.parseInt(et_length.getText().toString()));
-                            event.setMaxAttending(Integer.parseInt(et_attandances.getText().toString()));
+                            event.setMaxAttending(Integer.parseInt(et_teamcapacity.getText().toString()));
+                            event.setMemberLimit(Integer.parseInt(et_membercapacity.toString()));
                             event.setClosed(0);
 
                             Log.d("Attending","Attending: "+event.getMaxAttending());

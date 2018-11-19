@@ -7,6 +7,7 @@ import java.io.IOException;
 import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
 import makememove.ml.makememove.dpsystem.documents.Document;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.FinishedRank;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
 import makememove.ml.makememove.user.User;
 import retrofit2.Call;
@@ -80,6 +81,16 @@ public class PostPresenter extends Presenter implements Callback {
     public void modifyProfile(String token, String gender, String birthday){
         User user = User.getInstance();
         Call call = api.modifyProfile(token,user.getFirstName(),user.getLastName(),gender,birthday);
+        call.enqueue(this);
+    }
+
+    public void modifyEvent(String token, int eventId, EventDocument doc){
+        Call call = api.modifyEvent(token,eventId, doc);
+        call.enqueue(this);
+    }
+
+    public void closeEvent(String token, int eventId, FinishedRank ranks){
+        Call call = api.closeEvent(token,eventId,ranks);
         call.enqueue(this);
     }
 

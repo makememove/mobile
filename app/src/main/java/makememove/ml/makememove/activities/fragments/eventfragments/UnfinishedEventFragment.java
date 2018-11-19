@@ -85,7 +85,7 @@ public class UnfinishedEventFragment extends Fragment implements MyEventsAdapter
     @Override
     public void update() {
         Log.d("Az update","Itt van");
-        if(mydocument.getEvents().size()!=0){
+        if(mydocument.getEvents().size()!=0&&myevents_adapter.getItemCount()==0){
             for (EventDocument doc: mydocument.getEvents()) {
                 myevents_adapter.addItem(doc);
                 Log.d("A token:assasa ",doc.getTitle());
