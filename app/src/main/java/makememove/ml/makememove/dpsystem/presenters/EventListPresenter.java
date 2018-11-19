@@ -34,6 +34,11 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
         call.enqueue(this);
     }
 
+    public void getfinEvents(String token){
+        Call call = api.getfinishedevents(token,1);
+        call.enqueue(this);
+    }
+
     @Override
     public void onResponse(Call<EventListDocument> call, Response<EventListDocument> response) {
         if(response.isSuccessful()){

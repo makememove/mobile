@@ -136,4 +136,9 @@ public interface RetrofitAPI {
     @GET("events/mine")
     Call<EventListDocument> getunfinishedevents(@Header("Authorization") String token);
 
+    @Headers("Content-type: application/json")
+    @GET("events/mine")
+    Call<EventListDocument> getfinishedevents(@Header("Authorization") String token,@Query("closed") int closed);
+
+
 }
