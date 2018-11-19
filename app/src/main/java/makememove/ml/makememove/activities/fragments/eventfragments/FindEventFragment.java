@@ -52,7 +52,7 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
     private View Layout;
 
     private void initRecylerView(){
-        recyclerView = this.getView().findViewById(R.id.rv_findeventlist);
+        recyclerView = Layout.findViewById(R.id.rv_findeventlist);
         adapter = new EventAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
         recyclerView.setAdapter(adapter);
@@ -195,6 +195,7 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
     @Override
     public void update() {
         Log.d("Az update","Itt van");
+        initRecylerView();
         if(documents.getEvents().size()!=0){
             for (EventDocument doc: documents.getEvents()) {
                 adapter.addItem(doc);
