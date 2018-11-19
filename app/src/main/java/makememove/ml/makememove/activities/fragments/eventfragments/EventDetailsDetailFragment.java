@@ -75,8 +75,10 @@ public class EventDetailsDetailFragment extends Fragment {
             timeset.setText(time.format(currentEvent.getDate()));
 
             locationset.setText(currentEvent.getLocation());
-            creatorset.setText(Integer.toString(currentEvent.getCreator()));
-            visibilityset.setText(Integer.toString(currentEvent.getPublished()));
+            creatorset.setText(currentEvent.getCreatorMockup().getUserName());
+
+            String[] visibilityArray = getResources().getStringArray(R.array.visibility_array);
+            visibilityset.setText(visibilityArray[currentEvent.getPublished()]);
             popularityset.setText("Not Defined");
             lengthset.setText(Integer.toString(currentEvent.getLength()));
             minskillset.setText(Integer.toString(currentEvent.getLowestSkillPoint()));

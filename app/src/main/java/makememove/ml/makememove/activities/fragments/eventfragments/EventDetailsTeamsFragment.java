@@ -196,5 +196,10 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
                 }
             }
         }
+
+        if(teams.getEvent().getTeams().size()==EventDetailsFragment.getCurrentEvent().getMaxAttending()){
+            add_team.setVisibility(View.GONE);
+        }
+        else add_team.setVisibility(View.VISIBLE);
     }
 }

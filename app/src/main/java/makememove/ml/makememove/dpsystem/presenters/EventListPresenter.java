@@ -39,6 +39,11 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
         call.enqueue(this);
     }
 
+    public void geteventswithfilter(String token,String location,String title, Integer lowestSkillPoint,Integer highestSkillPoint,Integer visibility){
+        Call call = api.geteventswithfilter(token,location,title, lowestSkillPoint,highestSkillPoint, visibility,1);
+        call.enqueue(this);
+    }
+
     @Override
     public void onResponse(Call<EventListDocument> call, Response<EventListDocument> response) {
         if(response.isSuccessful()){
