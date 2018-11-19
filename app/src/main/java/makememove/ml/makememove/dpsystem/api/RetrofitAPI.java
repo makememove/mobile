@@ -143,7 +143,7 @@ public interface RetrofitAPI {
     Call<EventListDocument> getfinishedevents(@Header("Authorization") String token,@Query("closed") int closed);
 
     @Headers("Content-type: application/json")
-    @POST("users/edit")
+    @POST("users/me/edit")
     Call<AuthInputDocument> modifyProfile(@Header("Authorization") String token, @Query("firstName") String firstName, @Query("lastName") String lastName, @Query("gender") String gender, @Query("birthday") String birthday);
 
     @Headers("Content-type: application/json")

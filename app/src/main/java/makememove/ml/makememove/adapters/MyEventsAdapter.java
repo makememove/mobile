@@ -45,7 +45,7 @@ public class MyEventsAdapter extends RecyclerView.Adapter<MyEventsAdapter.EventV
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         holder.dateTextView.setText("Date: "+dt.format(item.getDate()));
         holder.eventTypeTextView.setText(item.getCategory().getName());
-        holder.id.setText(Integer.toString(position));
+        holder.id.setText(Integer.toString(position)+1);
 
         holder.item = item;
     }
