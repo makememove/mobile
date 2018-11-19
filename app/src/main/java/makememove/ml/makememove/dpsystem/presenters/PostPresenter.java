@@ -8,6 +8,7 @@ import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
 import makememove.ml.makememove.dpsystem.documents.Document;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
+import makememove.ml.makememove.user.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -73,6 +74,12 @@ public class PostPresenter extends Presenter implements Callback {
 
     public void leaveTeam(String token, int teamId){
         Call call = api.leaveTeam(token,teamId);
+        call.enqueue(this);
+    }
+
+    public void modifyProfile(String token){
+        User user = User.getInstance();
+        Call call = api.modifyProfile(token,user.getFirstName(),user.getLastName(),user.getGender().name(),user.getBirthday().toString());
         call.enqueue(this);
     }
 

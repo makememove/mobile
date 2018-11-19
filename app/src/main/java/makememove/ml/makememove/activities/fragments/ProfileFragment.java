@@ -34,6 +34,7 @@ public class ProfileFragment extends Fragment {
     private TextView email;
     private TextView permission;
     private TextView popularity;
+    private Button modifyButton;
   User user = User.getInstance();
 
 
