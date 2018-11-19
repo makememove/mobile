@@ -45,7 +45,7 @@ public class MyEventsAdapter extends RecyclerView.Adapter<MyEventsAdapter.EventV
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         holder.dateTextView.setText("Date: "+dt.format(item.getDate()));
         holder.eventTypeTextView.setText(item.getCategory().getName());
-        holder.id.setText(Integer.toString(position+1));
+        holder.id.setText(Integer.toString(position));
 
         holder.item = item;
     }
@@ -91,6 +91,7 @@ public class MyEventsAdapter extends RecyclerView.Adapter<MyEventsAdapter.EventV
                     @Override
                     public void onClick(View view) {
                         EventModifyFragment eventModifyFragment = new EventModifyFragment();
+                        eventModifyFragment.setCurrentEvent(item);
                         fragmentManager.beginTransaction()
                                 .replace(R.id.content, eventModifyFragment).addToBackStack(null)
                                 .commit();
