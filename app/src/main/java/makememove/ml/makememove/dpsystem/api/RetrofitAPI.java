@@ -141,11 +141,11 @@ public interface RetrofitAPI {
     @GET("events/mine")
     Call<EventListDocument> getfinishedevents(@Header("Authorization") String token,@Query("closed") int closed);
 
-
-
     @Headers("Content-type: application/json")
     @POST("me/edit")
     Call<AuthInputDocument> modifyProfile(@Header("Authorization") String token, @Query("firstName") String firstName, @Query("lastName") String lastName, @Query("gender") String gender, @Query("birthday") String birthday);
 
-
+    @Headers("Content-type: application/json")
+    @GET("events")
+    Call<EventListDocument> geteventswithfilter(@Header("Authorization") String token,@Query("location") String location,@Query("title") String title,@Query("lowestSkillPoint") Integer lowestSkillPoint,@Query("highestSkillPoint") Integer highestSkillPoint,@Query("public") Integer visibility,@Query("closed") Integer closed);
 }

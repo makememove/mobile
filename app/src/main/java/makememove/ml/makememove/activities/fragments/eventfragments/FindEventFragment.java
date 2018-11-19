@@ -4,7 +4,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,21 +25,38 @@ import java.util.Date;
 
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.NotificationFragment;
+import makememove.ml.makememove.adapters.EventAdapter;
+import makememove.ml.makememove.dpsystem.BaseView;
+import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.documents.EventListDocument;
+import makememove.ml.makememove.dpsystem.presenters.EventListPresenter;
 import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
+import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
 
-public class FindEventFragment extends Fragment {
+public class FindEventFragment extends Fragment implements EventAdapter.EventItemClickListener, BaseView {
 
     private Date filter_date = null;
     private Button bt_datepicker;
     private String filter_location=null;
     private String filter_title=null;
-    private String filter_lowskillpoint=null;
-    private String filter_highskillpoint=null;
-    private int filter_visibility=1;
+    private Integer filter_lowskillpoint=null;
+    private Integer filter_highskillpoint=null;
+    private Integer filter_visibility=null;
     private Button bt_addfilter;
 
+    private RecyclerView recyclerView;
+    private EventAdapter adapter;
+    private static EventListDocument documents;
+
     private View Layout;
+
+    private void initRecylerView(){
+        recyclerView = this.getView().findViewById(R.id.rv_findeventlist);
+        adapter = new EventAdapter(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
+        recyclerView.setAdapter(adapter);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,7 +69,16 @@ public class FindEventFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Layout = this.getView();
+        documents = new EventListDocument();
+        documents.attach(this);
+
         if (Layout != null ) {
+            initRecylerView();
+
+            EventListPresenter ep = new EventListPresenter(documents);
+            ep.geteventswithfilter(User.getInstance().getToken(),null,null,null,null,null);
+
+
             NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
             np.getNotifications(User.getInstance().getToken());
 
@@ -84,12 +113,18 @@ public class FindEventFragment extends Fragment {
                             else filter_title=null;
                             if(c_location.isChecked())filter_location=et_location .getText().toString();
                             else filter_location=null;
-                            if(c_minskill.isChecked())filter_lowskillpoint=et_minskill.getText().toString();
+                            if(c_minskill.isChecked()){
+                                if(et_minskill.getText()!=null)filter_lowskillpoint=Integer.valueOf(et_minskill.getText().toString());
+                                else filter_lowskillpoint=null;
+                            }
                             else filter_lowskillpoint=null;
-                            if(c_maxskill.isChecked())filter_highskillpoint=et_maxskill.getText().toString();
+                            if(c_maxskill.isChecked()){
+                                if(et_maxskill.getText()!=null)filter_highskillpoint=Integer.valueOf(et_maxskill.getText().toString());
+                                else filter_highskillpoint=null;
+                            }
                             else filter_highskillpoint=null;
-                            if(c_visibility.isChecked())filter_visibility=s_visibility.getSelectedItemPosition();
-                            else filter_visibility=1;
+                            if(c_visibility.isChecked())filter_visibility=Integer.valueOf(s_visibility.getSelectedItemPosition());
+                            else filter_visibility=null;
                             searchwithfilters();
                         }
                     });
@@ -148,6 +183,23 @@ public class FindEventFragment extends Fragment {
     }
 
     private void searchwithfilters(){
-        //TODO Lista frissítése, filteres keresés bekötése
+        EventListPresenter ep = new EventListPresenter(documents);
+        ep.geteventswithfilter(User.getInstance().getToken(),filter_location,filter_title,filter_lowskillpoint,filter_highskillpoint,filter_visibility);
+    }
+
+    @Override
+    public void onItemChanged(EventDocument item) {
+
+    }
+
+    @Override
+    public void update() {
+        Log.d("Az update","Itt van");
+        if(documents.getEvents().size()!=0){
+            for (EventDocument doc: documents.getEvents()) {
+                adapter.addItem(doc);
+                Log.d("A token:assasa ",doc.getTitle());
+            }
+        }
     }
 }
