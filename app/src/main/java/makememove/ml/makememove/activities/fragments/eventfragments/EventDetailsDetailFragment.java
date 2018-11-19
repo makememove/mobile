@@ -83,8 +83,10 @@ public class EventDetailsDetailFragment extends Fragment {
             maxskillset.setText(Integer.toString(currentEvent.getHighestSkillPoint()));
             detailset.setText(currentEvent.getDescription());
             teamset.setText(Integer.toString(currentEvent.getMaxAttending()));
-
-            //TODO ezt megcsinálni, ha lesz membercapacity memberset.setText(Integer.toString(currentEvent.getMemberCapacity()));
+            if(currentEvent.getMemberLimit()!=null)
+              memberset.setText(Integer.toString(currentEvent.getMemberLimit()));
+            else
+                memberset.setText("Not Defined");
         }
 
 

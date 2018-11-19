@@ -1,15 +1,25 @@
 package makememove.ml.makememove.dpsystem.documents;
 
-public class AuthInputDocument {
+public class AuthInputDocument extends Document{
     private String userName;
     private String email;
     private String password;
+
+    private Integer id = null;
 
     public AuthInputDocument(String userName, String email, String password) {
         super();
         this.userName=userName;
         this.email = email;
         this.password = password;
+    }
+    public AuthInputDocument(){
+        super();
+    }
+
+    @Override
+    public void setData(Document document) {
+
     }
 
     public String getEmail() {
@@ -34,5 +44,13 @@ public class AuthInputDocument {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

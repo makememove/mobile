@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.adapters.TeamAdapter;
 import makememove.ml.makememove.dpsystem.BaseView;
+import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
 import makememove.ml.makememove.dpsystem.documents.Document;
 import makememove.ml.makememove.dpsystem.documents.TeamDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
@@ -34,6 +35,7 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     private static TeamAdapter adapter;
     private static TeamDocument teams;
     private static int joinedTeam = -1;
+    private static AuthInputDocument createdTeamId;
     private RecyclerView.LayoutManager lm = new LinearLayoutManager(GlobalClass.context);
 
     public static int getJoinedTeam() {
@@ -73,8 +75,7 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
         teams.attach(this);
 
 
-        //TODO teammembercsempe inflatelése csatlakozáskor, szerverről lekkérdezett tagokra,
-        // TODO barát hozzáadása gomb bekötése, saját magamnál ne legyen barárnak jelölés gomb
+        // TODO saját magamnál ne legyen barárnak jelölés gomb (jelenleg van gomb, csak nem rákattintható)
 
         if(Layout != null) {
             initRecylerView();
@@ -108,12 +109,12 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
                                     m_Text = input.getText().toString();
 
                                     Team createdTeam = new Team();
-                                    createdTeam.setCapacity(2);
                                     createdTeam.setEventId(+EventDetailsFragment.getCurrentEvent().getId());
                                     createdTeam.setName(input.getText().toString());
-
-                                    // TODO ha lesz createdTeam.setCapacity(EventDetailsFragment.getCurrentEvent().getCapacity());
+                                   // if(EventDetailsFragment.getCurrentEvent().getMemberLimit()!=null)
+                                        createdTeam.setCapacity(EventDetailsFragment.getCurrentEvent().getMemberLimit());
                                     adapter.addItem(createdTeam);
+
                                     createTeam(createdTeam);
                                 }
                                 else
@@ -139,6 +140,8 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     }
 
     public void createTeam(Team createdTeam){
+        createdTeamId = new AuthInputDocument();
+        createdTeamId.attach(this);
         PostPresenter pp = new PostPresenter();
         pp.leaveTeam(User.getInstance().getToken(),joinedTeam);
         pp.createTeam(User.getInstance().getToken(), createdTeam);
@@ -178,6 +181,13 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
 
     @Override
     public void update() {
+        if(createdTeamId!=null&&createdTeamId.getId()!=null){
+            Log.d("teamid","teamid"+createdTeamId.getId());
+            PostPresenter pp = new PostPresenter();
+            pp.joinTeam(User.getInstance().getToken(),
+                    createdTeamId.getId());
+            createdTeamId.setId(null);
+        }
         if(this.getView()!= null) {
             initRecylerView();
             if(recyclerView.getAdapter().getItemCount()==0&&teams.getEvent().getTeams().size()!=0){

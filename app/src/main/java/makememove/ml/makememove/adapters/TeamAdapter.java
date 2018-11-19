@@ -165,7 +165,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                    @Override
                    public void onClick(View view) {
                        //if(adapter!=null) {
-                           if (item.getCapacity() > adapter.getItemCount()) {
+                           if (item.getCapacity()==null || item.getCapacity() > adapter.getItemCount()) {
                                listener.onItemJoined(item);
 
                                UserItem user = new UserItem();

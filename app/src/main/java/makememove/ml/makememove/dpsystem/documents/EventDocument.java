@@ -29,9 +29,13 @@ public class EventDocument extends Document{
     @SerializedName("creator")
     private CreatorMockup creatorMockup;
     private int maxAttending;
+    private Integer memberLimit;
+    @SerializedName("event.closed")
+    private int closed;
 
     public EventDocument(){
         super();
+        closed = 0;
     }
 
     public Date getDate() {
@@ -160,5 +164,21 @@ public class EventDocument extends Document{
     public void setMaxAttending(int maxAttending) {
         this.maxAttending = maxAttending;
         Log.d("Attending","Attending: "+maxAttending);
+    }
+
+    public Integer getMemberLimit() {
+        return memberLimit;
+    }
+
+    public void setMemberLimit(Integer memberLimit) {
+        this.memberLimit = memberLimit;
+    }
+
+    public int getClosed() {
+        return closed;
+    }
+
+    public void setClosed(int closed) {
+        this.closed = closed;
     }
 }

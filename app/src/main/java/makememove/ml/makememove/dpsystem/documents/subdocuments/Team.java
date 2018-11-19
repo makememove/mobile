@@ -3,7 +3,7 @@ package makememove.ml.makememove.dpsystem.documents.subdocuments;
 public class Team {
     private int id;
     private String name;
-    private int capacity;
+    private Integer capacity;
     private int eventId;
 
     public Team(){
@@ -29,13 +29,7 @@ public class Team {
         this.name = name;
     }
 
-    public int getCapacity() {
-        return capacity;
-    }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
 
     public int getEventId() {
         return eventId;
@@ -43,5 +37,13 @@ public class Team {
 
     public void setEventId(int eventId) {
         this.eventId = eventId;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 }

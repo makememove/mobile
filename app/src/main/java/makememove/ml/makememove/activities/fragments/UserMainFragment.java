@@ -60,7 +60,6 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
 
 
 
-
     public static int getPosition(String item){
         for(int i = 0;i<sportList.size();i++){
             if(sportList.get(i).getName().equals(item))
@@ -284,6 +283,7 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
                 adapter.addItem(getSportItem(sport.getId() - 1));
                 preferredSportList.add(sportList.get(sport.getId() - 1).getName());
             }
+            adapter.notifyDataSetChanged();
             if(preferredSportList.size()==sportList.size())bt_addsport.setVisibility(View.GONE);
             else bt_addsport.setVisibility(View.VISIBLE);
             // }

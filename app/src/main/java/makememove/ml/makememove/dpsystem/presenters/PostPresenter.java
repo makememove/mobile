@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
+import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
 import makememove.ml.makememove.dpsystem.documents.Document;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
@@ -78,7 +79,8 @@ public class PostPresenter extends Presenter implements Callback {
     @Override
     public void onResponse(Call call, Response response) {
         if(response.isSuccessful()){
-
+            if(document!=null)
+                document.setData((AuthInputDocument)response.body());
             Log.d("Successful","Successful");
         }
         else {
