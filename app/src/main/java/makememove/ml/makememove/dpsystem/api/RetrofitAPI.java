@@ -42,7 +42,7 @@ public interface RetrofitAPI {
 
     @Headers("Content-type: application/json")
     @GET("users/me")
-    Call<UserDocument> getUserDetails(@Header("Authorization") String token);
+    Call<UserDocument>  getUserDetails(@Header("Authorization") String token);
 
     @Headers("Content-type: application/json")
     @GET("sports/all")
@@ -141,11 +141,8 @@ public interface RetrofitAPI {
     @GET("events/mine")
     Call<EventListDocument> getfinishedevents(@Header("Authorization") String token,@Query("closed") int closed);
 
-
-
     @Headers("Content-type: application/json")
-    @POST("me/edit")
+    @POST("users/edit")
     Call<AuthInputDocument> modifyProfile(@Header("Authorization") String token, @Query("firstName") String firstName, @Query("lastName") String lastName, @Query("gender") String gender, @Query("birthday") String birthday);
-
 
 }

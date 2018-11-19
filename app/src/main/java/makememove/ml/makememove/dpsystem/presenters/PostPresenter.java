@@ -77,9 +77,9 @@ public class PostPresenter extends Presenter implements Callback {
         call.enqueue(this);
     }
 
-    public void modifyProfile(String token){
+    public void modifyProfile(String token, String gender, String birthday){
         User user = User.getInstance();
-        Call call = api.modifyProfile(token,user.getFirstName(),user.getLastName(),user.getGender().name(),user.getBirthday().toString());
+        Call call = api.modifyProfile(token,user.getFirstName(),user.getLastName(),gender,birthday);
         call.enqueue(this);
     }
 

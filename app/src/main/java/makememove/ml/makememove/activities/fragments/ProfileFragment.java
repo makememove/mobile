@@ -1,11 +1,13 @@
 package makememove.ml.makememove.activities.fragments;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +19,27 @@ import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.LoginActivity;
+import makememove.ml.makememove.activities.UserActivity;
+import makememove.ml.makememove.dpsystem.BaseView;
+import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
+import makememove.ml.makememove.dpsystem.documents.UserDocument;
+import makememove.ml.makememove.dpsystem.presenters.DataHandler;
 import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
+import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
+import makememove.ml.makememove.user.GENDER;
 import makememove.ml.makememove.user.User;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements BaseView {
 
     private TextView userName;
     private EditText firstName;
@@ -35,6 +50,7 @@ public class ProfileFragment extends Fragment {
     private TextView permission;
     private TextView popularity;
     private Button modifyButton;
+    private AuthInputDocument document;
   User user = User.getInstance();
 
 
@@ -59,6 +75,8 @@ public class ProfileFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if(this.getView()!=null) {
+            document = new AuthInputDocument();
+            document.attach(this);
             final View view = this.getView();
             userName = (TextView) view.findViewById(R.id.tv_usernameset);
             firstName = (EditText) view.findViewById(R.id.et_firstname);
@@ -68,6 +86,7 @@ public class ProfileFragment extends Fragment {
             email = view.findViewById(R.id.tv_emailset);
             permission = view.findViewById(R.id.tv_permissionset);
             popularity = view.findViewById(R.id.tv_popularityset);
+            modifyButton = view.findViewById(R.id.bt_modify);
 
 
             userName.setText(user.getUserName());
@@ -76,9 +95,14 @@ public class ProfileFragment extends Fragment {
 
             lastName.setText(user.getLastName());
 
-            if(user.getBirthday()!= null)
-                 birthday.setText(user.getBirthday().toString());
+            if(user.getBirthday()!= null) {
+             //   birthday.setText(user.getBirthday().toString());
 
+                SimpleDateFormat dateformat3 = new SimpleDateFormat("yyyy-MM-dd");
+                String birthdayString = dateformat3.format(user.getBirthday());
+                birthday.setText(birthdayString);
+
+            }
             if(user.getGender()!=null)
                 gender.setSelection(getIndex(gender, user.getGender().name()));
 
@@ -116,8 +140,53 @@ public class ProfileFragment extends Fragment {
                 }
             });
 
+            modifyButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    User user = User.getInstance();
+                    user.setFirstName(firstName.getText().toString());
+                    user.setLastName(lastName.getText().toString());
+                    String genderString = gender.getSelectedItem().toString();
+                    if(genderString!=null) {
+                        user.setGender(GENDER.valueOf(genderString.toUpperCase()));
+                    }
+                    String birthdayString = birthday.getText().toString();
+                    if(birthdayString!=null){
+                        try {
+                            SimpleDateFormat dateformat3 = new SimpleDateFormat("yyyy-MM-dd");
+                            Date birthd = null;
+                            birthd = dateformat3.parse(birthdayString);
+                            user.setBirthday(birthd);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    PostPresenter pp = new PostPresenter(document);
+                    pp.modifyProfile(User.getInstance().getToken(),genderString,birthdayString);
+                }
+            });
+
             NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
             np.getNotifications(User.getInstance().getToken());
         }
+    }
+
+    @Override
+    public void update() {
+        DataHandler dh = DataHandler.getInstance();
+        dh.setUserData(new Callback<UserDocument>() {
+            @Override
+            public void onResponse(Call <UserDocument> call, Response<UserDocument> response) {
+                if(response.isSuccessful()){
+                    UserDocument up = response.body();
+                    User.setEveryThing(up.getUser());
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+            }
+        });
     }
 }
