@@ -24,15 +24,31 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
         call.enqueue(this);
     }
 
+    public void getMyEvents(String token, int userid){
+        Call call = api.getmyevents(token,userid);
+        call.enqueue(this);
+    }
+
+    public void getUnfinEvents(String token){
+        Call call = api.getunfinishedevents(token);
+        call.enqueue(this);
+    }
+
+    public void getfinEvents(String token){
+        Call call = api.getfinishedevents(token,1);
+        call.enqueue(this);
+    }
+
     @Override
     public void onResponse(Call<EventListDocument> call, Response<EventListDocument> response) {
         if(response.isSuccessful()){
             document.setData(response.body());
-        }
+            Log.d("válasz:","siker");
+        }else Log.d("válasz:","nem siker");
     }
 
     @Override
     public void onFailure(Call call, Throwable t) {
-
+        Log.d("válasz:","failure");
     }
 }
