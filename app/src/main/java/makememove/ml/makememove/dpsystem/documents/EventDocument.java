@@ -30,7 +30,6 @@ public class EventDocument extends Document{
     private CreatorMockup creatorMockup;
     private Integer maxAttending;
     private Integer memberLimit;
-    @SerializedName("event.closed")
     private int closed;
 
     public EventDocument(){

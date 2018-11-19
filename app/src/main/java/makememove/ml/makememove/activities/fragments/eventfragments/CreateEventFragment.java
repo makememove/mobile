@@ -170,7 +170,7 @@ public class CreateEventFragment extends Fragment {
                             event.setLocation( et_location.getText().toString());
                             event.setLength( Integer.parseInt(et_length.getText().toString()));
                             event.setMaxAttending(Integer.parseInt(et_teamcapacity.getText().toString()));
-                            event.setMemberLimit(Integer.parseInt(et_membercapacity.toString()));
+                            event.setMemberLimit(Integer.parseInt(et_membercapacity.getText().toString()));
                             event.setClosed(0);
 
                             Log.d("Attending","Attending: "+event.getMaxAttending());
