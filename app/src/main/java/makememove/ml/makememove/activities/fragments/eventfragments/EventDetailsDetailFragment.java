@@ -67,12 +67,12 @@ public class EventDetailsDetailFragment extends Fragment {
             titleset.setText(currentEvent.getTitle());
             sporttypeset.setText(Integer.toString(currentEvent.getSportId()));
 
-            /*Date date = currentEvent.getDate();
+            Date date = currentEvent.getDate();
             SimpleDateFormat dateString = new SimpleDateFormat("yyyy-MM-dd");
             dateset.setText( dateString.format(currentEvent.getDate()));
 
             SimpleDateFormat time = new SimpleDateFormat("hh:mm:ss");
-            timeset.setText(time.format(currentEvent.getDate()));*/
+            timeset.setText(time.format(currentEvent.getDate()));
 
             locationset.setText(currentEvent.getLocation());
             creatorset.setText(Integer.toString(currentEvent.getCreator()));
