@@ -1,5 +1,6 @@
 package makememove.ml.makememove.dpsystem.api;
 
+import java.util.Date;
 import java.util.List;
 
 import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
@@ -139,6 +140,12 @@ public interface RetrofitAPI {
     @Headers("Content-type: application/json")
     @GET("events/mine")
     Call<EventListDocument> getfinishedevents(@Header("Authorization") String token,@Query("closed") int closed);
+
+
+
+    @Headers("Content-type: application/json")
+    @POST("me/edit")
+    Call<AuthInputDocument> modifyProfile(@Header("Authorization") String token, @Query("firstName") String firstName, @Query("lastName") String lastName, @Query("gender") String gender, @Query("birthday") String birthday);
 
 
 }

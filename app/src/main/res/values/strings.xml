@@ -116,8 +116,8 @@
         <item>Training</item>
     </string-array>
     <string-array name="visibility_array">
-        <item>Public</item>
         <item>Private</item>
+        <item>Public</item>
     </string-array>
 
     <string-array name="gender_array">
