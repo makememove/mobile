@@ -49,7 +49,7 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
         if(response.isSuccessful()){
             document.setData(response.body());
             Log.d("válasz:","siker");
-        }else Log.d("válasz:","nem siker");
+        }else Log.d("válasz:",response.message());
     }
 
     @Override
