@@ -114,12 +114,12 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
                             if(c_location.isChecked())filter_location=et_location .getText().toString();
                             else filter_location=null;
                             if(c_minskill.isChecked()){
-                                if(et_minskill.getText()!=null)filter_lowskillpoint=Integer.valueOf(et_minskill.getText().toString());
+                                if(!et_minskill.getText().toString().equals(""))filter_lowskillpoint=Integer.valueOf(et_minskill.getText().toString());
                                 else filter_lowskillpoint=null;
                             }
                             else filter_lowskillpoint=null;
                             if(c_maxskill.isChecked()){
-                                if(et_maxskill.getText()!=null)filter_highskillpoint=Integer.valueOf(et_maxskill.getText().toString());
+                                if(!et_maxskill.getText().toString().equals(""))filter_highskillpoint=Integer.valueOf(et_maxskill.getText().toString());
                                 else filter_highskillpoint=null;
                             }
                             else filter_highskillpoint=null;
