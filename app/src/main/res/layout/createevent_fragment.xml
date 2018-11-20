@@ -101,9 +101,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:background="@android:color/background_light"
+                        android:background="@color/background"
                         android:entries="@array/category_array"
+                        android:gravity="center_vertical"
                         android:popupBackground="@android:color/background_light" />
 
                 </LinearLayout>
@@ -131,8 +131,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:background="@color/background"
                         android:gravity="center_vertical"
-                        android:background="@android:color/background_light"
                         android:popupBackground="@android:color/background_light" />
 
                 </LinearLayout>
@@ -227,9 +227,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center_vertical"
                         android:background="@android:color/background_light"
                         android:entries="@array/visibility_array"
+                        android:gravity="center_vertical"
                         android:popupBackground="@android:color/background_light" />
 
 
@@ -351,7 +351,7 @@
                             android:ems="10"
                             android:gravity="center_vertical"
                             android:hint="@string/teamcapacityhint"
-                            android:inputType="numberSigned"
+                            android:inputType="number"
                             android:singleLine="true"
                             android:text=""
                             android:theme="@style/inputtext"
@@ -395,7 +395,7 @@
                             android:ems="10"
                             android:gravity="center_vertical"
                             android:hint="@string/member_capacityhint"
-                            android:inputType="numberSigned"
+                            android:inputType="number"
                             android:singleLine="true"
                             android:text=""
                             android:theme="@style/inputtext"
@@ -439,7 +439,7 @@
                             android:ems="10"
                             android:gravity="center_vertical"
                             android:hint="@string/minskillpointhint"
-                            android:inputType="numberSigned"
+                            android:inputType="number"
                             android:singleLine="true"
                             android:text=""
                             android:theme="@style/inputtext"
@@ -484,7 +484,7 @@
                             android:ems="10"
                             android:gravity="center_vertical"
                             android:hint="@string/max_skillpointhint"
-                            android:inputType="numberSigned"
+                            android:inputType="number"
                             android:singleLine="true"
                             android:text=""
                             android:theme="@style/inputtext" />
