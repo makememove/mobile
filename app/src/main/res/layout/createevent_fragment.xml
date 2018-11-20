@@ -223,7 +223,7 @@
                         android:textSize="18sp" />
 
                     <Spinner
-                        android:id="@+id/s_visibility"
+                        android:id="@+id/s_createvisibility"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"

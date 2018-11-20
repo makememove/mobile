@@ -14,8 +14,10 @@ import makememove.ml.makememove.dpsystem.documents.subdocuments.CreatorMockup;
 public class EventDocument extends Document{
     private int id;
     private Date date;
+
     @SerializedName("public")
     private int published;
+
     private String title;
     private String description;
     private String location;
