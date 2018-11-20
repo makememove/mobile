@@ -19,7 +19,6 @@ import makememove.ml.makememove.R;
 import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.globals.GlobalClass;
-import makememove.ml.makememove.persistence.SportItem;
 import makememove.ml.makememove.user.Sport;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;

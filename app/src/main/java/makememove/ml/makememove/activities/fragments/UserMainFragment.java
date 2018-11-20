@@ -27,7 +27,6 @@ import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
-import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.presenters.EventListPresenter;
 import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
@@ -35,8 +34,6 @@ import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.dpsystem.presenters.SportPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.adapters.SportAdapter;
-import makememove.ml.makememove.persistence.SportItem;
-import makememove.ml.makememove.persistence.SportListDatabase;
 import makememove.ml.makememove.user.Sport;
 import makememove.ml.makememove.dpsystem.documents.SportListDocument;
 import makememove.ml.makememove.user.User;
@@ -344,9 +341,9 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         }
     }
 
-    private SportItem getSportItem(int position) {
-        SportItem sportItem = new SportItem();
-        sportItem.category = sportList.get(position).getName();
+    private Sport getSportItem(int position) {
+        Sport sportItem = new Sport();
+        sportItem.setName(sportList.get(position).getName());
         return sportItem;
     }
 
