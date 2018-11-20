@@ -20,14 +20,16 @@ import makememove.ml.makememove.activities.fragments.SportEventStatusFragment;
 import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.persistence.SportItem;
+import makememove.ml.makememove.user.Sport;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 
 
 public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHolder> {
 
-    private final List<SportItem> items;
+    private final List<Sport> items;
     private SportItemClickListener listener;
+
     public SportAdapter(SportItemClickListener listener){
         this.listener = listener;
         items = new ArrayList<>();
@@ -44,26 +46,45 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
 
     @Override
     public void onBindViewHolder(@NonNull SportViewHolder holder, int position){
-        SportItem item = items.get(position);
-        holder.tv_title.setText(item.category);
-        holder.item = item;
-        GlobalClass.setSportPicture(item.category,holder.iv_sportpicture);
+        final Sport item = items.get(position);
+        holder.tv_title.setText(item.getName());
+        GlobalClass.setSportPicture(item.getName(),holder.iv_sportpicture);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(
+                        UserMainFragment.getPreferredPosition(item.getName()));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content, sportEventFragment).addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        holder.removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeItem(item);
+                listener.onItemRemoved(item);
+                listener.onUnfollow(UserMainFragment.getPosition(item.getName())+1);
+            }
+        });
 
     }
 
-    public void addItem(SportItem item) {
+    public void addItem(Sport item) {
         items.add(item);
         notifyItemInserted(items.size() - 1);
     }
 
-    public void removeItem(SportItem item){
+    public void removeItem(Sport item){
         items.remove(item);
         notifyDataSetChanged();
     }
 
-    public void update(List<SportItem> sportItems) {
+    public void update(List<Sport> sport) {
         items.clear();
-        items.addAll(sportItems);
+        items.addAll(sport);
         notifyDataSetChanged();
     }
 
@@ -75,7 +96,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
     public interface SportItemClickListener{
         void onUnfollow(int position);
         void onAllItemsRemoved();
-        void onItemRemoved(SportItem item);
+        void onItemRemoved(Sport item);
     }
 
 
@@ -84,43 +105,11 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
         TextView  tv_title;
         ImageView iv_sportpicture;
 
-        SportItem item;
-
-
         SportViewHolder(View itemView) {
             super(itemView);
-
-            if (itemView != null) {
-
                 tv_title=itemView.findViewById(R.id.tv_sporttitle);
-
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(
-                                UserMainFragment.getPreferredPosition(item.category));
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.content, sportEventFragment).addToBackStack(null)
-                                .commit();
-                    }
-                });
-
                 removeButton = itemView.findViewById(R.id.removeButton);
-                removeButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (item != null) {
-                            removeItem(item);
-                            listener.onItemRemoved(item);
-                            listener.onUnfollow(UserMainFragment.getPosition(item.category)+1);
-                        }
-                    }
-                });
-
                 iv_sportpicture=itemView.findViewById(R.id.iv_Sportpicture);
-
-
-            }
         }
     }
 }

@@ -9,6 +9,9 @@ public class Sport {
     private String createdAt;
     private String updatedAt;
 
+    public Sport() {
+    }
+
     public Sport(int id, String name){
         this.id = id;
         this.name = name;
