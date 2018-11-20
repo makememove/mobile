@@ -1,4 +1,4 @@
-package makememove.ml.makememove.adapters.bence;
+package makememove.ml.makememove.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -12,10 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.ResultDocument;
 
 
-
-/*
 public class ModifyResultAdapter extends RecyclerView.Adapter<ModifyResultAdapter.ModifyResultViewHolder> {
 
     private final List<ResultDocument> items;
@@ -38,7 +37,7 @@ public class ModifyResultAdapter extends RecyclerView.Adapter<ModifyResultAdapte
     @Override
     public void onBindViewHolder(@NonNull ModifyResultAdapter.ModifyResultViewHolder holder, int position){
         holder.tv_id.setText(position+1);
-        holder.tv_teamname.setText(items.get(position).getName());
+        holder.tv_teamname.setText(items.get(position).getTeamName());
     }
 
     public void addItem(ResultDocument item) {
@@ -87,4 +86,4 @@ public class ModifyResultAdapter extends RecyclerView.Adapter<ModifyResultAdapte
 
         }
     }
-}*/
+}
