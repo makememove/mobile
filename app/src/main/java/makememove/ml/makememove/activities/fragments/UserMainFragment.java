@@ -18,13 +18,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Switch;
+import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
 import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.documents.EventListDocument;
+import makememove.ml.makememove.dpsystem.presenters.EventListPresenter;
 import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
 import makememove.ml.makememove.dpsystem.presenters.SportPresenter;
@@ -42,12 +47,19 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     private View Layout;
     private RecyclerView recyclerView;
     private SportAdapter adapter;
+    private TextView tv_event1;
+    private TextView tv_event2;
+    private TextView tv_event3;
+    private TextView tv_event1date;
+    private TextView tv_event2date;
+    private TextView tv_event3date;
 
     private static SportListDocument sports;
     private static SportListDocument preferredSports;
     private static List<Sport> sportList;
     private static List<String> preferredSportList;
     private String token = User.getInstance().getToken();
+    private static EventListDocument documents;
 
 
 
@@ -95,12 +107,24 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        documents = new EventListDocument();
+        documents.attach(this);
 
         Layout=this.getView();
         if(Layout != null) {
             initRecylerView();
             initSports(token);
             initPreferredSports(token);
+
+            tv_event1=Layout.findViewById(R.id.tv_event1);
+            tv_event2=Layout.findViewById(R.id.tv_event2);
+            tv_event3=Layout.findViewById(R.id.tv_event3);
+            tv_event1date=Layout.findViewById(R.id.tv_event1date);
+            tv_event2date=Layout.findViewById(R.id.tv_event2date);
+            tv_event3date=Layout.findViewById(R.id.tv_event3date);
+
+            EventListPresenter ep = new EventListPresenter(documents);
+            ep.getUnfinEvents(User.getInstance().getToken());
 
             final String token = User.getInstance().getToken();
 
@@ -236,7 +260,34 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             }
         }
 
+        setUpcomingEvents();
         initRecylerView();
+    }
+
+    private void setUpcomingEvents(){
+        SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        switch (documents.getEvents().size()){
+            case 0:
+                break;
+            case 1:
+                tv_event1.setText(documents.getEvents().get(0).getTitle());
+                tv_event1date.setText(SDF.format(documents.getEvents().get(0).getDate()));
+                break;
+            case 2:
+                tv_event1.setText(documents.getEvents().get(0).getTitle());
+                tv_event1date.setText(SDF.format(documents.getEvents().get(0).getDate()));
+                tv_event2.setText(documents.getEvents().get(1).getTitle());
+                tv_event2date.setText(SDF.format(documents.getEvents().get(1).getDate()));
+                break;
+
+                default:
+                    tv_event1.setText(documents.getEvents().get(0).getTitle());
+                    tv_event1date.setText(SDF.format(documents.getEvents().get(0).getDate()));
+                    tv_event2.setText(documents.getEvents().get(1).getTitle());
+                    tv_event2date.setText(SDF.format(documents.getEvents().get(1).getDate()));
+                    tv_event3.setText(documents.getEvents().get(2).getTitle());
+                    tv_event3date.setText(SDF.format(documents.getEvents().get(2).getDate()));
+        }
     }
 
 
