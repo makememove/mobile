@@ -125,6 +125,10 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
                             else filter_highskillpoint=null;
                             if(c_visibility.isChecked())filter_visibility=Integer.valueOf(s_visibility.getSelectedItemPosition());
                             else filter_visibility=null;
+
+
+                            bt_datepicker.setText("Pick Date");
+                            filter_date=null;
                             searchwithfilters();
                         }
                     });
