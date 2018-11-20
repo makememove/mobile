@@ -93,6 +93,43 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tv_CategoryLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/background"
+            android:text="@string/category"
+            android:gravity="center_vertical"
+            android:textColor="@color/NormaltextColor"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/tv_Categoryset"
+            style="@style/inputtext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:hint="@string/categoryhint"
+            android:inputType="none"
+            android:singleLine="true"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/background"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
             android:id="@+id/tv_Date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -101,6 +101,7 @@
     <string name="notifications_header">Notifications</string>
     <string name="sportname">SportName</string>
     <string name="creator_label">Creator:</string>
+    <string name="categoryhint">category</string>
 
     <string-array name="sports_array">
         <item>Shuttle Badminton</item>
