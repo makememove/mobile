@@ -97,8 +97,10 @@ public class PostPresenter extends Presenter implements Callback {
     @Override
     public void onResponse(Call call, Response response) {
         if(response.isSuccessful()){
-            if(document!=null)
-                document.setData((AuthInputDocument)response.body());
+            if(document!=null) {
+                document.setData((AuthInputDocument) response.body());
+                Log.d("refresh inc","refresh inc");
+            }
             Log.d("Successful","Successful");
         }
         else {

@@ -19,7 +19,8 @@ public class AuthInputDocument extends Document{
 
     @Override
     public void setData(Document document) {
-
+        this.id = ((AuthInputDocument) document).getId();
+        sendNotification();
     }
 
     public String getEmail() {

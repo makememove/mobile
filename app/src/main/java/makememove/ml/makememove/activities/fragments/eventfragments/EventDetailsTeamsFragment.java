@@ -36,7 +36,9 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     private static TeamDocument teams;
     private static int joinedTeam = -1;
     private static AuthInputDocument createdTeamId;
+    private static String createdTeamName;
     private RecyclerView.LayoutManager lm = new LinearLayoutManager(GlobalClass.context);
+    private static int refreshedState = 0;
 
     public static int getJoinedTeam() {
         return joinedTeam;
@@ -69,6 +71,7 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+
         super.onActivityCreated(savedInstanceState);
         Layout=this.getView();
         teams = new TeamDocument();
@@ -110,9 +113,10 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
 
                                     Team createdTeam = new Team();
                                     createdTeam.setEventId(+EventDetailsFragment.getCurrentEvent().getId());
-                                    createdTeam.setName(input.getText().toString());
+                                    createdTeamName = input.getText().toString();
+                                    createdTeam.setName(createdTeamName);
                                    // if(EventDetailsFragment.getCurrentEvent().getMemberLimit()!=null)
-                                        createdTeam.setCapacity(EventDetailsFragment.getCurrentEvent().getMemberLimit());
+                                    createdTeam.setCapacity(EventDetailsFragment.getCurrentEvent().getMemberLimit());
                                     adapter.addItem(createdTeam);
 
                                     createTeam(createdTeam);
@@ -142,8 +146,9 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     public void createTeam(Team createdTeam){
         createdTeamId = new AuthInputDocument();
         createdTeamId.attach(this);
-        PostPresenter pp = new PostPresenter();
+        PostPresenter pp = new PostPresenter(createdTeamId);
         pp.leaveTeam(User.getInstance().getToken(),joinedTeam);
+        createdTeamId.setId(null);
         pp.createTeam(User.getInstance().getToken(), createdTeam);
         //pp.joinTeam(User.getInstance().getToken(),User.getInstance().getId());
     }
@@ -160,11 +165,14 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
 
     @Override
     public void onItemJoined(Team item) {
-        PostPresenter pp = new PostPresenter();
+        AuthInputDocument refreshDocument = new AuthInputDocument();
+        refreshDocument.attach(this);
+        PostPresenter pp = new PostPresenter(refreshDocument);
         pp.leaveTeam(User.getInstance().getToken(),joinedTeam);
         Log.d("Csapat","Elhagyott csapat: "+joinedTeam+" csatlakozott csapat: "+item.getId());
         setJoinedTeam(item.getId());
         pp.joinTeam(User.getInstance().getToken(),item.getId());
+        refreshedState = 1;
     }
 
     @Override
@@ -179,27 +187,49 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
 
     }
 
+
+    public boolean creationOnTheWay(){
+        if(createdTeamId != null && createdTeamId.getId()== null){
+            Log.d("teamid","teamid true");
+
+            return true;
+        }
+        Log.d("teamid","teamid false");
+        if(createdTeamId!=null)
+            Log.d("teamid3","teamid3 "+createdTeamId.getId());
+        return false;
+    }
+
     @Override
     public void update() {
-        if(createdTeamId!=null&&createdTeamId.getId()!=null){
-            Log.d("teamid","teamid"+createdTeamId.getId());
-            PostPresenter pp = new PostPresenter();
-            pp.joinTeam(User.getInstance().getToken(),
-                    createdTeamId.getId());
-            createdTeamId.setId(null);
-        }
-        if(this.getView()!= null) {
+
+        if(this.getView()!= null && !creationOnTheWay() && refreshedState!=1) {
             initRecylerView();
             if(recyclerView.getAdapter().getItemCount()==0&&teams.getEvent().getTeams().size()!=0){
                 for (Team current: teams.getEvent().getTeams()) {
                     adapter.addItem(current);
                 }
             }
+            if(teams.getEvent().getTeams().size()==EventDetailsFragment.getCurrentEvent().getMaxAttending()){
+                add_team.setVisibility(View.GONE);
+            }
+            else add_team.setVisibility(View.VISIBLE);
+        }
+        if(createdTeamId!=null && createdTeamId.getId()!=null){
+            refreshRecyclerView();
+        }
+        if(createdTeamId!=null&&createdTeamId.getId()!=null){
+            Log.d("teamid","teamid "+createdTeamId.getId());
+            PostPresenter pp = new PostPresenter();
+            setJoinedTeam(createdTeamId.getId());
+            pp.joinTeam(User.getInstance().getToken(),
+                    createdTeamId.getId());
+            createdTeamId = null;
+        }
+        if(refreshedState == 1) {
+            refreshRecyclerView();
+            refreshedState = 0;
         }
 
-        if(teams.getEvent().getTeams().size()==EventDetailsFragment.getCurrentEvent().getMaxAttending()){
-            add_team.setVisibility(View.GONE);
-        }
-        else add_team.setVisibility(View.VISIBLE);
     }
 }

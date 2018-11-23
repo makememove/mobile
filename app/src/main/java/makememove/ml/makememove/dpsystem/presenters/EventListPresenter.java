@@ -2,6 +2,8 @@ package makememove.ml.makememove.dpsystem.presenters;
 
 import android.util.Log;
 
+import java.io.IOException;
+
 import makememove.ml.makememove.dpsystem.documents.Document;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.EventListDocument;
@@ -49,7 +51,13 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
         if(response.isSuccessful()){
             document.setData(response.body());
             Log.d("válasz:","siker");
-        }else Log.d("válasz:","nem siker");
+        }else {
+            try {
+                Log.d("válasz:","nem siker "+response.errorBody().string());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

@@ -75,6 +75,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         notifyItemInserted(items.size() - 1);
     }
 
+
     public void removeItem(Team item){
         items.remove(item);
         notifyDataSetChanged();
@@ -146,6 +147,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
         Team item;
 
+
         TeamViewHolder(final View itemView) {
             super(itemView);
             if (itemView != null) {
@@ -176,7 +178,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
                                join.setVisibility(View.GONE);
                                leave.setVisibility(View.VISIBLE);
-                               EventDetailsTeamsFragment.refreshRecyclerView();
+                              // EventDetailsTeamsFragment.refreshRecyclerView();
 
                                //     } else
                        //        Snackbar.make(itemView, "The team is already in its full capacity!", Snackbar.LENGTH_LONG).show();
