@@ -38,6 +38,7 @@ public class PostPresenter extends Presenter implements Callback {
     }
     public void postEvent(String token, EventDocument doc){
         Call call = api.createEvent(token,doc);
+        Log.d("visibility",Integer.toString(doc.getPublished()));
         call.enqueue(this);
     }
     public void denyFriendRequest(String token, int position){

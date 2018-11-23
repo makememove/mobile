@@ -30,6 +30,7 @@
             android:layout_weight="1"
             android:background="@color/background"
             android:text="@string/title"
+            android:gravity="center_vertical"
             android:textColor="@color/NormaltextColor"
             android:textSize="20sp" />
 
@@ -40,9 +41,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/popularityhint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
@@ -59,6 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:background="@color/background"
             android:text="@string/sporttype"
             android:textColor="@color/NormaltextColor"
@@ -71,12 +75,51 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/popularityhint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/background"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_CategoryLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/background"
+            android:text="@string/category"
+            android:gravity="center_vertical"
+            android:textColor="@color/NormaltextColor"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/tv_Categoryset"
+            style="@style/inputtext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:hint="@string/categoryhint"
+            android:inputType="none"
+            android:singleLine="true"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,9 +136,9 @@
             android:layout_weight="1"
             android:background="@color/background"
             android:text="@string/date"
+            android:gravity="center_vertical"
             android:textColor="@color/NormaltextColor"
             android:textSize="20sp" />
-
 
 
         <TextView
@@ -105,9 +148,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/datehint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
@@ -127,9 +172,9 @@
             android:layout_weight="1"
             android:background="@color/background"
             android:text="@string/time"
+            android:gravity="center_vertical"
             android:textColor="@color/NormaltextColor"
             android:textSize="20sp" />
-
 
 
         <TextView
@@ -139,9 +184,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/timehint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
@@ -158,6 +205,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:background="@color/background"
             android:text="@string/location"
             android:textColor="@color/NormaltextColor"
@@ -170,9 +218,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/popularityhint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
@@ -189,8 +239,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:background="@color/background"
-            android:text="Creator: "
+            android:text="@string/creator_label"
             android:textColor="@color/NormaltextColor"
             android:textSize="20sp" />
 
@@ -201,9 +252,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/popularityhint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
@@ -220,6 +273,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:background="@color/background"
             android:text="@string/visibility"
             android:textColor="@color/NormaltextColor"
@@ -232,9 +286,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/popularityhint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
@@ -252,6 +308,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/popularity"
+            android:gravity="center_vertical"
             android:background="@color/background"
             android:textColor="@color/NormaltextColor"
             android:textSize="20sp" />
@@ -263,9 +320,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/popularityhint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
@@ -274,6 +333,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:gravity="center_vertical"
         android:background="@color/background"
         android:orientation="horizontal">
 
@@ -293,12 +353,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/popularityhint"
             android:background="@color/background"
-            android:textColor="@color/NormaltextColor"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:hint="@string/popularityhint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@color/NormaltextColor" />
 
 
     </LinearLayout>
@@ -315,6 +377,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:text="@string/team_capacity"
             android:background="@color/background"
             android:textColor="@color/NormaltextColor"
@@ -329,9 +392,11 @@
             android:layout_weight="1"
             android:background="@color/background"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/teamcapacityhint"
             android:inputType="none"
             android:singleLine="true"
+            android:textAlignment="center"
             android:textColor="@color/NormaltextColor" />
 
 
@@ -349,6 +414,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:text="@string/member_capacity"
             android:background="@color/background"
             android:textColor="@color/NormaltextColor"
@@ -363,9 +429,11 @@
             android:layout_weight="1"
             android:background="@color/background"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/member_capacityhint"
             android:inputType="none"
             android:singleLine="true"
+            android:textAlignment="center"
             android:textColor="@color/NormaltextColor" />
 
 
@@ -383,6 +451,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:background="@color/background"
             android:text="@string/min_skillpoint"
             android:textColor="@color/NormaltextColor"
@@ -395,9 +464,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/popularityhint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
@@ -414,6 +485,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:background="@color/background"
             android:text="@string/max_skillpoint"
             android:textColor="@color/NormaltextColor"
@@ -426,9 +498,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/popularityhint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>
@@ -445,6 +519,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:background="@color/background"
             android:text="@string/description"
             android:textColor="@color/NormaltextColor"
@@ -457,9 +532,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="@string/popularityhint"
             android:inputType="none"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textAlignment="center" />
 
 
     </LinearLayout>

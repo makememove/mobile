@@ -21,6 +21,7 @@ public class EventDetailsDetailFragment extends Fragment {
     private View Layout;
     private TextView titleset;
     private TextView sporttypeset;
+    private TextView categoryset;
     private TextView dateset;
     private TextView timeset;
     private TextView locationset;
@@ -51,6 +52,7 @@ public class EventDetailsDetailFragment extends Fragment {
             EventDocument currentEvent = EventDetailsFragment.getCurrentEvent();
             titleset = Layout.findViewById(R.id.tv_titleset);
             sporttypeset = Layout.findViewById(R.id.tv_sporttypeset);
+            categoryset = Layout.findViewById(R.id.tv_Categoryset);
             dateset = Layout.findViewById(R.id.tv_dateset);
             timeset = Layout. findViewById(R.id.tv_timeset);
             locationset = Layout.findViewById(R.id.tv_locationset);
@@ -65,7 +67,9 @@ public class EventDetailsDetailFragment extends Fragment {
             memberset = Layout.findViewById(R.id.tv_membercapacity);
 
             titleset.setText(currentEvent.getTitle());
-            sporttypeset.setText(Integer.toString(currentEvent.getSportId()));
+            sporttypeset.setText(currentEvent.getSport().getName());
+
+            categoryset.setText(currentEvent.getCategory().getName());
 
             Date date = currentEvent.getDate();
             SimpleDateFormat dateString = new SimpleDateFormat("yyyy-MM-dd");

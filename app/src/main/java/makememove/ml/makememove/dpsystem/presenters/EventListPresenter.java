@@ -42,7 +42,7 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
     }
 
     public void geteventswithfilter(String token,String location,String title, Integer lowestSkillPoint,Integer highestSkillPoint,Integer visibility){
-        Call call = api.geteventswithfilter(token,location,title, lowestSkillPoint,highestSkillPoint, visibility,1);
+        Call call = api.geteventswithfilter(token,location,title, lowestSkillPoint,highestSkillPoint, visibility,0);
         call.enqueue(this);
     }
 
@@ -51,13 +51,7 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
         if(response.isSuccessful()){
             document.setData(response.body());
             Log.d("válasz:","siker");
-        }else {
-            try {
-                Log.d("válasz:","nem siker "+response.errorBody().string());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        }else Log.d("válasz:",response.message());
     }
 
     @Override

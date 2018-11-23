@@ -8,14 +8,16 @@ import java.util.Date;
 
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Category;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.CreatorMockup;
-
+import makememove.ml.makememove.dpsystem.documents.subdocuments.SportMockup;
 
 
 public class EventDocument extends Document{
     private int id;
     private Date date;
+
     @SerializedName("public")
     private int published;
+
     private String title;
     private String description;
     private String location;
@@ -26,6 +28,7 @@ public class EventDocument extends Document{
     private int creatorId;
     private int categoryId;
     private Category category;
+    private SportMockup sport;
     @SerializedName("creator")
     private CreatorMockup creatorMockup;
     private Integer maxAttending;
@@ -179,5 +182,13 @@ public class EventDocument extends Document{
 
     public void setMaxAttending(Integer maxAttending) {
         this.maxAttending = maxAttending;
+    }
+
+    public SportMockup getSport() {
+        return sport;
+    }
+
+    public void setSport(SportMockup sport) {
+        this.sport = sport;
     }
 }

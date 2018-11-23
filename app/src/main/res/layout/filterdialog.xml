@@ -25,7 +25,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/titlehint" />
+                android:hint="@string/titlehint" />
         </LinearLayout>
 
         <LinearLayout
@@ -45,7 +45,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/locationhint" />
+                android:hint="@string/locationhint" />
         </LinearLayout>
 
         <LinearLayout
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="numberSigned"
-                android:text="@string/minskillpointhint" />
+                android:hint="@string/minskillpointhint" />
         </LinearLayout>
 
         <LinearLayout
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="numberSigned"
-                android:text="@string/max_skillpointhint" />
+                android:hint="@string/max_skillpointhint" />
         </LinearLayout>
 
 

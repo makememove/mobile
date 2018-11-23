@@ -129,11 +129,10 @@ public class CreateEventFragment extends Fragment {
             et_location = Layout.findViewById(R.id.et_location);
             et_minskillpoint = Layout.findViewById(R.id.et_minskillvalue);
             et_maxskillpoint = Layout.findViewById(R.id.et_maxskillvalue);
-            s_visibility = Layout.findViewById(R.id.s_visibility);
+            s_visibility = Layout.findViewById(R.id.s_createvisibility);
             s_sports = Layout.findViewById(R.id.s_Sport);
             s_category = Layout.findViewById(R.id.s_Category);
             et_description = Layout.findViewById(R.id.et_description);
-
 
 
             bt_create = Layout.findViewById(R.id.bt_createevent);
@@ -166,7 +165,8 @@ public class CreateEventFragment extends Fragment {
                             event.setDescription(et_description.getText().toString());
                             event.setCategoryId(s_category.getSelectedItemPosition()+1);
                             event.setSportId(s_sports.getSelectedItemPosition()+1);
-                            event.setPublished(s_visibility.getSelectedItemPosition()+1);
+                            event.setPublished(s_visibility.getSelectedItemPosition());
+
                             event.setLocation( et_location.getText().toString());
                             event.setLength( Integer.parseInt(et_length.getText().toString()));
                             event.setMaxAttending(Integer.parseInt(et_teamcapacity.getText().toString()));
@@ -180,6 +180,8 @@ public class CreateEventFragment extends Fragment {
 
                             createEvent(event);
                             Snackbar.make(getActivity().findViewById(R.id.content), "You created an event!", Snackbar.LENGTH_LONG).show();
+
+                            Log.d("visibility",Integer.toString(event.getPublished()));
                         }
                     } catch (ParseException e) {
                         e.printStackTrace();
@@ -200,7 +202,8 @@ public class CreateEventFragment extends Fragment {
     }
 
     private  boolean validation(String title,String date, String time, String location,String Length,String minSkillPoint,String maxSkillPoint,String teamcap,String membercap) throws ParseException {
-
+        Log.d("visibility",Integer.toString(s_visibility.getSelectedItemPosition()));
+        Log.d("visibility",User.getInstance().getToken());
 
         if(title.length()<4){
             et_title.setError("Title must be  at least 4 character!");

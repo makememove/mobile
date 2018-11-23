@@ -52,7 +52,7 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
     private View Layout;
 
     private void initRecylerView(){
-        recyclerView = this.getView().findViewById(R.id.rv_findeventlist);
+        recyclerView = Layout.findViewById(R.id.rv_findeventlist);
         adapter = new EventAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
         recyclerView.setAdapter(adapter);
@@ -114,17 +114,21 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
                             if(c_location.isChecked())filter_location=et_location .getText().toString();
                             else filter_location=null;
                             if(c_minskill.isChecked()){
-                                if(et_minskill.getText()!=null)filter_lowskillpoint=Integer.valueOf(et_minskill.getText().toString());
+                                if(!et_minskill.getText().toString().equals(""))filter_lowskillpoint=Integer.valueOf(et_minskill.getText().toString());
                                 else filter_lowskillpoint=null;
                             }
                             else filter_lowskillpoint=null;
                             if(c_maxskill.isChecked()){
-                                if(et_maxskill.getText()!=null)filter_highskillpoint=Integer.valueOf(et_maxskill.getText().toString());
+                                if(!et_maxskill.getText().toString().equals(""))filter_highskillpoint=Integer.valueOf(et_maxskill.getText().toString());
                                 else filter_highskillpoint=null;
                             }
                             else filter_highskillpoint=null;
                             if(c_visibility.isChecked())filter_visibility=Integer.valueOf(s_visibility.getSelectedItemPosition());
                             else filter_visibility=null;
+
+
+                            bt_datepicker.setText("Pick Date");
+                            filter_date=null;
                             searchwithfilters();
                         }
                     });
@@ -195,6 +199,7 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
     @Override
     public void update() {
         Log.d("Az update","Itt van");
+        initRecylerView();
         if(documents.getEvents().size()!=0){
             for (EventDocument doc: documents.getEvents()) {
                 adapter.addItem(doc);
