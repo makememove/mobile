@@ -43,6 +43,7 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
     private Integer filter_lowskillpoint=null;
     private Integer filter_highskillpoint=null;
     private Integer filter_visibility=null;
+    private String date = null;
     private Button bt_addfilter;
 
     private RecyclerView recyclerView;
@@ -76,7 +77,7 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
             initRecylerView();
 
             EventListPresenter ep = new EventListPresenter(documents);
-            ep.geteventswithfilter(User.getInstance().getToken(),null,null,null,null,null);
+            ep.geteventswithfilter(User.getInstance().getToken(),null,null,null,null,null,null);
 
 
             NotificationPresenter np = new NotificationPresenter(NotificationFragment.document);
@@ -126,6 +127,9 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
                             if(c_visibility.isChecked())filter_visibility=Integer.valueOf(s_visibility.getSelectedItemPosition());
                             else filter_visibility=null;
 
+                            if(!bt_datepicker.getText().toString().equals("Pick Date"))
+                            {
+                            }
 
                             bt_datepicker.setText("Pick Date");
                             filter_date=null;
@@ -164,6 +168,7 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
                             int Year = dpStartDate.getYear();
                             int Month = dpStartDate.getMonth()+1;
                             int Day = dpStartDate.getDayOfMonth();
+                            date = Year+"-"+Month+"-"+Day;
                             SimpleDateFormat SDF= new SimpleDateFormat("yyyy-MM-dd");
                             try {
                                 filter_date=SDF.parse(Year+"-"+Month+"-"+Day);
@@ -188,7 +193,7 @@ public class FindEventFragment extends Fragment implements EventAdapter.EventIte
 
     private void searchwithfilters(){
         EventListPresenter ep = new EventListPresenter(documents);
-        ep.geteventswithfilter(User.getInstance().getToken(),filter_location,filter_title,filter_lowskillpoint,filter_highskillpoint,filter_visibility);
+        ep.geteventswithfilter(User.getInstance().getToken(),filter_location,filter_title,filter_lowskillpoint,filter_highskillpoint,filter_visibility,date);
     }
 
     @Override

@@ -154,8 +154,11 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
     }
 
     @Override
-    public void onItemChanged(Team item) {
-
+    public void onChanged() {
+        if(teams.getEvent().getTeams().size()==EventDetailsFragment.getCurrentEvent().getMaxAttending()){
+            add_team.setVisibility(View.GONE);
+        }
+        else add_team.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -180,6 +183,7 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
         setJoinedTeam(-1);
         PostPresenter pp = new PostPresenter();
         pp.leaveTeam(User.getInstance().getToken(),item.getId());
+        add_team.setVisibility(View.VISIBLE);
     }
 
     @Override

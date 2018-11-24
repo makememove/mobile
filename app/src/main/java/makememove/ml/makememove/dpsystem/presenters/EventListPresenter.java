@@ -41,8 +41,8 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
         call.enqueue(this);
     }
 
-    public void geteventswithfilter(String token,String location,String title, Integer lowestSkillPoint,Integer highestSkillPoint,Integer visibility){
-        Call call = api.geteventswithfilter(token,location,title, lowestSkillPoint,highestSkillPoint, visibility,0);
+    public void geteventswithfilter(String token,String location,String title, Integer lowestSkillPoint,Integer highestSkillPoint,Integer visibility,String date){
+        Call call = api.geteventswithfilter(token,location,title, lowestSkillPoint,highestSkillPoint, visibility,0,date);
         call.enqueue(this);
     }
 

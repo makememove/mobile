@@ -123,7 +123,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
     }
 
     public interface TeamClickListener{
-        void onItemChanged(Team item);
+        void onChanged();
         void onItemRemoved(Team item);
         void onItemJoined(Team item);
         void onItemLeft(Team item);
@@ -173,7 +173,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                                UserItem user = new UserItem();
                                user.setUserName(User.getInstance().getUserName());
                                user.setId(User.getInstance().getId());
-                               adapter.removeItem(User.getInstance().getId());
+                                listener.onChanged();
                                adapter.addItem(user);
 
                                join.setVisibility(View.GONE);
@@ -188,8 +188,8 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                leave.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View view) {
-                       listener.onItemLeft(item);
                        adapter.removeItem(User.getInstance().getId());
+                       listener.onItemLeft(item);
                        join.setVisibility(View.VISIBLE);
                        leave.setVisibility(View.GONE);
                    }

@@ -156,6 +156,6 @@ public interface RetrofitAPI {
 
     @Headers("Content-type: application/json")
     @GET("events")
-    Call<EventListDocument> geteventswithfilter(@Header("Authorization") String token,@Query("location") String location,@Query("title") String title,@Query("lowestSkillPoint") Integer lowestSkillPoint,@Query("highestSkillPoint") Integer highestSkillPoint,@Query("public") Integer visibility,@Query("closed") Integer closed);
+    Call<EventListDocument> geteventswithfilter(@Header("Authorization") String token,@Query("location") String location,@Query("title") String title,@Query("lowestSkillPoint") Integer lowestSkillPoint,@Query("highestSkillPoint") Integer highestSkillPoint,@Query("public") Integer visibility,@Query("closed") Integer closed,@Query("date") String date);
 
 }

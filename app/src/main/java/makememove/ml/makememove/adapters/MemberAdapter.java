@@ -79,11 +79,8 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
     }
 
     public void removeItem(int id){
-        Log.d("Meret","Meret "+id);
         if(items.size()!=0) {
             for (int i = 0; i < items.size(); i++) {
-                Log.d("Meret2","Meret2 "+items.get(i).getId());
-
                 if (items.get(i).getId() == id) {
                     items.remove(items.get(i));
                     notifyDataSetChanged();
