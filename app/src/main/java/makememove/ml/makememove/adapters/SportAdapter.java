@@ -1,13 +1,10 @@
 package makememove.ml.makememove.adapters;
 
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -52,8 +49,9 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(
-                        UserMainFragment.getPreferredPosition(item.getName()));
+
+                SportEventStatusFragment sportEventFragment = new SportEventStatusFragment();
+                sportEventFragment.setCurrentSport( UserMainFragment.getPreferredId(item.getName()));
                 fragmentManager.beginTransaction()
                         .replace(R.id.content, sportEventFragment).addToBackStack(null)
                         .commit();

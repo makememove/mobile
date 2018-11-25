@@ -263,6 +263,9 @@ public class EventModifyFragment extends Fragment implements BaseView {
                 public void onClick(View view) {
                     FinishedRank fr = new FinishedRank();
                     fr.setRankings(adapter.getItems());
+                    for(int i = 0;i< fr.getRankings().size();i++){
+                        fr.getRankings().get(i).setPlace(i+1);
+                    }
                     closeEvent(fr);
                     Snackbar.make(getActivity().findViewById(R.id.content), "The event has been successfully closed!", Snackbar.LENGTH_LONG).show();
                 }
@@ -279,6 +282,12 @@ public class EventModifyFragment extends Fragment implements BaseView {
     public void closeEvent(FinishedRank rankings){
         closedEvent = new AuthInputDocument();
         closedEvent.attach(this);
+
+        Log.d("Csapat Eventid","Csapat Eventid "+teamDocument.getEvent().getId());
+        for(ResultDocument current : rankings.getRankings()){
+            Log.d("Csapat","Csapatid: "+current.getId()+" csapathelyezés: "+current.getPlace());
+        }
+
         PostPresenter pp = new PostPresenter(closedEvent);
         pp.closeEvent(User.getInstance().getToken(),teamDocument.getEvent().getId(),rankings);
     }

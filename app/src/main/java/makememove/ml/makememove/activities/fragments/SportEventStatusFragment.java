@@ -22,6 +22,7 @@ import makememove.ml.makememove.dpsystem.documents.EventListDocument;
 import makememove.ml.makememove.dpsystem.presenters.EventListPresenter;
 import makememove.ml.makememove.dpsystem.presenters.NotificationPresenter;
 import makememove.ml.makememove.globals.GlobalClass;
+import makememove.ml.makememove.user.Sport;
 import makememove.ml.makememove.user.User;
 
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
@@ -38,6 +39,8 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
     private static String sportNameString;
     private static int sportID;
     private static EventListDocument documents;
+    private static int sportPosition = 0;
+    private static Sport currentSport;
 
 
     @Override
@@ -55,14 +58,8 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
         recyclerView.setAdapter(adapter);
     }
 
-    public static SportEventStatusFragment newInstance(int arg) {
-
-        Bundle args = new Bundle();
-        args.putInt("SportID",arg);
-
-        SportEventStatusFragment fragment = new SportEventStatusFragment();
-        fragment.setArguments(args);
-        return fragment;
+    public void setCurrentSport(Sport sport){
+        currentSport = sport;
     }
 
     @Override
@@ -70,41 +67,43 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
         super.onActivityCreated(savedInstanceState);
         documents = new EventListDocument();
         documents.attach(this);
-        sportID = (int) getArguments().get("SportID");
 
         Layout = this.getView();
         if (Layout != null) {
             initRecylerView();
 
             EventListPresenter ep = new EventListPresenter(documents);
-            ep.getSportEvents(User.getInstance().getToken(),sportID+1);
+            ep.getSportEvents(User.getInstance().getToken(),currentSport.getId());
 
             previousButton = Layout.findViewById(R.id.ib_prev);
             nextButton = Layout.findViewById(R.id.ib_next);
             sportName = Layout.findViewById(R.id.tv_actualsport);
             // sportID = (int) getArguments().get("SportID");
-            sportNameString = UserMainFragment.getName(sportID);
+            sportNameString = currentSport.getName();
+
             sportName.setText(sportNameString);
 
             iv_sportpicture=Layout.findViewById(R.id.iv_statusSportPicture);
             GlobalClass.setSportPicture(sportNameString,iv_sportpicture);
 
 
+            sportPosition = UserMainFragment.getPreferredPosition(currentSport);
 
             previousButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(sportID == 0){
-                        sportID = UserMainFragment.getListSize()-1;
-                        sportNameString = UserMainFragment.getName(sportID);
+                    if(sportPosition == 0){
+                        sportPosition = UserMainFragment.getPreferredSports().size()-1;
+                        sportNameString = UserMainFragment.getPreferredSports().get(sportPosition).getName();
                         sportName.setText(sportNameString);
                     }
                     else{
-                        sportID--;
-                        sportNameString = UserMainFragment.getName(sportID);
+                        sportPosition--;
+                        sportNameString = UserMainFragment.getPreferredSports().get(sportPosition).getName();
                         sportName.setText(sportNameString);
                     }
-                    SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(sportID);
+                    SportEventStatusFragment sportEventFragment = new SportEventStatusFragment();
+                    sportEventFragment.setCurrentSport(UserMainFragment.getPreferredSports().get(sportPosition));
                     fragmentManager.beginTransaction()
                             .replace(R.id.content, sportEventFragment)
                             .commit();
@@ -113,17 +112,19 @@ public class SportEventStatusFragment extends Fragment implements EventAdapter.E
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(sportID+1 == UserMainFragment.getListSize()){
-                        sportID =0;
-                        sportNameString = UserMainFragment.getName(sportID);
+                    if(sportPosition ==  UserMainFragment.getPreferredSports().size()-1){
+                        sportPosition =0;
+                        sportNameString = UserMainFragment.getPreferredSports().get(sportPosition).getName();
                         sportName.setText(sportNameString);
                     }
                     else{
-                        sportID++;
-                        sportNameString = UserMainFragment.getName(sportID);
+                        sportPosition++;
+                        sportNameString = UserMainFragment.getPreferredSports().get(sportPosition).getName();
                         sportName.setText(sportNameString);
                     }
-                    SportEventStatusFragment sportEventFragment = SportEventStatusFragment.newInstance(sportID);
+                    SportEventStatusFragment sportEventFragment = new SportEventStatusFragment();
+                    sportEventFragment.setCurrentSport(UserMainFragment.getPreferredSports().get(sportPosition));
+                    UserMainFragment.getPreferredSports().get(sportPosition);
                     fragmentManager.beginTransaction()
                             .replace(R.id.content, sportEventFragment)
                             .commit();

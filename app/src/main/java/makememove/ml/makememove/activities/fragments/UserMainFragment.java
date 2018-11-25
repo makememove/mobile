@@ -312,22 +312,16 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
         return -1;
     }
 
-    public static int getPreferredPosition(String item){
-        for(int i = 0;i<preferredSportList.size();i++){
-            if(preferredSportList.get(i).equals(item))
-                return i;
+    public static Sport getPreferredId(String item){
+        for(int i = 0;i<preferredSports.getSports().size();i++){
+            if(preferredSports.getSports().get(i).getName().equals(item))
+                return preferredSports.getSports().get(i);
         }
-        return -1;
+        return null;
     }
 
-    public static int getListSize(){
-        return preferredSportList.size();
-    }
-
-    public static String getName(int position){
-        if(position != -1)
-            return preferredSportList.get(position);
-        return "SportName";
+    public static int getPreferredPosition(Sport sport){
+        return preferredSports.getSports().indexOf(sport);
     }
 
     public static List<Sport> getPreferredSports(){
