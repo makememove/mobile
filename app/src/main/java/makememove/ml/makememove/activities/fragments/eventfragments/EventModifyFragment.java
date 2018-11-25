@@ -187,7 +187,7 @@ public class EventModifyFragment extends Fragment implements BaseView {
             List<String> list = UserMainFragment.getAllSports();
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item , list);
             s_sports.setAdapter(dataAdapter);
-            s_sports.setSelection(currentEvent.getSportId());
+            s_sports.setSelection(currentEvent.getSportId()-1);
 
             et_length.setText(Integer.toString(currentEvent.getLength()));
                  et_teamcapacity.setText(Integer.toString(currentEvent.getMaxAttending()));
