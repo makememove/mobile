@@ -5,9 +5,16 @@ public class ResultDocument {
     private int place;
     private String teamName;
 
+    public ResultDocument(){
+
+    }
     public ResultDocument(int teamId, int place, String teamName){
         this.teamId = teamId;
         this.place = place;
+        this.teamName = teamName;
+    }
+    public ResultDocument(int teamId, String teamName){
+        this.teamId = teamId;
         this.teamName = teamName;
     }
 

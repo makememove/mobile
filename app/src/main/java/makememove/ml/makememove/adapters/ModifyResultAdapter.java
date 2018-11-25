@@ -20,8 +20,7 @@ public class ModifyResultAdapter extends RecyclerView.Adapter<ModifyResultAdapte
     private final List<ResultDocument> items;
     private ModifyResultAdapter.ModifyResultClickListener  listener;
 
-    public ModifyResultAdapter(ModifyResultAdapter.ModifyResultClickListener listener){
-        this.listener = listener;
+    public ModifyResultAdapter(){
         items = new ArrayList<>();
     }
 
@@ -36,8 +35,14 @@ public class ModifyResultAdapter extends RecyclerView.Adapter<ModifyResultAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ModifyResultAdapter.ModifyResultViewHolder holder, int position){
-        holder.tv_id.setText(position+1);
+        ResultDocument item = items.get(position);
+        holder.tv_id.setText(Integer.toString(position+1));
         holder.tv_teamname.setText(items.get(position).getTeamName());
+        holder.position = position;
+        holder.item = item;
+    }
+    public List<ResultDocument> getItems(){
+        return items;
     }
 
     public void addItem(ResultDocument item) {
@@ -52,7 +57,7 @@ public class ModifyResultAdapter extends RecyclerView.Adapter<ModifyResultAdapte
     }
 
     public interface ModifyResultClickListener{
-        void onItemChanged(EventDocument item);
+        void onAdapterChanged();
     }
 
 
@@ -61,7 +66,8 @@ public class ModifyResultAdapter extends RecyclerView.Adapter<ModifyResultAdapte
         TextView tv_teamname;
         ImageButton ib_up;
         ImageButton ib_down;
-
+        ResultDocument item;
+        int position;
 
         ModifyResultViewHolder(View itemView) {
             super(itemView);
@@ -73,14 +79,26 @@ public class ModifyResultAdapter extends RecyclerView.Adapter<ModifyResultAdapte
             ib_up.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO
+                    if(position != 0) {
+                        items.remove(item);
+                        items.add(position - 1, item);
+                        position--;
+                        notifyItemInserted(items.size() - 1);
+                        notifyDataSetChanged();
+                    }
                 }
             });
 
             ib_down.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO
+                    if(position != items.size()-1) {
+                        items.remove(item);
+                        items.add(position + 1, item);
+                        position++;
+                        notifyItemInserted(items.size() - 1);
+                        notifyDataSetChanged();
+                    }
                 }
             });
 

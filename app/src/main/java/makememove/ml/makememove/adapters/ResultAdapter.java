@@ -36,7 +36,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
 
     @Override
     public void onBindViewHolder(@NonNull ResultAdapter.ResultViewHolder holder, int position){
-        holder.tv_id.setText(position+1);
+        holder.tv_id.setText(Integer.toString(position+1));
         holder.tv_teamname.setText(items.get(position).getTeamName());
     }
 
@@ -63,8 +63,8 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
 
         ResultViewHolder(View itemView) {
             super(itemView);
-            tv_id = itemView.findViewById(R.id.tv_resultmodifyposition);
-            tv_teamname= itemView.findViewById(R.id.tv_resultmodifyteamname);
+            tv_id = itemView.findViewById(R.id.tv_resultdisplayposition);
+            tv_teamname= itemView.findViewById(R.id.tv_resultdisplayteamname);
         }
     }
 }

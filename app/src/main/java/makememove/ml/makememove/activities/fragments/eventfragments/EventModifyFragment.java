@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +23,22 @@ import android.widget.TimePicker;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.adapters.ModifyResultAdapter;
+import makememove.ml.makememove.adapters.ResultAdapter;
+import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
+import makememove.ml.makememove.dpsystem.documents.EventDocumentContainer;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.ResultDocument;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
+import makememove.ml.makememove.dpsystem.presenters.EventPresenter;
 import makememove.ml.makememove.dpsystem.presenters.PostPresenter;
+import makememove.ml.makememove.globals.GlobalClass;
 import makememove.ml.makememove.user.User;
 
-public class EventModifyFragment extends Fragment {
+public class EventModifyFragment extends Fragment implements BaseView {
 
 
     private View Layout;
@@ -47,6 +58,9 @@ public class EventModifyFragment extends Fragment {
     private EditText et_description;
     private EditText et_attandances;
     private Button bt_modify;
+    private static EventDocumentContainer teamDocument;
+    private ModifyResultAdapter adapter;
+    private RecyclerView recyclerView;
 
     public static EventDocument getCurrentEvent() {
         return currentEvent;
@@ -56,6 +70,12 @@ public class EventModifyFragment extends Fragment {
         EventModifyFragment.currentEvent = currentEvent;
     }
 
+    private void initRecylerView(){
+        recyclerView = this.getView().findViewById(R.id.rv_result);
+        adapter = new ModifyResultAdapter();
+        recyclerView.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
+        recyclerView.setAdapter(adapter);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,12 +85,20 @@ public class EventModifyFragment extends Fragment {
 
     }
 
+    public void getEvent(){
+        teamDocument = new EventDocumentContainer();
+        teamDocument.attach(this);
+        EventPresenter ep = new EventPresenter(teamDocument);
+        ep.getEvent(User.getInstance().getToken(),currentEvent.getId());
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Layout = this.getView();
         if (Layout != null) {
-
+            initRecylerView();
+            getEvent();
 
             bt_datepicker= Layout.findViewById(R.id.bt_datepicker);
             bt_datepicker.setOnClickListener(new View.OnClickListener() {
@@ -352,9 +380,21 @@ public class EventModifyFragment extends Fragment {
         }
 
 
-
-
-
         return true;
     }
+
+    @Override
+    public void update() {
+        List<Team> teams = teamDocument.getEvent().getTeams();
+        if(teams.size()==0) {
+
+        }
+        else {
+            for(Team team: teams){
+                ResultDocument currentTeam = new ResultDocument(team.getId(),team.getName());
+                adapter.addItem(currentTeam);
+            }
+        }
+    }
+
 }
