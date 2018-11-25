@@ -1,7 +1,7 @@
 package makememove.ml.makememove.dpsystem.documents.subdocuments;
 
 public class ResultDocument {
-    private int id;
+    private int teamId;
     private int place;
     private String teamName;
 
@@ -9,12 +9,12 @@ public class ResultDocument {
 
     }
     public ResultDocument(int id, int place, String teamName){
-        this.id = id;
+        this.teamId = id;
         this.place = place;
         this.teamName = teamName;
     }
     public ResultDocument(int id, String teamName){
-        this.id = id;
+        this.teamId = id;
         this.teamName = teamName;
     }
 
@@ -38,11 +38,11 @@ public class ResultDocument {
     }
 
     public int getId() {
-        return id;
+        return teamId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.teamId = id;
     }
 }
 

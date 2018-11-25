@@ -29,6 +29,7 @@ public class EventPresenter extends Presenter implements Callback<EventDocumentC
     }
 
     public void getEvent(String token,int eventid){
+        Log.d("token","token "+token);
         Call call = api.getEvent(token,eventid);
         call.enqueue(this);
     }
@@ -38,7 +39,7 @@ public class EventPresenter extends Presenter implements Callback<EventDocumentC
     public void onResponse(Call<EventDocumentContainer> call, Response<EventDocumentContainer> response) {
         if(response.isSuccessful()){
             document.setData(response.body());
-            Log.d("sikeres","sikeres222");
+            Log.d("sikeres","sikeres222 ");
 
         }
         else {
