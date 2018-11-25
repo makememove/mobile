@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsTeamsFragment;
 import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.Document;
@@ -64,6 +65,10 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         }
         else {
             holder.join.setVisibility(View.VISIBLE);
+            holder.leave.setVisibility(View.GONE);
+        }
+        if(EventDetailsFragment.getCurrentEvent().getClosed()==1){
+            holder.join.setVisibility(View.GONE);
             holder.leave.setVisibility(View.GONE);
         }
         holder.item = item;

@@ -88,6 +88,8 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
 
 
             add_team= Layout.findViewById(R.id.ib_addteam);
+            if(EventDetailsFragment.getCurrentEvent().getClosed()==1)
+                add_team.setVisibility(View.GONE);
             add_team.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -39,6 +39,7 @@ public class EventPresenter extends Presenter implements Callback<EventDocumentC
         if(response.isSuccessful()){
             document.setData(response.body());
             Log.d("sikeres","sikeres222");
+
         }
         else {
             try {

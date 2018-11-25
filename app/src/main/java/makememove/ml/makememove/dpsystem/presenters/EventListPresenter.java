@@ -51,7 +51,7 @@ public class EventListPresenter extends Presenter implements Callback<EventListD
         if(response.isSuccessful()){
             document.setData(response.body());
             Log.d("válasz:","siker");
-        }else Log.d("válasz:",response.message());
+        }else Log.d("válasz:",response.errorBody().toString());
     }
 
     @Override

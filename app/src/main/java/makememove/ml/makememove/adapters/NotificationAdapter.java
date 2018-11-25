@@ -133,10 +133,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void update() {
         EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
-        EventDetailsFragment.setCurrentEvent(ed.getEvent());
+        eventDetailsFragment.setCurrentEvent(ed.getEvent());
 
-        Log.d("debugresponse",ed.getEvent().getTitle());
-        Log.d("debugresponse",EventDetailsFragment.getCurrentEvent().getTitle());
 
         fragmentManager.beginTransaction()
                 .replace(R.id.content, eventDetailsFragment)

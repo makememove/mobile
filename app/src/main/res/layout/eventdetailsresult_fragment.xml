@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
@@ -9,6 +10,7 @@
         android:id="@+id/tv_Resultheader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:background="@color/Headerbg"
         android:text="@string/result"
         android:textAlignment="center"
@@ -30,6 +32,6 @@
         android:id="@+id/rv_detailsresultteams"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Headerbg" />
+        android:background="@color/background" />
 
 </LinearLayout>

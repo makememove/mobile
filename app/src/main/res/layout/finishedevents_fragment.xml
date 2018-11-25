@@ -9,6 +9,7 @@
         android:id="@+id/tv_fineventsheader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:background="@color/Headerbg"
         android:paddingBottom="10dp"
         android:text="@string/finished_events"

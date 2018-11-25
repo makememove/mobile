@@ -2,6 +2,7 @@ package makememove.ml.makememove.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,8 @@ public class MyEventsAdapter extends RecyclerView.Adapter<MyEventsAdapter.EventV
 
     @Override
     public void onBindViewHolder(@NonNull MyEventsAdapter.EventViewHolder holder, int position){
-        EventDocument item = items.get(position);
+        final EventDocument item = items.get(position);
+        Log.d("MyEventsItem","MyEventsItem "+item.getTitle());
         holder.title.setText(item.getTitle());
         holder.creatorTextView.setText("Creator: "+item.getCreatorMockup().getUserName());
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
@@ -47,7 +49,28 @@ public class MyEventsAdapter extends RecyclerView.Adapter<MyEventsAdapter.EventV
         holder.eventTypeTextView.setText(item.getCategory().getName());
         holder.id.setText(Integer.toString(position+1));
 
-        holder.item = item;
+
+        holder.bt_modify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventModifyFragment eventModifyFragment = new EventModifyFragment();
+                eventModifyFragment.setCurrentEvent(item);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content, eventModifyFragment).addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
+                EventDetailsFragment.setCurrentEvent(item);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content, eventDetailsFragment).addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     public void addItem(EventDocument item) {
@@ -68,7 +91,6 @@ public class MyEventsAdapter extends RecyclerView.Adapter<MyEventsAdapter.EventV
 
     class EventViewHolder extends RecyclerView.ViewHolder {
         TextView title;
-        EventDocument item;
         TextView creatorTextView;
         TextView dateTextView;
         TextView eventTypeTextView;
@@ -87,27 +109,7 @@ public class MyEventsAdapter extends RecyclerView.Adapter<MyEventsAdapter.EventV
                 bt_modify=itemView.findViewById(R.id.bt_unfinmodify);
 
 
-                bt_modify.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        EventModifyFragment eventModifyFragment = new EventModifyFragment();
-                        eventModifyFragment.setCurrentEvent(item);
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.content, eventModifyFragment).addToBackStack(null)
-                                .commit();
-                    }
-                });
 
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
-                        EventDetailsFragment.setCurrentEvent(item);
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.content, eventDetailsFragment).addToBackStack(null)
-                                .commit();
-                    }
-                });
             }
         }
     }

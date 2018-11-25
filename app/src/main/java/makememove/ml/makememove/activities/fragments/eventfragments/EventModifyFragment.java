@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -26,11 +27,15 @@ import java.util.Date;
 import java.util.List;
 
 import makememove.ml.makememove.R;
+import makememove.ml.makememove.activities.fragments.UserMainFragment;
 import makememove.ml.makememove.adapters.ModifyResultAdapter;
 import makememove.ml.makememove.adapters.ResultAdapter;
 import makememove.ml.makememove.dpsystem.BaseView;
+import makememove.ml.makememove.dpsystem.documents.AuthInputDocument;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.EventDocumentContainer;
+import makememove.ml.makememove.dpsystem.documents.RankDocument;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.FinishedRank;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.ResultDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
 import makememove.ml.makememove.dpsystem.presenters.EventPresenter;
@@ -58,9 +63,11 @@ public class EventModifyFragment extends Fragment implements BaseView {
     private EditText et_description;
     private EditText et_attandances;
     private Button bt_modify;
+    private Button bt_closeevent;
     private static EventDocumentContainer teamDocument;
     private ModifyResultAdapter adapter;
     private RecyclerView recyclerView;
+    private static AuthInputDocument closedEvent;
 
     public static EventDocument getCurrentEvent() {
         return currentEvent;
@@ -170,11 +177,18 @@ public class EventModifyFragment extends Fragment implements BaseView {
             s_category = Layout.findViewById(R.id.s_Category);
             et_description = Layout.findViewById(R.id.et_description);
             bt_modify = Layout.findViewById(R.id.bt_modifyyevent);
+            bt_closeevent = Layout.findViewById(R.id.bt_closeevent);
 
             et_title.setText(currentEvent.getTitle());
-            //s_sports.setSelection(currentEvent.getSportId());
-            s_category.setSelection(currentEvent.getCategoryId());
+
+            s_category.setSelection(currentEvent.getCategoryId()-1);
             s_visibility.setSelection(currentEvent.getPublished());
+
+            List<String> list = UserMainFragment.getAllSports();
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item , list);
+            s_sports.setAdapter(dataAdapter);
+            s_sports.setSelection(currentEvent.getSportId());
+
             et_length.setText(Integer.toString(currentEvent.getLength()));
                  et_teamcapacity.setText(Integer.toString(currentEvent.getMaxAttending()));
             if(currentEvent.getMemberLimit()!=null)
@@ -244,6 +258,15 @@ public class EventModifyFragment extends Fragment implements BaseView {
                 }
             });
 
+            bt_closeevent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FinishedRank fr = new FinishedRank();
+                    fr.setRankings(adapter.getItems());
+                    closeEvent(fr);
+                    Snackbar.make(getActivity().findViewById(R.id.content), "The event has been successfully closed!", Snackbar.LENGTH_LONG).show();
+                }
+            });
 
         }
     }
@@ -251,6 +274,13 @@ public class EventModifyFragment extends Fragment implements BaseView {
     public void modifyEvent(EventDocument doc){
         PostPresenter pp = new PostPresenter(doc);
         pp.modifyEvent(User.getInstance().getToken(),doc.getId(),doc);
+    }
+
+    public void closeEvent(FinishedRank rankings){
+        closedEvent = new AuthInputDocument();
+        closedEvent.attach(this);
+        PostPresenter pp = new PostPresenter(closedEvent);
+        pp.closeEvent(User.getInstance().getToken(),teamDocument.getEvent().getId(),rankings);
     }
 
 
@@ -385,13 +415,14 @@ public class EventModifyFragment extends Fragment implements BaseView {
 
     @Override
     public void update() {
+        initRecylerView();
         List<Team> teams = teamDocument.getEvent().getTeams();
-        if(teams.size()==0) {
+        Log.d("TeamId","TeamId "+teamDocument.getEvent().getId());
+        if (teams.size() == 0) {
 
-        }
-        else {
-            for(Team team: teams){
-                ResultDocument currentTeam = new ResultDocument(team.getId(),team.getName());
+        } else {
+            for (Team team : teams) {
+                ResultDocument currentTeam = new ResultDocument(team.getId(), team.getName());
                 adapter.addItem(currentTeam);
             }
         }

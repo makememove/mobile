@@ -1,22 +1,30 @@
 package makememove.ml.makememove.dpsystem.documents.subdocuments;
 
-public class FinishedRank {
-    private int teamId;
-    private int place;
+import java.util.List;
 
-    public int getTeamId() {
-        return teamId;
+import javax.xml.transform.Result;
+
+import makememove.ml.makememove.dpsystem.documents.Document;
+import makememove.ml.makememove.dpsystem.documents.RankDocument;
+
+public class FinishedRank extends Document {
+    private List<ResultDocument> rankings;
+
+    public FinishedRank(){
+        super();
     }
 
-    public void setTeamId(int teamId) {
-        this.teamId = teamId;
+    public List<ResultDocument> getRankings() {
+        return rankings;
     }
 
-    public int getPlace() {
-        return place;
+    public void setRankings(List<ResultDocument> rankings) {
+        this.rankings = rankings;
     }
 
-    public void setPlace(int place) {
-        this.place = place;
+    @Override
+    public void setData(Document document) {
+        this.rankings = ((FinishedRank) document).getRankings();
+        sendNotification();
     }
 }

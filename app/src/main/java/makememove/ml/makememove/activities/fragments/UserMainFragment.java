@@ -252,10 +252,12 @@ public class UserMainFragment extends Fragment implements SportAdapter.SportItem
             preferredSportList.clear();
             for (Sport s: preferredSports.getSports()) {
                 preferredSportList.add(s.getName());
-                if(preferredSports.getSports().size()==sports.getSports().size())bt_addsport.setVisibility(View.GONE);
-                else bt_addsport.setVisibility(View.VISIBLE);
             }
         }
+
+        if(preferredSports.getSports().size()==sports.getSports().size())
+            bt_addsport.setVisibility(View.GONE);
+        else bt_addsport.setVisibility(View.VISIBLE);
 
         setUpcomingEvents();
         initRecylerView();

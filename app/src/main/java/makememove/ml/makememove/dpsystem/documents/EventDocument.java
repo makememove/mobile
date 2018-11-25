@@ -19,7 +19,7 @@ public class EventDocument extends Document{
     private int id;
     private Date date;
 
-    @SerializedName("public")
+    @SerializedName("isPublic")
     private int published;
 
     private String title;
@@ -215,7 +215,7 @@ public class EventDocument extends Document{
         this.teams = teams;
     }
 
-    public String getTeamName(int id){
-        return teams.get(id).getName();
+    public String getTeamName(int index){
+        return teams.get(index).getName();
     }
 }

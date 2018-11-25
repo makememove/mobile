@@ -81,8 +81,9 @@ public class EventDetailsResultFragment extends Fragment implements ResultAdapte
         }
         else {
             teamResults.setVisibility(View.GONE);
+            int i = 0;
             for(ResultDocument team: rankings){
-                team.setTeamName(currentEvent.getEvent().getTeamName(team.getTeamId()));
+                team.setTeamName(currentEvent.getEvent().getTeamName(i++));
                 adapter.addItem(team);
             }
         }

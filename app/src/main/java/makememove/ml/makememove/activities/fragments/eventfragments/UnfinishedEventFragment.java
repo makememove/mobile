@@ -32,14 +32,14 @@ public class UnfinishedEventFragment extends Fragment implements MyEventsAdapter
     private static EventListDocument unfindocument;
 
     private void initrv_myevents(){
-        rv_myevents = this.getView().findViewById(R.id.rv_myeventslist);
+        rv_myevents = Layout.findViewById(R.id.rv_myeventslist);
         myevents_adapter = new MyEventsAdapter(this);
         rv_myevents.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
         rv_myevents.setAdapter(myevents_adapter);
     }
 
     private void initrv_unfinevents(){
-        rv_unfinevents = this.getView().findViewById(R.id.rv_joinedeventlist);
+        rv_unfinevents = Layout.findViewById(R.id.rv_joinedeventlist);
         unfin_adapter = new EventAdapter(this);
         rv_unfinevents.setLayoutManager(new LinearLayoutManager(GlobalClass.context));
         rv_unfinevents.setAdapter(unfin_adapter);
@@ -85,17 +85,22 @@ public class UnfinishedEventFragment extends Fragment implements MyEventsAdapter
     @Override
     public void update() {
         Log.d("Az update","Itt van");
-        if(mydocument.getEvents().size()!=0&&myevents_adapter.getItemCount()==0){
+        if(mydocument.getEvents().size()!=0){
+            initrv_myevents();
             for (EventDocument doc: mydocument.getEvents()) {
-                myevents_adapter.addItem(doc);
-                Log.d("A token:assasa ",doc.getTitle());
+                if(doc.getClosed()!=1) {
+                    myevents_adapter.addItem(doc);
+                    Log.d("A token:assasa ", doc.getTitle());
+                }
             }
         }
 
         if(unfindocument.getEvents().size()!=0){
             for (EventDocument doc: unfindocument.getEvents()) {
-                unfin_adapter.addItem(doc);
-                Log.d("A token:assasa ",doc.getTitle());
+                if(doc.getClosed()!=1) {
+                    unfin_adapter.addItem(doc);
+                    Log.d("A token:assasa ", doc.getTitle());
+                }
             }
         }
     }
