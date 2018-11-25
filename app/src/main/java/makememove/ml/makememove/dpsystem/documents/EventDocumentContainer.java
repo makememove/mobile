@@ -11,10 +11,12 @@ public class EventDocumentContainer extends Document{
     }
 
     public EventDocumentContainer(EventDocument event) {
+        super();
         this.event = event;
     }
 
     public EventDocumentContainer() {
+        super();
     }
 
 

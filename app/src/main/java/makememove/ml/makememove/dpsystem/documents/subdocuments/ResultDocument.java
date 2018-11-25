@@ -2,16 +2,13 @@ package makememove.ml.makememove.dpsystem.documents.subdocuments;
 
 public class ResultDocument {
     private int teamId;
-    private String place;
+    private int place;
     private String teamName;
 
-    public ResultDocument(int teamId, String place, String teamName) {
+    public ResultDocument(int teamId, int place, String teamName){
         this.teamId = teamId;
         this.place = place;
         this.teamName = teamName;
-    }
-
-    public ResultDocument() {
     }
 
     public int getTeamId() {
@@ -22,13 +19,14 @@ public class ResultDocument {
         this.teamId = teamId;
     }
 
-    public String getPlace() {
+    public int getPlace() {
         return place;
     }
 
-    public void setPlace(String place) {
+    public void setPlace(int place) {
         this.place = place;
     }
+
 
     public String getTeamName() {
         return teamName;

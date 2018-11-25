@@ -5,10 +5,14 @@ import android.util.Log;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.List;
 
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Category;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.CreatorMockup;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.FinishedRank;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.ResultDocument;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.SportMockup;
+import makememove.ml.makememove.dpsystem.documents.subdocuments.Team;
 
 
 public class EventDocument extends Document{
@@ -34,6 +38,8 @@ public class EventDocument extends Document{
     private Integer maxAttending;
     private Integer memberLimit;
     private int closed;
+    private List<ResultDocument> rankings;
+    private List<Team> teams;
 
     public EventDocument(){
         super();
@@ -190,5 +196,26 @@ public class EventDocument extends Document{
 
     public void setSport(SportMockup sport) {
         this.sport = sport;
+    }
+
+
+    public List<ResultDocument> getRankings() {
+        return rankings;
+    }
+
+    public void setRankings(List<ResultDocument> rankings) {
+        this.rankings = rankings;
+    }
+
+    public List<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
+
+    public String getTeamName(int id){
+        return teams.get(id).getName();
     }
 }

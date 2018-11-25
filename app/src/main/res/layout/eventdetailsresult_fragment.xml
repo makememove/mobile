@@ -16,11 +16,20 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <ListView
-        android:id="@+id/lv_result"
+    <TextView
+        android:id="@+id/tv_teamresults"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background"
-        />
+        android:background="@color/Headerbg"
+        android:text="@string/NoResults"
+        android:textAlignment="center"
+        android:textColor="@color/NormaltextColor"
+        android:textSize="25sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_detailsresultteams"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Headerbg" />
 
 </LinearLayout>

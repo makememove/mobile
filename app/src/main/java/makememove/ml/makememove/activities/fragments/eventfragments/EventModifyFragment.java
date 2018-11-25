@@ -144,7 +144,7 @@ public class EventModifyFragment extends Fragment {
             bt_modify = Layout.findViewById(R.id.bt_modifyyevent);
 
             et_title.setText(currentEvent.getTitle());
-            s_sports.setSelection(currentEvent.getSportId());
+            //s_sports.setSelection(currentEvent.getSportId());
             s_category.setSelection(currentEvent.getCategoryId());
             s_visibility.setSelection(currentEvent.getPublished());
             et_length.setText(Integer.toString(currentEvent.getLength()));

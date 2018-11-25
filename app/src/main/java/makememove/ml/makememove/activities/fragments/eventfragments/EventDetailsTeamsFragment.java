@@ -60,7 +60,6 @@ public class EventDetailsTeamsFragment extends Fragment implements TeamAdapter.T
         recyclerView = this.getView().findViewById(R.id.rv_teamrecyler);
         adapter = new TeamAdapter(this);
         recyclerView.setLayoutManager(lm);
-
         recyclerView.setAdapter(adapter);
     }
     public static void refreshRecyclerView(){

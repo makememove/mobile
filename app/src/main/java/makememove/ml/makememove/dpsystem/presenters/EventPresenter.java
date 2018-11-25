@@ -37,18 +37,8 @@ public class EventPresenter extends Presenter implements Callback<EventDocumentC
     @Override
     public void onResponse(Call<EventDocumentContainer> call, Response<EventDocumentContainer> response) {
         if(response.isSuccessful()){
-
             document.setData(response.body());
-
-            EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
-            EventDetailsFragment.setCurrentEvent(response.body().getEvent());
-
-            Log.d("debugresponse",response.body().getEvent().getTitle());
-            Log.d("debugresponse",EventDetailsFragment.getCurrentEvent().getTitle());
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content, eventDetailsFragment)
-                    .commit();
+            Log.d("sikeres","sikeres222");
         }
         else {
             try {

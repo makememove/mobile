@@ -17,6 +17,7 @@ import makememove.ml.makememove.activities.fragments.FriendsFragment;
 import makememove.ml.makememove.activities.fragments.NotificationFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.EventDetailsFragment;
 import makememove.ml.makememove.activities.fragments.eventfragments.FinishedEventsFragment;
+import makememove.ml.makememove.dpsystem.BaseView;
 import makememove.ml.makememove.dpsystem.documents.EventDocument;
 import makememove.ml.makememove.dpsystem.documents.EventDocumentContainer;
 import makememove.ml.makememove.dpsystem.documents.subdocuments.Notify;
@@ -28,8 +29,9 @@ import makememove.ml.makememove.user.User;
 import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 
 
-public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>{
+public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder> implements BaseView {
     private final List<Notify> items;
+    private static EventDocumentContainer ed;
 
     private NotificationAdapter.NotificationClickListener listener;
     public NotificationAdapter(NotificationAdapter.NotificationClickListener listener){
@@ -49,7 +51,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(@NonNull NotificationAdapter.NotificationViewHolder holder, int position){
         final Notify item = items.get(position);
-        EventDocumentContainer ed= new EventDocumentContainer();
+        ed= new EventDocumentContainer();
+        ed.attach(this);
         final EventPresenter ep = new EventPresenter(ed);
 
 
@@ -125,6 +128,19 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public int getItemCount(){
         return items.size();
+    }
+
+    @Override
+    public void update() {
+        EventDetailsFragment eventDetailsFragment = new EventDetailsFragment();
+        EventDetailsFragment.setCurrentEvent(ed.getEvent());
+
+        Log.d("debugresponse",ed.getEvent().getTitle());
+        Log.d("debugresponse",EventDetailsFragment.getCurrentEvent().getTitle());
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.content, eventDetailsFragment)
+                .commit();
     }
 
     public interface NotificationClickListener{

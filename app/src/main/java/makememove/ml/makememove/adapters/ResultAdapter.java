@@ -65,7 +65,6 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
             super(itemView);
             tv_id = itemView.findViewById(R.id.tv_resultmodifyposition);
             tv_teamname= itemView.findViewById(R.id.tv_resultmodifyteamname);
-
         }
     }
 }

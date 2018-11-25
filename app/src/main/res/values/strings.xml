@@ -102,6 +102,8 @@
     <string name="sportname">SportName</string>
     <string name="creator_label">Creator:</string>
     <string name="categoryhint">category</string>
+    <string name="NoTeams">NoTeams</string>
+    <string name="NoResults">NoResults</string>
 
     <string-array name="sports_array">
         <item>Shuttle Badminton</item>
