@@ -85,6 +85,8 @@ public class UnfinishedEventFragment extends Fragment implements MyEventsAdapter
     @Override
     public void update() {
         Log.d("Az update","Itt van");
+        initrv_myevents();
+        initrv_unfinevents();
         if(mydocument.getEvents().size()!=0){
             initrv_myevents();
             for (EventDocument doc: mydocument.getEvents()) {

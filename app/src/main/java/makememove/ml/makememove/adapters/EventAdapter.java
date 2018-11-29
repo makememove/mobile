@@ -21,7 +21,9 @@ import static makememove.ml.makememove.activities.UserActivity.fragmentManager;
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
     private final List<EventDocument> items;
+
     private EventAdapter.EventItemClickListener listener;
+
     public EventAdapter(EventAdapter.EventItemClickListener listener){
         this.listener = listener;
         items = new ArrayList<>();
